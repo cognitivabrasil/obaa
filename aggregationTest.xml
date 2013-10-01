@@ -1,0 +1,5 @@
+<obaa:obaa xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/obaav1.0/lom.xsd" xmlns:obaa="http://ltsc.ieee.org/xsd/LOM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <obaa:general>
+      <obaa:aggregationLevel>1</obaa:aggregationLevel>
+   </obaa:general>
+</obaa:obaa>

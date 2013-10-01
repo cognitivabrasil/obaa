@@ -1,0 +1,423 @@
+<!--
+  Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the GNU Lesser Public License v3
+  which accompanies this distribution, and is available at
+  http://www.gnu.org/licenses/lgpl.html
+-->
+<?xml version="1.0" encoding="UTF-8" ?><OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"><responseDate>2012-08-01T16:25:47Z</responseDate><request verb="ListRecords" metadataPrefix="lom">http://froac.manizales.unal.edu.co:8080/oaicat/oai</request><ListRecords>
+<record><header><identifier>froac:8</identifier><datestamp>2012-07-04T09:24:37Z</datestamp><setSpec>notImplemented</setSpec></header><metadata><lom:lom xmlns:lom="http://ltsc.ieee.org/xsd/LOM" xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/lomv1.0/lom.xsd">
+	<lom:general>
+		<lom:title>Test TAAC Simulacion Paralela</lom:title>
+		<lom:description>Test para evaluar la Técnica de Auditoria ( TAAC - CAAT) Simulación Paralela</lom:description>
+		<lom:keyword>Auditoría de Sistemas</lom:keyword>
+		<lom:keyword>TAAC</lom:keyword>
+		<lom:keyword>CAAT</lom:keyword>
+		<lom:keyword>TAAC  Simulación Paralela</lom:keyword>
+		<lom:aggregationLevel>1</lom:aggregationLevel>
+	</lom:general>
+	<lom:lifeCycle>
+		<lom:version>1</lom:version>
+		<lom:status>2</lom:status>
+		<lom:contribute>
+			<role>author</role>
+			<lom:entity>universidad nacional</lom:entity>
+		</lom:contribute>
+	</lom:lifeCycle>
+	<lom:technical>
+		<lom:format>presentacion pptx</lom:format>
+		<lom:size></lom:size>
+		<lom:location> http://froac.manizales.unal.edu.co/roap/control/dowloads.php?id=8</lom:location>
+		<lom:installationRemarks></lom:installationRemarks>
+		<lom:otherPlataformRequirements></lom:otherPlataformRequirements>
+	</lom:technical>
+	<lom:educational>
+		<lom:interactivityType>Expositivo</lom:interactivityType>
+		<lom:learningResourceType></lom:learningResourceType>
+		<lom:interactivityLevel></lom:interactivityLevel>
+		<lom:intendedEndUserRole>Estudiante</lom:intendedEndUserRole>
+		<Context>escuela</Context>
+		<lom:description></lom:description>
+	</lom:educational>
+	<lom:rights>
+		<lom:cost>no</lom:cost>
+		<lom:copyright>no</lom:copyright>
+		<Description/>
+	</lom:rights>
+	<lom:relation>
+		<lom:kind>none</lom:kind>
+		<lom:resource/>
+	</lom:relation>
+	<lom:relation>
+		<lom:kind>LOM-ESv1.0</lom:kind>
+		<lom:resource/>
+		</lom:relation>
+	<lom:relation>
+		<lom:kind>none</lom:kind>
+		<lom:resource/>
+	</lom:relation>
+</lom:lom></metadata></record>
+<record><header><identifier>froac:3</identifier><datestamp>2012-07-04T09:24:37Z</datestamp><setSpec>notImplemented</setSpec></header><metadata><lom:lom xmlns:lom="http://ltsc.ieee.org/xsd/LOM" xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/lomv1.0/lom.xsd">
+	<lom:general>
+		<lom:title>Que son los Diagramas de flujo</lom:title>
+		<lom:description>Definicion y elaboracion de los Diagramas de flujo</lom:description>
+		<lom:keyword>Diagramas de Flujo</lom:keyword>
+		<lom:keyword>Logica computacional</lom:keyword>
+		<lom:aggregationLevel>1</lom:aggregationLevel>
+	</lom:general>
+	<lom:lifeCycle>
+		<lom:version>1</lom:version>
+		<lom:status>2</lom:status>
+		<lom:contribute>
+			<role>author</role>
+			<lom:entity>universidad nacional</lom:entity>
+		</lom:contribute>
+	</lom:lifeCycle>
+	<lom:technical>
+		<lom:format>presentacion pptx</lom:format>
+		<lom:size></lom:size>
+		<lom:location> http://froac.manizales.unal.edu.co/roap/control/dowloads.php?id=3</lom:location>
+		<lom:installationRemarks></lom:installationRemarks>
+		<lom:otherPlataformRequirements></lom:otherPlataformRequirements>
+	</lom:technical>
+	<lom:educational>
+		<lom:interactivityType>Expositivo</lom:interactivityType>
+		<lom:learningResourceType></lom:learningResourceType>
+		<lom:interactivityLevel></lom:interactivityLevel>
+		<lom:intendedEndUserRole>Estudiante</lom:intendedEndUserRole>
+		<Context>escuela</Context>
+		<lom:description> </lom:description>
+	</lom:educational>
+	<lom:rights>
+		<lom:cost>no</lom:cost>
+		<lom:copyright>no</lom:copyright>
+		<Description/>
+	</lom:rights>
+	<lom:relation>
+		<lom:kind>none</lom:kind>
+		<lom:resource/>
+	</lom:relation>
+	<lom:relation>
+		<lom:kind>LOM-ESv1.0</lom:kind>
+		<lom:resource/>
+		</lom:relation>
+	<lom:relation>
+		<lom:kind>none</lom:kind>
+		<lom:resource/>
+	</lom:relation>
+</lom:lom></metadata></record>
+<record><header><identifier>froac:7</identifier><datestamp>2012-07-04T09:24:37Z</datestamp><setSpec>notImplemented</setSpec></header><metadata><lom:lom xmlns:lom="http://ltsc.ieee.org/xsd/LOM" xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/lomv1.0/lom.xsd">
+	<lom:general>
+		<lom:title>Test TAAC MiniCompañia</lom:title>
+		<lom:description>Test para evaluación de la Técnica de Auditoría ( TAAC - CAAT ) denominada MiniCompañia</lom:description>
+		<lom:keyword>Auditoría de Sistemas</lom:keyword>
+		<lom:keyword>TAAC</lom:keyword>
+		<lom:keyword>CAAT</lom:keyword>
+		<lom:keyword>TAAC MiniCompañia</lom:keyword>
+		<lom:aggregationLevel>1</lom:aggregationLevel>
+	</lom:general>
+	<lom:lifeCycle>
+		<lom:version>1</lom:version>
+		<lom:status>2</lom:status>
+		<lom:contribute>
+			<role>author</role>
+			<lom:entity>universidad nacional</lom:entity>
+		</lom:contribute>
+	</lom:lifeCycle>
+	<lom:technical>
+		<lom:format>presentacion pptx</lom:format>
+		<lom:size></lom:size>
+		<lom:location> http://froac.manizales.unal.edu.co/roap/control/dowloads.php?id=7</lom:location>
+		<lom:installationRemarks></lom:installationRemarks>
+		<lom:otherPlataformRequirements></lom:otherPlataformRequirements>
+	</lom:technical>
+	<lom:educational>
+		<lom:interactivityType>Expositivo</lom:interactivityType>
+		<lom:learningResourceType></lom:learningResourceType>
+		<lom:interactivityLevel></lom:interactivityLevel>
+		<lom:intendedEndUserRole>Estudiante</lom:intendedEndUserRole>
+		<Context>escuela</Context>
+		<lom:description> VARK{Visual:90%; Auditivo:0%; Lector:80%; Kinestetico:69%} </lom:description>
+	</lom:educational>
+	<lom:rights>
+		<lom:cost>no</lom:cost>
+		<lom:copyright>no</lom:copyright>
+		<Description/>
+	</lom:rights>
+	<lom:relation>
+		<lom:kind>none</lom:kind>
+		<lom:resource/>
+	</lom:relation>
+	<lom:relation>
+		<lom:kind>LOM-ESv1.0</lom:kind>
+		<lom:resource/>
+		</lom:relation>
+	<lom:relation>
+		<lom:kind>none</lom:kind>
+		<lom:resource/>
+	</lom:relation>
+</lom:lom></metadata></record>
+<record><header><identifier>froac:2</identifier><datestamp>2012-07-04T09:24:37Z</datestamp><setSpec>notImplemented</setSpec></header><metadata><lom:lom xmlns:lom="http://ltsc.ieee.org/xsd/LOM" xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/lomv1.0/lom.xsd">
+	<lom:general>
+		<lom:title>Objeto de aprendizaje de prueba</lom:title>
+		<lom:description>Definición basica de Inteligencia Artificial</lom:description>
+		<lom:keyword>Inteligencia Artificial</lom:keyword>
+		<lom:aggregationLevel>1</lom:aggregationLevel>
+	</lom:general>
+	<lom:lifeCycle>
+		<lom:version>1</lom:version>
+		<lom:status>2</lom:status>
+		<lom:contribute>
+			<role>author</role>
+			<lom:entity>universidad nacional</lom:entity>
+		</lom:contribute>
+	</lom:lifeCycle>
+	<lom:technical>
+		<lom:format>presentacion pptx</lom:format>
+		<lom:size></lom:size>
+		<lom:location> http://froac.manizales.unal.edu.co/roap/control/dowloads.php?id=2</lom:location>
+		<lom:installationRemarks></lom:installationRemarks>
+		<lom:otherPlataformRequirements></lom:otherPlataformRequirements>
+	</lom:technical>
+	<lom:educational>
+		<lom:interactivityType>Expositivo</lom:interactivityType>
+		<lom:learningResourceType></lom:learningResourceType>
+		<lom:interactivityLevel></lom:interactivityLevel>
+		<lom:intendedEndUserRole>Estudiante</lom:intendedEndUserRole>
+		<Context>escuela</Context>
+		<lom:description> </lom:description>
+	</lom:educational>
+	<lom:rights>
+		<lom:cost>no</lom:cost>
+		<lom:copyright>no</lom:copyright>
+		<Description/>
+	</lom:rights>
+	<lom:relation>
+		<lom:kind>none</lom:kind>
+		<lom:resource/>
+	</lom:relation>
+	<lom:relation>
+		<lom:kind>LOM-ESv1.0</lom:kind>
+		<lom:resource/>
+		</lom:relation>
+	<lom:relation>
+		<lom:kind>none</lom:kind>
+		<lom:resource/>
+	</lom:relation>
+</lom:lom></metadata></record>
+<record><header><identifier>froac:6</identifier><datestamp>2012-07-04T09:24:37Z</datestamp><setSpec>notImplemented</setSpec></header><metadata><lom:lom xmlns:lom="http://ltsc.ieee.org/xsd/LOM" xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/lomv1.0/lom.xsd">
+	<lom:general>
+		<lom:title>Test TAAC Datos Prueba</lom:title>
+		<lom:description>Test para evaluación de la Técnica de Auditoría Asistida por Computador (TAAC - CAAT)denominada Datos de Prueba</lom:description>
+		<lom:keyword>TAAC</lom:keyword>
+		<lom:keyword>CAAT</lom:keyword>
+		<lom:keyword>TAAC Datos de Prueba</lom:keyword>
+		<lom:aggregationLevel>1</lom:aggregationLevel>
+	</lom:general>
+	<lom:lifeCycle>
+		<lom:version>1</lom:version>
+		<lom:status>2</lom:status>
+		<lom:contribute>
+			<role>author</role>
+			<lom:entity>universidad nacional</lom:entity>
+		</lom:contribute>
+	</lom:lifeCycle>
+	<lom:technical>
+		<lom:format>presentacion pptx</lom:format>
+		<lom:size></lom:size>
+		<lom:location> http://froac.manizales.unal.edu.co/roap/control/dowloads.php?id=6</lom:location>
+		<lom:installationRemarks></lom:installationRemarks>
+		<lom:otherPlataformRequirements></lom:otherPlataformRequirements>
+	</lom:technical>
+	<lom:educational>
+		<lom:interactivityType>Expositivo</lom:interactivityType>
+		<lom:learningResourceType></lom:learningResourceType>
+		<lom:interactivityLevel></lom:interactivityLevel>
+		<lom:intendedEndUserRole>Estudiante</lom:intendedEndUserRole>
+		<Context>escuela</Context>
+		<lom:description></lom:description>
+	</lom:educational>
+	<lom:rights>
+		<lom:cost>no</lom:cost>
+		<lom:copyright>no</lom:copyright>
+		<Description/>
+	</lom:rights>
+	<lom:relation>
+		<lom:kind>none</lom:kind>
+		<lom:resource/>
+	</lom:relation>
+	<lom:relation>
+		<lom:kind>LOM-ESv1.0</lom:kind>
+		<lom:resource/>
+		</lom:relation>
+	<lom:relation>
+		<lom:kind>none</lom:kind>
+		<lom:resource/>
+	</lom:relation>
+</lom:lom></metadata></record>
+<record><header><identifier>froac:5</identifier><datestamp>2012-07-04T09:24:37Z</datestamp><setSpec>notImplemented</setSpec></header><metadata><lom:lom xmlns:lom="http://ltsc.ieee.org/xsd/LOM" xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/lomv1.0/lom.xsd">
+	<lom:general>
+		<lom:title>Test TAAC Comparación de Codigos</lom:title>
+		<lom:description>Test sobre Técnicas de Auditoría Asistidas por Computador TAAC Comparación de Codigos</lom:description>
+		<lom:keyword>TAAC</lom:keyword>
+		<lom:keyword>TAAC Comparación de Codigos</lom:keyword>
+		<lom:keyword>CAAT</lom:keyword>
+		<lom:aggregationLevel>1</lom:aggregationLevel>
+	</lom:general>
+	<lom:lifeCycle>
+		<lom:version>1</lom:version>
+		<lom:status>2</lom:status>
+		<lom:contribute>
+			<role>author</role>
+			<lom:entity>universidad nacional</lom:entity>
+		</lom:contribute>
+	</lom:lifeCycle>
+	<lom:technical>
+		<lom:format>presentacion pptx</lom:format>
+		<lom:size>28</lom:size>
+		<lom:location> http://froac.manizales.unal.edu.co/roap/control/dowloads.php?id=5</lom:location>
+		<lom:installationRemarks></lom:installationRemarks>
+		<lom:otherPlataformRequirements></lom:otherPlataformRequirements>
+	</lom:technical>
+	<lom:educational>
+		<lom:interactivityType>Expositivo</lom:interactivityType>
+		<lom:learningResourceType></lom:learningResourceType>
+		<lom:interactivityLevel></lom:interactivityLevel>
+		<lom:intendedEndUserRole>Estudiante</lom:intendedEndUserRole>
+		<Context>escuela</Context>
+		<lom:description> VARK{Visual:70%; Auditivo:9%; Lector:70%; Kinestético:70%} </lom:description>
+	</lom:educational>
+	<lom:rights>
+		<lom:cost>no</lom:cost>
+		<lom:copyright>no</lom:copyright>
+		<Description/>
+	</lom:rights>
+	<lom:relation>
+		<lom:kind>none</lom:kind>
+		<lom:resource/>
+	</lom:relation>
+	<lom:relation>
+		<lom:kind>LOM-ESv1.0</lom:kind>
+		<lom:resource/>
+		</lom:relation>
+	<lom:relation>
+		<lom:kind>none</lom:kind>
+		<lom:resource/>
+	</lom:relation>
+</lom:lom></metadata></record>
+<record><header><identifier>froac:9</identifier><datestamp>2012-07-04T09:24:37Z</datestamp><setSpec>notImplemented</setSpec></header><metadata><lom:lom xmlns:lom="http://ltsc.ieee.org/xsd/LOM" xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/lomv1.0/lom.xsd">
+	<lom:general>
+		<lom:title>Test TAAC Software General de Auditoría</lom:title>
+		<lom:description>Test para evaluar la Técnica de Auditoria ( TAAC - CAAT) Software General de Auditoría</lom:description>
+		<lom:keyword>Auditoría de Sistemas</lom:keyword>
+		<lom:keyword>TAAC</lom:keyword>
+		<lom:keyword>CAAT</lom:keyword>
+		<lom:keyword>TAAC  Software General de Auditoría</lom:keyword>
+		<lom:aggregationLevel>1</lom:aggregationLevel>
+	</lom:general>
+	<lom:lifeCycle>
+		<lom:version>1</lom:version>
+		<lom:status>2</lom:status>
+		<lom:contribute>
+			<role>author</role>
+			<lom:entity>universidad nacional</lom:entity>
+		</lom:contribute>
+	</lom:lifeCycle>
+	<lom:technical>
+		<lom:format>presentacion pptx</lom:format>
+		<lom:size></lom:size>
+		<lom:location> http://froac.manizales.unal.edu.co/roap/control/dowloads.php?id=9</lom:location>
+		<lom:installationRemarks></lom:installationRemarks>
+		<lom:otherPlataformRequirements></lom:otherPlataformRequirements>
+	</lom:technical>
+	<lom:educational>
+		<lom:interactivityType>Expositivo</lom:interactivityType>
+		<lom:learningResourceType></lom:learningResourceType>
+		<lom:interactivityLevel></lom:interactivityLevel>
+		<lom:intendedEndUserRole>Estudiante</lom:intendedEndUserRole>
+		<Context>escuela</Context>
+		<lom:description></lom:description>
+	</lom:educational>
+	<lom:rights>
+		<lom:cost>no</lom:cost>
+		<lom:copyright>no</lom:copyright>
+		<Description/>
+	</lom:rights>
+	<lom:relation>
+		<lom:kind>none</lom:kind>
+		<lom:resource/>
+	</lom:relation>
+	<lom:relation>
+		<lom:kind>LOM-ESv1.0</lom:kind>
+		<lom:resource/>
+		</lom:relation>
+	<lom:relation>
+		<lom:kind>none</lom:kind>
+		<lom:resource/>
+	</lom:relation>
+</lom:lom></metadata></record>
+<record><header><identifier>froac:10</identifier><datestamp>2012-07-27T14:46:25Z</datestamp><setSpec>notImplemented</setSpec></header><metadata><lom:lom xmlns:lom="http://ltsc.ieee.org/xsd/lom" xmlns:xsi="http://www.w3.org/2001/xmlschema-instance" xsi:schemalocation="http://ltsc.ieee.org/xsd/lom http://ltsc.ieee.org/xsd/lomv1.0/lom.xsd"><lom:general><lom:title>
+Arquitectura Basada en Inteligencia Artificial Distribuida para la Gerencia Integrada de Producción Industrial</lom:title><lom:language>
+es</lom:language>
+<lom:description>
+La propuesta presentada en este trabajo de investigación consiste en una arquitectura de referencia para la gestión integrada de
+producción, que permite el acceso a la información requerida para obtener una visión completa del estado del proceso productivo y
+habilita la automatización inteligente de los procesos de negocio, a partir de la definición de un mecanismo de acceso estandarizado
+a las fuentes de información de proceso, del desarrollo de un marco ontólogico de producción y del uso de técnicas de inteligencia
+artificial distribuida, específicamente sistemas multi-agentes e instituciones electrónicas.</lom:description>
+<lom:keyword>
+Agentes Inteligentes</lom:keyword>
+<lom:coverage>
+Siglo XXI en México</lom:coverage>
+<lom:structure>
+5</lom:structure><lom:aggregationlevel>
+2</lom:aggregationlevel></lom:general><lom:lifecycle><lom:version>
+1.0</lom:version><lom:status>
+2</lom:status></lom:lifecycle><lom:technical><lom:format>
+pdf</lom:format>
+<lom:size>
+353798</lom:size><lom:location>
+http://froac.manizales.unal.edu.co/roap/control/dowloads.php?id=10</lom:location>
+<lom:installationremarks>
+Descargar y abrir con un visor de archivos PDF</lom:installationremarks><lom:otherplataformsrequirements>
+</lom:otherplataformsrequirements><lom:duration>
+PT2H0M</lom:duration></lom:technical><lom:educational><lom:interactivitytype>
+2</lom:interactivitytype><lom:learningresourcetype>
+10</lom:learningresourcetype>
+<lom:interactivitylevel>
+1</lom:interactivitylevel><lom:semanticdensity>
+4</lom:semanticdensity><lom:intendedenduserrole>
+3</lom:intendedenduserrole>
+<lom:context>
+4</lom:context>
+<lom:typicalagerange>
+20 en adelante</lom:typicalagerange>
+<lom:difficulty>
+3</lom:difficulty><lom:typicallearningtime>
+PT2H0M</lom:typicallearningtime><lom:language>
+es</lom:language>
+</lom:educational><lom:rights><lom:cost>
+2</lom:cost><lom:copyright>
+1</lom:copyright><lom:description>
+La propuesta presentada en este trabajo de investigación consiste en una arquitectura de referencia para la gestión integrada de
+producción, que permite el acceso a la información requerida para obtener una visión completa del estado del proceso productivo y
+habilita la automatización inteligente de los procesos de negocio, a partir de la definición de un mecanismo de acceso estandarizado
+a las fuentes de información de proceso, del desarrollo de un marco ontólogico de producción y del uso de técnicas de inteligencia
+artificial distribuida, específicamente sistemas multi-agentes e instituciones electrónicas.</lom:description></lom:rights><lom:relation><lom:kind>
+7</lom:kind></lom:relation><lom:annotation><lom:entity>
+César Bravo, José Aguilar-Castro, Addison Ríos, Joseph Aguilar-Martin, Francklin Rivas  </lom:entity><lom:date>
+2011</lom:date><lom:description>
+La propuesta presentada en este trabajo de investigación consiste en una arquitectura de referencia para la gestión integrada de
+producción, que permite el acceso a la información requerida para obtener una visión completa del estado del proceso productivo y
+habilita la automatización inteligente de los procesos de negocio, a partir de la definición de un mecanismo de acceso estandarizado
+a las fuentes de información de proceso, del desarrollo de un marco ontólogico de producción y del uso de técnicas de inteligencia
+artificial distribuida, específicamente sistemas multi-agentes e instituciones electrónicas.</lom:description></lom:annotation><lom:classification><lom:purpose>
+7</lom:purpose><lom:description>
+La propuesta presentada en este trabajo de investigación consiste en una arquitectura de referencia para la gestión integrada de
+producción, que permite el acceso a la información requerida para obtener una visión completa del estado del proceso productivo y
+habilita la automatización inteligente de los procesos de negocio, a partir de la definición de un mecanismo de acceso estandarizado
+a las fuentes de información de proceso, del desarrollo de un marco ontólogico de producción y del uso de técnicas de inteligencia
+artificial distribuida, específicamente sistemas multi-agentes e instituciones electrónicas.</lom:description><lom:keyword>
+Agentes inteligentes</lom:keyword>
+</lom:classification></lom:lom></metadata></record>
+</ListRecords></OAI-PMH>

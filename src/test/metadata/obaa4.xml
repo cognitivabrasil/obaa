@@ -1,0 +1,65 @@
+<!--
+  Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the GNU Lesser Public License v3
+  which accompanies this distribution, and is available at
+  http://www.gnu.org/licenses/lgpl.html
+-->
+<obaa:obaa xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/obaav1.0/lom.xsd" xmlns:obaa="http://ltsc.ieee.org/xsd/LOM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <obaa:general>
+      <obaa:title>Ataque a o TCP - Mitnick</obaa:title>
+      <obaa:keyword>TCP</obaa:keyword>
+      <obaa:keyword>segurança</obaa:keyword>
+      <obaa:keyword>ataque Mitnick</obaa:keyword>
+      <obaa:description>Animação ilustrando a troca de mensagens que ocorre quando um intruso bloqueia um computador medianteo envio de mensagens de hadshake repetidas e depois impersona esta máquina enquanto ela está imobilizada.</obaa:description>
+      <aggregationLevel>1</aggregationLevel>
+      <obaa:structure>atomic</obaa:structure>
+   </obaa:general>
+   <obaa:lifeCycle>
+      <status>finalized</status>
+      <version>1</version>
+      <contribute>
+         <obaa:entity>Tarouco, Liane</obaa:entity>
+         <obaa:role>author</obaa:role>
+         <date></date>
+      </contribute>
+      <contribute>
+         <obaa:entity>CINTED/UFRGS</obaa:entity>
+         <obaa:role>outro</obaa:role>
+         <date></date>
+      </contribute>
+   </obaa:lifeCycle>
+   <obaa:rights>
+      <cost>Nao</cost>
+      <copyright>Nao</copyright>
+   </obaa:rights>
+   <obaa:educational>
+      <obaa:interactivityType>expositive</obaa:interactivityType>
+      <interactivityLevel>Muito baixo</interactivityLevel>
+      <obaa:intendedEndUserRole>Aluno</obaa:intendedEndUserRole>
+      <obaa:learningResourceType>simulation</obaa:learningResourceType>
+      <obaa:typicalAgeRange>adulto</obaa:typicalAgeRange>
+      <obaa:description>demonstration</obaa:description>
+      <obaa:context>school</obaa:context>
+      <obaa:learningResourceType>simulation</obaa:learningResourceType>
+      <interaction/>
+   </obaa:educational>
+   <obaa:technical>
+      <obaa:location>http://cesta2.cinted.ufrgs.br/xmlui/handle/123456789/57</obaa:location>
+      <obaa:format>swf</obaa:format>
+      <obaa:size>18Kbytes</obaa:size>
+      <obaa:installationRemarks></obaa:installationRemarks>
+   </obaa:technical>
+   <relation>
+      <obaa:kind>ispartof</obaa:kind>
+      <obaa:resource></obaa:resource>
+   </relation>
+   <relation>
+      <obaa:kind>isversionof</obaa:kind>
+      <obaa:resource></obaa:resource>
+   </relation>
+   <relation>
+      <obaa:kind>isreplacedby</obaa:kind>
+      <obaa:resource></obaa:resource>
+   </relation>
+</obaa:obaa>

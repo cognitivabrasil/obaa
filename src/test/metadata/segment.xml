@@ -1,0 +1,20 @@
+<obaa:obaa xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/obaav1.0/lom.xsd" xmlns:obaa="http://ltsc.ieee.org/xsd/LOM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <obaa:general>
+      <obaa:title>Título 1</obaa:title>
+   </obaa:general>
+   <segmentInformationTable>
+      <segmentList>
+         <segmentInformation>
+            <obaa:identifier>1</obaa:identifier>
+            <obaa:title>tubarão</obaa:title>
+            <obaa:description>aparece um tubarão na cena</obaa:description>
+            <obaa:keyword>cena</obaa:keyword>
+            <obaa:keyword>tubarão</obaa:keyword>
+            <obaa:segmentMediaType>video</obaa:segmentMediaType>
+            <obaa:start/>
+            <obaa:end/>
+         </segmentInformation>
+      </segmentList>
+      <segmentGroupList/>
+   </segmentInformationTable>
+</obaa:obaa>

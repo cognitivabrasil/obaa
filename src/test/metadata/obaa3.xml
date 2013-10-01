@@ -1,0 +1,115 @@
+<!--
+  Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the GNU Lesser Public License v3
+  which accompanies this distribution, and is available at
+  http://www.gnu.org/licenses/lgpl.html
+-->
+<obaa:obaa xmlns:obaa="http://ltsc.ieee.org/xsd/LOM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/obaav1.0/obaa.xsd">
+	<obaa:general>
+		<obaa:identifier>
+			<obaa:catalog>teste</obaa:catalog>
+			<obaa:entry>123</obaa:entry>
+		</obaa:identifier>
+		<obaa:title>Título 1</obaa:title>
+		<obaa:language>pt_BR</obaa:language>
+		<obaa:structure>atomic</obaa:structure>
+		<obaa:description>Animação ilustrando a troca de mensagens que ocorre quando um intruso bloqueia um computador medianteo envio de mensagens de hadshake repetidas e depois impersona esta máquina enquanto ela está imobilizada.</obaa:description>
+		<obaa:description>Desc1</obaa:description>
+		<obaa:description>Desc2</obaa:description>
+		<obaa:coverage>cov1</obaa:coverage>
+		<obaa:coverage>cov2</obaa:coverage>
+		<obaa:keyword>TCP</obaa:keyword>
+		<obaa:keyword>segurança</obaa:keyword>
+		<obaa:keyword>ataque Mitnick</obaa:keyword>
+		<obaa:aggregationLevel>1</obaa:aggregationLevel>
+	</obaa:general>
+	<obaa:lifeCycle>
+		<obaa:version>1</obaa:version>
+		<obaa:status>Final</obaa:status>
+		<obaa:contribute>
+			<role>author</role>
+			<obaa:date>2011-09-09T21:08:38Z</obaa:date>
+			<obaa:entity>Tarouco, Liane</obaa:entity>
+		</obaa:contribute>
+		<contribute>
+			<role>unknown</role>
+			<entity>CINTED/UFRGS</entity>
+		</contribute>
+	</obaa:lifeCycle>
+	<obaa:technical>
+		<obaa:format>swf</obaa:format>
+		<obaa:size>18Kbytes</obaa:size>
+		<obaa:location>http://cesta2.cinted.ufrgs.br/xmlui/handle/123456789/57</obaa:location>
+		<obaa:installationRemarks />
+		<obaa:otherPlataformRequirements>Flash player</obaa:otherPlataformRequirements>
+	</obaa:technical>
+	<obaa:educational>
+		<obaa:interactivityType>Expositivo</obaa:interactivityType>
+		<obaa:learningResourceType>simulation</obaa:learningResourceType>
+		<obaa:learningResourceType>experiment</obaa:learningResourceType>
+		<obaa:interactivityLevel>Muito baixo</obaa:interactivityLevel>
+		<obaa:semanticDensity>low</obaa:semanticDensity>
+		<obaa:context>Educacao superior</obaa:context>
+		<obaa:context>Profissionalizante</obaa:context>
+		<obaa:typicalAgeRange>adult</obaa:typicalAgeRange>
+		<obaa:typicalLearningTime>PT15M</obaa:typicalLearningTime>
+		<obaa:description>demonstração</obaa:description>
+		<obaa:description>bla bla bla</obaa:description>
+		<obaa:difficulty>easy</obaa:difficulty>
+		<obaa:intendedEndUserRole>teacher</obaa:intendedEndUserRole>
+		<obaa:intendedEndUserRole>manager</obaa:intendedEndUserRole>
+		<obaa:language>pt_BR</obaa:language>
+		<obaa:language>en</obaa:language>
+                <obaa:interaction>
+                    <obaa:interactionType>objeto-sujeito</obaa:interactionType>
+                </obaa:interaction>
+                
+		</obaa:educational>
+	<obaa:rights>
+		<obaa:cost>Nao</obaa:cost>
+		<obaa:copyright>Nao</obaa:copyright>
+		<description>http://creativecommons.org/licenses/by-sa/3.0/br/</description>
+	</obaa:rights>
+        
+	<obaa:relation>
+		<obaa:kind>ispartof</obaa:kind>
+		<obaa:resource> RECURSO 1</obaa:resource>
+        </obaa:relation>
+        
+	<obaa:relation>
+		<obaa:kind>isversionof</obaa:kind>
+		<obaa:resource> RECURSO 2</obaa:resource>
+        </obaa:relation>
+        
+	<obaa:relation>
+		<obaa:kind>isreplacedby</obaa:kind>
+		<obaa:resource> RECURSO 3</obaa:resource>
+	</obaa:relation>
+        
+        <obaa:segmentInformationTable>
+            
+		<obaa:segmentList>
+                    <segmentInformation>
+                        <identifier>1</identifier>
+                        <title>Tubarão</title>
+                        <description>Aparece o tubarão na cena</description>
+                        <keyword>tubarão</keyword>
+                        <segmentMediaType>video</segmentMediaType>
+                        <start>5 min</start>
+                        <end>12 min</end>
+                    </segmentInformation>
+                    
+                    <segmentInformation>
+                        <identifier>2</identifier>
+                        <title>Jacaré</title>
+                        <description>Aparece o jacaré na cena</description>
+                        <keyword>jacaré</keyword>
+                        <segmentMediaType>video</segmentMediaType>
+                        <start>1 min</start>
+                        <end>2 min</end>
+                    </segmentInformation>
+                </obaa:segmentList>                
+		
+	</obaa:segmentInformationTable>
+</obaa:obaa>

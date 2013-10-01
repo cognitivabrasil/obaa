@@ -1,0 +1,286 @@
+<!--
+  Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the GNU Lesser Public License v3
+  which accompanies this distribution, and is available at
+  http://www.gnu.org/licenses/lgpl.html
+-->
+<obaa:obaa xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/obaav1.0/lom.xsd" xmlns:obaa="http://ltsc.ieee.org/xsd/LOM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <obaa:general>
+        <obaa:identifier>
+            <obaa:catalog>teste</obaa:catalog>
+            <obaa:entry>123</obaa:entry>
+        </obaa:identifier>
+        <obaa:title>Grêmio imortal tricolor</obaa:title>
+        <obaa:language>pt_BR</obaa:language>
+        <obaa:structure>atomic</obaa:structure>
+        <obaa:description>Página web contendo a história do Grêmio.</obaa:description>
+        <obaa:description>Desc2</obaa:description>
+        <obaa:coverage>cov1</obaa:coverage>
+        <obaa:coverage>cov2</obaa:coverage>
+        <obaa:keyword>Futebol</obaa:keyword>
+        <obaa:keyword>imortal</obaa:keyword>
+        <obaa:keyword>tricolor</obaa:keyword>
+        <obaa:aggregationLevel>1</obaa:aggregationLevel>
+    </obaa:general>
+    <obaa:lifeCycle>
+        <obaa:version>1</obaa:version>
+        <obaa:status>Final</obaa:status>
+        <obaa:contribute>
+            <role>author</role>
+            <obaa:date>2012-07-12T17:30:38Z</obaa:date>
+            <obaa:entity>Nunes, Marcos</obaa:entity>
+        </obaa:contribute>
+        <contribute>
+            <role>Publisher</role>
+            <entity>Cognitiva Brasil</entity>
+        </contribute>
+    </obaa:lifeCycle>
+    <obaa:technical>
+        <obaa:format>swf</obaa:format>
+        <obaa:format>html</obaa:format>
+        <obaa:size>18Kbytes</obaa:size>
+        <obaa:location>http://www.cognitivabrasil.com.br/repositorio/84</obaa:location>
+        <obaa:requirement>
+            <obaa:orComposite>
+                <obaa:type>Operating System</obaa:type>
+                <obaa:name>Ubuntu</obaa:name>
+                <obaa:minimumVersion>11.0.1</obaa:minimumVersion>
+                <obaa:maximumVersion>12.x</obaa:maximumVersion>
+            </obaa:orComposite>
+            <obaa:orComposite>
+                <obaa:type>Operating System</obaa:type>
+                <obaa:name>Windows</obaa:name>
+                <obaa:minimumVersion>98</obaa:minimumVersion>
+                <obaa:maximumVersion>7</obaa:maximumVersion>
+            </obaa:orComposite>
+        </obaa:requirement>
+        <obaa:installationRemarks>Descompactar o arquivo e executar o index.html no navegador</obaa:installationRemarks>
+        <obaa:otherPlatformRequirements>Flash player</obaa:otherPlatformRequirements>
+        <obaa:duration>PT1H30M</obaa:duration>
+        <obaa:supportedPlatform>DTV</obaa:supportedPlatform>
+        <obaa:supportedPlatform>Web</obaa:supportedPlatform>
+        <obaa:platformSpecificFeature>
+            <obaa:platformType>Web</obaa:platformType>
+            <obaa:specificFormat>text/htm</obaa:specificFormat>
+            <obaa:specificSize>242</obaa:specificSize>
+            <obaa:specificLocation>http://portalobaa.org</obaa:specificLocation>
+            <obaa:specificRequirement>
+                <obaa:specificOrComposite>
+                    <obaa:specificType>browser</obaa:specificType>
+                    <obaa:specificName>mozillaFirefox</obaa:specificName>
+                    <obaa:specificMinimumVersion>1.0</obaa:specificMinimumVersion>
+                    <obaa:specificMaximumVersion>3.0</obaa:specificMaximumVersion>
+                </obaa:specificOrComposite>
+            </obaa:specificRequirement>
+            <obaa:specificInstallationRemarks>Executar o index2.html</obaa:specificInstallationRemarks>
+            <obaa:specificOtherPlatformRequirements>("en," "sound card")</obaa:specificOtherPlatformRequirements>
+        </obaa:platformSpecificFeature>
+        <obaa:service>
+            <obaa:name>portuguese content recomendation</obaa:name>
+            <obaa:type>recommendation</obaa:type>
+            <obaa:provides>true</obaa:provides>
+            <obaa:essential>true</obaa:essential>
+            <obaa:protocol>HTTP</obaa:protocol>
+            <obaa:protocol>fipa-request</obaa:protocol>
+            <obaa:ontology>
+                <obaa:name>OBAA Ontology</obaa:name>
+                <obaa:language>OWL-FULL</obaa:language>
+                <obaa:location>http://gia.inf.ufrgs.br/onto/obaa.owl</obaa:location>
+            </obaa:ontology>
+            <obaa:ontology>
+                <obaa:name>WordNet</obaa:name>
+                <obaa:language>OWL-LITE</obaa:language>
+                <obaa:location>http://gia.inf.ufrgs.br/onto/wordnet.owl</obaa:location>
+            </obaa:ontology>
+            <obaa:language>fipa-sl</obaa:language>
+            <obaa:language>OWL-S</obaa:language>
+            <obaa:details>
+                <obaa:details>request: leaner information</obaa:details>
+                <obaa:serviceLocation>http://gia.inf.ufrgs.br/recommendation</obaa:serviceLocation>
+            </obaa:details>
+
+        </obaa:service>
+    </obaa:technical>
+    <obaa:educational>
+        <obaa:learningResourceType>simulation</obaa:learningResourceType>
+        <obaa:learningResourceType>experiment</obaa:learningResourceType>
+        <obaa:interactivityLevel>Muito baixo</obaa:interactivityLevel>
+        <obaa:semanticDensity>low</obaa:semanticDensity>
+        <obaa:context>Educacao superior</obaa:context>
+        <obaa:context>Profissionalizante</obaa:context>
+        <obaa:typicalAgeRange>adult</obaa:typicalAgeRange>
+        <obaa:typicalLearningTime>PT15M</obaa:typicalLearningTime>
+        <obaa:description>demonstração</obaa:description>
+        <obaa:description>bla bla bla</obaa:description>
+        <obaa:difficulty>easy</obaa:difficulty>
+        <obaa:intendedEndUserRole>teacher</obaa:intendedEndUserRole>
+        <obaa:intendedEndUserRole>manager</obaa:intendedEndUserRole>
+        <obaa:language>pt_BR</obaa:language>
+        <obaa:language>en</obaa:language>
+        <obaa:interaction>
+            <obaa:interactionType>objeto-sujeito</obaa:interactionType>
+            <obaa:perception>visual</obaa:perception>
+            <obaa:synchronism>true</obaa:synchronism>
+            <obaa:coPresence>false</obaa:coPresence>
+            <obaa:reciprocity>reciprocity</obaa:reciprocity>
+        </obaa:interaction>
+        <obaa:didaticStrategy>Problem Solving</obaa:didaticStrategy>
+    </obaa:educational>
+    <obaa:rights>
+        <obaa:cost>Nao</obaa:cost>
+        <obaa:copyrightAndOtherRestrictions>Nao</obaa:copyrightAndOtherRestrictions>
+        <description>http://creativecommons.org/licenses/by-sa/3.0/br/</description>
+    </obaa:rights>
+
+    <obaa:relation>
+        <obaa:kind>ispartof</obaa:kind>
+        <obaa:resource>
+            <obaa:identifier>
+                <obaa:catalog>DOI</obaa:catalog>
+                <obaa:entry>1325486532</obaa:entry>
+            </obaa:identifier>
+            <obaa:description>RECURSO 1</obaa:description>
+        </obaa:resource>
+    </obaa:relation>
+
+    <obaa:relation>
+        <obaa:kind>isversionof</obaa:kind>
+        <obaa:resource>
+            <obaa:identifier>
+                <obaa:catalog>URI</obaa:catalog>
+                <obaa:entry>http://www.marcos.com.br</obaa:entry>
+            </obaa:identifier>
+            <obaa:description>RECURSO 2</obaa:description>
+            <obaa:description>resource 2</obaa:description>
+        </obaa:resource>
+    </obaa:relation>
+
+    <obaa:relation>
+        <obaa:kind>isreplacedby</obaa:kind>
+        <obaa:resource>
+            <obaa:identifier>
+                <obaa:catalog>catalog</obaa:catalog>
+                <obaa:entry>Entry do recurso 3</obaa:entry>
+            </obaa:identifier>
+            <obaa:description>RECURSO 3</obaa:description>
+        </obaa:resource>
+    </obaa:relation>
+
+    <obaa:annotation>
+        <obaa:entity> vcard qualquer</obaa:entity>
+        <obaa:date>2012-07-13</obaa:date>
+        <obaa:description>descrição da anotação</obaa:description>
+    </obaa:annotation>
+
+    <obaa:classification>
+        <obaa:purpose> proposito de x</obaa:purpose>
+        <obaa:taxonPath>
+            <obaa:source>ACM</obaa:source>
+            <obaa:taxon>
+                <obaa:id>30</obaa:id>
+                <obaa:entry>Physics</obaa:entry>
+            </obaa:taxon>
+            <obaa:taxon>
+                <obaa:id>31</obaa:id>
+                <obaa:entry>Diagnostics</obaa:entry>
+            </obaa:taxon>
+        </obaa:taxonPath>
+        <obaa:description> O peso da bola</obaa:description>
+        <obaa:keyword>peso</obaa:keyword>
+        <obaa:keyword>bola</obaa:keyword>
+
+    </obaa:classification>
+
+    <obaa:accessibility>
+        <obaa:resourceDescription>
+            <obaa:primary>
+                <obaa:hasVisual>true</obaa:hasVisual>
+                <obaa:hasAuditory>true</obaa:hasAuditory>
+                <obaa:hasText>false</obaa:hasText>
+                <obaa:hasTactile>false</obaa:hasTactile>
+                <obaa:earlStatement>
+                    <obaa:displayTransformability>transformabilidade dos recursos referenciados</obaa:displayTransformability>
+                    <obaa:controlFlexibility>controle e flexibilidade dos recursos referenciados</obaa:controlFlexibility>
+                </obaa:earlStatement>
+                <obaa:equivalentResource>Aponta para um recurso equivalente (metadados) dos recursos descritos ou partes dos mesmos</obaa:equivalentResource>
+                <obaa:equivalentResource>Este tipo de metadados tem como finalidade de definir outro recurso que equivalha ao recurso existente.</obaa:equivalentResource>
+            </obaa:primary>
+            <obaa:equivalent>
+                <obaa:primaryResource>452</obaa:primaryResource>
+                <obaa:primaryFile>34232</obaa:primaryFile>
+                <obaa:primaryFile>23232</obaa:primaryFile>
+                <obaa:supplementary>false</obaa:supplementary>
+                <obaa:content>
+                    <obaa:alternativesToVisual>
+                        <obaa:audioDescription>standard</obaa:audioDescription>
+                        <obaa:altTextLang>pt-BR</obaa:altTextLang>
+                        <obaa:longDescriptionLang>pt-BR</obaa:longDescriptionLang>
+                        <obaa:colorAvoidance>avoidRed</obaa:colorAvoidance>
+                        <obaa:colorAvoidance>useMaximumContrast</obaa:colorAvoidance>
+                    </obaa:alternativesToVisual>
+                    <obaa:alternativesToText>
+                        <obaa:graphicAlternative>true</obaa:graphicAlternative>
+                        <obaa:signLanguage>Brazilian-BRA</obaa:signLanguage>
+                        <obaa:signLanguage>Native-Guarani-GUA</obaa:signLanguage>
+                    </obaa:alternativesToText>
+                    <obaa:alternativesToAuditory>
+                        <obaa:captionType>
+                            <obaa:language>en</obaa:language>
+                            <obaa:verbatim>true</obaa:verbatim>
+                            <obaa:reducedReadingLevel>false</obaa:reducedReadingLevel>
+                            <obaa:reducedSpeed>
+                                <obaa:reducedSpeed>false</obaa:reducedSpeed>
+                                <obaa:captionRate>120</obaa:captionRate>
+                            </obaa:reducedSpeed>
+                            <obaa:enhancedCaption>false</obaa:enhancedCaption>
+                        </obaa:captionType>
+                        <obaa:signLanguage>BrasilianLIBRAS</obaa:signLanguage>
+                        <obaa:signLanguage>AmericanASL</obaa:signLanguage>
+                    </obaa:alternativesToAuditory>
+                    <obaa:learnerScaffold>calculator</obaa:learnerScaffold>
+                    <obaa:learnerScaffold>abacus</obaa:learnerScaffold>
+                </obaa:content>
+            </obaa:equivalent>
+        </obaa:resourceDescription>
+    </obaa:accessibility>
+
+    <obaa:segmentInformationTable>
+        <obaa:segmentList>
+            <obaa:segmentInformation>
+                <obaa:identifier>1</obaa:identifier>
+                <obaa:title>Tubarão</obaa:title>
+                <obaa:description>Aparece o tubarão na cena</obaa:description>
+                <obaa:keyword>tubarão</obaa:keyword>
+                <obaa:segmentMediaType>video</obaa:segmentMediaType>
+                <obaa:start>5 min</obaa:start>
+                <obaa:end>12 min</obaa:end>
+            </obaa:segmentInformation>
+
+            <obaa:segmentInformation>
+                <obaa:identifier>2</obaa:identifier>
+                <obaa:title>Jacaré</obaa:title>
+                <obaa:description>Aparece o jacaré na cena</obaa:description>
+                <obaa:keyword>jacaré</obaa:keyword>
+                <obaa:segmentMediaType>video</obaa:segmentMediaType>
+                <obaa:start>1 min</obaa:start>
+                <obaa:end>2 min</obaa:end>
+            </obaa:segmentInformation>
+        </obaa:segmentList>
+        <obaa:segmentGroupList>
+            <obaa:segmentGroupInformation>
+                <obaa:identifier>grupo 1</obaa:identifier>
+                <obaa:groupType>Higlights</obaa:groupType>
+                <obaa:title>Atividades e Exercícios do OA</obaa:title>
+                <obaa:description>Grupo contendo os segmentos com os exercícios deste objeto de aprendizagem. </obaa:description>
+                <obaa:keyword>Exercício</obaa:keyword>
+                <obaa:keyword>Atividades</obaa:keyword>
+                <obaa:segments>
+                    <obaa:identifier>222</obaa:identifier>
+                    <obaa:identifier>exercício 1</obaa:identifier>
+                </obaa:segments>
+            </obaa:segmentGroupInformation>
+        </obaa:segmentGroupList>
+
+    </obaa:segmentInformationTable>
+</obaa:obaa>

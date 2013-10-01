@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the GNU Lesser Public License v3
+  which accompanies this distribution, and is available at
+  http://www.gnu.org/licenses/lgpl.html
+-->
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"><responseDate>2012-05-15T22:15:22Z</responseDate><request verb="ListRecords" metadataPrefix="obaa">http://143.54.83.84:9090/feb/OAIHandler</request><ListRecords>
+<record><header><identifier>oai:cesta2.cinted.ufrgs.br:123456789/57</identifier><datestamp>2010-12-07T17:52:43Z</datestamp><setSpec>RepUfrgs1</setSpec></header><metadata><obaa:obaa xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/obaav1.0/lom.xsd" xmlns:obaa="http://ltsc.ieee.org/xsd/LOM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <obaa:general>
+      <obaa:title>Ataque a o TCP - Mitnick</obaa:title>
+      <obaa:keyword>TCP</obaa:keyword>
+      <obaa:keyword>segurança</obaa:keyword>
+      <obaa:keyword>ataque Mitnick</obaa:keyword>
+      <obaa:description>Animação ilustrando a troca de mensagens que ocorre quando um intruso bloqueia um computador medianteo envio de mensagens de hadshake repetidas e depois impersona esta máquina enquanto ela está imobilizada.</obaa:description>
+      <aggregationLevel>1</aggregationLevel>
+   </obaa:general>
+   <obaa:lifeCycle>
+      <status>Final</status>
+      <version>1</version>
+      <contribute>
+         <obaa:entity>Tarouco, Liane</obaa:entity>
+         <obaa:role>author</obaa:role>
+         <date/>
+      </contribute>
+      <contribute>
+         <obaa:entity>CINTED/UFRGS</obaa:entity>
+         <obaa:role>Other</obaa:role>
+         <date/>
+      </contribute>
+   </obaa:lifeCycle>
+   <obaa:rights>
+      <cost>Nao</cost>
+      <copyright>Nao</copyright>
+   </obaa:rights>
+   <obaa:educational>
+      <interactivityType>Expositivo</interactivityType>
+      <interactivityLevel>Muito baixo</interactivityLevel>
+      <obaa:intendedEndUserRole>Aluno</obaa:intendedEndUserRole>
+      <obaa:learningResourceType>Simulacao</obaa:learningResourceType>
+      <obaa:typicalAgeRange>adulto</obaa:typicalAgeRange>
+      <obaa:description>demonstração</obaa:description>
+   </obaa:educational>
+   <obaa:technical>
+      <obaa:location>http://cesta2.cinted.ufrgs.br/xmlui/handle/123456789/57</obaa:location>
+   </obaa:technical>
+</obaa:obaa></metadata></record>
+<record><header><identifier>oai:cesta2.cinted.ufrgs.br:123456789/16</identifier><datestamp>2010-09-25T22:13:45Z</datestamp><setSpec>RepUfrgs1</setSpec></header><metadata><obaa:obaa xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/obaav1.0/lom.xsd" xmlns:obaa="http://ltsc.ieee.org/xsd/LOM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <obaa:general>
+      <obaa:title>Apostila de BD II</obaa:title>
+      <obaa:keyword>SGBD</obaa:keyword>
+      <obaa:keyword>Log</obaa:keyword>
+      <obaa:keyword>Controle de Concorrência</obaa:keyword>
+      <obaa:keyword>Otimização de consulta</obaa:keyword>
+      <obaa:keyword>Recuperação de Falhas</obaa:keyword>
+      <obaa:description>Apostila sobre banco de dados. Aspectos de implementação de SGBDs (recuperação de falhas, controle de concorrência, otimização de consultas, estruturas de índices ..)</obaa:description>
+      <aggregationLevel>0</aggregationLevel>
+   </obaa:general>
+   <obaa:lifeCycle>
+      <status>Final</status>
+      <contribute>
+         <obaa:entity>Carvalho, Tanisi</obaa:entity>
+         <obaa:entity>Vicari, Simone</obaa:entity>
+         <obaa:role>author</obaa:role>
+         <date/>
+      </contribute>
+   </obaa:lifeCycle>
+   <obaa:rights>
+      <cost>Sim</cost>
+      <copyright>Sim</copyright>
+   </obaa:rights>
+   <obaa:educational>
+      <interactivityType>Expositivo</interactivityType>
+   </obaa:educational>
+   <obaa:technical>
+      <obaa:location>http://cesta2.cinted.ufrgs.br/xmlui/handle/123456789/16</obaa:location>
+   </obaa:technical>
+</obaa:obaa></metadata></record>
+<record><header><identifier>oai:cesta2.cinted.ufrgs.br:123456789/17</identifier><datestamp>2010-05-05T14:43:33Z</datestamp><setSpec>RepUfrgs1</setSpec></header><metadata><obaa:obaa xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/obaav1.0/lom.xsd" xmlns:obaa="http://ltsc.ieee.org/xsd/LOM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <obaa:general>
+      <obaa:title>Uso consciente da água</obaa:title>
+      <obaa:keyword>água</obaa:keyword>
+      <obaa:keyword>consumo</obaa:keyword>
+      <obaa:keyword>química</obaa:keyword>
+      <obaa:keyword>meio ambiente</obaa:keyword>
+      <obaa:description>O objeto aborda a importância do uso consciente da água no planeta.</obaa:description>
+      <aggregationLevel>0</aggregationLevel>
+   </obaa:general>
+   <obaa:lifeCycle>
+      <status>Final</status>
+      <contribute>
+         <obaa:entity>Costa, Valéria</obaa:entity>
+         <obaa:entity>Santos, Angélica</obaa:entity>
+         <obaa:entity>Rapkiewicz, Clevi</obaa:entity>
+         <obaa:entity>Canela, Maria Cristina</obaa:entity>
+         <obaa:role>author</obaa:role>
+         <date/>
+      </contribute>
+      <contribute>
+         <obaa:entity>Universidade Estadual do Norte Fluminense</obaa:entity>
+         <obaa:role>Other</obaa:role>
+         <date/>
+      </contribute>
+   </obaa:lifeCycle>
+   <obaa:rights>
+      <cost>Nao</cost>
+      <copyright>Nao</copyright>
+   </obaa:rights>
+   <obaa:educational>
+      <interactivityType>Misto</interactivityType>
+   </obaa:educational>
+   <obaa:technical>
+      <obaa:location>http://hdl.handle.net/123456789/17</obaa:location>
+   </obaa:technical>
+</obaa:obaa></metadata></record>
+</ListRecords></OAI-PMH>

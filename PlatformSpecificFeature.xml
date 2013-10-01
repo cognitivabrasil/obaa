@@ -1,0 +1,14 @@
+<obaa:platformSpecificFeature xmlns:obaa="http://ltsc.ieee.org/xsd/LOM">
+   <specificSize>grande, muito grande!</specificSize>
+   <specificLocation>http://portalobaa.org</specificLocation>
+   <obaa:specificRequirement>
+      <obaa:specificOrComposite>
+         <obaa:specificType>browser</obaa:specificType>
+         <obaa:specificName>mozillaFirefox</obaa:specificName>
+         <obaa:specificMinimumVersion>1.0</obaa:specificMinimumVersion>
+         <obaa:specificMaximumVersion>3.0</obaa:specificMaximumVersion>
+      </obaa:specificOrComposite>
+   </obaa:specificRequirement>
+   <specificInstallationRemarks>Executar o index2.html</specificInstallationRemarks>
+   <specificOtherPlatformRequirement>requirement</specificOtherPlatformRequirement>
+</obaa:platformSpecificFeature>

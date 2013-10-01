@@ -1,0 +1,9 @@
+<obaa:lifeCycle xmlns:obaa="http://ltsc.ieee.org/xsd/LOM">
+   <obaa:status>draft</obaa:status>
+   <obaa:version>versão</obaa:version>
+   <obaa:contribute>
+      <obaa:role>author</obaa:role>
+      <obaa:entity>abcd</obaa:entity>
+      <obaa:date>date</obaa:date>
+   </obaa:contribute>
+</obaa:lifeCycle>

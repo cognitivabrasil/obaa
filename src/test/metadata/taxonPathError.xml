@@ -1,0 +1,83 @@
+<obaa:obaa xmlns:obaa="http://ltsc.ieee.org/xsd/LOM" xmlns:xsi="http://www.w3.org/2001/xmlschema-instance" xsi:schemalocation="http://ltsc.ieee.org/xsd/lom http://ltsc.ieee.org/xsd/lomv1.0/lom.xsd">
+<obaa:general>
+	<obaa:identifier>
+		<obaa:catalog>NBC</obaa:catalog>
+		<obaa:entry>07.10.01</obaa:entry>
+	</obaa:identifier>
+	<obaa:title>Implementación de la arquitectura BDI basada en el cálculo de situaciones</obaa:title>
+	<obaa:language>es</obaa:language>
+	<obaa:description>En este artículo se puede encontrar infomación acerca de la arquitectura BDI y como ha sido aceptada en la comunidad científica, las ventajas que posee y se presentan una serie de implemmentaciones.</obaa:description>
+	<obaa:keyword>CBR-BDI</obaa:keyword>
+	<obaa:coverage>Siglo XXI en Francia</obaa:coverage>
+	<obaa:structure>5</obaa:structure>
+	<obaa:aggregationlevel>1</obaa:aggregationlevel>
+</obaa:general>
+
+<obaa:lifecycle>
+	<obaa:version>1.0</obaa:version>
+	<obaa:status>2</obaa:status>
+</obaa:lifecycle>
+
+<obaa:metametadata>
+	<obaa:metadataschema>LOMv1.0</obaa:metadataschema>
+	<obaa:language>es</obaa:language>
+</obaa:metametadata>
+
+<obaa:technical>
+	<obaa:format>pdf</obaa:format>
+	<obaa:size>140080</obaa:size>
+	<obaa:location>http://froac.manizales.unal.edu.co/roap/control/download.php?id=18</obaa:location>
+	<obaa:installationremarks>Abrir con un visor de archivos pdf.</obaa:installationremarks>
+	<obaa:otherplatformrequirements/>
+	<obaa:duration>PT1H0M</obaa:duration>
+	<obaa:requirements>
+		<obaa:type>1</obaa:type>
+		<obaa:name>Adobe Reader</obaa:name>
+		<obaa:minimumversion>5.0</obaa:minimumversion>
+		<obaa:maximumversion>9.0</obaa:maximumversion>
+	</obaa:requirements>
+</obaa:technical>
+
+<obaa:educational>
+	<obaa:interactivitytype>2</obaa:interactivitytype>
+	<obaa:learningresourcetype>10</obaa:learningresourcetype>
+	<obaa:interactivitylevel>1</obaa:interactivitylevel>
+	<obaa:semanticdensity>4</obaa:semanticdensity>
+	<obaa:intendedenduserrole>3</obaa:intendedenduserrole>
+	<obaa:context>4</obaa:context>
+	<obaa:typicalagerange>10-80</obaa:typicalagerange>
+	<obaa:difficulty>none</obaa:difficulty>
+	<obaa:typicallearningtime>PT1H0M</obaa:typicallearningtime>
+	<obaa:description>Aquí se puede encontrar infomación acerca de la arquitectura BDI y como ha sido aceptada en la comunidad científica, las ventajas que posee y se presentan una serie de implemmentaciones.</obaa:description>
+	<obaa:language>es</obaa:language>
+</obaa:educational>
+
+<obaa:rights>
+	<obaa:cost>2</obaa:cost>
+	<obaa:copyrightandotherrestrictions>1</obaa:copyrightandotherrestrictions>
+	<obaa:description>Aquí se puede encontrar infomación acerca de la arquitectura BDI y como ha sido aceptada en la comunidad científica, las ventajas que posee y se presentan una serie de implemmentaciones.</obaa:description>
+</obaa:rights>
+
+<obaa:relation>
+	<obaa:kind>7</obaa:kind>
+	<obaa:resource>
+		<obaa:description>Aquí se puede encontrar infomación acerca de la arquitectura BDI y como ha sido aceptada en la comunidad científica, las ventajas que posee y se presentan una serie de implemmentaciones.</obaa:description>
+	</obaa:resource>
+</obaa:relation>
+
+<obaa:annotation>
+	<obaa:entity>Robert Demolombe, Pilar Pozos Parra</obaa:entity>
+	<obaa:date/>
+	<obaa:description>Aquí se puede encontrar infomación acerca de la arquitectura BDI y como ha sido aceptada en la comunidad científica, las ventajas que posee y se presentan una serie de implemmentaciones.</obaa:description>
+</obaa:annotation>
+
+<obaa:classification>
+	<obaa:purpose>7</obaa:purpose>
+	<obaa:description>Aquí se puede encontrar infomación acerca de la arquitectura BDI y como ha sido aceptada en la comunidad científica, las ventajas que posee y se presentan una serie de implemmentaciones.</obaa:description>
+	<obaa:keyword>CBR-BDI</obaa:keyword>
+	<obaa:taxonPath>
+		<obaa:source>Robert Demolombe, Pilar Pozos Parra</obaa:source>                
+		<obaa:entry>Robert Demolombe, Pilar Pozos Parra</obaa:entry>
+	</obaa:taxonPath>
+</obaa:classification>
+</obaa:obaa>

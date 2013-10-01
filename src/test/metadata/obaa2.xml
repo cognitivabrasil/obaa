@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the GNU Lesser Public License v3
+  which accompanies this distribution, and is available at
+  http://www.gnu.org/licenses/lgpl.html
+-->
+<obaa:obaa xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/obaav1.0/lom.xsd" xmlns:obaa="http://ltsc.ieee.org/xsd/LOM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <obaa:general>
+      <obaa:title>titulo</obaa:title>
+      <obaa:title>title</obaa:title>
+      <obaa:keyword>educação</obaa:keyword>
+      <obaa:keyword>grêmio</obaa:keyword>
+      <obaa:description>descrição</obaa:description>
+      <aggregationLevel>4</aggregationLevel>
+      <obaa:identifier>
+         <catalog>URI</catalog>
+         <entry>entry4</entry>
+      </obaa:identifier>
+      <obaa:language>Pt-BR</obaa:language>
+      <obaa:language>En-US</obaa:language>
+      <obaa:structure>collection</obaa:structure>
+   </obaa:general>
+   <obaa:lifeCycle>
+      <version>1</version>
+      <contribute>
+         <obaa:entity>Marcos</obaa:entity>
+         <obaa:entity>Pretola</obaa:entity>
+         <obaa:role>author</obaa:role>
+         <date>2012-05-31</date>
+      </contribute>
+      <contribute>
+         <obaa:entity>UFRGS</obaa:entity>
+         <obaa:role>publisher</obaa:role>
+         <date>2012-05-31</date>
+      </contribute>
+   </obaa:lifeCycle>
+   <obaa:rights>
+      <cost>1000</cost>
+      <copyright>nenhum</copyright>
+      <description>descrição dos direitos</description>
+   </obaa:rights>
+   <obaa:educational>
+      <interactivityType>active</interactivityType>
+      <interactivityLevel>low</interactivityLevel>
+      <semanticDensity>low</semanticDensity>
+      <difficulty>difficult</difficulty>
+      <typicalLearningTime>PT200M</typicalLearningTime>
+      <obaa:intendedEndUserRole>author</obaa:intendedEndUserRole>
+      <obaa:learningResourceType>exercise</obaa:learningResourceType>
+      <obaa:typicalAgeRange>100</obaa:typicalAgeRange>
+      <obaa:description>descrição educacional</obaa:description>
+      <obaa:language>grego</obaa:language>
+      <obaa:context>contexto</obaa:context>
+   </obaa:educational>
+   <obaa:technical>
+      <obaa:location>http://localhost:8080/repositorio/documents/145</obaa:location>
+   </obaa:technical>
+</obaa:obaa>
