@@ -68,8 +68,9 @@ public class SegmentInformation {
     @Element (required=false)
     private SegmentMediaType segmentMediaType;
     
+    //TODO: implement the mediaTimeType MPEG-7
     @Element (required=false)
-    private Start start; //TODO: implement the mediaTimeType MPEG-7
+    private Start start; 
     
     @Element (required=false)
     private End end;

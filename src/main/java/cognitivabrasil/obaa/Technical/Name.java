@@ -1,10 +1,11 @@
-/*******************************************************************************
- * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v3
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+/**
+ * *****************************************************************************
+ * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais. All rights
+ * reserved. This program and the accompanying materials are made available
+ * under the terms of the GNU Lesser Public License v3 which accompanies this
+ * distribution, and is available at http://www.gnu.org/licenses/lgpl.html
+ * ****************************************************************************
+ */
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -36,20 +37,48 @@ import org.simpleframework.xml.Namespace;
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class Name extends TextElement {
 
+    public static final String PC_DOS = "pc-dos";
+    public static final String MS_WINDOWS = "ms-windows";
+    public static final String MACOS = "macos";
+    public static final String UNIX = "unix";
+    public static final String MULTI_OS = "multi-os";
+    public static final String NONE = "none";
+    public static final String ANY = "any";
+    public static final String NETSCAPE_COMUNICATOR = "netscape comunicator";
+    public static final String MS_INTERNET_EXPLORER = "ms-internet explorer";
+    public static final String AMAYA = "amaya";
+    public static final String MOZILLA_FIREFOX = "mozilla firefox";
+    public static final String APPLE_SAFARI = "apple safari";
+    public static final String GOOGLE_CHROME = "google chrome";
+    public static final String OPERA = "opera";
+    public static final String GINGA = "ginga";
+    public static final String MHP = "mhp";
+    public static final String ARIB = "arib";
+    public static final String DAVIC = "savic";
+    public static final String DASE = "dase";
+    public static final String GEM = "gem";
+
     public Name() {
-        this.addTerms("pcDos");
-        this.addTerms("msWindows");
-        this.addTerms("macOS");
-        this.addTerms("unix");
-        this.addTerms("multiOs");
-        this.addTerms("none");
-        this.addTerms("any");
-        this.addTerms("netscapeComunicator");
-        this.addTerms("msInternetExplorer");
-        this.addTerms("amaya");
-        this.addTerms("mozillaFirefox");
-        this.addTerms("appleSafari");
-        this.addTerms("googleChrome");
-        
+        super();
+        this.addTerms(PC_DOS);
+        this.addTerms(MS_WINDOWS);
+        this.addTerms(MACOS);
+        this.addTerms(UNIX);
+        this.addTerms(MULTI_OS);
+        this.addTerms(NONE);
+        this.addTerms(ANY);
+        this.addTerms(NETSCAPE_COMUNICATOR);
+        this.addTerms(MS_INTERNET_EXPLORER);
+        this.addTerms(AMAYA);
+        this.addTerms(MOZILLA_FIREFOX);
+        this.addTerms(APPLE_SAFARI);
+        this.addTerms(GOOGLE_CHROME);
+        this.addTerms(OPERA);
+        this.addTerms(GINGA);
+        this.addTerms(MHP);
+        this.addTerms(ARIB);
+        this.addTerms(DAVIC);
+        this.addTerms(DASE);
+        this.addTerms(GEM);
     }
 }

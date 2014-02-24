@@ -47,10 +47,13 @@ import org.simpleframework.xml.Namespace;
  */
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class Type extends TextElement {
+    public static final String MIDDLEWARE = "middleware";
+    public static final String BROWSER = "browser";
+    public static final String OPERATING_SYSTEM = "operating system";
 
     public Type() {
-        this.addTerms("middleware");
-        this.addTerms("browser");
-        this.addTerms("operatingSystem");
+        this.addTerms(MIDDLEWARE);
+        this.addTerms(BROWSER);
+        this.addTerms(OPERATING_SYSTEM);
     }   
 }

@@ -48,13 +48,12 @@ import metadata.TextElement;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 public class AudioDescription extends TextElement{
-    
-    
+    public static final String STANDARD = "standard";
+    public static final String EXPANDED = "expanded";
 
     public AudioDescription() { 
         super();
-        this.addTerms("standard");
-        this.addTerms("expanded");        
-       
+        this.addTerms(STANDARD);
+        this.addTerms(EXPANDED);       
     }  
 }

@@ -43,10 +43,13 @@ import cognitivabrasil.obaa.ObaaRecursibleElement;
 @ObaaRecursibleElement
 public class Details {
 
-    @Element(required=false)
-    private String details; //Especificação de detalhes do serviço fora do escopo de metadados (ex.: parâmetros).
-    @Element(required=false)
-    private String serviceLocation; //A URL, URI ou qualquer outra especificação para acessar o serviço. (relacionado ao item 4.3 do IEEE-LOM).
+    //Especificação de detalhes do serviço fora do escopo de metadados (ex.: parâmetros).
+    @Element(required=false)    
+    private String details; 
+
+    //A URL, URI ou qualquer outra especificação para acessar o serviço. (relacionado ao item 4.3 do IEEE-LOM).
+    @Element(required=false)    
+    private String serviceLocation; 
 
     public Details() {
     }

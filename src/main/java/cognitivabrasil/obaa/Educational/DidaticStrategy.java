@@ -1,10 +1,11 @@
-/*******************************************************************************
- * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v3
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+/**
+ * *****************************************************************************
+ * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais. All rights
+ * reserved. This program and the accompanying materials are made available
+ * under the terms of the GNU Lesser Public License v3 which accompanies this
+ * distribution, and is available at http://www.gnu.org/licenses/lgpl.html
+ *****************************************************************************
+ */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -41,16 +42,23 @@ import org.simpleframework.xml.Namespace;
  * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
-@Namespace(reference="http://ltsc.ieee.org/xsd/LOM", prefix="obaa")
+@Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class DidaticStrategy extends TextElement {
+
+    public static final String MODEL_CONSTRUCTION = "model construction";
+    public static final String CHALLENGE = "challenge";
+    public static final String HYPOTHESIS_AND_TEST_DEVELOPMENT = "hypothesis and test development";
+    public static final String CASE_STUDY = "case study";
+    public static final String QUESTION_AND_ANSWERING = "question and answering";
+    public static final String PROBLEM_SOLVING = "problem solving";
 
     public DidaticStrategy() {
         super();
-        this.addTerms("modelConstruction");
-        this.addTerms("challenge");
-        this.addTerms("hypothesisAndTestDevelopment");
-        this.addTerms("caseStudy");
-        this.addTerms("questionAndAnswering");
-        this.addTerms("ProblemSolving");
-    }   
+        this.addTerms(MODEL_CONSTRUCTION);
+        this.addTerms(CHALLENGE);
+        this.addTerms(HYPOTHESIS_AND_TEST_DEVELOPMENT);
+        this.addTerms(CASE_STUDY);
+        this.addTerms(QUESTION_AND_ANSWERING);
+        this.addTerms(PROBLEM_SOLVING);
+    }
 }

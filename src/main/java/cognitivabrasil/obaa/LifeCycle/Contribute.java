@@ -113,7 +113,15 @@ public class Contribute {
     public List<String> getEntities() {        
         return toStringList(entity);
     }
-        
+    
+    public List<Entity> getEntitiesReal() {        
+        return entity;
+    }
+
+    @Deprecated 
+    /**
+     * Should be userd getEntities()
+     */
     public List<Entity> getEntity() {
         return entity;
     }

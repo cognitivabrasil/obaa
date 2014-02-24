@@ -71,8 +71,8 @@ public class AlternativesToVisual {
         return altTextLang;
     }
 
-    public void setAltTextLang(String AltTextLang) {
-        this.altTextLang = AltTextLang;
+    public void setAltTextLang(String altTextLang) {
+        this.altTextLang = altTextLang;
     }
 
     public List<AudioDescription> getAudioDescription() {

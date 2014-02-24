@@ -56,12 +56,17 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class Context extends TextElement {
         
+    public static final String SCHOOL = "school";
+    public static final String HIGHER_EDUCATION = "higher education";
+    public static final String TRAINING = "training";
+    public static final String OTHER = "other";
+    
     public Context() {
         super();
-        this.addTerms("school");
-        this.addTerms("higher_education");
-        this.addTerms("training");
-        this.addTerms("other");
+        this.addTerms(SCHOOL);
+        this.addTerms(HIGHER_EDUCATION);
+        this.addTerms(TRAINING);
+        this.addTerms(OTHER);
     }
   
 

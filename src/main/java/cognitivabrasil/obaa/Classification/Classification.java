@@ -53,7 +53,6 @@ import org.simpleframework.xml.Root;
  * @author Luiz Rossi <lh.rossi@cognitivabrasil.com.br>
  * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
- * @autor Marcos Nunes <marcosn@gmail.com>
  */
 @Root
 @ObaaRecursibleElement

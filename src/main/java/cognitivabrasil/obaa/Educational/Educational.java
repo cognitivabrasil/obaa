@@ -244,7 +244,7 @@ public class Educational {
         this.language = new ArrayList<Language>();
         this.contexts = new ArrayList<Context>();
         this.didaticStrategy = new ArrayList<DidaticStrategy>();
-        //this.typicalLearningTime = new Duration();
+        //TipicalLearningTime should not be initialized to avoid create a blank element in the XML
     }
 
     public List<DidaticStrategy> getDidaticStrategy() {
@@ -289,6 +289,7 @@ public class Educational {
         return (i.getMapOfTerms());        
     }
     
+    @Deprecated
     public List<String> getIntendedEndUserRole() {
         return toStringList(intendedEndUserRole);
     }
@@ -425,6 +426,13 @@ public class Educational {
     public void setDifficulty(String difficulty) {        
         this.difficulty = new Difficulty();
         this.difficulty.setText(difficulty);
+    }
+    
+    /**
+     * @param difficulty the difficulty to set
+     */
+    public void setDifficulty(Difficulty difficulty) {                
+        this.difficulty = (difficulty);
     }
 
     /**

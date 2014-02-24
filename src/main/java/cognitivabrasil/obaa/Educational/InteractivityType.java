@@ -62,11 +62,14 @@ import org.simpleframework.xml.Root;
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class InteractivityType extends TextElement {
+    public static final String ACTIVE = "active";
+    public static final String EXPOSITIVE = "expositive";
+    public static final String MIXED = "mixed";
 
     public InteractivityType() {
         super();
-        this.addTerms("active");
-        this.addTerms("expositive");
-        this.addTerms("mixed");
+        this.addTerms(ACTIVE);
+        this.addTerms(EXPOSITIVE);
+        this.addTerms(MIXED);
     }
 }

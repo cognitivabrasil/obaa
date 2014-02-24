@@ -14,13 +14,18 @@ import org.simpleframework.xml.Root;
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class SemanticDensity extends TextElement {
+    public static final String VERY_LOW = "very low";
+    public static final String LOW = "low";
+    public static final String MEDIUM = "medium";
+    public static final String HIGH = "high";
+    public static final String VERY_HIGH = "very high";
 
     public SemanticDensity() {
         super();
-        this.addTerms("very_low");
-        this.addTerms("low");
-        this.addTerms("medium");
-        this.addTerms("hight");
-        this.addTerms("very_hight");
+        this.addTerms(VERY_LOW);
+        this.addTerms(LOW);
+        this.addTerms(MEDIUM);
+        this.addTerms(HIGH);
+        this.addTerms(VERY_HIGH);
     }
 }

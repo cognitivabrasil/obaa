@@ -28,12 +28,16 @@ import metadata.TextElement;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 public class Status extends TextElement {
+    public static final String DRAFT = "draft";
+    public static final String FINALIZED = "finalized";
+    public static final String REVISED = "revised";
+    public static final String UNAVAILABLE = "unavailable";
 
     public Status() {
         super();
-        this.addTerms("draft");
-        this.addTerms("finalized");
-        this.addTerms("revised");
-        this.addTerms("unavailable");
+        this.addTerms(DRAFT);
+        this.addTerms(FINALIZED);
+        this.addTerms(REVISED);
+        this.addTerms(UNAVAILABLE);
     }
 }

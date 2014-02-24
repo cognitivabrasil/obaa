@@ -45,11 +45,15 @@ import org.simpleframework.xml.Namespace;
  */
 @Namespace(reference="http://ltsc.ieee.org/xsd/LOM", prefix="obaa")
 public class Reciprocity extends TextElement {
+    public static final String ONE_ONE = "1-1";
+    public static final String ONE_N = "1-n";
+    public static final String N_M = "n-m";
+    
 	public Reciprocity() {
             super();
-            this.addTerms("1-1");
-            this.addTerms("1-n");
-            this.addTerms("n-m");
+            this.addTerms(ONE_ONE);
+            this.addTerms(ONE_N);
+            this.addTerms(N_M);
         }
 }
 

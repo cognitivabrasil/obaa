@@ -11,7 +11,6 @@
  * 
  * 
  */
-
 package cognitivabrasil.obaa;
 
 import java.io.File;
@@ -158,6 +157,7 @@ class Error {
 		@Namespace(reference = "http://www.w3.org/2001/XMLSchema-instance", prefix = "xsi") })
 public class OaiOBAA {
 	private static Logger log = Logger.getLogger(OaiOBAA.class);
+        private static final String CHARSET = "UTF-8";
 
 	@Element
 	private String responseDate;
@@ -190,18 +190,18 @@ public class OaiOBAA {
 	public static OaiOBAA fromFilenameWithUrl(String filename, String url)
 			throws FileNotFoundException {
 		return fromReaderWithUrl(new InputStreamReader(new FileInputStream(
-				filename), Charset.forName("UTF-8")), url);
+				filename), Charset.forName(CHARSET)), url);
 	}
 
 	public static OaiOBAA fromFilename(String filename)
 			throws FileNotFoundException {
 		return fromReader(new InputStreamReader(new FileInputStream(filename),
-				Charset.forName("UTF-8")));
+				Charset.forName(CHARSET)));
 	}
 
 	public static OaiOBAA fromFile(File file) throws FileNotFoundException {
 		return fromReader(new InputStreamReader(new FileInputStream(file),
-				Charset.forName("UTF-8")));
+				Charset.forName(CHARSET)));
 	}
 
 	public static OaiOBAA fromString(String s) {
@@ -263,7 +263,7 @@ public class OaiOBAA {
 
 	public void toFilename(String filename) throws FileNotFoundException {
 		OutputStreamWriter o = new OutputStreamWriter(new FileOutputStream(
-				filename), Charset.forName("UTF-8"));
+				filename), Charset.forName(CHARSET));
 		toWriter(o);
 	}
 

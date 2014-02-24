@@ -20,13 +20,8 @@ import org.simpleframework.xml.Root;
  *
  * Value Space:
  *
- * author, publisher, unknown, initiator, terminator, validator, editor,
- * graphical_designer, technical, implementer, content_provider,
- * technical_validator, educational_validator, script_writer,
- * instructional_designer, subject_matter_expert
+ * unknown, creator, validator
  *
- * NOTE 2:--"terminator" is the entity that made the learning object
- * unavailable.
  *
  * according to IEEE LOM http://ltsc.ieee.org/ </div>
  *
@@ -41,11 +36,14 @@ import org.simpleframework.xml.Root;
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class Role extends TextElement {
+    public static final String UNKNOWN = "unknown";
+    public static final String CREATOR = "creator";
+    public static final String VALIDATOR = "validator";
 
     public Role() {
         super();
-        this.addTerms("unknown");
-        this.addTerms("creator");
-        this.addTerms("validator");
+        this.addTerms(UNKNOWN);
+        this.addTerms(CREATOR);
+        this.addTerms(VALIDATOR);
     }
 }

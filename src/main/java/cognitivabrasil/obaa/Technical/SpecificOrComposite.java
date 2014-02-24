@@ -1,10 +1,11 @@
-/*******************************************************************************
- * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v3
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+/**
+ * *****************************************************************************
+ * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais. All rights
+ * reserved. This program and the accompanying materials are made available
+ * under the terms of the GNU Lesser Public License v3 which accompanies this
+ * distribution, and is available at http://www.gnu.org/licenses/lgpl.html
+ *****************************************************************************
+ */
 package cognitivabrasil.obaa.Technical;
 
 import org.simpleframework.xml.Element;
@@ -23,28 +24,26 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
 public class SpecificOrComposite {
-    
-    private static final String namespace = "http://ltsc.ieee.org/xsd/LOM";
 
-    @Namespace(reference =namespace)
-    @Element(required = false, name="specificType")
+    private static final String LOM_NAMESPACE = "http://ltsc.ieee.org/xsd/LOM";
+
+    @Namespace(reference = LOM_NAMESPACE)
+    @Element(required = false, name = "specificType")
     private Type specificType;
-    
-    @Namespace(reference =namespace)
-    @Element(required = false, name="specificName")
+
+    @Namespace(reference = LOM_NAMESPACE)
+    @Element(required = false, name = "specificName")
     private Name specificName;
-    
-    @Namespace(reference =namespace)
-    @Element(required = false, name="specificMinimumVersion")    
+
+    @Namespace(reference = LOM_NAMESPACE)
+    @Element(required = false, name = "specificMinimumVersion")
     private String specificMinimumVersion;
-    
-    @Namespace(reference =namespace)
-    @Element(required = false, name="specificMaximumVersion")
+
+    @Namespace(reference = LOM_NAMESPACE)
+    @Element(required = false, name = "specificMaximumVersion")
     private String specificMaximumVersion;
 
     public SpecificOrComposite() {
-        specificType = new Type();
-        specificName = new Name();
     }
 
     public String getSpecificMaximumVersion() {
@@ -64,18 +63,26 @@ public class SpecificOrComposite {
     }
 
     public String getSpecificName() {
+        if (specificName == null) {
+            return null;
+        }
         return specificName.getTranslated();
     }
 
     public void setSpecificName(String specificName) {
+        this.specificName = new Name();
         this.specificName.setText(specificName);
     }
 
     public String getSpecificType() {
+        if (specificType == null) {
+            return null;
+        }
         return specificType.getTranslated();
     }
 
     public void setSpecificType(String specificType) {
+        this.specificType = new Type();
         this.specificType.setText(specificType);
     }
 

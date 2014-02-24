@@ -1,10 +1,11 @@
-/*******************************************************************************
- * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v3
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+/**
+ * *****************************************************************************
+ * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais. All rights
+ * reserved. This program and the accompanying materials are made available
+ * under the terms of the GNU Lesser Public License v3 which accompanies this
+ * distribution, and is available at http://www.gnu.org/licenses/lgpl.html
+ *****************************************************************************
+ */
 package cognitivabrasil.obaa.LifeCycle;
 
 import metadata.TextElement;
@@ -42,23 +43,38 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class Role extends TextElement {
 
+    public static final String UNKNOWN = "unknown";
+    public static final String AUTHOR = "author";
+    public static final String PUBLISHER = "publisher";
+    public static final String INITIATOR = "initiator";
+    public static final String TERMINATOR = "terminator";
+    public static final String VALIDATOR = "validator";
+    public static final String EDITOR = "editor";
+    public static final String GRAPHICAL_DESIGNER = "graphical designer";
+    public static final String TECHNICAL_IMPLEMENTER = "technical implementer";
+    public static final String CONTENT_PROVIDER = "content provider";
+    public static final String TECHNICAL_VALIDATOR = "technical validator";
+    public static final String EDUCATIONAL_VALIDATOR = "educational validator";
+    public static final String SCRIPT_WRITER = "script writer";
+    public static final String INSTRUCTIONAL_DESIGNER = "instructional designer";
+    public static final String SUBJECT_MATTER_EXPERT = "subject matter expert";
+
     public Role() {
         super();
-        this.addTerms("unknown");
-        this.addTerms("author");
-        this.addTerms("publisher");
-        this.addTerms("initiator");
-        this.addTerms("terminator");
-        this.addTerms("validator");
-        this.addTerms("editor");
-        this.addTerms("graphical_designer");
-        this.addTerms("technical");
-        this.addTerms("implementer");
-        this.addTerms("content_provider");
-        this.addTerms("technical_validator");
-        this.addTerms("educational_validator");
-        this.addTerms("script_writer");
-        this.addTerms("instructional_designer");
-        this.addTerms("subject_matter_expert");        
+        this.addTerms(UNKNOWN);
+        this.addTerms(AUTHOR);
+        this.addTerms(PUBLISHER);
+        this.addTerms(INITIATOR);
+        this.addTerms(TERMINATOR);
+        this.addTerms(VALIDATOR);
+        this.addTerms(EDITOR);
+        this.addTerms(GRAPHICAL_DESIGNER);
+        this.addTerms(TECHNICAL_IMPLEMENTER);
+        this.addTerms(CONTENT_PROVIDER);
+        this.addTerms(TECHNICAL_VALIDATOR);
+        this.addTerms(EDUCATIONAL_VALIDATOR);
+        this.addTerms(SCRIPT_WRITER);
+        this.addTerms(INSTRUCTIONAL_DESIGNER);
+        this.addTerms(SUBJECT_MATTER_EXPERT);
     }
 }

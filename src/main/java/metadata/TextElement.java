@@ -9,6 +9,7 @@ package metadata;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -132,7 +133,7 @@ public class TextElement {
      * @return true if it is a valid element of the type, false otherwise.
      * @throws IllegalArgumentException if the argument is illegal;
      */
-    public void validate(String t) {
+    public void validate(String t) throws IllegalArgumentException{
         if (!getListOfTerms().contains(t)) {
 
             StringBuilder message = new StringBuilder();
@@ -159,6 +160,10 @@ public class TextElement {
         return this.listOfTerms;
     }
 
+    /**
+     * Get the map of the canonical value and the translation value in alphabetical order
+     * @return 
+     */
     public Map<String, String> getMapOfTerms() {
 
         Map<String, String> relation = new TreeMap<String, String>();
@@ -174,6 +179,28 @@ public class TextElement {
         }
         
         return (TextElement.sortByValues(relation));
+    }
+    
+    /**
+     * Get the map of the canonical value and the translation value in a chosen order
+     * like Difficult: 1- very low, 2- low, 3- medium, 4- high and 5- very high
+     * @return 
+     */
+    public Map<String, String> getMapOfTermsLevelOrdered() {
+    
+        Map<String, String> relation = new LinkedHashMap<String, String>();
+        
+        TextElement translation = new TextElement();
+
+        translation.setLanguage(this.getLanguage());
+        translation.setCountry(this.getCountry());
+
+        for (String x : this.listOfTerms) {
+            translation.setText(x);
+            relation.put(x, translation.getTranslated());
+        }
+        
+        return (relation);
     }
 
     @Override

@@ -51,31 +51,58 @@ RussianRSL, SingaporeSLS, SpanishLSE, SwedishSWL or other
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 public class SignLanguage extends TextElement{
-    
+    public static final String AMERICAN_ASL= "American-ASL";
+        public static final String AUSTRALIAN_AUSLAN= "Australian-Auslan";
+        public static final String AUSTRIAN_ASQ= "Austrian-ASQ";
+        public static final String BRASILIAN_LIBRAS= "Brasilian-LIBRAS";
+        public static final String BRITISH_BSL= "British-BSL";
+        public static final String DANISH_DSL= "Danish-DSL";
+        public static final String FRENCH_LSF= "French-LSF";
+        public static final String GERMAN_DGS= "German-DGS";
+        public static final String IRISH_ISL= "Irish-ISL";
+        public static final String ITALIAN_LIS= "Italian-LIS";
+        public static final String JAPANESE_JSL= "Japanese-JSL";
+        public static final String MALAYSIAN_MSL= "Malaysian-MSL";
+        public static final String MEXICAN_LSM= "Mexican-LSM";
+        public static final String NATIVE_AMERICAN= "Native-American";
+        public static final String NETHERLANDS_NGT= "Netherlands-NGT";
+        public static final String NORWEGIAN_NSL= "Norwegian-NSL";
+        public static final String QUEBEC_LSQ= "Quebec-LSQ";
+        public static final String RUSSIAN_RSL= "Russian-RSL";
+        public static final String SINGAPORE_SLS= "Singapore-SLS";
+        public static final String SPANISH_LSE= "Spanish-LSE";
+        public static final String SWEDISH_SWL= "Swedish-SWL";
+        public static final String OTHER= "other";
+        
+//        TODO: ver qual é o correto para guarani.
+//        http://enflibras.blogspot.com.br/2009/03/urubu-kaapor-lskb.html
+//        public static final String GUARANI_KAAPOR= "Guarani-KAAPOR";
+        
 
     public SignLanguage() {
         super();
-        this.addTerms("American-ASL");
-        this.addTerms("Australian-Auslan");
-        this.addTerms("Austrian-ASQ");
-        this.addTerms("Brasilian-LIBRAS");
-        this.addTerms("British-BSL");
-        this.addTerms("Danish-DSL");
-        this.addTerms("French-LSF");
-        this.addTerms("German-DGS");
-        this.addTerms("Irish-ISL");
-        this.addTerms("Italian-LIS");
-        this.addTerms("Japanese-JSL");
-        this.addTerms("Malaysian-MSL");
-        this.addTerms("Mexican-LSM");
-        this.addTerms("NativeAmerican");
-        this.addTerms("Netherlands-NGT");
-        this.addTerms("Norwegian-NSL");
-        this.addTerms("Quebec-LSQ");
-        this.addTerms("Russian-RSL");
-        this.addTerms("Singapore-SLS");
-        this.addTerms("Spanish-LSE");
-        this.addTerms("Swedish-SWL");
-        this.addTerms("other");
+
+        this.addTerms(AMERICAN_ASL);
+        this.addTerms(AUSTRALIAN_AUSLAN);
+        this.addTerms(AUSTRIAN_ASQ);
+        this.addTerms(BRASILIAN_LIBRAS);
+        this.addTerms(BRITISH_BSL);
+        this.addTerms(DANISH_DSL);
+        this.addTerms(FRENCH_LSF);
+        this.addTerms(GERMAN_DGS);
+        this.addTerms(IRISH_ISL);
+        this.addTerms(ITALIAN_LIS);
+        this.addTerms(JAPANESE_JSL);
+        this.addTerms(MALAYSIAN_MSL);
+        this.addTerms(MEXICAN_LSM);
+        this.addTerms(NATIVE_AMERICAN);
+        this.addTerms(NETHERLANDS_NGT);
+        this.addTerms(NORWEGIAN_NSL);
+        this.addTerms(QUEBEC_LSQ);
+        this.addTerms(RUSSIAN_RSL);
+        this.addTerms(SINGAPORE_SLS);
+        this.addTerms(SPANISH_LSE);
+        this.addTerms(SWEDISH_SWL);
+        this.addTerms(OTHER);
     }
 }

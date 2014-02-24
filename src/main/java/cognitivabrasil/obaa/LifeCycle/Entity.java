@@ -34,18 +34,32 @@ import org.simpleframework.xml.Root;
 @Root(strict=false)
 @Namespace(reference="http://ltsc.ieee.org/xsd/LOM", prefix="obaa")
 public class Entity extends TextElement {
-    VCarder name;
+    private VCarder name;
     
     public Entity() {
         name = new VCarder();
         }
     
-    public void setName (String firstName, String lastName, String fullName){
-        name.setName(fullName, firstName, fullName);
+    /**
+     * 
+     * @param givenName
+     * @param familyName
+     * @param fullName
+     * @deprecated deve ser usado setName (givenName, familyName)
+     */
+    @Deprecated
+    public void setName (String givenName, String familyName, String fullName){
+        name.setName(familyName, givenName);
+        this.setText(name.getVCard());
+    }
+    
+    public void setName (String givenName, String familyName){
+        name.setName(givenName, familyName);
         this.setText(name.getVCard());
     }
     
     public String getName(){        
-        return "";
+        return name.getFullName();
     }
+    
 }

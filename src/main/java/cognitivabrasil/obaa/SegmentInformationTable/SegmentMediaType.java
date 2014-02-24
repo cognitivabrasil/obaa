@@ -11,41 +11,23 @@ import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 
-/**
- *
- * Underlying organizational structure of this learning object.
- *
- * atomic: an object that is indivisible (in this context). collection: a set of
- * objects with no specified relationship between them. networked: a set of
- * objects with relationships that are unspecified. hierarchical: a set of
- * objects whose relationships can be represented by a tree structure. linear: a
- * set of objects that are fully ordered. Example: A set of objects that are
- * connected by "previous" and "next" relationships
- *
- * NOTE:A learning object with Structure="atomic" will typically have
- * 1.8:General.AggregationLevel=1. A learning object with
- * Structure="collection", "linear", "hierarchical" or "networked" will
- * typically have 1.8:General.AggregationLevel=2, 3 or 4.
- *
- * @author Luiz Rossi <lh.rossi@cognitivabrasil.com.br>
- * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
- * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
- */
+
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class SegmentMediaType extends TextElement {
 
-    private enum SetOfTerms {
-
-        document, hyperdocument, audio, video, other
-    };
+    public static final String DOCUMENT = "document";
+    public static final String HYPERDOCUMENT = "hyperdocument";
+    public static final String AUDIO = "audio";
+    public static final String VIDEO = "video";
+    public static final String OTHER = "other";
 
     public SegmentMediaType() {
         super();
-        this.addTerms("document");
-        this.addTerms("hyperdocument");
-        this.addTerms("audio");
-        this.addTerms("video");
-        this.addTerms("other");
+        this.addTerms(DOCUMENT);
+        this.addTerms(HYPERDOCUMENT);
+        this.addTerms(AUDIO);
+        this.addTerms(VIDEO);
+        this.addTerms(OTHER);
     }
 }

@@ -1,10 +1,11 @@
-/*******************************************************************************
- * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v3
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+/**
+ * *****************************************************************************
+ * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais. All rights
+ * reserved. This program and the accompanying materials are made available
+ * under the terms of the GNU Lesser Public License v3 which accompanies this
+ * distribution, and is available at http://www.gnu.org/licenses/lgpl.html
+ * ****************************************************************************
+ */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -62,99 +63,120 @@ public class OrComposite {
     private MaximumVersion maximumVersion;
 
     public OrComposite() {
-        this.type = new Type();
-        this.name = new Name();
-        this.minimumVersion = new MinimumVersion();
-        this.maximumVersion = new MaximumVersion();
     }
 
     public void setType(Type type) {
         this.type = type;
     }
-    
-    public void setType(String type){
+
+    public void setType(String type) {
         this.type = new Type();
         this.type.setText(type);
     }
-    
-    public void setName(String name){
+
+    public void setName(String name) {
         this.name = new Name();
         this.name.setText(name);
     }
 
     public void validate() {
 
-        if (!this.type.getTranslated().equals("operatingSystem")) {
+        if (this.type == null || this.name == null) {
+            throw new IllegalArgumentException("Type and Name can not be null.");
+        } else if (!this.type.getTranslated().equals(Type.OPERATING_SYSTEM)) {
             // pcDos, msWindows, macOS, unix, multiOs, none
-            if (name.getTranslated().equals("pcDos")
-                    || name.getTranslated().equals("msWindows")
-                    || name.getTranslated().equals("macOS")
-                    || name.getTranslated().equals("unix")
-                    || name.getTranslated().equals("multiOs")
-                    || name.getTranslated().equals("none")) {
+            if (name.getTranslated().equals(Name.PC_DOS)
+                    || name.getTranslated().equals(Name.MS_WINDOWS)
+                    || name.getTranslated().equals(Name.MACOS)
+                    || name.getTranslated().equals(Name.UNIX)
+                    || name.getTranslated().equals(Name.MULTI_OS)
+                    || name.getTranslated().equals(Name.NONE)) {
                 throw new IllegalArgumentException(
                         "The Name "
                         + name.getTranslated()
                         + "is not valid, if the type is "
                         + this.type.getTranslated()
-                        + " the Name must be one of: pcDos, msWindows, macos, unix, multiOs or none");
+                        + " the Name must be one of: " + Name.PC_DOS + ", "
+                        + Name.MS_WINDOWS + ", " + Name.MACOS + ", " + Name.UNIX
+                        + ", " + Name.MULTI_OS + " or " + Name.NONE);
 
             }
-        } else if (this.type.getTranslated().equals("browser")) {
+        } else if (this.type.getTranslated().equals(Type.BROWSER)) {
             // any, netscapeComunicator, msInternetExplorer, opera, amaya,
             // mozillaFirefox, appleSafari or googleChrome
-            if (!(name.getTranslated().equals("any")
-                    || name.getTranslated().equals("netscapeComunicator")
-                    || name.getTranslated().equals("msInternetExplorer")
-                    || name.getTranslated().equals("opera")
-                    || name.getTranslated().equals("amaya")
-                    || name.getTranslated().equals("mozillaFirefox")
-                    || name.getTranslated().equals("appleSafari") || name.getTranslated().equals("googleChrome"))) {
+            if (!(name.getTranslated().equals(Name.ANY)
+                    || name.getTranslated().equals(Name.NETSCAPE_COMUNICATOR)
+                    || name.getTranslated().equals(Name.MS_INTERNET_EXPLORER)
+                    || name.getTranslated().equals(Name.OPERA)
+                    || name.getTranslated().equals(Name.AMAYA)
+                    || name.getTranslated().equals(Name.MOZILLA_FIREFOX)
+                    || name.getTranslated().equals(Name.APPLE_SAFARI)
+                    || name.getTranslated().equals(Name.GOOGLE_CHROME))) {
                 {
                     throw new IllegalArgumentException(
                             "The Name "
                             + name.getTranslated()
                             + "is not valid, if the type is "
                             + this.type.getTranslated()
-                            + " the Name must be one of: pcDos, msWindows, macos, unix, multiOs or none");
+                            + " the Name must be one of: " + Name.PC_DOS + ", "
+                            + Name.MS_WINDOWS + ", " + Name.MACOS + ", "
+                            + Name.UNIX + ", " + Name.MULTI_OS + " OR "
+                            + Name.NONE);
                 }
             }
-        } else if (!this.type.getTranslated().equals("middleware")) {
-            throw new IllegalArgumentException("Type " + this.type.getTranslated() + " is not valid "
-                    + " must be one of middleware, operatingSystem or browser");
+        } else if (!this.type.getTranslated().equals(Type.MIDDLEWARE)) {
+            throw new IllegalArgumentException("Type " + this.type.getTranslated()
+                    + " is not valid  must be one of middleware, operatingSystem or browser");
         }
-
     }
 
     public void setMaximumVersion(String maximumVersion) {
+        if (this.maximumVersion == null) {
+            this.maximumVersion = new MaximumVersion();
+        }
         this.maximumVersion.setText(maximumVersion);
     }
 
     public void setMinimumVersion(String minimumVersion) {
+        if (this.minimumVersion == null) {
+            this.minimumVersion = new MinimumVersion();
+        }
         this.minimumVersion.setText(minimumVersion);
     }
 
     public String getMaximumVersion() {
+        if (maximumVersion == null) {
+            return null;
+        }
         return maximumVersion.getTranslated();
     }
 
     public String getMinimumVersion() {
+        if (minimumVersion == null) {
+            return null;
+        }
         return minimumVersion.getTranslated();
     }
 
     public String getName() {
+        if (name == null) {
+            return null;
+        }
         return name.getTranslated();
     }
 
     public String getType() {
+        if (type == null) {
+            return null;
+        }
         return type.getTranslated();
     }
 
     @Override
     public String toString() {
-        return ("Type: " + this.getType() +
-                "; Name: " + this.getName() +
-                " Minimum Version: " + this.minimumVersion +
-                " Maximum Version: " + this.maximumVersion);
+        return ("Type: " + this.getType()
+                + "; Name: " + this.getName()
+                + " Minimum Version: " + this.minimumVersion
+                + " Maximum Version: " + this.maximumVersion);
     }
 }

@@ -47,11 +47,13 @@ import org.simpleframework.xml.core.Persister;
 @NamespaceList({
     @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa"),
     @Namespace(reference = "http://www.w3.org/2001/XMLSchema-instance", prefix = "xsi")})
-public class OBAA {
+public class OBAA implements Cloneable{
 
-    private static Logger log = Logger.getLogger(OBAA.class);
+    private static final Logger LOG = Logger.getLogger(OBAA.class);
     @Attribute(name = "xsi:schemaLocation", empty = "http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/obaav1.0/lom.xsd", required = false)
-    private String xsiSchema; // não é muito elegante, mas funciona.
+    
+    // não é muito elegante, mas funciona.
+    private String xsiSchema;     
     @Element(required = false)
     private General general;
     @Element(required = false)
@@ -72,16 +74,14 @@ public class OBAA {
     private List<Classification> classifications;
     @Element(required = false)
     private Accessibility accessibility;
-    @ElementList(required = false, inline = true)
-    private List<SegmentInformationTable> segmentsInformationTable;
+    @Element(required = false, name = "segmentInformationTable")
+    private SegmentInformationTable segmentsInformationTable;
 
     public OBAA() {
 
         relations = new ArrayList<Relation>();
         annotations = new ArrayList<Annotation>();
         classifications = new ArrayList<Classification>();
-        segmentsInformationTable = new ArrayList<SegmentInformationTable>();
-
     }
 
     /**
@@ -212,12 +212,12 @@ public class OBAA {
         this.accessibility = accessibility;
     }
 
-    public List<SegmentInformationTable> getSegmentsInformationTable() {
+    public SegmentInformationTable getSegmentsInformationTable() {
         return segmentsInformationTable;
     }
 
     public void setSegmentsInformationTable(
-            List<SegmentInformationTable> segmentsInformationTable) {
+            SegmentInformationTable segmentsInformationTable) {
         this.segmentsInformationTable = segmentsInformationTable;
     }
 
@@ -249,16 +249,25 @@ public class OBAA {
 
         return o.toString();
     }
-
+/**
+ * The metadata that not starts with obaa will be ignored
+ * @param myMap
+ * @return 
+ */
     public static OBAA fromHashMap(Map<String, String[]> myMap) {
         OBAA o = new OBAA();
         Object current = o;
         Class currentClass;
 
         for (String k : myMap.keySet()) {
-            log.debug("Got key:" + k);
+            LOG.debug("Got key:" + k);
+            
+             if (!k.startsWith("obaa")){                
+                continue;
+             }
+                
             if (myMap.get(k)[0].isEmpty()) {
-                log.info("Got blank input for key " + k
+                LOG.info("Got blank input for key " + k
                         + ", will not create empty field");
                 continue;
             }
@@ -273,13 +282,13 @@ public class OBAA {
                 String index = f.replaceAll("^[^\\[]*\\[*", "").replaceAll(
                         "\\]*", "");
                 Integer i = index.isEmpty() ? null : Integer.parseInt(index);
-                log.debug("Field name: " + base + " index: " + i
+                LOG.debug("Field name: " + base + " index: " + i
                         + " currentClass:" + currentClass.getName());
 
                 Object fieldValue = null;
                 try {
                     if (i == null) {
-                        log.trace("Checking to see if field is null...");
+                        LOG.trace("Checking to see if field is null...");
 
                         Field field = currentClass.getDeclaredField(base);
                         field.setAccessible(true);
@@ -287,22 +296,22 @@ public class OBAA {
                         Class fieldClass = field.getType();
 
                         if (fieldClass == String.class) {
-                            log.debug("Got a string value, setting it to:"
+                            LOG.debug("Got a string value, setting it to:"
                                     + myMap.get(k)[0]);
                             fieldValue = myMap.get(k)[0];
                             field.set(current, fieldValue);
                         } else {
-                            log.trace("Field type = " + fieldClass.getName());
+                            LOG.trace("Field type = " + fieldClass.getName());
 
                             fieldValue = field.get(current);
                             if (fieldValue == null) {
-                                log.trace("Is null, creating..");
+                                LOG.trace("Is null, creating..");
                                 fieldValue = fieldClass.newInstance();
                                 field.set(current, fieldValue);
                             }
                             if (fieldValue instanceof TextElement) {
                                 String value = myMap.get(k)[0];
-                                log.trace("Is TextElement, setting value = "
+                                LOG.trace("Is TextElement, setting value = "
                                         + value);
                                 ((TextElement) fieldValue).setText(value);
                             }
@@ -311,14 +320,14 @@ public class OBAA {
                             currentClass = fieldClass;
                         }
                     } else {
-                        log.trace("We got a list ("
+                        LOG.trace("We got a list ("
                                 + base
                                 + "), checking if the specific index is null...");
                         Field field = currentClass.getDeclaredField(base);
                         field.setAccessible(true);
-                        log.trace("Field should now be acessible");
+                        LOG.trace("Field should now be acessible");
                         assert (current != null);
-                        log.trace("Current class:"
+                        LOG.trace("Current class:"
                                 + current.getClass().getName());
                         List l = (List) field.get(current);
                         if (l == null) {
@@ -326,15 +335,15 @@ public class OBAA {
                             field.set(current, l);
                         }
 
-                        log.trace("1");
+                        LOG.trace("1");
                         fieldValue = null;
                         try {
-                            log.trace("1");
+                            LOG.trace("1");
                             fieldValue = l.get(i);
-                            log.trace("1");
+                            LOG.trace("1");
 
                         } catch (IndexOutOfBoundsException e) {
-                            log.trace("No such index, have to create");
+                            LOG.trace("No such index, have to create");
                             for (int j = l.size() - 1; j < i; j++) {
                                 l.add(null);
                             }
@@ -347,11 +356,11 @@ public class OBAA {
                                 Type[] fieldArgTypes = aType
                                         .getActualTypeArguments();
                                 Class fieldClass = (Class) fieldArgTypes[0];
-                                log.trace("Got class " + fieldClass.getName());
+                                LOG.trace("Got class " + fieldClass.getName());
                                 fieldValue = fieldClass.newInstance();
                                 if (fieldValue instanceof TextElement) {
                                     String value = myMap.get(k)[0];
-                                    log.trace("Is TextElement, setting value = "
+                                    LOG.trace("Is TextElement, setting value = "
                                             + value);
                                     ((TextElement) fieldValue).setText(value);
                                 }
@@ -363,18 +372,18 @@ public class OBAA {
                         }
                         current = fieldValue;
                         currentClass = fieldValue.getClass();
-                        log.trace("Finished got list...");
+                        LOG.trace("Finished got list...");
                     }
 
                 } catch (SecurityException e) {
-                    log.fatal(e);
+                    LOG.fatal(e);
                 } catch (NoSuchFieldException e) {
-                    log.fatal("BUG! No such field: " + base + " on class "
+                    LOG.fatal("BUG! No such field: " + base + " on class "
                             + currentClass.getName());
                 } catch (IllegalAccessException e) {
-                    log.fatal(e);
+                    LOG.fatal(e);
                 } catch (InstantiationException e) {
-                    log.fatal(e);
+                    LOG.fatal(e);
                 }
             }
 
@@ -384,7 +393,7 @@ public class OBAA {
     }
 
     @Override
-    public OBAA clone() {
+    public OBAA clone(){
         Cloner cloner = new Cloner();
         OBAA clone = cloner.deepClone(this);
 
@@ -407,13 +416,14 @@ public class OBAA {
                 field.setAccessible(true);
                 Object fieldValue = field.get(o);
 
-                if (fieldValue == null) { // if field is null, ignore
-                    log.debug(field.getName() + " is null...");
+                if (fieldValue == null) { 
+                    // if field is null, ignore
+                    LOG.debug(field.getName() + " is null...");
 
                 } else if (fieldValue.getClass().isAnnotationPresent(ObaaRecursibleElement.class)) {
                     // if field is some sort of ObaaRecursibleElement, we will call this method recursively
 
-                    log.debug(field.getName()
+                    LOG.debug(field.getName()
                             + " é ObaaRecursible, fazendo recursão...");
                     setLocaleRecurse(fieldValue, locale);
 
@@ -425,34 +435,34 @@ public class OBAA {
                      we call setLocale on each element
                      3. Its some other sort of Collection
                      we do nothing */
-                    log.debug(o + " é Collection");
+                    LOG.debug(o + " é Collection");
 
                     for (Object element : (Collection) fieldValue) {
                         if (element.getClass().isAnnotationPresent(
                                 ObaaRecursibleElement.class)) {
-                            log.debug(field.getName()
+                            LOG.debug(field.getName()
                                     + " é ObaaRecursible, fazendo recursão...");
                             setLocaleRecurse(element, locale);
                         } else if (element instanceof TextElement) {
-                            log.debug(o + " é textelement");
+                            LOG.debug(o + " é textelement");
                             ((TextElement) element).setLocale(locale);
                         }
                     }
 
                 } else if (fieldValue instanceof TextElement) {
-                    log.debug(o + " é textelement");
+                    LOG.debug(o + " é textelement");
                     ((TextElement) fieldValue).setLocale(locale);
                 } else {
-                    log.debug(o + " não é TextElement: " + fieldValue.getClass());
+                    LOG.debug(o + " não é TextElement: " + fieldValue.getClass());
                 }
 
             } catch (IllegalArgumentException e) {
-                log.error(e);
+                LOG.error(e);
 
             } catch (IllegalAccessException e) {
-                log.error(e);
+                LOG.error(e);
             } catch (SecurityException e) {
-                log.error(e);
+                LOG.error(e);
             }
         }
     }

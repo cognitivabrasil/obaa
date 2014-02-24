@@ -54,20 +54,32 @@ import org.simpleframework.xml.Root;
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class Kind extends TextElement {
+    public static final String IS_PART_OF = "ispartof";
+    public static final String HAS_PART = "haspart";
+    public static final String IS_VERSION_OF = "isversionof";
+    public static final String HAS_VERSION = "hasversion";
+    public static final String IS_FORMAT_OF = "isformatOf";
+    public static final String HAS_FORMAT = "hasformat";
+    public static final String REFERENCES = "references";
+    public static final String IS_REFERENCED_BY = "isreferencedby";
+    public static final String IS_BASED_ON = "isbasedon";
+    public static final String IS_BASIS_FOR = "isbasisfor";
+    public static final String REQUIRES = "requires";
+    public static final String IS_REQUIRED_BY = "isrequiredby";
 
     public Kind(){
-        this.addTerms("isPartOf");
-        this.addTerms("hasPart");
-        this.addTerms("isVersionOf");
-        this.addTerms("hasVersion");
-        this.addTerms("isFormatOf");
-        this.addTerms("hasFormat");
-        this.addTerms("references");
-        this.addTerms("isReferencedBy");
-        this.addTerms("isBasedOn");
-        this.addTerms("isBasisFor");
-        this.addTerms("requires");
-        this.addTerms("isRequiredBy");
-        
+        super();
+        this.addTerms(IS_PART_OF);
+        this.addTerms(HAS_PART);
+        this.addTerms(IS_VERSION_OF);
+        this.addTerms(HAS_VERSION);
+        this.addTerms(IS_FORMAT_OF);
+        this.addTerms(HAS_FORMAT);
+        this.addTerms(REFERENCES);
+        this.addTerms(IS_REFERENCED_BY);
+        this.addTerms(IS_BASED_ON);
+        this.addTerms(IS_BASIS_FOR);
+        this.addTerms(REQUIRES);
+        this.addTerms(IS_REQUIRED_BY);        
     }
 }

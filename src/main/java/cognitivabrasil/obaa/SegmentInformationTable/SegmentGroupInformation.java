@@ -1,10 +1,11 @@
-/*******************************************************************************
- * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v3
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+/**
+ * *****************************************************************************
+ * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais. All rights
+ * reserved. This program and the accompanying materials are made available
+ * under the terms of the GNU Lesser Public License v3 which accompanies this
+ * distribution, and is available at http://www.gnu.org/licenses/lgpl.html
+ *****************************************************************************
+ */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -22,7 +23,6 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Obaa. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package cognitivabrasil.obaa.SegmentInformationTable;
 
 import cognitivabrasil.obaa.ObaaRecursibleElement;
@@ -38,43 +38,43 @@ import org.simpleframework.xml.ElementList;
  * <div class="en">
  *
  * according to TV Anytime http://www.tv-anytime.org/
- *</div>
+ * </div>
  *
  * <div class="br">
- * 
- * Conjunto de informações do grupo de segmentos (SegmentGroupInformationType do TV-Anytime).
+ *
+ * Conjunto de informações do grupo de segmentos (SegmentGroupInformationType do
+ * TV-Anytime).
  *
  * Adaptado de http://www.portalobaa.org
- *</div>
+ * </div>
+ *
  * @author Luiz Rossi <lh.rossi@cognitivabrasil.com.br>
  * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 @ObaaRecursibleElement
 public class SegmentGroupInformation {
-    
-    @Element (required=false)
+
+    @Element(required = false)
     private Identifier identifier;
-    @Element (required=false)
-    private String groupType;
-    @Element (required=false)
+    @Element(required = false)
+    private GroupType groupType;
+    @Element(required = false)
     private Title title;
-    @Element (required=false)
+    @Element(required = false)
     private Description description;
-    @ElementList (required=false, inline = true)
+    @ElementList(required = false, inline = true)
     private List<Keyword> keywords;
-    @Element (required=false)
+    @Element(required = false)
     private Segments segments;
 
-    public SegmentGroupInformation() {       
-        segments = new Segments();
-        keywords = new ArrayList<Keyword>();
-        this.identifier = new Identifier();
-        this.title = new Title();
-        this.description = new Description();
+    public SegmentGroupInformation() { 
     }
 
     public void addKeyword(String newKeyword) {
+        if(this.keywords == null){
+            this.keywords = new ArrayList<Keyword>();
+        }
         Keyword k;
         k = new Keyword();
         k.setText(newKeyword);
@@ -82,43 +82,55 @@ public class SegmentGroupInformation {
     }
 
     public void setDescription(String description) {
+        this.description = new Description();
         this.description.setText(description);
     }
 
     public void setGroupType(String groupType) {
-        this.groupType = groupType;
+        this.groupType = new GroupType();
+        this.groupType.setText(groupType);
     }
 
     public void setIdentifier(String identifier) {
+        this.identifier = new Identifier();
         this.identifier.setText(identifier);
     }
 
     public void setKeywords(List<Keyword> keywords) {
+        this.keywords = new ArrayList<Keyword>();
         this.keywords = keywords;
     }
 
     public void setSegments(Segments segments) {
+        this.segments = new Segments();
         this.segments = segments;
     }
 
     public void setTitle(String title) {
+        this.title = new Title();
         this.title.setText(title);
     }
 
     public String getDescription() {
+        if(description == null){
+            return null;
+        }
         return description.getTranslated();
     }
 
-    public String getGroupType() {
+    public GroupType getGroupType() {
         return groupType;
     }
 
     public String getIdentifier() {
+        if (identifier == null) {
+            return null;
+        }
         return identifier.getTranslated();
     }
 
     public List<Keyword> getKeywords() {
-        return keywords;
+        return this.keywords;
     }
 
     public Segments getSegments() {
@@ -126,6 +138,9 @@ public class SegmentGroupInformation {
     }
 
     public String getTitle() {
+        if (title == null) {
+            return null;
+        }
         return title.getTranslated();
     }
 }

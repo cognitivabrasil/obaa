@@ -10,5 +10,5 @@
       </obaa:specificOrComposite>
    </obaa:specificRequirement>
    <specificInstallationRemarks>Executar o index2.html</specificInstallationRemarks>
-   <specificOtherPlatformRequirement>requirement</specificOtherPlatformRequirement>
+   <specificOtherPlatformRequirements>requirement</specificOtherPlatformRequirements>
 </obaa:platformSpecificFeature>

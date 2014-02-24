@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.TreeMap;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
-import org.simpleframework.xml.Text;
 
 /*
  * <div class="en">
@@ -37,9 +36,7 @@ import org.simpleframework.xml.Text;
  */
 @Namespace(reference="http://ltsc.ieee.org/xsd/LOM", prefix="obaa")
 public class AggregationLevel extends TextElement {
-
-    //@Text(required = false)
-    //private int aggregationLevel;
+    
     private static final int MINIMUMVALUE = 1;
     private static final int MAXIMUMVALUE = 4;
 
@@ -71,12 +68,8 @@ public class AggregationLevel extends TextElement {
 
         return relation;
     }
-    
-//    public String getAggregationLevel(){        
-//        return (String.valueOf(aggregationLevel));
-//    }
-    
-    //needed to be override to not validate de value
+  
+    //needed to be override to not validate de value in the traditional way
     @Override
     public String toString(){
         return (this.getText());

@@ -44,11 +44,16 @@ import org.simpleframework.xml.Namespace;
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class Perception extends TextElement {
 
+    public static final String VISUAL = "visual";
+    public static final String AUDITIVE = "auditive";
+    public static final String MIXED = "mixed";
+    public static final String OTHER = "other";
+    
     public Perception() {
-        this.addTerms("visual");
-        this.addTerms("auditive");
-        this.addTerms("mixed");
-        this.addTerms("other");
+        this.addTerms(VISUAL);
+        this.addTerms(AUDITIVE);
+        this.addTerms(MIXED);
+        this.addTerms(OTHER);
     }
 }
 

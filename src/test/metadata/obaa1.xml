@@ -63,8 +63,8 @@
         <obaa:language>en</obaa:language>
     </obaa:educational>
     <obaa:rights>
-        <obaa:cost>false</obaa:cost>
-        <obaa:copyrightAndOtherRestrictions>false</obaa:copyrightAndOtherRestrictions>
+        <obaa:cost>no</obaa:cost>
+        <obaa:copyrightAndOtherRestrictions>no</obaa:copyrightAndOtherRestrictions>
         <description>http://creativecommons.org/licenses/by-sa/3.0/br/</description>
     </obaa:rights>
         

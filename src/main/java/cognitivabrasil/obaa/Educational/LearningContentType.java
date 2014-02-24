@@ -48,11 +48,16 @@ import org.simpleframework.xml.Namespace;
  */
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class LearningContentType extends TextElement {
+    
+    public static final String FACTUAL = "factual";
+    public static final String CONCEITUAL = "conceitual";
+    public static final String PROCEDIMENTAL = "procedimental";
+    public static final String ATITUDINAL = "atitudinal";
 
     public LearningContentType() {
-        this.addTerms("factual");
-        this.addTerms("conceitual");
-        this.addTerms("procedimental");
-        this.addTerms("atitudinal");
+        this.addTerms(FACTUAL);
+        this.addTerms(CONCEITUAL);
+        this.addTerms(PROCEDIMENTAL);
+        this.addTerms(ATITUDINAL);
     }
 }

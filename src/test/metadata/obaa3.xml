@@ -62,7 +62,7 @@
 		<obaa:language>pt_BR</obaa:language>
 		<obaa:language>en</obaa:language>
                 <obaa:interaction>
-                    <obaa:interactionType>objeto-sujeito</obaa:interactionType>
+                    <obaa:interactionType>object-individual</obaa:interactionType>
                 </obaa:interaction>
                 
 		</obaa:educational>

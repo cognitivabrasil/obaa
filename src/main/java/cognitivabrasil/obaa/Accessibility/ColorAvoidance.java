@@ -1,10 +1,11 @@
-/*******************************************************************************
- * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v3
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+/**
+ * *****************************************************************************
+ * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais. All rights
+ * reserved. This program and the accompanying materials are made available
+ * under the terms of the GNU Lesser Public License v3 which accompanies this
+ * distribution, and is available at http://www.gnu.org/licenses/lgpl.html
+ *****************************************************************************
+ */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -35,15 +36,24 @@ import metadata.TextElement;
  */
 public class ColorAvoidance extends TextElement {
 
+    public static final String AVOID_RED_GREEN = "avoid red green";
+    public static final String AVOID_BLUE_YELLOW = "avoid blue yellow";
+    public static final String AVOID_ORANGE = "avoid orange";
+    public static final String AVOID_RED_BLACK = "avoid red black";
+    public static final String AVOID_PURPLE_GRAY = "avoid purple gray";
+    public static final String AVOID_RED = "avoid red";
+    public static final String USE_MAXIMUM_CONTRAST = "use maximum contrast";
+    public static final String MONOCHROME = "monochrome";
+
     public ColorAvoidance() {
         super();
-        this.addTerms("avoidRedGeen");
-        this.addTerms("avoidBlueYellow");
-        this.addTerms("avoidOrange");
-        this.addTerms("avoidRedBlack");
-        this.addTerms("avoidPurpleGray");
-        this.addTerms("avoidRed");
-        this.addTerms("useMaximumContrast");
-        this.addTerms("monochrome");        
+        this.addTerms(AVOID_RED_GREEN);
+        this.addTerms(AVOID_BLUE_YELLOW);
+        this.addTerms(AVOID_ORANGE);
+        this.addTerms(AVOID_RED_BLACK);
+        this.addTerms(AVOID_PURPLE_GRAY);
+        this.addTerms(AVOID_RED);
+        this.addTerms(USE_MAXIMUM_CONTRAST);
+        this.addTerms(MONOCHROME);  
     }
 }

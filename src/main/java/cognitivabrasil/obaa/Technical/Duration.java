@@ -33,11 +33,11 @@ import metadata.TextElement;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 public class Duration extends TextElement {
-
+    
     private int seconds;
     private int minutes;
     private int hours;
-    private final static String ERRORMESSAGE = "The Data format must be PThHmMsS where 'h' is the hours, 'm' is the minues and 's' is the seconds.";
+    private static final String ERRORMESSAGE = "The Data format must be PThHmMsS where 'h' is the hours, 'm' is the minues and 's' is the seconds.";
 
     public Duration() {
         seconds = 0;
@@ -87,14 +87,66 @@ public class Duration extends TextElement {
         return this.getText();
     }
     
+    /*
+     * Duration aceita no formato:
+     * HH: dois digitos para hora;
+     * HHh: dois digitos para hora seguidos do caractere h;
+     * HHhMM: dois digitos para hora seguidos do caractere h seguidos de minutos;
+     * HHhMMmin: dois digitos para hora seguidos do caractere h seguidos de minutos e caracteres 'min';
+     * HHhMMminSS: dois digitos para hora seguidos do caractere h seguidos de minutos e caracteres 'min' e dois dígitos de segundos;
+     * HHhMMminSSs: o mesmo do anterior, seguido de 's';
+     */
     public void setDuration(String durationFormated){
-        this.validate(durationFormated);
-        this.setText(durationFormated);
+                
+        if (durationFormated.matches("\\d\\d?")){            
+            this.set(Integer.parseInt(durationFormated), Calendar.HOUR);            
+        }
+        
+        if (durationFormated.matches("\\d\\dh")){  
+            String h = durationFormated.substring(0, durationFormated.length()-1);
+            this.set(Integer.parseInt(h), Calendar.HOUR);            
+        }
+        
+        if (durationFormated.matches("\\d\\d?h\\d\\d?")){            
+            String h = durationFormated.substring(0, durationFormated.indexOf('h'));
+            String min = durationFormated.substring(durationFormated.indexOf('h')+1);
+            
+            this.set(Integer.parseInt(h), Calendar.HOUR);
+            this.set(Integer.parseInt(min), Calendar.MINUTE);
+        }
+        
+        if (durationFormated.matches("\\d\\d?h\\d\\d?min")){            
+            String h = durationFormated.substring(0, durationFormated.indexOf('h'));
+            String min = durationFormated.substring(durationFormated.indexOf('h')+1, durationFormated.length()-3);
+            
+            this.set(Integer.parseInt(h), Calendar.HOUR);
+            this.set(Integer.parseInt(min), Calendar.MINUTE);
+        }        
+        
+        if (durationFormated.matches("\\d\\d?h\\d\\d?min\\d\\d?")){            
+            String h = durationFormated.substring(0, durationFormated.indexOf('h'));
+            String min = durationFormated.substring(durationFormated.indexOf('h')+1, durationFormated.indexOf('m'));
+            String s = durationFormated.substring(durationFormated.indexOf('n')+1);
+            this.set(Integer.parseInt(h), Calendar.HOUR);
+            this.set(Integer.parseInt(min), Calendar.MINUTE);
+            this.set(Integer.parseInt(s), Calendar.SECOND);
+        }
+        
+        if (durationFormated.matches("\\d\\d?h\\d\\d?min\\d\\d?s")){            
+            String h = durationFormated.substring(0, durationFormated.indexOf('h'));
+            String min = durationFormated.substring(durationFormated.indexOf('h')+1, durationFormated.indexOf('m'));
+            String s = durationFormated.substring(durationFormated.indexOf('n')+1, durationFormated.length()-1);
+            this.set(Integer.parseInt(h), Calendar.HOUR);
+            this.set(Integer.parseInt(min), Calendar.MINUTE);
+            this.set(Integer.parseInt(s), Calendar.SECOND);
+        }        
     }
 
     @Override
-    public void validate(String value) {
+    public void validate(String value) {        
         String regEx = "P(\\d+Y)?(\\d+M)?(\\d+D)?(T((\\d+H)?(\\d+M)?(\\d+S)?))?";
+        //PT2H4M5S -> is valid, for exemple
+        
         Pattern pattern = Pattern.compile(regEx);
         Matcher matcher;
 

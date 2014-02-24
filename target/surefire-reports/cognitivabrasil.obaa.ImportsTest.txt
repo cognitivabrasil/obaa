@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: cognitivabrasil.obaa.ImportsTest
 -------------------------------------------------------------------------------
-Tests run: 87, Failures: 0, Errors: 0, Skipped: 9, Time elapsed: 2.25 sec
+Tests run: 93, Failures: 0, Errors: 0, Skipped: 9, Time elapsed: 6.421 sec

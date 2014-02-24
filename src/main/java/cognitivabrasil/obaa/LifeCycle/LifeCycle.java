@@ -48,8 +48,7 @@ public class LifeCycle {
         
         contribute = new ArrayList<Contribute>();
         
-        ////Duration não deve ser iniciailizado, pois assim geraria um elemento no XML, mesmo que ele não exista
-        //this.status = new Status();
+        //Status should not be initialized to avoid create a blank element in the XML
     }
 
     /**

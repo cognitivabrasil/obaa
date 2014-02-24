@@ -31,7 +31,7 @@ import org.apache.log4j.Logger;
 public class XsltConversor implements MetadataConversorInterface {
 
     private static Logger log = Logger.getLogger(TextElement.class);
-    Transformer t;
+    private Transformer t;
 
     /**
      * Instantiates a new xslt conversor.

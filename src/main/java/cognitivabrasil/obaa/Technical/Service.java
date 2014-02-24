@@ -51,20 +51,35 @@ import org.simpleframework.xml.ElementList;
 @ObaaRecursibleElement
 public class Service {
 
+    //O nome do serviço. Pode ser um conceito definido pela ontologia associada (metadado número 4.10.6).
     @Element(required = false)
-    private Name name; //O nome do serviço. Pode ser um conceito definido pela ontologia associada (metadado número 4.10.6).
+    private Name name; 
+    
+     //O tipo do serviço. Também pode ser um conceito definido pela ontologia associada (metadado número 4.10.6).
     @Element(required = false)
-    private Type type; //O tipo do serviço. Também pode ser um conceito definido pela ontologia associada (metadado número 4.10.6).
+    private Type type;
+    
+    //Define se o objeto fornece ou solicita o serviço. Este metadado define o uso do metadado location (4.10.8.1). True: o serviço é fornecido pelo objeto False: o serviço é solicitado pelo objeto
     @Element(required = false)
-    private BooleanElement provides; //Define se o objeto fornece ou solicita o serviço. Este metadado define o uso do metadado location (4.10.8.1). True: o serviço é fornecido pelo objeto False: o serviço é solicitado pelo objeto
+    private BooleanElement provides; 
+    
+    //Define se o serviço é obrigatório (essencial) ou opcional em relação à correta execução do objeto. True: o serviço é obrigatório para que o objeto funcione corretamente False: o serviço é opcional e o objeto funcionará mesmo sem sua disponibilidade
     @Element(required = false)
-    private BooleanElement essential; //Define se o serviço é obrigatório (essencial) ou opcional em relação à correta execução do objeto. True: o serviço é obrigatório para que o objeto funcione corretamente False: o serviço é opcional e o objeto funcionará mesmo sem sua disponibilidade
+    private BooleanElement essential; 
+    
+    //O nome do protocolo utilizado para comunicação com o serviço. É uma informação dependente de cada serviço. O valor também pode ser associado a um conceito ou indivíduo presente na ontologia (4.10.6).
     @ElementList(required = false, inline = true)
-    private List<Protocol> protocol; //O nome do protocolo utilizado para comunicação com o serviço. É uma informação dependente de cada serviço. O valor também pode ser associado a um conceito ou indivíduo presente na ontologia (4.10.6).
+    private List<Protocol> protocol; 
+    
+    //Ontologias associadas a este serviço. Geralmente este tipo de ontologia fornece uma especificação formal do contexto do serviço.
     @ElementList(required = false, inline = true)
-    private List<Ontology> ontology; //Ontologias associadas a este serviço. Geralmente este tipo de ontologia fornece uma especificação formal do contexto do serviço.
+    private List<Ontology> ontology; 
+    
+    //A linguagem utilizada para a comunicação com o serviço.
     @ElementList(required = false, inline = true)
-    private List<Language> language; //A linguagem utilizada para a comunicação com o serviço.
+    private List<Language> language; 
+    
+    
     @ElementList(required = false, inline = true)
     private List<Details> details;
 

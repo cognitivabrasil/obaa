@@ -64,8 +64,7 @@ public class Technical {
         supportedPlatforms = new ArrayList<SupportedPlatform>();
         platformSpecificFeatures = new ArrayList<PlatformSpecificFeature>();
         service = new ArrayList<Service>();
-        //Duration não deve ser iniciailizado, pois assim geraria um elemento no XML, mesmo que ele não exista
-        // duration = new Duration();
+        //Duration should not be initialized to avoid create a blank element in the XML
     }
 
     /**
@@ -177,6 +176,10 @@ public class Technical {
 
     public void setSize(int size) {
         this.size = new Size(Integer.toString(size));
+    }
+    
+    public void setSize(long size) {
+        this.size = new Size(Long.toString(size));
     }
 
     public String getDuration() {

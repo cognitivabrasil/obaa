@@ -1,10 +1,11 @@
-/*******************************************************************************
- * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v3
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+/**
+ * *****************************************************************************
+ * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais. All rights
+ * reserved. This program and the accompanying materials are made available
+ * under the terms of the GNU Lesser Public License v3 which accompanies this
+ * distribution, and is available at http://www.gnu.org/licenses/lgpl.html
+ *****************************************************************************
+ */
 package cognitivabrasil.obaa.General;
 
 import cognitivabrasil.obaa.ObaaRecursibleElement;
@@ -60,7 +61,7 @@ public class General {
         coverages = new ArrayList<Coverage>();
         identifiers = new ArrayList<Identifier>();
         languages = new ArrayList<Language>();
-        //structure = new Structure();
+        //Strutcure should not be initialized to avoid create a blank element in the XML 
     }
 
     //Titles
@@ -131,7 +132,7 @@ public class General {
         if (this.aggregationLevel == null) {
             this.aggregationLevel = new AggregationLevel();
         }
-        this.aggregationLevel.set(aggregationLevel);        
+        this.aggregationLevel.set(aggregationLevel);
     }
 
     /**
@@ -157,10 +158,6 @@ public class General {
         return identifiers.get(0);
     }
 
-//    public void setIdentifier(Identifier identifier) {
-//        this.identifier = identifier;
-//    }
-//    
     /**
      * @return the language
      */
@@ -211,8 +208,11 @@ public class General {
         this.structure = structure;
     }
 
-    @Deprecated//Strcuture deve receber uma strucutre e não um String
-    // inclusive deve gerar erros de nullpointer
+    /**
+     * @param structure
+     * @deprecated Strcuture deve receber uma strucutre e não um String
+     */
+    @Deprecated
     public void setStructure(String structure) {
         this.structure.setText(structure);
     }

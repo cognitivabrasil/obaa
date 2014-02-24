@@ -35,15 +35,19 @@ import org.simpleframework.xml.Root;
  */
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
-public class Structure extends TextElement {   
+public class Structure extends TextElement {  
+    public static final String ATOMIC = "atomic";
+    public static final String COLLECTION = "collection";
+    public static final String NETWORKED = "networked";
+    public static final String HIERARCHICAL = "hierarchical";
+    public static final String LINEAR = "linear";
 
     public Structure() {
         super();
-        this.addTerms("atomic");
-        this.addTerms("collection");
-        this.addTerms("networked");
-        this.addTerms("hierarchical");
-        this.addTerms("linear");
+        this.addTerms(ATOMIC);
+        this.addTerms(COLLECTION);
+        this.addTerms(NETWORKED);
+        this.addTerms(HIERARCHICAL);
+        this.addTerms(LINEAR);
     }
-
 }

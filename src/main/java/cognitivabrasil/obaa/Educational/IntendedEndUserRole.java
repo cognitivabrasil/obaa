@@ -61,11 +61,17 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class IntendedEndUserRole extends TextElement {
     
+    public static final String TEACHER = "teacher";
+    public static final String AUTHOR = "author";
+    public static final String LEARNER = "learner";
+    public static final String MANAGER = "manager";
+    
+    
     public IntendedEndUserRole() {
         super();
-        this.addTerms("teacher");
-        this.addTerms("author");
-        this.addTerms("learner");
-        this.addTerms("manager");
+        this.addTerms(TEACHER);
+        this.addTerms(AUTHOR);
+        this.addTerms(LEARNER);
+        this.addTerms(MANAGER);
     }
 }

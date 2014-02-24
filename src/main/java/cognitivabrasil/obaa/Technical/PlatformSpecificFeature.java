@@ -63,7 +63,7 @@ import org.simpleframework.xml.Root;
 public class PlatformSpecificFeature {
     
     @Element (required=false, name="platformType")
-    private Type platformType;
+    private SupportedPlatform platformType;
     @ElementList (required=false, inline = true)
     private List<SpecificFormat> specificFormats;
     @Element (required=false)
@@ -75,7 +75,7 @@ public class PlatformSpecificFeature {
     @Element (required=false)
     private String specificInstallationRemarks;
     @Element (required=false)
-    private String specificOtherPlatformRequirement;
+    private String specificOtherPlatformRequirements;
     
     
     public PlatformSpecificFeature() {                
@@ -112,7 +112,7 @@ public class PlatformSpecificFeature {
         this.specificLocation = specificLocation;
     }
 
-    public void setPlatformType(Type platformType) {
+    public void setPlatformType(SupportedPlatform platformType) {
         this.platformType = platformType;
     }
 
@@ -121,7 +121,7 @@ public class PlatformSpecificFeature {
     }
 
     public void setSpecificOtherPlatformRequirements(String specificOtherPlatformRequirements) {
-        this.specificOtherPlatformRequirement = specificOtherPlatformRequirements;
+        this.specificOtherPlatformRequirements = specificOtherPlatformRequirements;
     }
 
     public void setSpecificSize(String specificSize) {
@@ -137,7 +137,7 @@ public class PlatformSpecificFeature {
         this.specificRequirements.add(newSpecificRequirement);
     }
 
-    public Type getPlatformType() {
+    public SupportedPlatform getPlatformType() {
         return platformType;
     }
 
@@ -154,7 +154,7 @@ public class PlatformSpecificFeature {
     }
 
     public String getSpecificOtherPlatformRequirements() {
-        return specificOtherPlatformRequirement;
+        return specificOtherPlatformRequirements;
     }
 
     public List<SpecificRequirement> getSpecificRequirements() {

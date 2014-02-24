@@ -7,6 +7,8 @@
  ******************************************************************************/
 package cognitivabrasil.obaa;
 
+import static cognitivabrasil.obaa.BooleanElement.FALSE;
+import static cognitivabrasil.obaa.BooleanElement.TRUE;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -20,17 +22,19 @@ import org.simpleframework.xml.Root;
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class BooleanElement extends TextElement {
+    public static final String TRUE = "true";
+    public static final String FALSE = "false";
 
     public BooleanElement(String text) {
         super(text);
-        this.addTerms("true");
-        this.addTerms("false");
+        this.addTerms(TRUE);
+        this.addTerms(FALSE);
     }
 
     public BooleanElement() {
         super();
-        this.addTerms("true");
-        this.addTerms("false");
+        this.addTerms(TRUE);
+        this.addTerms(FALSE);
     }
 
     public void setBoolean(boolean b) {
@@ -46,7 +50,7 @@ public class BooleanElement extends TextElement {
         if(trueorfalse == null){
             throw new IllegalArgumentException("A String é um null, provavemente a classe não foi inicializada");
         }
-        if (!(trueorfalse.equals("true") || trueorfalse.equals("false"))) {
+        if (!(trueorfalse.equals(TRUE) || trueorfalse.equals(FALSE))) {
             throw new IllegalArgumentException(
                     "booleanElement must be \"true\" or \"false\".");
         }

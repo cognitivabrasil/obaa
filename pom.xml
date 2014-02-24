@@ -14,7 +14,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>OBAA Libs</name>
+    <name>OBAA Libs GITHub</name>
     <url>http://www.cognitivabrasil.com.br/obaa</url>
 
     <distributionManagement>
@@ -76,6 +76,13 @@
             <version>1.9.0</version>
         </dependency>
         
+        <!-- Necessario para funcionar o clone -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.9</version>
+        </dependency>
+        
         <!-- V CARD-->
         <dependency>
             <groupId>net.sourceforge.cardme</groupId>
@@ -85,9 +92,9 @@
         </dependency>
         
         <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>1.8</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.1</version>
         </dependency>
     
     </dependencies>

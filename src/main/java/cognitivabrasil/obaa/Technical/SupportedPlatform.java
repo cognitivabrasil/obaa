@@ -48,11 +48,14 @@ import metadata.TextElement;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 public class SupportedPlatform extends TextElement {
+    public static final String MOBILE = "mobile";
+    public static final String DTV = "dtv";
+    public static final String WEB = "web";
    
     public SupportedPlatform(){
         super();
-        this.addTerms("mobile");
-        this.addTerms("dtv");
-        this.addTerms("web");
+        this.addTerms(MOBILE);
+        this.addTerms(DTV);
+        this.addTerms(WEB);
     }
 }

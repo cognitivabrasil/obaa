@@ -21,9 +21,10 @@ import org.apache.log4j.Logger;
  * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
-public class HelperFunctions {
-
-    static Logger log = Logger.getLogger(HelperFunctions.class);
+public final class HelperFunctions {
+   
+    private HelperFunctions(){}
+    private static Logger log = Logger.getLogger(HelperFunctions.class);
 
     public static List<String> toStringList(List<? extends TextElement> elements) {
         List<String> s = new ArrayList<String>();
@@ -31,11 +32,12 @@ public class HelperFunctions {
 
             // only add element to list if it is not null
             if (e != null && e.getText() != null) {
-                s.add(e.getText());
+                s.add(e.getTranslated());
             }
         }
         return s;
     }
+    
 
     @SuppressWarnings("unchecked")
     public static List<? extends TextElement> fromStringList(

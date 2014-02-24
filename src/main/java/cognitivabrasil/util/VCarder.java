@@ -31,10 +31,12 @@ public class VCarder {
 
     public void setCompatibilityMode(CompatibilityMode compatMode) {
         vcardEngine.setCompatibilityMode(compatMode);
+        
     }
 
-    public void setName(String familyName, String givenName, String fullName) {
-        
+    public void setName(String givenName, String familyName) {
+      
+        String fullName = givenName+" "+familyName;
         setCompatibilityMode(CompatibilityMode.RFC2426);   
         
         writer.setOutputVersion(VCardVersion.V3_0);
@@ -43,17 +45,23 @@ public class VCarder {
         writer.setBinaryfoldingScheme(BinaryFoldingScheme.MIME_DIR);
         writer.setEOL(VCardUtils.LF);        
          
-        NameType name = new NameType(fullName);        
+        NameType name = new NameType(fullName);
+        name.setGivenName(givenName);
+        name.setFamilyName(familyName);
         vcard.setName(name);
         
         FormattedNameFeature nomeFormatado = new FormattedNameType(fullName);
-        vcard.setFormattedName(nomeFormatado);
-        writer.setVCard(vcard);
+        vcard.setFormattedName(nomeFormatado);     
+        writer.setVCard(vcard);        
         
     }
-    
+     
     public String getVCard(){        
         return (writer.buildVCardString());
+    }
+    
+    public String getFullName(){         
+        return (vcard.getName().getGivenName()+" "+vcard.getName().getFamilyName());
     }
     
 }

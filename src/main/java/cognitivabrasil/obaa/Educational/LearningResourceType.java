@@ -55,22 +55,38 @@ import org.simpleframework.xml.Root;
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class LearningResourceType extends TextElement {
+    public static final String EXERCISE = "exercise";
+    public static final String SIMULATION = "simulation";
+    public static final String QUESTIONNAIRE = "questionnaire";
+    public static final String DIAGRAM = "diagram";
+    public static final String FIGURE = "figure";
+    public static final String GRAPH = "graph";
+    public static final String INDEX = "index";
+    public static final String SLIDE = "slide";
+    public static final String TABLE = "table";
+    public static final String NARRATIVE_TEXT = "narrative text";
+    public static final String EXAM = "exam";
+    public static final String EXPERIMENT = "experiment";
+    public static final String PROBLEM_STATEMENT = "problem statement";
+    public static final String SELF_ASSESSMENT = "self assessment";
+    public static final String LECTURE = "lecture";
   
     public LearningResourceType() {
-        this.addTerms("exercise");
-        this.addTerms("simulation");
-        this.addTerms("questionnaire");
-        this.addTerms("diagram");
-        this.addTerms("figure");
-        this.addTerms("graph");
-        this.addTerms("index");
-        this.addTerms("slide");
-        this.addTerms("table");
-        this.addTerms("narrative_text");
-        this.addTerms("exam");
-        this.addTerms("experiment");
-        this.addTerms("problem_statement");
-        this.addTerms("self_assessment");
-        this.addTerms("lecture");        
+        super();
+        this.addTerms(EXERCISE);
+        this.addTerms(SIMULATION);
+        this.addTerms(QUESTIONNAIRE);
+        this.addTerms(DIAGRAM);
+        this.addTerms(FIGURE);
+        this.addTerms(GRAPH);
+        this.addTerms(INDEX);
+        this.addTerms(SLIDE);
+        this.addTerms(TABLE);
+        this.addTerms(NARRATIVE_TEXT);
+        this.addTerms(EXAM);
+        this.addTerms(EXPERIMENT);
+        this.addTerms(PROBLEM_STATEMENT);
+        this.addTerms(SELF_ASSESSMENT);
+        this.addTerms(LECTURE);       
     }
 }
