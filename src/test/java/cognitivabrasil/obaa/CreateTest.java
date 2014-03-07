@@ -18,13 +18,18 @@ import static org.hamcrest.Matchers.*;
 import org.junit.Test;
 
 import cognitivabrasil.obaa.General.General;
+import cognitivabrasil.obaa.General.Identifier;
 import cognitivabrasil.obaa.LifeCycle.Contribute;
 import cognitivabrasil.obaa.LifeCycle.LifeCycle;
 import cognitivabrasil.obaa.Metametadata.Metametadata;
+import cognitivabrasil.obaa.Relation.Kind;
 import cognitivabrasil.obaa.Relation.Relation;
+import cognitivabrasil.obaa.Relation.Resource;
 import cognitivabrasil.obaa.Rights.Rights;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
@@ -106,6 +111,31 @@ public class CreateTest {
         assertThat(xml, containsString("<obaa:role>author</obaa:role>"));
         assertThat(xml, containsString("entity>Paulo</"));
         assertThat(xml, containsString("date>17/10/1984</"));
+
+    }
+    
+     @Test
+    public void relationHasVersion() {
+        OBAA o = new OBAA();
+        Relation r = new Relation();
+        List<Relation> lr = new ArrayList<Relation>();
+        lr.add(r);
+        o.setRelations(lr);
+        
+        Kind kind = new Kind();
+        kind.setText(Kind.HAS_VERSION);
+        r.setKind(kind);
+        
+         Resource resource = new Resource();
+        resource.addIdentifier(new Identifier("URI", "http://marcos.nunes"));
+        r.setResource(resource);
+        
+        String xml = o.toXml();
+        assertThat(xml, containsString("<obaa:relation>"));
+        assertThat(xml, containsString("<obaa:resource>"));
+        assertThat(xml, containsString("<obaa:kind>"+Kind.HAS_VERSION+"</obaa:kind>")); 
+        assertThat(xml, containsString("<obaa:entry>http://marcos.nunes</obaa:entry>"));
+        assertThat(xml, containsString("</obaa:resource>"));
 
     }
 

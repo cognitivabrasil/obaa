@@ -25,6 +25,7 @@ import cognitivabrasil.obaa.LifeCycle.Entity;
 import cognitivabrasil.obaa.LifeCycle.LifeCycle;
 import cognitivabrasil.obaa.LifeCycle.Role;
 import cognitivabrasil.obaa.Metametadata.Metametadata;
+import cognitivabrasil.obaa.Relation.Kind;
 import cognitivabrasil.obaa.Relation.Relation;
 import cognitivabrasil.obaa.Relation.Resource;
 import cognitivabrasil.obaa.Rights.Rights;
@@ -409,7 +410,7 @@ public class OBAATest {
         re.addIdentifier(i);
 
         Relation r = new Relation();
-        r.setKind("isPartOf");
+        r.setKind("ispartof");
         r.setResource(re);
 
         assertEquals(l.getRelations().get(0).getKind(), r.getKind());
@@ -1254,5 +1255,62 @@ public class OBAATest {
         d.setDuration("21h24min32s");
         assertThat(d.getDuration(), equalTo("PT21H24M32S"));
 
+    }
+    
+    @Test
+    public void testIsEmpty(){
+        OBAA obaa = new OBAA();
+        assertThat(obaa.isEmpty(), equalTo(true));
+                
+        obaa = new OBAA();
+        obaa.setAccessibility(new Accessibility());
+        assertThat(obaa.isEmpty(), equalTo(false));
+        
+        obaa = new OBAA();
+        obaa.getAnnotations().add(new Annotation());
+        assertThat(obaa.isEmpty(), equalTo(false));
+        
+        obaa = new OBAA();
+        obaa.getClassifications().add(new Classification());
+        assertThat(obaa.isEmpty(), equalTo(false));
+        
+        obaa = new OBAA();
+        obaa.setEducational(new Educational());
+        assertThat(obaa.isEmpty(), equalTo(false));
+        
+        obaa = new OBAA();
+        obaa.setGeneral(new General());
+        assertThat(obaa.isEmpty(), equalTo(false));
+        
+        obaa = new OBAA();
+        obaa.setLifeCycle(new LifeCycle());
+        assertThat(obaa.isEmpty(), equalTo(false));
+                
+        obaa = new OBAA();
+        obaa.setMetametadata(new Metametadata());
+        assertThat(obaa.isEmpty(), equalTo(false));
+        
+        obaa = new OBAA();
+        obaa.getRelations().add(new Relation());
+        assertThat(obaa.isEmpty(), equalTo(false));
+        
+        obaa = new OBAA();
+        obaa.setRights(new Rights());
+        assertThat(obaa.isEmpty(), equalTo(false));
+        
+        obaa = new OBAA();
+        obaa.setSegmentsInformationTable(new SegmentInformationTable());
+        assertThat(obaa.isEmpty(), equalTo(false));
+        
+        obaa = new OBAA();
+        obaa.setTechnical(new Technical());
+        assertThat(obaa.isEmpty(), equalTo(false));
+    }
+    
+    @Test
+    public void testRelationIsVersionOf(){
+        assertThat(l.hasRelationWith(Kind.IS_VERSION_OF, "xx2"), equalTo(true));
+        
+        assertThat(l.hasRelationWith(Kind.HAS_VERSION, "xx1"), equalTo(false));
     }
 }

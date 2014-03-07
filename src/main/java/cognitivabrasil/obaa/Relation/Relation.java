@@ -28,6 +28,7 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 import cognitivabrasil.obaa.ObaaRecursibleElement;
+import org.simpleframework.xml.Namespace;
 
 /**
  * <div class="en">
@@ -44,6 +45,7 @@ import cognitivabrasil.obaa.ObaaRecursibleElement;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 @Root
+@Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
 public class Relation {
 
@@ -53,8 +55,6 @@ public class Relation {
     private Resource resource;
 
     public Relation() {
-        kind = new Kind();
-        resource = new Resource();
     }
 
     public void setKind(Kind kind) {
@@ -62,6 +62,9 @@ public class Relation {
     }
 
     public void setKind(String kind) {
+        if(this.kind==null){
+            this.kind = new Kind();
+        }
         this.kind.setText(kind);
     }
 
@@ -69,8 +72,8 @@ public class Relation {
         this.resource = resource;
     }
 
-    public String getKind() {
-        return kind.getTranslated();
+    public Kind getKind() {
+        return kind;
     }
 
     public Resource getResource() {

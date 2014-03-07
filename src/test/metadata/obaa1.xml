@@ -69,7 +69,7 @@
     </obaa:rights>
         
     <obaa:relation>
-        <obaa:kind>isPartOf</obaa:kind>
+        <obaa:kind>ispartof</obaa:kind>
         <obaa:resource>
             <obaa:identifier>
                 <obaa:catalog>teste</obaa:catalog>
@@ -80,10 +80,10 @@
     </obaa:relation>
         
     <obaa:relation>
-        <obaa:kind>isVersionOf</obaa:kind>
+        <obaa:kind>isversionof</obaa:kind>
         <obaa:resource>
             <obaa:identifier>
-                <obaa:catalog>teste</obaa:catalog>
+                <obaa:catalog>URI</obaa:catalog>
                 <obaa:entry>xx2</obaa:entry>
             </obaa:identifier>
             <obaa:description>RECURSO 2</obaa:description>

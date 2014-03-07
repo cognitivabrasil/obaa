@@ -4,7 +4,7 @@
  * reserved. This program and the accompanying materials are made available
  * under the terms of the GNU Lesser Public License v3 which accompanies this
  * distribution, and is available at http://www.gnu.org/licenses/lgpl.html
- *****************************************************************************
+ * ****************************************************************************
  */
 package cognitivabrasil.obaa;
 
@@ -13,8 +13,10 @@ import cognitivabrasil.obaa.Annotation.Annotation;
 import cognitivabrasil.obaa.Classification.Classification;
 import cognitivabrasil.obaa.Educational.Educational;
 import cognitivabrasil.obaa.General.General;
+import cognitivabrasil.obaa.General.Identifier;
 import cognitivabrasil.obaa.LifeCycle.LifeCycle;
 import cognitivabrasil.obaa.Metametadata.Metametadata;
+import cognitivabrasil.obaa.Relation.Kind;
 import cognitivabrasil.obaa.Relation.Relation;
 import cognitivabrasil.obaa.Rights.Rights;
 import cognitivabrasil.obaa.SegmentInformationTable.SegmentInformationTable;
@@ -47,13 +49,13 @@ import org.simpleframework.xml.core.Persister;
 @NamespaceList({
     @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa"),
     @Namespace(reference = "http://www.w3.org/2001/XMLSchema-instance", prefix = "xsi")})
-public class OBAA implements Cloneable{
+public class OBAA implements Cloneable {
 
     private static final Logger LOG = Logger.getLogger(OBAA.class);
     @Attribute(name = "xsi:schemaLocation", empty = "http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/obaav1.0/lom.xsd", required = false)
-    
+
     // não é muito elegante, mas funciona.
-    private String xsiSchema;     
+    private String xsiSchema;
     @Element(required = false)
     private General general;
     @Element(required = false)
@@ -82,6 +84,14 @@ public class OBAA implements Cloneable{
         relations = new ArrayList<Relation>();
         annotations = new ArrayList<Annotation>();
         classifications = new ArrayList<Classification>();
+    }
+
+    public boolean isEmpty() {
+        return general == null && lifeCycle == null && rights == null
+                && educational == null && technical == null
+                && metametadata == null && relations.isEmpty()
+                && annotations.isEmpty() && classifications.isEmpty()
+                && accessibility == null && segmentsInformationTable == null;
     }
 
     /**
@@ -249,11 +259,13 @@ public class OBAA implements Cloneable{
 
         return o.toString();
     }
-/**
- * The metadata that not starts with obaa will be ignored
- * @param myMap
- * @return 
- */
+
+    /**
+     * The metadata that not starts with obaa will be ignored
+     *
+     * @param myMap
+     * @return
+     */
     public static OBAA fromHashMap(Map<String, String[]> myMap) {
         OBAA o = new OBAA();
         Object current = o;
@@ -261,11 +273,11 @@ public class OBAA implements Cloneable{
 
         for (String k : myMap.keySet()) {
             LOG.debug("Got key:" + k);
-            
-             if (!k.startsWith("obaa")){                
+
+            if (!k.startsWith("obaa")) {
                 continue;
-             }
-                
+            }
+
             if (myMap.get(k)[0].isEmpty()) {
                 LOG.info("Got blank input for key " + k
                         + ", will not create empty field");
@@ -393,7 +405,7 @@ public class OBAA implements Cloneable{
     }
 
     @Override
-    public OBAA clone(){
+    public OBAA clone() {
         Cloner cloner = new Cloner();
         OBAA clone = cloner.deepClone(this);
 
@@ -416,7 +428,7 @@ public class OBAA implements Cloneable{
                 field.setAccessible(true);
                 Object fieldValue = field.get(o);
 
-                if (fieldValue == null) { 
+                if (fieldValue == null) {
                     // if field is null, ignore
                     LOG.debug(field.getName() + " is null...");
 
@@ -478,5 +490,29 @@ public class OBAA implements Cloneable{
      */
     public void setLocale(String string) {
         setLocaleRecurse(this, string);
+    }
+
+    /**
+     * Tests if the document (this) has relation with informed entry.
+     *
+     * @param entry The entry of document to be compared.
+     * @param kind Kind of relation. Use constant of Kind class, i.e:
+     * Kind.IS_VERSION_OF
+     * @return true if has relation
+     */
+    public boolean hasRelationWith(String kind, String entry) {
+        boolean result = false;
+        for (Relation rel : getRelations()) {
+            if (rel.getKind().getText().equals(kind)) {
+                for (Identifier id : rel.getResource().getIdentifier()) {
+                    if (id.getCatalog().equalsIgnoreCase("URI")) {
+                        if (id.getEntry() != null && id.getEntry().equals(entry)) {
+                            result = true;
+                        }
+                    }
+                }
+            }
+        }
+        return result;
     }
 }
