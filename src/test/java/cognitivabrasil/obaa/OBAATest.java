@@ -1313,4 +1313,12 @@ public class OBAATest {
         
         assertThat(l.hasRelationWith(Kind.HAS_VERSION, "xx1"), equalTo(false));
     }
+    
+    @Test
+    public void testAnyRelationWithKind(){
+        List<Identifier> ids = l.getRelationsWithKind(Kind.IS_VERSION_OF);
+        assertThat(ids.size(), equalTo(1));
+        assertThat(ids.get(0).equals(new Identifier("URI","xx2")), equalTo(true));
+        
+    }
 }

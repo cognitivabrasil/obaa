@@ -509,4 +509,14 @@ public class OBAA implements Cloneable {
         }
         return result;
     }
+    
+    public List<Identifier> getRelationsWithKind(String Kind){
+        List<Identifier> ids = new ArrayList<Identifier>();
+        for (Relation rel : getRelations()) {
+            if (rel.getKind().getText().equals(Kind)) {
+                ids.addAll(rel.getResource().getIdentifier());
+            }
+        }
+        return ids;
+    }
 }
