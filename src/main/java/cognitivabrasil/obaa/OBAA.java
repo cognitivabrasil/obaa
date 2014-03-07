@@ -504,13 +504,7 @@ public class OBAA implements Cloneable {
         boolean result = false;
         for (Relation rel : getRelations()) {
             if (rel.getKind().getText().equals(kind)) {
-                for (Identifier id : rel.getResource().getIdentifier()) {
-                    if (id.getCatalog().equalsIgnoreCase("URI")) {
-                        if (id.getEntry() != null && id.getEntry().equals(entry)) {
-                            result = true;
-                        }
-                    }
-                }
+                result = rel.getResource().getIdentifier().contains(new Identifier("URI", entry));
             }
         }
         return result;

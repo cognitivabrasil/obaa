@@ -67,4 +67,31 @@ public class Identifier {
     public String getEntry() {
         return entry;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + (this.catalog != null ? this.catalog.hashCode() : 0);
+        hash = 37 * hash + (this.entry != null ? this.entry.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Identifier other = (Identifier) obj;
+        if ((this.catalog == null) ? (other.catalog != null) : !this.catalog.equals(other.catalog)) {
+            return false;
+        }
+        if ((this.entry == null) ? (other.entry != null) : !this.entry.equals(other.entry)) {
+            return false;
+        }
+        return true;
+    }
+    
 }
