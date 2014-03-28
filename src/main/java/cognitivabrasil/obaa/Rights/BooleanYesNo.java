@@ -81,8 +81,8 @@ public class BooleanYesNo extends TextElement {
                 || this.getText().equals(YES) 
                 || this.getText().equals(TRUE) 
                 || this.getText().equals(FALSE))) {
-            LOG.error("The cost value must be one of: yes, no, true or false.");
-            return null;
+            LOG.warn("The value must be one of: yes, no, true or false; And got: "+this.getText());
+            return this.getText();
         } else {
             return this.getTranslated();
         }

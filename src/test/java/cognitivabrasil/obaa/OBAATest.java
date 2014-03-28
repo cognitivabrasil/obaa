@@ -399,7 +399,7 @@ public class OBAATest {
     }
 
     @Test
-    public void testRelation() throws FileNotFoundException {
+    public void testRelation() {
         assert (!(l.getRelations() == null));
 
         Identifier i = new Identifier();
