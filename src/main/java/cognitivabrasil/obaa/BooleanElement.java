@@ -7,8 +7,6 @@
  ******************************************************************************/
 package cognitivabrasil.obaa;
 
-import static cognitivabrasil.obaa.BooleanElement.FALSE;
-import static cognitivabrasil.obaa.BooleanElement.TRUE;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;

@@ -98,8 +98,8 @@ public class Technical {
         this.location = location;
     }
 
-    public List<String> getLocation() {
-        return toStringList(location);
+    public List<Location> getLocation() {
+        return location;
     }
 
     /**
@@ -111,7 +111,7 @@ public class Technical {
      */
     public Map<String, Boolean> getLocationHttp() {
         Map<String, Boolean> locationhttp = new HashMap<String, Boolean>();
-        for (String loc : getLocation()) {
+        for (String loc : toStringList(getLocation())) {
             locationhttp.put(loc, loc.startsWith("http:"));
         }
         return locationhttp;

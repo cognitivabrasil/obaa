@@ -29,6 +29,7 @@ import cognitivabrasil.obaa.ObaaRecursibleElement;
 import cognitivabrasil.obaa.General.Description;
 import cognitivabrasil.obaa.LifeCycle.Entity;
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 
 /**
@@ -52,6 +53,7 @@ import org.simpleframework.xml.Root;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 @Root
+@Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
 public class Annotation {
     @Element(required = false)
