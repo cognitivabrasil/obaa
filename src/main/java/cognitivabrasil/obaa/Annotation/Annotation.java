@@ -64,8 +64,6 @@ public class Annotation {
     private Description description;
 
     public Annotation() {       
-       this.entity = new Entity();
-       this.description = new Description();
     }
 
     public void setDate(String date) {
@@ -85,10 +83,16 @@ public class Annotation {
     }
 
     public String getDescription() {
+        if(description == null){
+            return "";
+        }
         return description.getTranslated();
     }
 
     public String getEntity() {
+        if(entity==null){
+            return "";
+        }
         return entity.getTranslated();
     }
 }
