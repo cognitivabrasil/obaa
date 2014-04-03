@@ -106,9 +106,11 @@
         <obaa:learningResourceType>simulation</obaa:learningResourceType>
         <obaa:learningResourceType>experiment</obaa:learningResourceType>
         <obaa:interactivityLevel>Muito baixo</obaa:interactivityLevel>
+        <obaa:interactivityType>expositive</obaa:interactivityType>
         <obaa:semanticDensity>low</obaa:semanticDensity>
         <obaa:context>Educacao superior</obaa:context>
         <obaa:context>Profissionalizante</obaa:context>
+        <obaa:learningContentType>factual</obaa:learningContentType>
         <obaa:typicalAgeRange>adult</obaa:typicalAgeRange>
         <obaa:typicalLearningTime>PT15M</obaa:typicalLearningTime>
         <obaa:description>demonstração</obaa:description>

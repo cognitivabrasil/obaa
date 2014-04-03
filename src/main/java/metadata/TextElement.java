@@ -32,7 +32,7 @@ public class TextElement {
     private String language;
     private String country;
     private List<String> listOfTerms;
-    private static Logger log = Logger.getLogger(TextElement.class);
+    private static final Logger log = Logger.getLogger(TextElement.class);
 
     public TextElement() {
         language = "";
