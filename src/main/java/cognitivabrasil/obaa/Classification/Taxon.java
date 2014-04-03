@@ -39,7 +39,7 @@ import cognitivabrasil.obaa.ObaaRecursibleElement;
  * An ordered list of taxons creates a taxonomic path, i.e., 
  * "taxonomic stairway": this is a path from a more general to more specific 
  * entry in a classification.
- * 
+ *
  * according to IEEE LOM http://ltsc.ieee.org/
  *</div>
  *
@@ -56,14 +56,14 @@ import cognitivabrasil.obaa.ObaaRecursibleElement;
 public class Taxon {
     @Element(required=false)
     private String id;
-    @Element(required=false)
-    private String entry;
+    @Element(required=false,name="entry")
+    private String label;
 
     public Taxon() {
     }
 
     public void setEntry(String entry) {
-        this.entry = entry;
+        this.label = entry;
     }
 
     public void setId(String id) {
@@ -71,7 +71,7 @@ public class Taxon {
     }
 
     public String getEntry() {
-        return entry;
+        return label;
     }
 
     public String getId() {

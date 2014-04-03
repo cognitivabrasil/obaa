@@ -40,7 +40,7 @@ import org.junit.Test;
  *
  * @author Marcos Freitas Nunes <marcos@cognitivabrasil.com.br>
  */
-public class TranslateTest {
+public class TranslateValuesTest {
 
     @Test
     public void BooleanElementTest() {

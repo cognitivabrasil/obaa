@@ -1,10 +1,11 @@
-/*******************************************************************************
- * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v3
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+/**
+ * *****************************************************************************
+ * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais. All rights
+ * reserved. This program and the accompanying materials are made available
+ * under the terms of the GNU Lesser Public License v3 which accompanies this
+ * distribution, and is available at http://www.gnu.org/licenses/lgpl.html
+ *****************************************************************************
+ */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -62,8 +63,8 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
 public class Educational {
-    
-    private static final String NAMESPACE ="http://ltsc.ieee.org/xsd/LOM";
+
+    private static final String NAMESPACE = "http://ltsc.ieee.org/xsd/LOM";
 
     @Element(required = false)
     private InteractivityType interactivityType;
@@ -97,9 +98,9 @@ public class Educational {
      *
      * Adaptado de http://www.portalobaa.org </div>
      *
- * @author Luiz Rossi <lh.rossi@cognitivabrasil.com.br>
- * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
- * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
+     * @author Luiz Rossi <lh.rossi@cognitivabrasil.com.br>
+     * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
+     * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
      */
     @Namespace(reference = NAMESPACE)
     @Element(required = false)
@@ -126,9 +127,9 @@ public class Educational {
      *
      * Adaptado de http://www.portalobaa.org </div>
      *
- * @author Luiz Rossi <lh.rossi@cognitivabrasil.com.br>
- * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
- * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
+     * @author Luiz Rossi <lh.rossi@cognitivabrasil.com.br>
+     * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
+     * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
      */
     @Namespace(reference = NAMESPACE)
     @Element(required = false)
@@ -151,9 +152,9 @@ public class Educational {
      *
      * Adaptado de http://www.portalobaa.org </div>
      *
- * @author Luiz Rossi <lh.rossi@cognitivabrasil.com.br>
- * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
- * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
+     * @author Luiz Rossi <lh.rossi@cognitivabrasil.com.br>
+     * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
+     * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
      */
     @Namespace(reference = NAMESPACE)
     @Element(required = false)
@@ -175,9 +176,9 @@ public class Educational {
      *
      * Adaptado de http://www.portalobaa.org </div>
      *
- * @author Luiz Rossi <lh.rossi@cognitivabrasil.com.br>
- * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
- * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
+     * @author Luiz Rossi <lh.rossi@cognitivabrasil.com.br>
+     * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
+     * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
      *
      * não foi feita a verificação de consistência was not made any consistence
      * verification
@@ -213,9 +214,9 @@ public class Educational {
      *
      * Adaptado de http://www.portalobaa.org </div>
      *
- * @author Luiz Rossi <lh.rossi@cognitivabrasil.com.br>
- * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
- * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
+     * @author Luiz Rossi <lh.rossi@cognitivabrasil.com.br>
+     * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
+     * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
      */
     @ElementList(inline = true, required = false)
     private List<IntendedEndUserRole> intendedEndUserRole;
@@ -250,13 +251,13 @@ public class Educational {
     public List<DidaticStrategy> getDidaticStrategy() {
         return didaticStrategy;
     }
-    
-    public void addDidaticStrategy (String didaticStrategy){
+
+    public void addDidaticStrategy(String didaticStrategy) {
         DidaticStrategy ds = new DidaticStrategy();
-        ds.setText(didaticStrategy);        
+        ds.setText(didaticStrategy);
         this.didaticStrategy.add(ds);
     }
-    
+
     public Interaction getInteraction() {
         return interaction;
     }
@@ -264,8 +265,8 @@ public class Educational {
     public void setInteraction(Interaction interaction) {
         this.interaction = interaction;
     }
-    
-    public void addContext (String context){
+
+    public void addContext(String context) {
         Context c = new Context();
         c.setText(context);
         this.contexts.add(c);
@@ -278,17 +279,17 @@ public class Educational {
     public void setDescription(List<Description> description) {
         this.description = description;
     }
-    
-    public void addDescription (String description){
+
+    public void addDescription(String description) {
         Description d = new Description(description);
         this.description.add(d);
     }
 
-    public Map<String,String> getIntendedEndUserRoleValues() {
+    public Map<String, String> getIntendedEndUserRoleValues() {
         IntendedEndUserRole i = new IntendedEndUserRole();
-        return (i.getMapOfTerms());        
+        return (i.getMapOfTerms());
     }
-    
+
     @Deprecated
     public List<String> getIntendedEndUserRole() {
         return toStringList(intendedEndUserRole);
@@ -297,7 +298,7 @@ public class Educational {
     public void setIntendedEndUserRole(List<IntendedEndUserRole> intendedEndUserRole) {
         this.intendedEndUserRole = intendedEndUserRole;
     }
-    
+
     public void addIntendedEndUserRole(String intendedEndUserRole) {
         IntendedEndUserRole i = new IntendedEndUserRole();
         i.setText(intendedEndUserRole);
@@ -312,11 +313,11 @@ public class Educational {
         this.language = language;
     }
 
-    public void addLanguage(String language){
+    public void addLanguage(String language) {
         Language l = new Language(language);
         this.language.add(l);
     }
-    
+
     public String getLearningContentType() {
         if (learningContentType == null) {
             return null;
@@ -329,21 +330,21 @@ public class Educational {
         this.learningContentType = learningContentType;
     }
 
-    public void setLearningContentType(String learningContentType) {        
+    public void setLearningContentType(String learningContentType) {
         this.learningContentType = new LearningContentType();
         this.learningContentType.setText(learningContentType);
     }
-    
+
     public List<LearningResourceType> getLearningResourceTypes() {
         return learningResourceType;
     }
 
-    public void addLearningResourceType (String learningResourceType){
+    public void addLearningResourceType(String learningResourceType) {
         LearningResourceType l = new LearningResourceType();
         l.setText(learningResourceType);
         this.learningResourceType.add(l);
     }
-            
+
     public List<String> getIntendedEndUserRoles() {
         return toStringList(intendedEndUserRole);
     }
@@ -356,11 +357,11 @@ public class Educational {
         return toStringList(language);
     }
 
-    public Map<String,String> getContextValues(){
+    public Map<String, String> getContextValues() {
         Context c = new Context();
         return (c.getMapOfTerms());
     }
-    
+
     public List<String> getContexts() {
         return toStringList(contexts);
     }
@@ -423,15 +424,15 @@ public class Educational {
     /**
      * @param difficulty the difficulty to set
      */
-    public void setDifficulty(String difficulty) {        
+    public void setDifficulty(String difficulty) {
         this.difficulty = new Difficulty();
         this.difficulty.setText(difficulty);
     }
-    
+
     /**
      * @param difficulty the difficulty to set
      */
-    public void setDifficulty(Difficulty difficulty) {                
+    public void setDifficulty(Difficulty difficulty) {
         this.difficulty = (difficulty);
     }
 
@@ -445,10 +446,10 @@ public class Educational {
     /**
      * @param typicalLearningTime the typicalLearningTime to set
      */
-    public void setTypicalLearningTime(Duration typicalLearningTime) {        
+    public void setTypicalLearningTime(Duration typicalLearningTime) {
         this.typicalLearningTime = typicalLearningTime;
     }
-    
+
     /**
      * @return the typicalAgeRange
      */

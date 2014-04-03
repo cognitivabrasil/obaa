@@ -16,7 +16,6 @@ import cognitivabrasil.obaa.General.General;
 import cognitivabrasil.obaa.General.Identifier;
 import cognitivabrasil.obaa.LifeCycle.LifeCycle;
 import cognitivabrasil.obaa.Metametadata.Metametadata;
-import cognitivabrasil.obaa.Relation.Kind;
 import cognitivabrasil.obaa.Relation.Relation;
 import cognitivabrasil.obaa.Rights.Rights;
 import cognitivabrasil.obaa.SegmentInformationTable.SegmentInformationTable;
@@ -56,6 +55,7 @@ public class OBAA implements Cloneable {
 
     // não é muito elegante, mas funciona.
     private String xsiSchema;
+    private String locale;
     @Element(required = false)
     private General general;
     @Element(required = false)
@@ -488,8 +488,9 @@ public class OBAA implements Cloneable {
      *
      * @param the locale
      */
-    public void setLocale(String string) {
-        setLocaleRecurse(this, string);
+    public void setLocale(String locale) {
+        this.locale=locale;
+        setLocaleRecurse(this, locale);
     }
 
     /**
@@ -518,5 +519,17 @@ public class OBAA implements Cloneable {
             }
         }
         return ids;
+    }
+    
+    /**
+     * Generates a JSON from obaa object. To translate the json content, the obaa locale must be set. 
+     * The JSON is generated in this format:
+     * [{"text":"Node name","children":[{"text":"Node name","children":[{"text":"Grê
+     * 
+     * @return String in json format.
+     */
+    public String getJson(){
+        JsonGenerator generator = new JsonGenerator(locale);
+        return generator.getJson(this);
     }
 }
