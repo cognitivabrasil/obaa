@@ -17,6 +17,7 @@ import cognitivabrasil.obaa.Educational.Educational;
 import cognitivabrasil.obaa.Educational.IntendedEndUserRole;
 import cognitivabrasil.obaa.Educational.Interaction;
 import cognitivabrasil.obaa.Educational.InteractionType;
+import cognitivabrasil.obaa.Educational.TypicalAgeRange;
 import cognitivabrasil.obaa.General.General;
 import cognitivabrasil.obaa.General.Identifier;
 import cognitivabrasil.obaa.General.Structure;
@@ -34,7 +35,7 @@ import cognitivabrasil.obaa.SegmentInformationTable.SegmentInformationTable;
 import cognitivabrasil.obaa.SegmentInformationTable.SegmentList;
 import cognitivabrasil.obaa.SegmentInformationTable.SegmentMediaType;
 import cognitivabrasil.obaa.Technical.*;
-import cognitivabrasil.util.VCarder;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -42,6 +43,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import metadata.TextElement;
 import org.apache.commons.io.FileUtils;
 import static org.hamcrest.Matchers.*;
@@ -1256,69 +1258,129 @@ public class OBAATest {
         assertThat(d.getDuration(), equalTo("PT21H24M32S"));
 
     }
-    
+
     @Test
-    public void testIsEmpty(){
+    public void testIsEmpty() {
         OBAA obaa = new OBAA();
         assertThat(obaa.isEmpty(), equalTo(true));
-                
+
         obaa = new OBAA();
         obaa.setAccessibility(new Accessibility());
         assertThat(obaa.isEmpty(), equalTo(false));
-        
+
         obaa = new OBAA();
         obaa.getAnnotations().add(new Annotation());
         assertThat(obaa.isEmpty(), equalTo(false));
-        
+
         obaa = new OBAA();
         obaa.getClassifications().add(new Classification());
         assertThat(obaa.isEmpty(), equalTo(false));
-        
+
         obaa = new OBAA();
         obaa.setEducational(new Educational());
         assertThat(obaa.isEmpty(), equalTo(false));
-        
+
         obaa = new OBAA();
         obaa.setGeneral(new General());
         assertThat(obaa.isEmpty(), equalTo(false));
-        
+
         obaa = new OBAA();
         obaa.setLifeCycle(new LifeCycle());
         assertThat(obaa.isEmpty(), equalTo(false));
-                
+
         obaa = new OBAA();
         obaa.setMetametadata(new Metametadata());
         assertThat(obaa.isEmpty(), equalTo(false));
-        
+
         obaa = new OBAA();
         obaa.getRelations().add(new Relation());
         assertThat(obaa.isEmpty(), equalTo(false));
-        
+
         obaa = new OBAA();
         obaa.setRights(new Rights());
         assertThat(obaa.isEmpty(), equalTo(false));
-        
+
         obaa = new OBAA();
         obaa.setSegmentsInformationTable(new SegmentInformationTable());
         assertThat(obaa.isEmpty(), equalTo(false));
-        
+
         obaa = new OBAA();
         obaa.setTechnical(new Technical());
         assertThat(obaa.isEmpty(), equalTo(false));
     }
-    
+
     @Test
-    public void testRelationIsVersionOf(){
+    public void testRelationIsVersionOf() {
         assertThat(l.hasRelationWith(Kind.IS_VERSION_OF, "xx2"), equalTo(true));
-        
+
         assertThat(l.hasRelationWith(Kind.HAS_VERSION, "xx1"), equalTo(false));
     }
-    
+
     @Test
-    public void testAnyRelationWithKind(){
+    public void testAnyRelationWithKind() {
         List<Identifier> ids = l.getRelationsWithKind(Kind.IS_VERSION_OF);
         assertThat(ids.size(), equalTo(1));
-        assertThat(ids.get(0).equals(new Identifier("URI","xx2")), equalTo(true));
-        
+        assertThat(ids.get(0).equals(new Identifier("URI", "xx2")), equalTo(true));
+
+    }
+
+    @Test
+    public void tipicalAgeRangeParseFromFileTest() throws IOException {
+
+        BufferedReader br = new BufferedReader(new FileReader("./src/test/resources/typicalAgeRanges.txt"));
+        int count = 0;
+
+        Map results = new HashMap<String, String>();
+        try {
+            String line = br.readLine();
+
+            while (line != null) {
+                TypicalAgeRange tar = new TypicalAgeRange();
+                tar.setTypicalAgeRange(line);
+
+                if (!tar.getTypicalAgeRange().matches("\\d+-\\d+")) {
+                    count++;
+                } else {
+                    results.put(line, tar.getTypicalAgeRange());
+                }
+
+                line = br.readLine();
+
+            }
+            System.out.println("Total parsing errors: " + count);
+
+            assertThat(results.get("18-U").toString(), equalTo("18-100"));
+            assertThat(results.get("UNIVERSITÁRIO").toString(), equalTo("18-100"));
+            assertThat(results.get("Inicial 17 anos").toString(), equalTo("17-100"));
+            assertThat(results.get("Ensino médio").toString(), equalTo("15-18"));
+            assertThat(results.get("1 ano ensino médio").toString(), equalTo("15-16"));
+            assertThat(results.get("aluno do ensino médio").toString(), equalTo("15-18"));
+            assertThat(results.get("18 - 50").toString(), equalTo("18-50"));
+            assertThat(results.get("A partir de 14 anos.").toString(), equalTo("14-100"));
+            assertThat(results.get("17-").toString(), equalTo("17-100"));
+            assertThat(results.get("Diverso").toString(), equalTo("0-100"));
+            assertThat(results.get("estudante universitário").toString(), equalTo("18-100"));
+            assertThat(results.get("Variada. Compreende os alunos da graduacão.").toString(), equalTo("18-100"));
+            assertThat(results.get("Educação Superior").toString(), equalTo("18-100"));
+            assertThat(results.get("Ensino Fundamental").toString(), equalTo("6-15"));
+            assertThat(results.get("Alfabetizado (mínimo)").toString(), equalTo("7-100"));
+            assertThat(results.get("todas as idades").toString(), equalTo("0-100"));
+            assertThat(results.get("a partir de 3 anos.").toString(), equalTo("3-100"));
+            assertThat(results.get("Foi construído para a faixa etária de 4 a 7 anos, mas pode ser usado por pessoas de outras idades.").toString(), equalTo("4-7"));
+            assertThat(results.get("15").toString(), equalTo("15-15"));
+            assertThat(results.get("20-75 anos").toString(), equalTo("20-75"));
+            assertThat(results.get("10 anos à 80 anos").toString(), equalTo("10-80"));
+            assertThat(results.get(">13 anos").toString(), equalTo("13-100"));
+            assertThat(results.get("Alunos de informática de cursos técnicos").toString(), equalTo("15-18"));
+            assertThat(results.get("Independe de faixa etária").toString(), equalTo("0-100"));
+            assertThat(results.get("20+").toString(), equalTo("20-100"));
+            assertThat(results.get("9 - 10 anos").toString(), equalTo("9-10"));
+
+            //erros conhecidos 'a', 'y' e 'sdfsf'
+            assertThat(count, equalTo(3));
+
+        } finally {
+            br.close();
+        }
     }
 }
