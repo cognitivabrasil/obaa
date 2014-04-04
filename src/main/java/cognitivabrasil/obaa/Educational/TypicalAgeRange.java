@@ -211,8 +211,10 @@ public class TypicalAgeRange extends TextElement {
 //                System.out.println(unparsed);
 //            }
         List<String> numbers = getNumbers(parsed);
-
-        if (parsed.matches("\\+\\s*\\d+.*") || parsed.matches("\\d+\\+.*")) {
+        
+        if (parsed.matches(".*meno.*\\d.*")) {
+            parsed = "0-"+numbers.get(0);
+        } else if (parsed.matches("\\+\\s*\\d+.*") || parsed.matches("\\d+\\+.*")) {
             parsed = numbers.get(0) + "-100";
         } else if (parsed.matches(".*\\d+\\s*(anos)?\\s*-\\s*\\d+.*") || parsed.matches(".*\\d+\\s*(anos)?\\s*a\\s*\\d+.*")) {
             parsed = numbers.get(0) + "-" + numbers.get(1);
