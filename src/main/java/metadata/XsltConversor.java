@@ -41,7 +41,7 @@ public class XsltConversor implements MetadataConversorInterface {
      */
     public XsltConversor(String xsl) {
         // Create a transform factory instance.
-        TransformerFactory tfactory = TransformerFactory.newInstance();
+        TransformerFactory tfactory = new net.sf.saxon.TransformerFactoryImpl();
 
         // Create a transformer for the stylesheet.
         try {
