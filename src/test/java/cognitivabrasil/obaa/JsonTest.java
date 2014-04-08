@@ -5,8 +5,10 @@
  */
 package cognitivabrasil.obaa;
 
+import cognitivabrasil.obaa.Educational.Educational;
 import cognitivabrasil.obaa.General.General;
 import cognitivabrasil.obaa.General.Identifier;
+import cognitivabrasil.obaa.General.Structure;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 import org.junit.Test;
@@ -25,12 +27,15 @@ public class JsonTest {
         general.addDescription("This is a description");
         Identifier id = new Identifier("URI", "www.cognitivabrasil.com.br");
         general.addIdentifier(id);
+        general.setStructure(new Structure());
         obaa.setGeneral(general);
+//        obaa.setEducational(new Educational());
         
         JsonGenerator jsonG = new JsonGenerator();
         String json = jsonG.getJson(obaa);
         
         String correctJson = "[{\"text\":\"general\",\"children\":[{\"text\":\"titles\",\"children\":[{\"text\":\"title text\"}]},{\"text\":\"descriptions\",\"children\":[{\"text\":\"This is a description\"}]},{\"text\":\"identifiers\",\"children\":[{\"text\":\"catalog\",\"children\":[{\"text\":\"URI\"}]},{\"text\":\"entry\",\"children\":[{\"text\":\"www.cognitivabrasil.com.br\"}]}]}]}]";
+        System.out.println(json);
         assertThat(json, equalTo(correctJson));
     }
 

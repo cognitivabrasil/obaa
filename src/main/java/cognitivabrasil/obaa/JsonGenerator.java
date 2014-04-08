@@ -17,6 +17,7 @@ import org.simpleframework.xml.ElementList;
 
 /**
  * Generates a JSON from a OBAA object.
+ *
  * @author Marcos Freitas Nunes <marcos@cognitivabrasil.com.br>
  */
 public class JsonGenerator {
@@ -38,6 +39,7 @@ public class JsonGenerator {
 
     /**
      * Walk thru the object OBAA turning it into a JSON
+     *
      * @param obj The OBAA object
      * @return String JSON
      */
@@ -88,10 +90,14 @@ public class JsonGenerator {
 
             if (TextElement.class.isAssignableFrom(obj.getClass())) {
                 TextElement text = (TextElement) obj;
-                jsRoot.addChildren(new JstreeDto(fieldName, text.getTranslated()));
+                if (!text.getTranslated().isEmpty()) {
+                    jsRoot.addChildren(new JstreeDto(fieldName, text.getTranslated()));
+                }
             } else if (String.class.isAssignableFrom(obj.getClass())) {
                 String s = (String) obj;
-                jsRoot.addChildren(new JstreeDto(fieldName, s));
+                if (!s.isEmpty()) {
+                    jsRoot.addChildren(new JstreeDto(fieldName, s));
+                }
             } else {
                 JstreeDto jsNodo = new JstreeDto(fieldName);
                 createTree(obj, jsNodo);
