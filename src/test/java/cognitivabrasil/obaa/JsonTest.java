@@ -34,8 +34,8 @@ public class JsonTest {
         JsonGenerator jsonG = new JsonGenerator();
         String json = jsonG.getJson(obaa);
         
-        String correctJson = "[{\"text\":\"general\",\"children\":[{\"text\":\"titles\",\"children\":[{\"text\":\"title text\"}]},{\"text\":\"descriptions\",\"children\":[{\"text\":\"This is a description\"}]},{\"text\":\"identifiers\",\"children\":[{\"text\":\"catalog\",\"children\":[{\"text\":\"URI\"}]},{\"text\":\"entry\",\"children\":[{\"text\":\"www.cognitivabrasil.com.br\"}]}]}]}]";
-        System.out.println(json);
+        String correctJson = "[{\"label\":\"general\",\"children\":[{\"label\":\"titles\",\"value\":\"title text\"},{\"label\":\"descriptions\",\"value\":\"This is a description\"},{\"label\":\"identifiers\",\"children\":[{\"label\":\"catalog\",\"value\":\"URI\"},{\"label\":\"entry\",\"value\":\"www.cognitivabrasil.com.br\"}]}]}]";
+        
         assertThat(json, equalTo(correctJson));
     }
 
