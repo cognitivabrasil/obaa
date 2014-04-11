@@ -5,7 +5,6 @@
  */
 package cognitivabrasil.obaa;
 
-import cognitivabrasil.obaa.Educational.Educational;
 import cognitivabrasil.obaa.General.General;
 import cognitivabrasil.obaa.General.Identifier;
 import cognitivabrasil.obaa.General.Structure;
@@ -29,7 +28,6 @@ public class JsonTest {
         general.addIdentifier(id);
         general.setStructure(new Structure());
         obaa.setGeneral(general);
-//        obaa.setEducational(new Educational());
         
         JsonGenerator jsonG = new JsonGenerator();
         String json = jsonG.getJson(obaa);
