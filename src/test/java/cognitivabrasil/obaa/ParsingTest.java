@@ -4,6 +4,8 @@
 package cognitivabrasil.obaa;
 
 import cognitivabrasil.obaa.Educational.TypicalAgeRange;
+import cognitivabrasil.obaa.Technical.Format;
+import cognitivabrasil.util.MimeType;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -19,9 +21,9 @@ import org.junit.Test;
  */
 public class ParsingTest {
 
-    @Test    
+    @Test
     public void tipicalAgeRangeParseTest() {
-        
+
         TypicalAgeRange tar = new TypicalAgeRange();
 
         tar.setTypicalAgeRange("18");
@@ -52,7 +54,7 @@ public class ParsingTest {
         assertThat(tar.getTypicalAgeRange(), equalTo("15-18"));
 
     }
-    
+
     @Test
     public void tipicalAgeRangeParseFromFileTest() throws IOException {
 
@@ -113,4 +115,50 @@ public class ParsingTest {
         }
     }
 
+    @Test
+    public void formatParseFromFileTest() throws IOException {
+
+        BufferedReader br = new BufferedReader(new FileReader("./src/test/resources/format.txt"));
+        int count = 0;
+        int count2 = 0;
+
+        Map results = new HashMap<String, String>();
+        try {
+            String line = br.readLine();
+            MimeType mimes = new MimeType();
+
+            while (line != null) {
+                Format format = new Format();
+                format.setText(line);
+
+                //ver se é um mime type
+                if (mimes.getMimeType(format.getText()) == null) {                    
+                    if (!format.getText().equals("")) {
+                        count++;                        
+                        System.out.println("Without Mime Type: "+format.getText());
+                    }
+                    
+                } else {
+                    results.put(line, format.getText());
+                }
+                
+                if (format.getCategory()==null){
+                        count2++;
+                        System.out.println("Without category: "+format.getText());
+                    }
+                
+                line = br.readLine();
+            }
+
+            System.out.println("Total Mime Type errors: " + count);
+            System.out.println("Total Category errors: " + count2);
+
+            //erros conhecidos: 28 mime types e 2 categories
+            assertThat(count, equalTo(28));
+            assertThat(count2, equalTo(2));
+
+        } finally {
+            br.close();
+        }
+    }
 }
