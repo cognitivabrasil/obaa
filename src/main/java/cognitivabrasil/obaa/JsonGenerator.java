@@ -5,7 +5,7 @@
  */
 package cognitivabrasil.obaa;
 
-import cognitivabrasil.obaa.DTO.JstreeDto;
+import cognitivabrasil.obaa.DTO.JsonDto;
 import cognitivabrasil.util.Translate;
 import com.google.gson.Gson;
 import java.lang.reflect.Field;
@@ -44,13 +44,13 @@ public class JsonGenerator {
      * @return String JSON
      */
     public String getJson(OBAA obj) {
-        JstreeDto jsTree = new JstreeDto("root");
+        JsonDto jsTree = new JsonDto("root");
         createTree(obj, jsTree);
         Gson gson = new Gson();
         return gson.toJson(jsTree.getChildren());
     }
 
-    private void createTree(Object obj, JstreeDto jsRoot) {
+    private void createTree(Object obj, JsonDto jsRoot) {
         if (obj != null) {
 
             Field[] fields = obj.getClass().getDeclaredFields();
@@ -80,7 +80,7 @@ public class JsonGenerator {
         }
     }
 
-    private void createChildren(Object obj, String fieldName, JstreeDto jsRoot) {
+    private void createChildren(Object obj, String fieldName, JsonDto jsRoot) {
         if (obj != null) {
 
             //only translate if the locale was informed.
@@ -91,15 +91,15 @@ public class JsonGenerator {
             if (TextElement.class.isAssignableFrom(obj.getClass())) {
                 TextElement text = (TextElement) obj;
                 if (!text.getTranslated().isEmpty()) {
-                    jsRoot.addChildren(new JstreeDto(fieldName, text.getTranslated()));
+                    jsRoot.addChildren(new JsonDto(fieldName, text.getTranslated()));
                 }
             } else if (String.class.isAssignableFrom(obj.getClass())) {
                 String s = (String) obj;
                 if (!s.isEmpty()) {
-                    jsRoot.addChildren(new JstreeDto(fieldName, s));
+                    jsRoot.addChildren(new JsonDto(fieldName, s));
                 }
             } else {
-                JstreeDto jsNodo = new JstreeDto(fieldName);
+                JsonDto jsNodo = new JsonDto(fieldName);
                 createTree(obj, jsNodo);
                 jsRoot.addChildren(jsNodo);
             }
