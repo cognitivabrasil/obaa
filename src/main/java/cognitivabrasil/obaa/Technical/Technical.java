@@ -117,12 +117,8 @@ public class Technical {
         return locationhttp;
     }
 
-    public List<String> getFormat() {
-        if (format == null) {
-            return null;
-        } else {
-            return toStringList(format);
-        }
+    public List<Format> getFormats() {
+        return format;
     }
 
     public void setFormat(List<Format> format) {

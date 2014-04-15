@@ -882,7 +882,7 @@ public class OBAATest {
     @Test
     public void froacErrorTest() throws FileNotFoundException {
         OBAA metadata = OBAA.fromFilename(FROAC);
-        assertEquals(metadata.getTechnical().getFormat().get(0), "pdf");
+        assertEquals(metadata.getTechnical().getFormats().get(0).toString(), "pdf");
     }
 
     @Test
@@ -1127,7 +1127,7 @@ public class OBAATest {
     public void formatNullTest() {
 
         Technical t = file2.getTechnical();
-        List<String> format = t.getFormat();
+        List<String> format = cognitivabrasil.util.HelperFunctions.toStringList(t.getFormats());                
         assertThat(format.size(), equalTo(0));
 
     }
