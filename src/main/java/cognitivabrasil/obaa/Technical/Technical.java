@@ -112,7 +112,7 @@ public class Technical {
     public Map<String, Boolean> getLocationHttp() {
         Map<String, Boolean> locationhttp = new HashMap<String, Boolean>();
         for (String loc : toStringList(getLocation())) {
-            locationhttp.put(loc, loc.startsWith("http:"));
+            locationhttp.put(loc, loc.matches("^(https?|ftp)://.*$"));
         }
         return locationhttp;
     }
