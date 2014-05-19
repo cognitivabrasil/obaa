@@ -21,7 +21,7 @@ A biblioteca pode ser baixada pelo link ou pelo maven com os seguintes valores:
         <dependency>
             <groupId>cognitivabrasil</groupId>
             <artifactId>obaa</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>2.2-SNAPSHOT</version>
         </dependency>
 
 A biblioteca é mantida pela Cognitiva Brasil http://cognitivabrasil.com.br
