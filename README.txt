@@ -1,11 +1,9 @@
 Biblioteca OBAA para Java
 
-Com a biblioteca é possível instanciar e gerar objetos OBAA a partir de XML no padrão, além de se
-obter os valores possíveis para cada metadado e ainda obter a tradução de seus valores em português.
+Com a biblioteca é possível instanciar e gerar objetos OBAA a partir de XML no padrão, além de se obter os valores possíveis para cada metadado e ainda obter a tradução de seus valores em português.
 
 
-A biblioteca OBAA para Java está liberada sob licença LGPL (http://www.gnu.org/licenses/lgpl.html)
-e pode ser usada para fins comerciais.
+A biblioteca OBAA para Java está liberada sob licença LGPL (http://www.gnu.org/licenses/lgpl.html) e pode ser usada para fins comerciais.
 
 A biblioteca pode ser baixada pelo link ou pelo maven com os seguintes valores:
 
@@ -26,5 +24,5 @@ A biblioteca pode ser baixada pelo link ou pelo maven com os seguintes valores:
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
-A biblioteca é mantida pela Cognitiva Brasil, se estiver interessado em colaborar com esse projeto 
-entre em contato pelo e-mail contato@cognitivabrasil.com.br
+A biblioteca é mantida pela Cognitiva Brasil http://cognitivabrasil.com.br
+Se estiver interessado em colaborar com esse projeto entre em contato pelo e-mail contato@cognitivabrasil.com.br

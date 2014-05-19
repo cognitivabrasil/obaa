@@ -7,12 +7,11 @@
  ******************************************************************************/
 package cognitivabrasil.obaa.Technical;
 
+import cognitivabrasil.obaa.ObaaRecursibleElement;
 import java.util.ArrayList;
 import java.util.List;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
-
-import cognitivabrasil.obaa.ObaaRecursibleElement;
 
 /**
  *
