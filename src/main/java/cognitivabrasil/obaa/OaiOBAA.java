@@ -1,10 +1,11 @@
-/*******************************************************************************
- * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v3
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+/**
+ * *****************************************************************************
+ * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais. All rights
+ * reserved. This program and the accompanying materials are made available
+ * under the terms of the GNU Lesser Public License v3 which accompanies this
+ * distribution, and is available at http://www.gnu.org/licenses/lgpl.html
+ *****************************************************************************
+ */
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -42,327 +43,319 @@ import org.simpleframework.xml.Text;
 import org.simpleframework.xml.core.Persister;
 
 /**
- * 
+ *
  * @author Luiz Rossi <lh.rossi@cognitivabrasil.com.br>
  * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
- * 
+ *
  */
 
 /* TODO: Usar um gerador de código */
 @Root(name = "metadata", strict = false)
 class Metadata {
 
-	@Element(required=false)
-	private OBAA obaa;
+    @Element(required = false)
+    private OBAA obaa;
 
-	Metadata() {
-		super();
-	}
+    Metadata() {
+        super();
+    }
 
-	OBAA getLom() {
-		return obaa;
-	}
+    OBAA getLom() {
+        return obaa;
+    }
 }
 
 @Root(name = "resumptionToken", strict = false)
 class ResumptionToken {
 
-	@Attribute(required = false)
-	private String expirationDate;
+    @Attribute(required = false)
+    private String expirationDate;
 
-	@Text
-	private String token;
+    @Text
+    private String token;
 
-	ResumptionToken() {
-	}
+    ResumptionToken() {
+    }
 
-	/**
-	 * @return the expirationDate
-	 */
-	public String getExpirationDate() {
-		return expirationDate;
-	}
+    /**
+     * @return the expirationDate
+     */
+    public String getExpirationDate() {
+        return expirationDate;
+    }
 
-	/**
-	 * @param expirationDate
-	 *            the expirationDate to set
-	 */
-	public void setExpirationDate(String expirationDate) {
-		this.expirationDate = expirationDate;
-	}
+    /**
+     * @param expirationDate the expirationDate to set
+     */
+    public void setExpirationDate(String expirationDate) {
+        this.expirationDate = expirationDate;
+    }
 
-	/**
-	 * @return the token
-	 */
-	public String getToken() {
-		return token;
-	}
+    /**
+     * @return the token
+     */
+    public String getToken() {
+        return token;
+    }
 
-	/**
-	 * @param token
-	 *            the token to set
-	 */
-	public void setToken(String token) {
-		this.token = token;
-	}
+    /**
+     * @param token the token to set
+     */
+    public void setToken(String token) {
+        this.token = token;
+    }
 
 }
 
 @Root(name = "record", strict = false)
 class Record {
 
-	@Element(required = false)
-	private metadata.Header header;
+    @Element(required = false)
+    private metadata.Header header;
 
-	@Element(required = false)
-	private Metadata metadata;
+    @Element(required = false)
+    private Metadata metadata;
 
-	Record() {
-		super();
-	}
+    Record() {
+        super();
+    }
 
-	Metadata getMetadata() {
-		return metadata;
-	}
+    Metadata getMetadata() {
+        return metadata;
+    }
 
-	/**
-	 * @return the header
-	 */
-	public metadata.Header getHeader() {
-		return header;
-	}
+    /**
+     * @return the header
+     */
+    public metadata.Header getHeader() {
+        return header;
+    }
 
 }
 
 @Root(name = "error")
 class Error {
-	@Attribute
-	private String code;
-	@Text
-	private String description;
 
-	public String getCode() {
-		return code;
-	}
+    @Attribute
+    private String code;
+    @Text
+    private String description;
 
-	public String getDescription() {
-		return description;
-	}
+    public String getCode() {
+        return code;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }
 
 @Root(name = "OAI-PMH", strict = false)
 @NamespaceList({
-		@Namespace(reference = "http://www.openarchives.org/OAI/2.0/"),
-		@Namespace(reference = "http://www.w3.org/2001/XMLSchema-instance", prefix = "xsi") })
+    @Namespace(reference = "http://www.openarchives.org/OAI/2.0/"),
+    @Namespace(reference = "http://www.w3.org/2001/XMLSchema-instance", prefix = "xsi")})
 public class OaiOBAA {
-	private static Logger log = Logger.getLogger(OaiOBAA.class);
-        private static final String CHARSET = "UTF-8";
 
-	@Element
-	private String responseDate;
+    private static Logger log = Logger.getLogger(OaiOBAA.class);
+    private static final String CHARSET = "UTF-8";
 
-	@Element
-	private Request request;
+    @Element
+    private String responseDate;
 
-	@Element(required = false)
-	private Error error;
+    @Element
+    private Request request;
 
-	@ElementList(required = false)
-	private List<Record> ListRecords;
+    @Element(required = false)
+    private Error error;
 
-	OaiOBAA() {
-		super();
-	}
+    @ElementList(required = false)
+    private List<Record> ListRecords;
 
-	/**
-	 * Parses an OAI OOBAA file.
-	 * 
-	 * You should try and use this version and pass it the OAI Url, so as to
-	 * generate better error messages.
-	 * 
-	 * @param filename
-	 *            Oai OBAA XML file
-	 * @return {@link OBAAA} object generated by unserializing filename.
-	 * @throws OaiException
-	 *             if some OAI error occurs
-	 */
-	public static OaiOBAA fromFilenameWithUrl(String filename, String url)
-			throws FileNotFoundException {
-		return fromReaderWithUrl(new InputStreamReader(new FileInputStream(
-				filename), Charset.forName(CHARSET)), url);
-	}
+    OaiOBAA() {
+        super();
+    }
 
-	public static OaiOBAA fromFilename(String filename)
-			throws FileNotFoundException {
-		return fromReader(new InputStreamReader(new FileInputStream(filename),
-				Charset.forName(CHARSET)));
-	}
+    /**
+     * Parses an OAI OOBAA file.
+     *
+     * You should try and use this version and pass it the OAI Url, so as to
+     * generate better error messages.
+     *
+     * @param filename Oai OBAA XML file
+     * @return {@link OBAAA} object generated by unserializing filename.
+     * @throws OaiException if some OAI error occurs
+     */
+    public static OaiOBAA fromFilenameWithUrl(String filename, String url)
+            throws FileNotFoundException {
+        return fromReaderWithUrl(new InputStreamReader(new FileInputStream(
+                filename), Charset.forName(CHARSET)), url);
+    }
 
-	public static OaiOBAA fromFile(File file) throws FileNotFoundException {
-		return fromReader(new InputStreamReader(new FileInputStream(file),
-				Charset.forName(CHARSET)));
-	}
+    public static OaiOBAA fromFilename(String filename) throws FileNotFoundException {
+        return fromReader(new InputStreamReader(new FileInputStream(filename),
+                Charset.forName(CHARSET)));
+    }
 
-	public static OaiOBAA fromString(String s) {
-		return fromReader(new StringReader(s));
-	}
+    public static OaiOBAA fromFile(File file) throws FileNotFoundException {
+        return fromReader(new InputStreamReader(new FileInputStream(file),
+                Charset.forName(CHARSET)));
+    }
 
-	public static OaiOBAA fromReaderWithUrl(Reader s, String url) {
-		OaiOBAA oai;
-		Serializer serializer = new Persister();
+    public static OaiOBAA fromString(String s) {
+        return fromReader(new StringReader(s));
+    }
 
-		try {
-			oai = serializer.read(OaiOBAA.class, s);
-		} catch (javax.xml.stream.XMLStreamException e) {
-			if (e.getMessage().startsWith("ParseError")) {
-				throw new OaiParseErrorException("error while parsing Xml",
-						url, e);
-			} else {
-				throw new OaiException("unidentifiedException",
-						"Unidentified OAI exception", url, e);
-			}
-		} catch (java.lang.Exception e) {
-			throw new RuntimeException(e);
-		}
+    public static OaiOBAA fromReaderWithUrl(Reader s, String url) {
+        OaiOBAA oai;
+        Serializer serializer = new Persister();
 
-		// check Oai exceptions
-		if (oai.getError() != null) {
-			if ("noRecordsMatch".equals(oai.getError().getCode())) {
-				// this is not really an error, return empty set
-				oai.ListRecords = new ArrayList<Record>();
-				log.info("Got noRecords match on URL " + url);
-			} else if ("cannotDisseminateFormat".equals(oai.getError()
-					.getCode())) {
-				throw new OaiCannotDisseminateFormatException(oai.getError()
-						.getDescription(), url);
-			} else {
-				throw new OaiException(oai.getError().getCode(), oai.getError()
-						.getDescription(), url);
-			}
-		}
-		
+        try {
+            oai = serializer.read(OaiOBAA.class, s);
+        } catch (javax.xml.stream.XMLStreamException e) {
+            if (e.getMessage().startsWith("ParseError")) {
+                throw new OaiParseErrorException("error while parsing Xml",
+                        url, e);
+            } else {
+                throw new OaiException("unidentifiedException",
+                        "Unidentified OAI exception", url, e);
+            }
+        } catch (java.lang.Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        // check Oai exceptions
+        if (oai.getError() != null) {
+            if ("noRecordsMatch".equals(oai.getError().getCode())) {
+                // this is not really an error, return empty set
+                oai.ListRecords = new ArrayList<Record>();
+                log.info("Got noRecords match on URL " + url);
+            } else if ("cannotDisseminateFormat".equals(oai.getError()
+                    .getCode())) {
+                throw new OaiCannotDisseminateFormatException(oai.getError()
+                        .getDescription(), url);
+            } else {
+                throw new OaiException(oai.getError().getCode(), oai.getError()
+                        .getDescription(), url);
+            }
+        }
+
 		// check if last element was a resumption token, i.e, is null
-		// SimpleXML will build a ListRecords list assuming everything inside it is
-		// a Record, but it might also be a ResumptionToken.
-		// TODO: create a special ListRecords object
-		if(oai.ListRecords != null &&
-				oai.ListRecords.size() > 0
-				&& oai.ListRecords.get(oai.ListRecords.size()-1).getHeader() == null
-				) {
-			oai.ListRecords.remove(oai.ListRecords.size()-1);
-		}
+        // SimpleXML will build a ListRecords list assuming everything inside it is
+        // a Record, but it might also be a ResumptionToken.
+        // TODO: create a special ListRecords object
+        if (oai.ListRecords != null
+                && oai.ListRecords.size() > 0
+                && oai.ListRecords.get(oai.ListRecords.size() - 1).getHeader() == null) {
+            oai.ListRecords.remove(oai.ListRecords.size() - 1);
+        }
 
-		return oai;
-	}
+        return oai;
+    }
 
-	@Deprecated
-	public static OaiOBAA fromReader(Reader s) {
-		return fromReaderWithUrl(s, "no url informed");
-	}
+    @Deprecated
+    public static OaiOBAA fromReader(Reader s) {
+        return fromReaderWithUrl(s, "no url informed");
+    }
 
-	public void toFilename(String filename) throws FileNotFoundException {
-		OutputStreamWriter o = new OutputStreamWriter(new FileOutputStream(
-				filename), Charset.forName(CHARSET));
-		toWriter(o);
-	}
+    public void toFilename(String filename) throws FileNotFoundException {
+        OutputStreamWriter o = new OutputStreamWriter(new FileOutputStream(
+                filename), Charset.forName(CHARSET));
+        toWriter(o);
+    }
 
-	
-	public String toString() {
-		return toXml();
-	}
+    public String toString() {
+        return toXml();
+    }
 
-	/**
-	 * Writes the serialized form if this object to a Write
-	 * @param destination
-	 * @throws ObaaParseException in case an error occurs while parsing
-	 */
-	private void toWriter(Writer s){
-		Serializer serializer = new Persister();
-		try {
-			serializer.write(this, s);
-		} catch (java.lang.Exception e) {
-			throw new ObaaParseException("Error while serializing", e);
-		}
-	}
+    /**
+     * Writes the serialized form if this object to a Write
+     *
+     * @param destination
+     * @throws ObaaParseException in case an error occurs while parsing
+     */
+    private void toWriter(Writer s) {
+        Serializer serializer = new Persister();
+        try {
+            serializer.write(this, s);
+        } catch (java.lang.Exception e) {
+            throw new ObaaParseException("Error while serializing", e);
+        }
+    }
 
-	/**
-	 * Gets the size.
-	 * 
-	 * @return the number of ListRecords present in the OAI File.
-	 */
-	public int getSize() {
-		if (ListRecords == null) {
-			log.error("ListRecords should never be null, something is wrong!!!");
-			return 0;
-		}
-		return ListRecords.size();
-	}
+    /**
+     * Gets the size.
+     *
+     * @return the number of ListRecords present in the OAI File.
+     */
+    public int getSize() {
+        if (ListRecords == null) {
+            log.error("ListRecords should never be null, something is wrong!!!");
+            return 0;
+        }
+        return ListRecords.size();
+    }
 
-	/**
-	 * Gets the metadata (OBAA).
-	 * 
-	 * @param index
-	 *            the index
-	 * @return the metadata in OBAA format or NULL in case it represents a
-	 *         deleted document.
-	 */
-	public OBAA getMetadata(int index) {
-		if (ListRecords.get(index).getMetadata() != null) {
-			return ListRecords.get(index).getMetadata().getLom();
-		} else {
-			return null;
-		}
-	}
+    /**
+     * Gets the metadata (OBAA).
+     *
+     * @param index the index
+     * @return the metadata in OBAA format or NULL in case it represents a
+     * deleted document.
+     */
+    public OBAA getMetadata(int index) {
+        if (ListRecords.get(index).getMetadata() != null) {
+            return ListRecords.get(index).getMetadata().getLom();
+        } else {
+            return null;
+        }
+    }
 
-	public Header getHeader(int index) {
-		return ListRecords.get(index).getHeader();
-	}
+    public Header getHeader(int index) {
+        return ListRecords.get(index).getHeader();
+    }
 
-	public Request getRequest() {
-		return request;
-	}
+    public Request getRequest() {
+        return request;
+    }
 
-	/**
-	 * 
-	 * @return {@link String} containing the XML corresponding to the current
-	 *         object.
-	 * @throws ObaaParseException
-	 *             In case a serializing error occurs
-	 */
-	public String toXml() {
-		StringWriter s = new StringWriter();
-		toWriter(s);
-		return s.toString();
-	}
+    /**
+     *
+     * @return {@link String} containing the XML corresponding to the current
+     * object.
+     * @throws ObaaParseException In case a serializing error occurs
+     */
+    public String toXml() {
+        StringWriter s = new StringWriter();
+        toWriter(s);
+        return s.toString();
+    }
 
-	/**
-	 * @return the responseDate
-	 */
-	public String getResponseDate() {
-		return responseDate;
-	}
+    /**
+     * @return the responseDate
+     */
+    public String getResponseDate() {
+        return responseDate;
+    }
 
-	/**
-	 * @param responseDate
-	 *            the responseDate to set
-	 */
-	public void setResponseDate(String responseDate) {
-		this.responseDate = responseDate;
-	}
+    /**
+     * @param responseDate the responseDate to set
+     */
+    public void setResponseDate(String responseDate) {
+        this.responseDate = responseDate;
+    }
 
-	/**
-	 * @return the error
-	 */
-	Error getError() {
-		return error;
-	}
+    /**
+     * @return the error
+     */
+    Error getError() {
+        return error;
+    }
 
-	/**
-	 * @param error
-	 *            the error to set
-	 */
-	void setError(Error error) {
-		this.error = error;
-	}
+    /**
+     * @param error the error to set
+     */
+    void setError(Error error) {
+        this.error = error;
+    }
 }
