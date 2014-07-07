@@ -6,7 +6,7 @@ os valores possíveis para cada metadado e ainda obter a tradução de seus valo
 
 A partir do objeto OBAA, é possível também, gerar o XML no padrão e um JSON para exibição na web, este em português e em inglês. 
 
-Mais informações sobre o padrão de metadados OBAA s encontra em http://www.portalobaa.org/
+Mais informações sobre o padrão de metadados OBAA se encontra em http://www.portalobaa.org/
 
 Licença
 -------------------------------------------------------------
