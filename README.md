@@ -1,7 +1,12 @@
 Biblioteca OBAA para Java
 =====================================================
+Biblioteca que implementa o padrão de metadados OBAA em Java. 
+Com ela é possível instanciar e gerar objetos OBAA a partir de um XML no padrão, além de se obter 
+os valores possíveis para cada metadado e ainda obter a tradução de seus valores em português.
 
-Com a biblioteca é possível instanciar e gerar objetos OBAA a partir de XML no padrão, além de se obter os valores possíveis para cada metadado e ainda obter a tradução de seus valores em português.
+A partir do objeto OBAA, é possível também, gerar o XML no padrão e um JSON para exibição na web, este em português e em inglês. 
+
+Mais informações sobre o padrão de metadados OBAA s encontra em http://www.portalobaa.org/
 
 Licença
 -------------------------------------------------------------
@@ -10,8 +15,6 @@ A biblioteca OBAA para Java está liberada sob licença LGPL (http://www.gnu.org
 
 Maven
 -------------------------------------------------------------
-
-A biblioteca pode ser baixada pelo link ou pelo maven com os seguintes valores:
 
 ### Repositório ###
 ```
@@ -41,4 +44,5 @@ Contato
 -------------------------------------------------------------
 
 A biblioteca é mantida pela Cognitiva Brasil http://cognitivabrasil.com.br
+
 Se estiver interessado em colaborar com esse projeto entre em contato pelo e-mail contato@cognitivabrasil.com.br
