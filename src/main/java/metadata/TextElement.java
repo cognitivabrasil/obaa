@@ -86,13 +86,16 @@ public class TextElement {
         text = t;
     }
 
+    /**
+     * @return
+     */
     public String getTranslated() {
 
-        if (text == null) {
+        if (getText().equals("")) {
             return "";
         } else {
 
-            if (language.equals("") && country.equals("")) {
+            if (getLanguage().equals("") && getCountry().equals("")) {
                 log.debug("Language not set " + this.getText());
                 return (this.getText());
             }
@@ -101,17 +104,26 @@ public class TextElement {
                 Locale currentLocale;
                 ResourceBundle messages;
 
-                currentLocale = new Locale(language, country);
+                currentLocale = new Locale(getLanguage(), getCountry());
 
                 messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
 
-                return (messages.getString(text));
+                return (messages.getString(getCanonicalTextForTranslation()));
             } catch (MissingResourceException e) {
                 log.info("Can not translate " + this.getText() + " " + e);
                 return (this.getText());
             }
 
         }
+    }
+    
+    /**
+     * Override this to process text before it is translated.
+     * 
+     * @return the text
+     */
+    protected String getCanonicalTextForTranslation() {
+        return getText();
     }
 
     public String getText() {

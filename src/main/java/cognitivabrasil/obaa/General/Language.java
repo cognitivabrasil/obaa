@@ -12,7 +12,10 @@
 package cognitivabrasil.obaa.General;
 
 import metadata.TextElement;
+
 import org.simpleframework.xml.Namespace;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -22,7 +25,26 @@ import org.simpleframework.xml.Namespace;
  */
 @Namespace(reference="http://ltsc.ieee.org/xsd/LOM", prefix="obaa")
 public class Language extends TextElement {
+    private static final Logger log = LoggerFactory.getLogger(Language.class);
+    
 	public Language() {}
 	public Language(String t) {super(t);}
 	
+	/**
+	 * Will strip country part, ie, for en-US or en-US this will look up "en".
+	 * 
+	 * @return stripped language code, or literal text
+	 **/
+	@Override
+    public String getCanonicalTextForTranslation() {
+	    if(getText().length() == 5 &&
+	            (getText().charAt(2) == '-' ||
+	            getText().charAt(2) == '_')
+	            ) {
+	        return getText().substring(0, 2);
+	    }
+	    else {
+	        return getText();
+	    }
+    }
 }

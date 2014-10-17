@@ -11,9 +11,14 @@ import cognitivabrasil.obaa.General.Structure;
 import cognitivabrasil.obaa.Technical.OrComposite;
 import cognitivabrasil.obaa.Technical.Requirement;
 import cognitivabrasil.obaa.Technical.Technical;
+import static cognitivabrasil.obaa.builder.ObaaBuilder.buildObaa;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
+
 import org.junit.Test;
+
+import com.jayway.jsonassert.JsonAssert;
 
 /**
  *
@@ -94,5 +99,5 @@ public class JsonTest {
         
         assertThat(json, equalTo(correctJson));
     }
-
+    
 }
