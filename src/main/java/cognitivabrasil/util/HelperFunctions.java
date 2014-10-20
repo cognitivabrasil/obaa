@@ -10,8 +10,11 @@ package cognitivabrasil.util;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import metadata.TextElement;
-import org.apache.log4j.Logger;
 
 /**
  * Classe com m&eacute;todos que efetuam opera&ccedil;otilde;es diversas. Como
@@ -24,7 +27,7 @@ import org.apache.log4j.Logger;
 public final class HelperFunctions {
    
     private HelperFunctions(){}
-    private static Logger log = Logger.getLogger(HelperFunctions.class);
+    private static Logger log = LoggerFactory.getLogger(HelperFunctions.class);
 
     public static List<String> toStringList(List<? extends TextElement> elements) {
         List<String> s = new ArrayList<String>();
@@ -53,9 +56,9 @@ public final class HelperFunctions {
                 element.setText(text);
                 l.add(element);
             } catch (InstantiationException e) {
-                log.error(e);
+                log.error("Erro na reflexão", e);
             } catch (IllegalAccessException e) {                
-                log.error(e);
+                log.error("Erro na reflexão", e);
             }
 
         }

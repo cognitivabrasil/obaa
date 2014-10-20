@@ -16,8 +16,10 @@ import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
-import org.apache.log4j.Logger;
+
 import org.simpleframework.xml.Text;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -32,7 +34,7 @@ public class TextElement {
     private String language;
     private String country;
     private List<String> listOfTerms;
-    private static final Logger log = Logger.getLogger(TextElement.class);
+    private static final Logger log = LoggerFactory.getLogger(TextElement.class);
 
     public TextElement() {
         language = "";
@@ -52,7 +54,12 @@ public class TextElement {
     }
 
     public void setLanguage(String language) {
-        this.language = language;
+        if(language.contains("-")) {
+            setLocale(language);
+        }
+        else {
+            this.language = language;
+        }
     }
 
     public String getCountry() {
@@ -86,16 +93,13 @@ public class TextElement {
         text = t;
     }
 
-    /**
-     * @return
-     */
     public String getTranslated() {
 
-        if (getText().equals("")) {
+        if (text == null) {
             return "";
         } else {
 
-            if (getLanguage().equals("") && getCountry().equals("")) {
+            if (language.equals("") && country.equals("")) {
                 log.debug("Language not set " + this.getText());
                 return (this.getText());
             }
@@ -104,10 +108,10 @@ public class TextElement {
                 Locale currentLocale;
                 ResourceBundle messages;
 
-                currentLocale = new Locale(getLanguage(), getCountry());
+                currentLocale = new Locale(language, country);
 
                 messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
-
+                
                 return (messages.getString(getCanonicalTextForTranslation()));
             } catch (MissingResourceException e) {
                 log.info("Can not translate " + this.getText() + " " + e);

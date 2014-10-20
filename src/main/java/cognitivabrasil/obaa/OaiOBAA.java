@@ -31,7 +31,6 @@ import java.util.List;
 import metadata.Header;
 import metadata.Request;
 
-import org.apache.log4j.Logger;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
@@ -41,6 +40,8 @@ import org.simpleframework.xml.Root;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.Text;
 import org.simpleframework.xml.core.Persister;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -157,7 +158,7 @@ class Error {
     @Namespace(reference = "http://www.w3.org/2001/XMLSchema-instance", prefix = "xsi")})
 public class OaiOBAA {
 
-    private static Logger log = Logger.getLogger(OaiOBAA.class);
+    private static Logger log = LoggerFactory.getLogger(OaiOBAA.class);
     private static final String CHARSET = "UTF-8";
 
     @Element

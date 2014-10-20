@@ -17,7 +17,9 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class is a basic implementation of {@link MetadataConversorInterface}
@@ -30,7 +32,7 @@ import org.apache.log4j.Logger;
  */
 public class XsltConversor implements MetadataConversorInterface {
 
-    private static Logger log = Logger.getLogger(TextElement.class);
+    private static Logger log = LoggerFactory.getLogger(TextElement.class);
     private Transformer t;
 
     /**

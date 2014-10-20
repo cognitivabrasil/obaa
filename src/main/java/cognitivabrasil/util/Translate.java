@@ -5,11 +5,12 @@
  */
 package cognitivabrasil.util;
 
-import java.util.IllegalFormatException;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -17,7 +18,7 @@ import org.apache.log4j.Logger;
  */
 public class Translate {
 
-    private static final Logger log = Logger.getLogger(Translate.class);
+    private static final Logger log = LoggerFactory.getLogger(Translate.class);
 
     public static final String LANG_PT = "pt";
     public static final String LANG_EN = "en";

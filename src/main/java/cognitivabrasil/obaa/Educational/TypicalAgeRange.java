@@ -29,10 +29,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 import metadata.TextElement;
-import org.apache.log4j.Logger;
+
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <div class="en">
@@ -63,7 +66,7 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class TypicalAgeRange extends TextElement {
 
-    private static Logger log = Logger.getLogger(TypicalAgeRange.class);
+    private static Logger log = LoggerFactory.getLogger(TypicalAgeRange.class);
 
     public TypicalAgeRange() {
     }
