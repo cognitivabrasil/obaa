@@ -97,12 +97,10 @@ public class SegmentGroupInformation {
     }
 
     public void setKeywords(List<Keyword> keywords) {
-        this.keywords = new ArrayList<Keyword>();
         this.keywords = keywords;
     }
 
     public void setSegments(Segments segments) {
-        this.segments = new Segments();
         this.segments = segments;
     }
 
