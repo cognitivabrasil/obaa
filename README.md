@@ -36,7 +36,7 @@ Maven
 <dependency>
     <groupId>cognitivabrasil</groupId>
     <artifactId>obaa</artifactId>
-    <version>2.2-SNAPSHOT</version>
+    <version>2.2</version>
 </dependency>
 ```
 
