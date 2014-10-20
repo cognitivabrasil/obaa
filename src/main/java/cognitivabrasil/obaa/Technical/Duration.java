@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
+ * Copyright (c) 2014 Cognitiva Brasil - Tecnologias educacionais.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@ package cognitivabrasil.obaa.Technical;
 import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import metadata.TextElement;
 
 /**
@@ -80,6 +81,36 @@ public class Duration extends TextElement {
         }
 
         this.setText(builder.toString());
+    }
+    
+    /**
+     * Retorna hora traduzida.
+     **/
+    @Override
+    public String getTranslated() {
+        String hourString = "";
+        String joinHourMinute = "";
+        String minuteString = "";
+                
+        if(hours == 1) {      
+            hourString = "1 hora";
+        }
+        else if (hours > 1) {
+            hourString = hours + " horas";
+        }
+        
+        if(minutes > 1) {
+            minuteString = minutes + " minutos";
+        }
+        else if(minutes == 1) {
+            minuteString = "1 minuto";
+        }
+        
+        if(hours > 0 && minutes > 0) {
+            joinHourMinute = " e ";
+        }
+        
+        return hourString + joinHourMinute + minuteString;        
     }
 
     public String getDuration() {
@@ -155,5 +186,33 @@ public class Duration extends TextElement {
         if (!matcher.matches()) {
             throw new IllegalArgumentException(ERRORMESSAGE);
         }
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + hours;
+        result = prime * result + minutes;
+        result = prime * result + seconds;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!super.equals(obj))
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Duration other = (Duration) obj;
+        if (hours != other.hours)
+            return false;
+        if (minutes != other.minutes)
+            return false;
+        if (seconds != other.seconds)
+            return false;
+        return true;
     }
 }
