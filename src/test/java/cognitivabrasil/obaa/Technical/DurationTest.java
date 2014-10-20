@@ -48,4 +48,13 @@ public class DurationTest {
         assertThat(d.getTranslated(), equalTo("3 horas e 15 minutos"));
     }
     
+    @Test
+    public void funcionaComSetText() {
+        Duration d = new Duration();
+        d.setText("PT3H15M");
+        d.setLanguage("pt-BR");
+        
+        assertThat(d.getTranslated(), equalTo("3 horas e 15 minutos"));
+    }
+    
 }

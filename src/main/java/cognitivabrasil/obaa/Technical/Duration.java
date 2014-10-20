@@ -11,6 +11,11 @@ import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.xml.datatype.DatatypeFactory;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import metadata.TextElement;
 
 /**
@@ -34,6 +39,7 @@ import metadata.TextElement;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 public class Duration extends TextElement {
+    private static final Logger log = LoggerFactory.getLogger(Duration.class);
     
     private int seconds;
     private int minutes;
@@ -80,7 +86,7 @@ public class Duration extends TextElement {
             builder.append("S");
         }
 
-        this.setText(builder.toString());
+        super.setText(builder.toString());
     }
     
     /**
@@ -88,6 +94,10 @@ public class Duration extends TextElement {
      **/
     @Override
     public String getTranslated() {
+        if(hours == 0 && minutes == 0 && seconds == 0) {
+            setText(super.getText());
+        }
+        
         String hourString = "";
         String joinHourMinute = "";
         String minuteString = "";
@@ -116,6 +126,36 @@ public class Duration extends TextElement {
     public String getDuration() {
 
         return this.getText();
+    }
+    
+    @Override
+    public void setText(String value) {
+        String regEx = "P(\\d+Y)?(\\d+M)?(\\d+D)?(T(((\\d+)H)?((\\d+)M)?((\\d+)S)?))?";
+        
+        Pattern pattern = Pattern.compile(regEx);
+        Matcher matcher;
+
+        matcher = pattern.matcher(value);
+        
+        if (matcher.find()) {       
+            String hourString = matcher.group(7);
+            String minuteString = matcher.group(9);
+            String secondString = matcher.group(10);
+            
+            if(hourString != null) {
+                this.set(Integer.valueOf(hourString), Calendar.HOUR);
+            }
+            if(minuteString != null) {
+                this.set(Integer.valueOf(minuteString), Calendar.MINUTE);
+            }
+//            if(secondString != null) {
+//                this.set(Integer.valueOf(secondString), Calendar.SECOND);
+//            }
+        }
+        else {
+            log.warn("Não conseguiu fazer parsing da data: {}", value);
+        }
+
     }
     
     /*
