@@ -1228,6 +1228,29 @@ public class OBAATest {
         assertThat(obaa.getLifeCycle().getContribute().get(0).getEntitiesReal().get(0).getName(), equalTo("Ministério da Educação do Brasil"));
 
     }
+    
+    @Test
+    public void testVCardTransated() {
+        OBAA obaa = new OBAA();
+        obaa.setLifeCycle(new LifeCycle());
+        cognitivabrasil.obaa.LifeCycle.Contribute contribute = new cognitivabrasil.obaa.LifeCycle.Contribute();
+
+        Entity e = new Entity();
+        e.setName("Ministério da Educação", "do Brasil");
+        contribute.addEntity(e);
+        obaa.getLifeCycle().addContribute(contribute);
+
+        obaa.getLifeCycle().getContribute().get(0).getEntitiesReal().get(0).getName();
+
+        assertThat(obaa.getLifeCycle().getContribute().get(0).getEntitiesReal().get(0).getTranslated(), equalTo("Ministério da Educação do Brasil"));
+        
+        Entity e2 = new Entity();
+        e2.setText("José da Silva");
+        
+        assertThat (e2.getTranslated(),equalTo("José da Silva"));
+        
+
+    }
 
     @Test
     public void testOBAA_Duration() throws FileNotFoundException {

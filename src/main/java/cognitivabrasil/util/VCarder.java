@@ -22,6 +22,7 @@ public class VCarder {
     private VCardEngine vcardEngine;
     private VCard vcard;
     private VCardWriter writer;
+    private boolean empty = true;
 
     public VCarder() {
         vcardEngine = new VCardEngine();
@@ -36,6 +37,7 @@ public class VCarder {
 
     public void setName(String givenName, String familyName) {
       
+        empty = false;
         String fullName = givenName+" "+familyName;
         setCompatibilityMode(CompatibilityMode.RFC2426);   
         
@@ -62,6 +64,10 @@ public class VCarder {
     
     public String getFullName(){         
         return (vcard.getName().getGivenName()+" "+vcard.getName().getFamilyName());
+    }
+    
+    public boolean isEmpty(){
+        return this.empty;
     }
     
 }
