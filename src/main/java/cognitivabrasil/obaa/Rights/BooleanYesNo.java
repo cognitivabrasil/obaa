@@ -9,9 +9,11 @@
 package cognitivabrasil.obaa.Rights;
 
 import metadata.TextElement;
-import org.apache.log4j.Logger;
+
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -23,7 +25,7 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class BooleanYesNo extends TextElement {
 
-    private static final Logger LOG = Logger.getLogger(BooleanYesNo.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BooleanYesNo.class);
     public static final String YES = "yes";
     public static final String NO = "no";
     public static final String TRUE = "true";

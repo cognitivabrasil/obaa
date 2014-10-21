@@ -20,7 +20,9 @@ import cognitivabrasil.obaa.Relation.Relation;
 import cognitivabrasil.obaa.Rights.Rights;
 import cognitivabrasil.obaa.SegmentInformationTable.SegmentInformationTable;
 import cognitivabrasil.obaa.Technical.Technical;
+
 import com.rits.cloning.Cloner;
+
 import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
@@ -30,10 +32,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+
 import metadata.TextElement;
-import org.apache.log4j.Logger;
+
 import org.simpleframework.xml.*;
 import org.simpleframework.xml.core.Persister;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -50,7 +55,7 @@ import org.simpleframework.xml.core.Persister;
     @Namespace(reference = "http://www.w3.org/2001/XMLSchema-instance", prefix = "xsi")})
 public class OBAA implements Cloneable {
 
-    private static final Logger LOG = Logger.getLogger(OBAA.class);
+    private static final Logger LOG = LoggerFactory.getLogger(OBAA.class);
     @Attribute(name = "xsi:schemaLocation", empty = "http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/obaav1.0/lom.xsd", required = false)
 
     // não é muito elegante, mas funciona.
@@ -388,14 +393,14 @@ public class OBAA implements Cloneable {
                     }
 
                 } catch (SecurityException e) {
-                    LOG.fatal(e);
+                    LOG.error("Erro na reflexão", e);
                 } catch (NoSuchFieldException e) {
-                    LOG.fatal("BUG! No such field: " + base + " on class "
+                    LOG.error("BUG! No such field: " + base + " on class "
                             + currentClass.getName());
                 } catch (IllegalAccessException e) {
-                    LOG.fatal(e);
+                    LOG.error("Erro na reflexão", e);
                 } catch (InstantiationException e) {
-                    LOG.fatal(e);
+                    LOG.error("Erro na reflexão", e);
                 }
             }
 
@@ -469,12 +474,12 @@ public class OBAA implements Cloneable {
                 }
 
             } catch (IllegalArgumentException e) {
-                LOG.error(e);
+                LOG.error("Erro na reflexão", e);
 
             } catch (IllegalAccessException e) {
-                LOG.error(e);
+                LOG.error("Erro na reflexão", e);
             } catch (SecurityException e) {
-                LOG.error(e);
+                LOG.error("Erro na reflexão", e);
             }
         }
     }

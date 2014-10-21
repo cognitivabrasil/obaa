@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
+ * Copyright (c) 2014 Cognitiva Brasil - Tecnologias educacionais.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
@@ -10,6 +10,13 @@ package cognitivabrasil.obaa.Technical;
 import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.xml.datatype.DatatypeFactory;
+
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import metadata.TextElement;
 
 /**
@@ -33,6 +40,7 @@ import metadata.TextElement;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 public class Duration extends TextElement {
+    private static final Logger log = LoggerFactory.getLogger(Duration.class);
     
     private int seconds;
     private int minutes;
@@ -79,12 +87,78 @@ public class Duration extends TextElement {
             builder.append("S");
         }
 
-        this.setText(builder.toString());
+        super.setText(builder.toString());
+    }
+    
+    /**
+     * Retorna hora traduzida.
+     **/
+    @Override
+    public String getTranslated() {
+        if(hours == 0 && minutes == 0 && seconds == 0) {
+            setText(super.getText());
+        }
+        
+        String hourString = "";
+        String joinHourMinute = "";
+        String minuteString = "";
+                
+        if(hours == 1) {      
+            hourString = "1 hora";
+        }
+        else if (hours > 1) {
+            hourString = hours + " horas";
+        }
+        
+        if(minutes > 1) {
+            minuteString = minutes + " minutos";
+        }
+        else if(minutes == 1) {
+            minuteString = "1 minuto";
+        }
+        
+        if(hours > 0 && minutes > 0) {
+            joinHourMinute = " e ";
+        }
+        
+        return hourString + joinHourMinute + minuteString;        
     }
 
     public String getDuration() {
 
         return this.getText();
+    }
+    
+    @Override
+    public void setText(String value) {
+        String regEx = "P(\\d+Y)?(\\d+M)?(\\d+D)?(T(((\\d+)H)?((\\d+)M)?((\\d+)S)?))?";
+        
+        Pattern pattern = Pattern.compile(regEx);
+        Matcher matcher;
+
+        matcher = pattern.matcher(value);
+        
+        if (matcher.find()) {       
+            String hourString = matcher.group(7);
+            String minuteString = matcher.group(9);
+            String secondString = matcher.group(10);
+            
+            if(hourString != null) {
+                this.set(Integer.valueOf(hourString), Calendar.HOUR);
+            }
+            if(minuteString != null) {
+                this.set(Integer.valueOf(minuteString), Calendar.MINUTE);
+            }
+//            if(secondString != null) {
+//                this.set(Integer.valueOf(secondString), Calendar.SECOND);
+//            }
+        }
+        else {
+            if(!StringUtils.isBlank(value)) {
+                log.warn("Não conseguiu fazer parsing da data: {}", value);
+            }
+        }
+
     }
     
     /*
@@ -155,5 +229,33 @@ public class Duration extends TextElement {
         if (!matcher.matches()) {
             throw new IllegalArgumentException(ERRORMESSAGE);
         }
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + hours;
+        result = prime * result + minutes;
+        result = prime * result + seconds;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!super.equals(obj))
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Duration other = (Duration) obj;
+        if (hours != other.hours)
+            return false;
+        if (minutes != other.minutes)
+            return false;
+        if (seconds != other.seconds)
+            return false;
+        return true;
     }
 }

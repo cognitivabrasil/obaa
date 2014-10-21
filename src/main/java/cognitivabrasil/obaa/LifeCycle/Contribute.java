@@ -52,7 +52,7 @@ public class Contribute {
 
     @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM")
     @Element(required=false)
-    private String date;
+    private LifeCycleDate date;
   
     public Contribute() {  
         entity = new ArrayList<Entity>();
@@ -74,6 +74,11 @@ public class Contribute {
     }
     
     public void setDate(String date) {
+        this.date = new LifeCycleDate();
+        this.date.setText(date);
+    }
+    
+    public void setDate(LifeCycleDate date) {
         this.date = date;
     }
 
@@ -102,7 +107,7 @@ public class Contribute {
         this.entity.add(e);
     }
 
-    public String getDate() {
+    public LifeCycleDate getDate() {
         return date;
     }
     

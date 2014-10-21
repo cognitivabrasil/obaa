@@ -9,9 +9,12 @@ package cognitivabrasil.obaa.Metametadata;
 
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import cognitivabrasil.obaa.LifeCycle.Entity;
+import cognitivabrasil.obaa.LifeCycle.LifeCycleDate;
 import static cognitivabrasil.util.HelperFunctions.toStringList;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
@@ -45,9 +48,10 @@ public class Contribute {
     private Role role;
     @ElementList(inline = true, required = false)
     private List<Entity> entity;
+    
     @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM")
-    @Element(required = false)
-    private String date;
+    @Element(required=false)
+    private LifeCycleDate date;
 
     public Contribute() {
         super();
@@ -69,6 +73,11 @@ public class Contribute {
     }
 
     public void setDate(String date) {
+        this.date = new LifeCycleDate();
+        this.date.setText(date);
+    }
+    
+    public void setDate(LifeCycleDate date) {
         this.date = date;
     }
 
@@ -92,7 +101,7 @@ public class Contribute {
         this.entity.add(e);
     }
 
-    public String getDate() {
+    public LifeCycleDate getDate() {
         return date;
     }
 

@@ -10,8 +10,10 @@ package cognitivabrasil.obaa.Technical;
 
 import cognitivabrasil.util.MimeType;
 import metadata.TextElement;
-import org.apache.log4j.Logger;
+
 import org.simpleframework.xml.Namespace;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -23,7 +25,7 @@ import org.simpleframework.xml.Namespace;
 public class Format extends TextElement {
 
     MimeType mimeType;
-    private static final Logger log = Logger.getLogger(Format.class);
+    private static final Logger log = LoggerFactory.getLogger(Format.class);
     String category;
 
     public Format() {

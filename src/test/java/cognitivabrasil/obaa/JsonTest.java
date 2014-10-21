@@ -5,15 +5,17 @@
  */
 package cognitivabrasil.obaa;
 
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
+
+import org.junit.Test;
+
 import cognitivabrasil.obaa.General.General;
 import cognitivabrasil.obaa.General.Identifier;
 import cognitivabrasil.obaa.General.Structure;
 import cognitivabrasil.obaa.Technical.OrComposite;
 import cognitivabrasil.obaa.Technical.Requirement;
 import cognitivabrasil.obaa.Technical.Technical;
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
-import org.junit.Test;
 
 /**
  *
@@ -94,5 +96,5 @@ public class JsonTest {
         
         assertThat(json, equalTo(correctJson));
     }
-
+    
 }

@@ -16,8 +16,10 @@ import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
-import org.apache.log4j.Logger;
+
 import org.simpleframework.xml.Text;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -32,7 +34,7 @@ public class TextElement {
     private String language;
     private String country;
     private List<String> listOfTerms;
-    private static final Logger log = Logger.getLogger(TextElement.class);
+    private static final Logger log = LoggerFactory.getLogger(TextElement.class);
 
     public TextElement() {
         language = "";
@@ -52,7 +54,12 @@ public class TextElement {
     }
 
     public void setLanguage(String language) {
-        this.language = language;
+        if(language.contains("-")) {
+            setLocale(language);
+        }
+        else {
+            this.language = language;
+        }
     }
 
     public String getCountry() {
@@ -104,14 +111,23 @@ public class TextElement {
                 currentLocale = new Locale(language, country);
 
                 messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
-
-                return (messages.getString(text));
+                
+                return (messages.getString(getCanonicalTextForTranslation()));
             } catch (MissingResourceException e) {
-                log.info("Can not translate " + this.getText() + " " + e);
+                log.debug("Can not translate " + this.getText() + " " + e);
                 return (this.getText());
             }
 
         }
+    }
+    
+    /**
+     * Override this to process text before it is translated.
+     * 
+     * @return the text
+     */
+    protected String getCanonicalTextForTranslation() {
+        return getText();
     }
 
     public String getText() {

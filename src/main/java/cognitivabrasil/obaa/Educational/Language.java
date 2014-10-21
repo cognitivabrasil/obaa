@@ -38,7 +38,7 @@ import org.simpleframework.xml.Root;
 
 @Root(strict=false)
 @Namespace(reference="http://ltsc.ieee.org/xsd/LOM", prefix="obaa")
-public class Language extends TextElement {
+public class Language extends cognitivabrasil.obaa.General.Language {
     public Language() {
     }
     

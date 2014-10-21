@@ -18,7 +18,7 @@ import java.io.File;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.log4j.Logger;
+
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
@@ -26,6 +26,8 @@ import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.NamespaceList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -147,7 +149,7 @@ public class DublinCore {
 @Attribute(name="xsi:schemaLocation", empty="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd", required=false)
 	private String xsi_schema; //não é muito elegante, mas funciona.
 
-    private static Logger log = Logger.getLogger(DublinCore.class);
+    private static Logger log = LoggerFactory.getLogger(DublinCore.class);
 	
 
 	/**

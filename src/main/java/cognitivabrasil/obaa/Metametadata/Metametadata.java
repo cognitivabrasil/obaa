@@ -69,7 +69,7 @@ public class Metametadata {
     private List <MetadataSchema> metadataSchema;
     @Element (required = false)
     @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM")
-    private String language;
+    private Language language;
     
     public Metametadata() {
         
@@ -91,8 +91,8 @@ public class Metametadata {
         this.metadataSchema.add(schema);
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
+    public void setLanguage(Language l) {
+        this.language = l;
     }
 
     public List<Contribute> getContribute() {
@@ -112,7 +112,7 @@ public class Metametadata {
         this.metadataSchema.add(newMetadataSchema);
     }
           
-    public String getLanguage() {
+    public Language getLanguage() {
         return language;
     }
 }
