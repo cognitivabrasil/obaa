@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 
 import javax.xml.datatype.DatatypeFactory;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -153,7 +154,9 @@ public class Duration extends TextElement {
 //            }
         }
         else {
-            log.warn("Não conseguiu fazer parsing da data: {}", value);
+            if(!StringUtils.isBlank(value)) {
+                log.warn("Não conseguiu fazer parsing da data: {}", value);
+            }
         }
 
     }
