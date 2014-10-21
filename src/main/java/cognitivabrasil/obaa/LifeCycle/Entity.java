@@ -3,7 +3,7 @@
  * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais. All rights reserved. This program and the
  * accompanying materials are made available under the terms of the GNU Lesser Public License v3 which accompanies this
  * distribution, and is available at http://www.gnu.org/licenses/lgpl.html
- *****************************************************************************
+ * ****************************************************************************
  */
 /*
  * OBAA - Agent Based Leanring Objetcs
@@ -25,15 +25,19 @@
 package cognitivabrasil.obaa.LifeCycle;
 
 import cognitivabrasil.util.VCarder;
+import java.io.IOException;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class Entity extends TextElement {
 
     private VCarder name;
+    Logger log = LoggerFactory.getLogger(Entity.class);
 
     public Entity() {
         name = new VCarder();
@@ -63,8 +67,17 @@ public class Entity extends TextElement {
 
     @Override
     public String getTranslated() {
-        if (!this.name.isEmpty()) {
-            return name.getFullName();
+
+        if (super.getTranslated().startsWith("BEGIN:VCARD")) {
+            try {
+                this.name.setVcard(this.getText());
+                return this.name.getFullName();
+
+            } catch (IOException e) {
+               log.error("Uma entidade foi entendida como um VCard por começar com \"BEGIN:VCARD\", mas nao foi possivel fazer o parse.", e);
+               return super.getTranslated();
+            }
+
         } else {
             return super.getTranslated();
         }

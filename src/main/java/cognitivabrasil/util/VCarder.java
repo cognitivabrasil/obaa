@@ -1,5 +1,6 @@
 package cognitivabrasil.util;
 
+import java.io.IOException;
 import net.sourceforge.cardme.engine.VCardEngine;
 import net.sourceforge.cardme.io.BinaryFoldingScheme;
 import net.sourceforge.cardme.io.CompatibilityMode;
@@ -60,6 +61,10 @@ public class VCarder {
      
     public String getVCard(){        
         return (writer.buildVCardString());
+    }
+    
+    public void setVcard(String VCard) throws IOException{
+        vcard = vcardEngine.parse(VCard);
     }
     
     public String getFullName(){         
