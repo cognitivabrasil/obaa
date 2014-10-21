@@ -114,7 +114,7 @@ public class TextElement {
                 
                 return (messages.getString(getCanonicalTextForTranslation()));
             } catch (MissingResourceException e) {
-                log.info("Can not translate " + this.getText() + " " + e);
+                log.debug("Can not translate " + this.getText() + " " + e);
                 return (this.getText());
             }
 

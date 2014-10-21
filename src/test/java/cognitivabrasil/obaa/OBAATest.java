@@ -248,7 +248,7 @@ public class OBAATest {
     public void testOBAA_LifeCycle_Contribute_Date() throws FileNotFoundException {
         assert (!(l.getLifeCycle() == null));
         assert (!(l.getLifeCycle().getContribute() == null));
-        assertThat(l.getLifeCycle().getContribute().get(0).getDate(), equalTo("2011-09-09T21:08:38Z"));
+        assertThat(l.getLifeCycle().getContribute().get(0).getDate().getText(), equalTo("2011-09-09T21:08:38Z"));
     }
 
     @Test
