@@ -17,7 +17,6 @@ import cognitivabrasil.obaa.Educational.Educational;
 import cognitivabrasil.obaa.Educational.IntendedEndUserRole;
 import cognitivabrasil.obaa.Educational.Interaction;
 import cognitivabrasil.obaa.Educational.InteractionType;
-import cognitivabrasil.obaa.Educational.TypicalAgeRange;
 import cognitivabrasil.obaa.General.General;
 import cognitivabrasil.obaa.General.Identifier;
 import cognitivabrasil.obaa.General.Structure;
@@ -35,7 +34,6 @@ import cognitivabrasil.obaa.SegmentInformationTable.SegmentInformationTable;
 import cognitivabrasil.obaa.SegmentInformationTable.SegmentList;
 import cognitivabrasil.obaa.SegmentInformationTable.SegmentMediaType;
 import cognitivabrasil.obaa.Technical.*;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -43,7 +41,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import metadata.TextElement;
 import org.apache.commons.io.FileUtils;
 import static org.hamcrest.Matchers.*;
@@ -1244,10 +1241,24 @@ public class OBAATest {
 
         assertThat(obaa.getLifeCycle().getContribute().get(0).getEntitiesReal().get(0).getTranslated(), equalTo("Ministério da Educação do Brasil"));
         
+        String Vcard = e.getText();
+        
+        System.out.println(e);
+        
         Entity e2 = new Entity();
         e2.setText("José da Silva");
         
         assertThat (e2.getTranslated(),equalTo("José da Silva"));
+        
+        Entity e3 = new Entity();
+        e3.setText("BEGIN:VCARD\nVERSION:3.0\nN:do Brasil;Ministério da Educação;;;\nFN:Ministério da Educação do Brasil\nEND:VCARD");
+        
+        assertThat (e3.getTranslated(),equalTo("Ministério da Educação do Brasil"));
+        
+        Entity e4 = new Entity();
+        e4.setText("BEGIN:VCARDVERSION:3.0N:do Brasil;Ministério da Educação;;;FN:Ministério da Educação do BrasilEND:VCARD");
+        
+        assertThat (e4.getTranslated(),equalTo("BEGIN:VCARDVERSION:3.0N:do Brasil;Ministério da Educação;;;FN:Ministério da Educação do BrasilEND:VCARD"));
         
 
     }

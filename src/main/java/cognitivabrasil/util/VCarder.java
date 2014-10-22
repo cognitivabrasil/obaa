@@ -65,6 +65,12 @@ public class VCarder {
     
     public void setVcard(String VCard) throws IOException{
         vcard = vcardEngine.parse(VCard);
+        
+        //para o nome ser aceito tem que ter pelo menos um primeiro nome ou um sobrenome
+        if (vcard.hasBegin() && vcard.hasEnd() && vcard.getName()!=null) {
+            empty = false;
+        }
+        
     }
     
     public String getFullName(){         

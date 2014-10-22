@@ -112,7 +112,8 @@ public class Contribute {
     }
     
     public String getFirstEntity() {
-        return entity.get(0).getText();
+        return entity.get(0).toString();
+        
     }
     
     public List<String> getEntities() {        

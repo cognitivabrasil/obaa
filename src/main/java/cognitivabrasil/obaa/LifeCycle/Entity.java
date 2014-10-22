@@ -71,11 +71,17 @@ public class Entity extends TextElement {
         if (super.getTranslated().startsWith("BEGIN:VCARD")) {
             try {
                 this.name.setVcard(this.getText());
-                return this.name.getFullName();
+
+                if (this.name != null && !this.name.isEmpty()) {
+                    return this.name.getFullName();
+                } else {
+                    log.error("Uma entidade foi entendida como um VCard por começar com \"BEGIN:VCARD\", mas nao foi possivel fazer o parse.");
+                    return super.getTranslated();
+                }
 
             } catch (IOException e) {
-               log.error("Uma entidade foi entendida como um VCard por começar com \"BEGIN:VCARD\", mas nao foi possivel fazer o parse.", e);
-               return super.getTranslated();
+                log.error("Uma entidade foi entendida como um VCard por começar com \"BEGIN:VCARD\", mas nao foi possivel fazer o parse.", e);
+                return super.getTranslated();
             }
 
         } else {
