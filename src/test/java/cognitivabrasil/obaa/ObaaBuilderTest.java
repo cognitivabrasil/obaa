@@ -1,9 +1,14 @@
 package cognitivabrasil.obaa;
 
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
 import static org.junit.Assert.assertThat;
+import static cognitivabrasil.obaa.builder.ObaaBuilder.*;
 
-import static cognitivabrasil.obaa.builder.ObaaBuilder.buildObaa;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 
@@ -26,8 +31,45 @@ public class ObaaBuilderTest {
                  .build();
         
         assertThat(a.getGeneral().getLanguages(), hasItem("pt-BR"));
-
+        
+       
+    }
+    
+    
+    @Test
+    public void lifeCycle() {
+        OBAA o = buildObaa().lifeCycle().status("draft").build();
+        
+        assertThat(o.getLifeCycle().getStatus(), equalTo("draft"));
     }
 
+    @Test 
+    public void stack() {
+        OBAA o = buildObaa().general().title("Bla")
+                    .lifeCycle().status("draft")
+                    .build();
+
+        assertThat(o.getLifeCycle().getStatus(), equalTo("draft"));
+        assertThat(o.getGeneral().getTitles(), hasItem("Bla"));                 
+    }
+    
+    @Test
+    public void lifeCycleContribue() {
+        OBAA o = buildObaa().lifeCycle()
+                .contribute()
+                    .role("author")
+                    .entity("Paulo Schreiner")
+                    .date("2012")
+                .contribute()
+                    .entity("Zeca Baleiro")
+                .build();
+        
+        assertThat(o.getLifeCycle().getContribute().get(0).getFirstEntity(), equalTo("Paulo Schreiner"));
+        assertThat(o.getLifeCycle().getContribute().get(1).getFirstEntity(), equalTo("Zeca Baleiro"));
+        
+        assertThat(o.getLifeCycle().getContribute().get(0).getRole().getText(), equalTo("author"));
+
+
+    }
 
 }

@@ -529,7 +529,7 @@ public class OBAA implements Cloneable {
     /**
      * Generates a JSON from obaa object. To translate the json content, the obaa locale must be set. 
      * The JSON is generated in this format:
-     * [{"text":"Node name","children":[{"text":"Node name","children":[{"text":"Grê
+     * [{"label":"Node name","children":[{"label":"Node name","children":[{"label":"Grê
      * 
      * @return String in json format.
      */
