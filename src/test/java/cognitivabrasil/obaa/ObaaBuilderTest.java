@@ -5,11 +5,6 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.junit.Assert.assertThat;
 import static cognitivabrasil.obaa.builder.ObaaBuilder.*;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import org.junit.Test;
 
 
@@ -68,8 +63,23 @@ public class ObaaBuilderTest {
         assertThat(o.getLifeCycle().getContribute().get(1).getFirstEntity(), equalTo("Zeca Baleiro"));
         
         assertThat(o.getLifeCycle().getContribute().get(0).getRole().getText(), equalTo("author"));
+    }
+    
+    @Test
+    public void educational() {
+        OBAA o = buildObaa().educational()
+                    .interactivityType("mixed")
+                    .learningResourceType("slide")
+                    .intendedEndUserRole("learner")
+                    .context("other")
+                 .build();
+        
+        assertThat(o.getEducational().getContexts(), hasItem("other"));
+        assertThat(o.getEducational().getIntendedEndUserRoles(), hasItem("learner"));
+        assertThat(o.getEducational().getLearningResourceTypesString(), hasItem("slide"));
+        assertThat(o.getEducational().getInteractivityType(), equalTo("mixed"));
 
-
+        
     }
 
 }

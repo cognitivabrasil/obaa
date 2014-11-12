@@ -25,6 +25,10 @@ public abstract class AbstractObaaBuilder {
         return new ContributeBuilder(obaa); 
     }
     
+    public EducationalBuilder educational() {
+        return new EducationalBuilder(obaa);
+    }
+    
     /**
      * Constrói um objeto OBAA a partir das configurações especificadas no Builder.
      * @return um objeto obaa construído.
