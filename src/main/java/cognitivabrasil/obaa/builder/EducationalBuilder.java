@@ -35,5 +35,10 @@ public class EducationalBuilder extends AbstractObaaBuilder {
         return this;
     }
 
+    public EducationalBuilder difficulty(String string) {
+        getObaa().getEducational().setDifficulty(string);        
+        return this;
+    }
+
 
 }
