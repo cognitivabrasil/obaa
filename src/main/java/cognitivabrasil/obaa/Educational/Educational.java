@@ -290,8 +290,7 @@ public class Educational {
         return (i.getMapOfTerms());
     }
 
-    @Deprecated
-    public List<String> getIntendedEndUserRole() {
+    public List<String> getIntendedEndUserRoleAsStrings() {
         return toStringList(intendedEndUserRole);
     }
 

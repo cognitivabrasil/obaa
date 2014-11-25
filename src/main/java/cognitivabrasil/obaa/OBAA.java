@@ -56,8 +56,12 @@ import org.slf4j.LoggerFactory;
 public class OBAA implements Cloneable {
 
     private static final Logger LOG = LoggerFactory.getLogger(OBAA.class);
+    
     @Attribute(name = "xsi:schemaLocation", empty = "http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/obaav1.0/lom.xsd", required = false)
 
+    
+    
+    
     // não é muito elegante, mas funciona.
     private String xsiSchema;
     private String locale;

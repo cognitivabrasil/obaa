@@ -858,7 +858,7 @@ public class OBAATest {
     public void testErrorTranslation() throws FileNotFoundException {
         OBAA obaa = OBAA.fromFilename(FILE4);
         obaa.getEducational().getContexts();
-        obaa.getEducational().getIntendedEndUserRole().get(0);
+        obaa.getEducational().getIntendedEndUserRoleAsStrings().get(0);
         obaa.getEducational().getInteractivityType();
         obaa.getEducational().getLearningResourceTypesString();
         obaa.getLifeCycle().getContribute().get(0).getRole();
