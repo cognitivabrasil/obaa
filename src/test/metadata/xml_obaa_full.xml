@@ -55,7 +55,7 @@
                 <obaa:maximumVersion>7</obaa:maximumVersion>
             </obaa:orComposite>
         </obaa:requirement>
-        <obaa:installationRemarks>Descompactar o arquivo e executar o index.html no navegador</obaa:installationRemarks>
+        <obaa:installationRemarks>Descompactar..</obaa:installationRemarks>
         <obaa:otherPlatformRequirements>Flash player</obaa:otherPlatformRequirements>
         <obaa:duration>PT1H30M</obaa:duration>
         <obaa:supportedPlatform>DTV</obaa:supportedPlatform>
@@ -64,7 +64,7 @@
             <obaa:platformType>Web</obaa:platformType>
             <obaa:specificFormat>text/htm</obaa:specificFormat>
             <obaa:specificSize>242</obaa:specificSize>
-            <obaa:specificLocation>http://portalobaa.org</obaa:specificLocation>
+            <obaa:specificLocation>http://www.cognitivabrasil.com.br</obaa:specificLocation>
             <obaa:specificRequirement>
                 <obaa:specificOrComposite>
                     <obaa:specificType>browser</obaa:specificType>
@@ -205,8 +205,8 @@
                     <obaa:displayTransformability>transformabilidade dos recursos referenciados</obaa:displayTransformability>
                     <obaa:controlFlexibility>controle e flexibilidade dos recursos referenciados</obaa:controlFlexibility>
                 </obaa:earlStatement>
-                <obaa:equivalentResource>Aponta para um recurso equivalente (metadados) dos recursos descritos ou partes dos mesmos</obaa:equivalentResource>
-                <obaa:equivalentResource>Este tipo de metadados tem como finalidade de definir outro recurso que equivalha ao recurso existente.</obaa:equivalentResource>
+                <obaa:equivalentResource>Aponta para...</obaa:equivalentResource>
+                <obaa:equivalentResource>Este tipo de metadados...</obaa:equivalentResource>
             </obaa:primary>
             <obaa:equivalent>
                 <obaa:primaryResource>452</obaa:primaryResource>

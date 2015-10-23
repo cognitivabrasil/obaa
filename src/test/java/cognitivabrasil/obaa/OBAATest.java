@@ -1,14 +1,21 @@
 /**
  * *****************************************************************************
- * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais. All rights
- * reserved. This program and the accompanying materials are made available
- * under the terms of the GNU Lesser Public License v3 which accompanies this
+ * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais. All rights reserved. This program and the
+ * accompanying materials are made available under the terms of the GNU Lesser Public License v3 which accompanies this
  * distribution, and is available at http://www.gnu.org/licenses/lgpl.html
  * ****************************************************************************
  */
 package cognitivabrasil.obaa;
 
-import cognitivabrasil.obaa.Accessibility.*;
+import cognitivabrasil.obaa.Accessibility.Accessibility;
+import cognitivabrasil.obaa.Accessibility.AlternativesToAuditory;
+import cognitivabrasil.obaa.Accessibility.AudioDescription;
+import cognitivabrasil.obaa.Accessibility.CaptionType;
+import cognitivabrasil.obaa.Accessibility.Content;
+import cognitivabrasil.obaa.Accessibility.EarlStatement;
+import cognitivabrasil.obaa.Accessibility.Equivalent;
+import cognitivabrasil.obaa.Accessibility.Primary;
+import cognitivabrasil.obaa.Accessibility.ResourceDescription;
 import cognitivabrasil.obaa.Annotation.Annotation;
 import cognitivabrasil.obaa.Classification.Classification;
 import cognitivabrasil.obaa.Classification.Taxon;
@@ -33,7 +40,11 @@ import cognitivabrasil.obaa.SegmentInformationTable.SegmentInformation;
 import cognitivabrasil.obaa.SegmentInformationTable.SegmentInformationTable;
 import cognitivabrasil.obaa.SegmentInformationTable.SegmentList;
 import cognitivabrasil.obaa.SegmentInformationTable.SegmentMediaType;
-import cognitivabrasil.obaa.Technical.*;
+import cognitivabrasil.obaa.Technical.Duration;
+import cognitivabrasil.obaa.Technical.PlatformSpecificFeature;
+import cognitivabrasil.obaa.Technical.SpecificOrComposite;
+import cognitivabrasil.obaa.Technical.SpecificRequirement;
+import cognitivabrasil.obaa.Technical.Technical;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -43,9 +54,19 @@ import java.util.HashMap;
 import java.util.List;
 import metadata.TextElement;
 import org.apache.commons.io.FileUtils;
-import static org.hamcrest.Matchers.*;
-import org.junit.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
+import org.junit.After;
+import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
@@ -57,7 +78,7 @@ import org.simpleframework.xml.core.Persister;
  */
 // Para gerar o arquivo do XML pelo Simple XML
 //        File f = new File("TaxonPath.xml");
-//        
+//
 //        try {
 //            s.write(tp, f);
 //        } catch (Exception e) {
@@ -108,8 +129,7 @@ public class OBAATest {
     }
 
     /**
-     * Test that if we serialize (toXml) and object and then deserialize it we
-     * get the same results.
+     * Test that if we serialize (toXml) and object and then deserialize it we get the same results.
      *
      * @throws Exception
      */
@@ -144,14 +164,14 @@ public class OBAATest {
 //    @Test
 //    public void testOBAA_General_AggregationLevel() throws FileNotFoundException {
 //        assert (!(l.getGeneral() == null));
-//        
+//
 //        AggregationLevel a = new AggregationLevel();
 //        a.setAggregationLevel(1);
-//        
+//
 //        assertThat(l.getGeneral().getAggregationLevel().getAggregationLevel(), equalTo(1));
-//        
+//
 //    }
-//    
+//
     @Test
     public void testOBAA_General_AggregationLevel2() throws FileNotFoundException {
         assert (!(full.getGeneral() == null));
@@ -203,14 +223,14 @@ public class OBAATest {
 
         assert (!(l.getGeneral() == null));
 
-        //se não for setado o idima ele usa o valor canônico   
+        //se não for setado o idima ele usa o valor canônico
         Structure s = l.getGeneral().getStructure();
         assertThat(s.getTranslated(), equalTo(Structure.ATOMIC));
     }
 
     @Test
     @Ignore("fazer o sistema de setar o idioma")
-    //TODO: 
+    //TODO:
     public void testOaiOBAALifeCycleStatus() throws FileNotFoundException {
         assert (!(l.getLifeCycle() == null));
         assertThat(l.getLifeCycle().getStatus(), equalTo("final"));
@@ -429,7 +449,7 @@ public class OBAATest {
     @Ignore("Tem que fazer o esquema para setar o idioma no OBAA todo")
     public void booleanElementTest() throws FileNotFoundException {
 
-        //TODO: 
+        //TODO:
         OBAA metadata = full;
 
         String sim = "Sim";
@@ -462,7 +482,7 @@ public class OBAATest {
 
         platSF.setSpecificInstallationRemarks("Executar o index2.html");
 
-        platSF.setSpecificLocation("http://portalobaa.org");
+        platSF.setSpecificLocation("http://www.cognitivabrasil.com.br");
 
         SpecificRequirement req = new SpecificRequirement();
 
@@ -976,32 +996,32 @@ public class OBAATest {
 //    @Test
 //    public void setOfTermsStructureTest(){
 //        Structure s = new Structure();
-//        
+//
 //        Map m = s.getMapOfTerms();
-//        
+//
 //        Set key = m.keySet();
-//        
+//
 //        for(m.){
-//            
+//
 //        }
 //        List<String> terms = s.getSetOfTerms();
-//        
+//
 //        assertThat(terms, hasItem("atomic"));
 //        assertThat(terms, hasItem("collection"));
 //        assertThat(terms, hasItem("networked"));
 //        assertThat(terms, hasItem("hierarchical"));
 //        assertThat(terms, hasItem("linear"));
-//        
+//
 //        assertThat(terms, not(hasItem("not atomic")));
-//        
+//
 //        List<String> titles = s.getSetOfTitulos();
-//        
+//
 //        assertThat(titles, hasItem("Atômico"));
 //        assertThat(titles, hasItem("Coleção"));
 //        assertThat(titles, hasItem("Em rede"));
 //        assertThat(titles, hasItem("Hierárquico"));
 //        assertThat(titles, hasItem("Linear"));
-//        
+//
 //    }
     @Ignore("Ignorar teste pois ele gera um arquivo")
     @Test
@@ -1124,7 +1144,7 @@ public class OBAATest {
     public void formatNullTest() {
 
         Technical t = file2.getTechnical();
-        List<String> format = cognitivabrasil.util.HelperFunctions.toStringList(t.getFormats());                
+        List<String> format = cognitivabrasil.util.HelperFunctions.toStringList(t.getFormats());
         assertThat(format.size(), equalTo(0));
 
     }
@@ -1173,16 +1193,14 @@ public class OBAATest {
 //    public void taxonPath() throws IOException{
 //        OBAA o1;
 //        o1 = OBAA.fromFilename(TAXONERR);
-//        
+//
 ////        List<Classification> classi =  o1.getClassifications();
 ////        TaxonPath tp = classi.get(0).getTaxonPath().get(0);
-////        
+////
 ////        System.out.println(tp);
 //    }
     @Test
     public void getFullNameTest() {
-
-        OBAA o = new OBAA();
 
         Structure s = new Structure();
 
@@ -1225,7 +1243,7 @@ public class OBAATest {
         assertThat(obaa.getLifeCycle().getContribute().get(0).getEntitiesReal().get(0).getName(), equalTo("Ministério da Educação do Brasil"));
 
     }
-    
+
     @Test
     public void testVCardTransated() {
         OBAA obaa = new OBAA();
@@ -1240,26 +1258,25 @@ public class OBAATest {
         obaa.getLifeCycle().getContribute().get(0).getEntitiesReal().get(0).getName();
 
         assertThat(obaa.getLifeCycle().getContribute().get(0).getEntitiesReal().get(0).getTranslated(), equalTo("Ministério da Educação do Brasil"));
-        
+
         String Vcard = e.getText();
-        
+
         System.out.println(e);
-        
+
         Entity e2 = new Entity();
         e2.setText("José da Silva");
-        
-        assertThat (e2.getTranslated(),equalTo("José da Silva"));
-        
+
+        assertThat(e2.getTranslated(), equalTo("José da Silva"));
+
         Entity e3 = new Entity();
         e3.setText("BEGIN:VCARD\nVERSION:3.0\nN:do Brasil;Ministério da Educação;;;\nFN:Ministério da Educação do Brasil\nEND:VCARD");
-        
-        assertThat (e3.getTranslated(),equalTo("Ministério da Educação do Brasil"));
-        
+
+        assertThat(e3.getTranslated(), equalTo("Ministério da Educação do Brasil"));
+
         Entity e4 = new Entity();
         e4.setText("BEGIN:VCARDVERSION:3.0N:do Brasil;Ministério da Educação;;;FN:Ministério da Educação do BrasilEND:VCARD");
-        
-        assertThat (e4.getTranslated(),equalTo("BEGIN:VCARDVERSION:3.0N:do Brasil;Ministério da Educação;;;FN:Ministério da Educação do BrasilEND:VCARD"));
-        
+
+        assertThat(e4.getTranslated(), equalTo("BEGIN:VCARDVERSION:3.0N:do Brasil;Ministério da Educação;;;FN:Ministério da Educação do BrasilEND:VCARD"));
 
     }
 
@@ -1358,5 +1375,98 @@ public class OBAATest {
 
     }
 
-    
+    @Test
+    public void testCamelCaseGeneralLifeCycle() throws FileNotFoundException {
+        OBAA o = OBAA.fromFilename("./src/test/metadata/xml_obaa_full.xml");
+        assertThat(o.getGeneral().getIdentifiers().get(0).getCatalog(), equalTo("teste"));
+        assertThat(o.getGeneral().getIdentifiers().get(0).getEntry(), equalTo("123"));
+        assertThat(o.getGeneral().getAggregationLevel().getText(), equalTo("1"));
+        assertThat(o.getLifeCycle().getVersion(), equalTo("1"));
+    }
+
+    @Test
+    public void testCamelCaseTechnical() throws FileNotFoundException {
+        OBAA o = OBAA.fromFilename("./src/test/metadata/xml_obaa_full.xml");
+
+        assertThat(o.getTechnical().getRequirement().get(0).getOrComposite().get(0).getMinimumVersion(),
+                equalTo("11.0.1"));
+        assertThat(o.getTechnical().getRequirement().get(0).getOrComposite().get(0).getMaximumVersion(),
+                equalTo("12.x"));
+        assertThat(o.getTechnical().getInstallationRemarks(), equalTo("Descompactar.."));
+        assertThat(o.getTechnical().getOtherPlatformRequirements(), equalTo("Flash player"));
+        assertThat(o.getTechnical().getSupportedPlatforms().get(0), equalTo("DTV"));
+        PlatformSpecificFeature psf = o.getTechnical().getPlatformSpecificFeatures().get(0);
+        assertThat(psf.getPlatformType().getText(), equalTo("Web"));
+        assertThat(psf.getSpecificFormats().get(0).getText(), equalTo("text/htm"));
+        assertThat(psf.getSpecificSize(), equalTo("242"));
+        assertThat(psf.getSpecificLocation(), equalTo("http://www.cognitivabrasil.com.br"));
+        assertThat(psf.getSpecificRequirements().get(0).getSpecificOrComposites().get(0).getSpecificType(),
+                equalTo("browser"));
+        assertThat(psf.getSpecificRequirements().get(0).getSpecificOrComposites().get(0).getSpecificName(),
+                equalTo("mozillaFirefox"));
+        assertThat(psf.getSpecificRequirements().get(0).getSpecificOrComposites().get(0).getSpecificMinimumVersion(),
+                equalTo("1.0"));
+        assertThat(psf.getSpecificRequirements().get(0).getSpecificOrComposites().get(0).getSpecificMaximumVersion(),
+                equalTo("3.0"));
+        assertThat(psf.getSpecificInstallationRemarks(), equalTo("Executar o index2.html"));
+        assertThat(psf.getSpecificOtherPlatformRequirements(), equalTo("(\"en,\" \"sound card\")"));
+    }
+
+    @Test
+    public void testCamelCase() throws FileNotFoundException {
+        OBAA o = OBAA.fromFilename("./src/test/metadata/xml_obaa_full.xml");
+
+        assertThat(o.getEducational().getLearningResourceTypes().get(0).getText(), equalTo("simulation"));
+        assertThat(o.getEducational().getInteractivityLevel().getText(), equalTo("Muito baixo"));
+        assertThat(o.getEducational().getInteractivityType(), equalTo("expositive"));
+        assertThat(o.getEducational().getSemanticDensity().getText(), equalTo("low"));
+        assertThat(o.getEducational().getLearningContentType(), equalTo("factual"));
+        assertThat(o.getEducational().getTypicalAgeRanges().get(0), equalTo("adult"));
+        assertThat(o.getEducational().getTypicalLearningTime().getText(), equalTo("PT15M"));
+        assertThat(o.getEducational().getIntendedEndUserRoles().get(0), equalTo("teacher"));
+        assertThat(o.getEducational().getInteraction().getInteractionType().getText(), equalTo("object-individual"));
+        assertThat(o.getEducational().getInteraction().getCoPresence().getBoolean(), equalTo(false));
+        assertThat(o.getEducational().getDidaticStrategy().get(0).getText(), equalTo("Problem Solving"));
+
+        assertThat(o.getRights().getCopyright().getText(), equalTo("Nao"));
+
+        assertThat(o.getClassifications().get(0).getTaxonPath().get(0).getSource(), equalTo("ACM"));
+
+        ResourceDescription rd = o.getAccessibility().getResourceDescription();
+        assertThat(rd.getPrimary().getHasVisual(), equalTo("true"));
+        assertThat(rd.getPrimary().getHasAuditory(), equalTo("true"));
+        assertThat(rd.getPrimary().getHasText(), equalTo("false"));
+        assertThat(rd.getPrimary().getHasTactile(), equalTo("false"));
+        assertThat(rd.getPrimary().getEarlStatement().get(0).getDisplayTransformability(),
+                equalTo("transformabilidade dos recursos referenciados"));
+        assertThat(rd.getPrimary().getEarlStatement().get(0).getControlFlexibility(),
+                equalTo("controle e flexibilidade dos recursos referenciados"));
+        assertThat(rd.getPrimary().getEquivalentResource().get(0).getText(), equalTo("Aponta para..."));
+        Equivalent equivalent = rd.getEquivalent().get(0);
+        assertThat(equivalent.getPrimaryResource(), equalTo("452"));
+        assertThat(equivalent.getPrimaryFile().get(0).getText(), equalTo("34232"));
+        assertThat(equivalent.getContent().getAlternativesToVisual().getAudioDescription().get(0).getText(),
+                equalTo(AudioDescription.STANDARD));
+        assertThat(equivalent.getContent().getAlternativesToVisual().getAltTextLang(), equalTo("pt-BR"));
+        assertThat(equivalent.getContent().getAlternativesToVisual().getColorAvoidance().get(0).getText(),
+                equalTo("avoidRed"));
+        assertThat(equivalent.getContent().getAlternativesToText().getGraphicAlternative().getBoolean(), equalTo(true));
+        assertThat(equivalent.getContent().getAlternativesToText().getSignLanguage().get(0).getText(),
+                equalTo("Brazilian-BRA"));
+        CaptionType captionType = equivalent.getContent().getAlternativesToAuditory().getCaptionType().get(0);
+        assertThat(captionType.getReducedReadingLevelTxt(), equalTo("false"));
+        assertThat(captionType.getReducedSpeed().isReducedSpeed(), equalTo(false));
+        assertThat(captionType.getReducedSpeed().getReducedSpeedRate(), equalTo("120"));
+        assertThat(captionType.getEnhancedCaptionTxt(), equalTo("false"));
+        assertThat(equivalent.getContent().getAlternativesToAuditory().getSignLanguage().get(0).getText(),
+                equalTo("BrasilianLIBRAS"));
+        assertThat(equivalent.getContent().getLearnerScaffold().get(0).getText(), equalTo("calculator"));
+
+
+        assertThat(o.getSegmentsInformationTable().getSegmentList().get(0).getSegmentInformation().get(0)
+                .getSegmentMediaType(), equalTo("video"));
+        assertThat(o.getSegmentsInformationTable().getSegmentGroupList().getSegmentGroupInformation().get(0)
+                .getGroupType().getText(), equalTo("Higlights"));
+    }
+
 }

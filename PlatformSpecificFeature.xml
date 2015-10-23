@@ -1,6 +1,6 @@
 <obaa:platformSpecificFeature xmlns:obaa="http://ltsc.ieee.org/xsd/LOM">
    <specificSize>grande, muito grande!</specificSize>
-   <specificLocation>http://portalobaa.org</specificLocation>
+   <specificLocation>http://www.cognitivabrasil.com.br</specificLocation>
    <obaa:specificRequirement>
       <obaa:specificOrComposite>
          <obaa:specificType>browser</obaa:specificType>
