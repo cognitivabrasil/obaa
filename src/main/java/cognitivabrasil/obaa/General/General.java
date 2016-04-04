@@ -61,7 +61,7 @@ public class General {
         coverages = new ArrayList<Coverage>();
         identifiers = new ArrayList<Identifier>();
         languages = new ArrayList<Language>();
-        //Strutcure should not be initialized to avoid create a blank element in the XML 
+        //Strutcure should not be initialized to avoid create a blank element in the XML
     }
 
     //Titles
@@ -210,7 +210,7 @@ public class General {
 
     /**
      * @param structure
-     * @deprecated Strcuture deve receber uma strucutre e não um String
+     * @deprecated Structure deve receber uma structure e não um String
      */
     @Deprecated
     public void setStructure(String structure) {

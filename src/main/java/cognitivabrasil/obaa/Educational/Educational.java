@@ -464,6 +464,14 @@ public class Educational {
     }
 
     /**
+     * Add a typicalAgeRange in the list.
+     * @param typicalAgeRange 
+     */
+    public void addTypicalAgeRange(String typicalAgeRange){
+        typicalAgeRanges.add(new TypicalAgeRange(typicalAgeRange));
+    }
+
+    /**
      * @return the learningResourceType
      */
     public List<String> getLearningResourceTypesString() {
