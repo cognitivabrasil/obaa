@@ -1,17 +1,16 @@
-/*******************************************************************************
- * Copyright (c) 2014 Cognitiva Brasil - Tecnologias educacionais.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v3
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+/**
+ * *****************************************************************************
+ * Copyright (c) 2014 Cognitiva Brasil - Tecnologias educacionais. All rights reserved. This program and the
+ * accompanying materials are made available under the terms of the GNU Lesser Public License v3 which accompanies this
+ * distribution, and is available at http://www.gnu.org/licenses/lgpl.html
+ * ****************************************************************************
+ */
 package cognitivabrasil.obaa.Technical;
 
 import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.xml.datatype.DatatypeFactory;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -25,8 +24,7 @@ import metadata.TextElement;
  *
  * Time a continuous learning object takes when played at intended speed.
  *
- * NOTE:--This data element is especially useful for sounds, movies or
- * animations.
+ * NOTE:--This data element is especially useful for sounds, movies or animations.
  *
  * according to IEEE LOM http://ltsc.ieee.org/ </div>
  *
@@ -40,8 +38,9 @@ import metadata.TextElement;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 public class Duration extends TextElement {
+
     private static final Logger log = LoggerFactory.getLogger(Duration.class);
-    
+
     private int seconds;
     private int minutes;
     private int hours;
@@ -56,8 +55,8 @@ public class Duration extends TextElement {
     /**
      *
      * @param value The value of the field
-     * @param field The Java Calendar constant that reprensents the field, need
-     * to be Calendar.HOUR, Calendar.MINUTE or Calendar.SECOND
+     * @param field The Java Calendar constant that reprensents the field, need to be Calendar.HOUR, Calendar.MINUTE or
+     * Calendar.SECOND
      */
     public void set(int value, int field) {
         if (field == Calendar.HOUR) {
@@ -89,78 +88,80 @@ public class Duration extends TextElement {
 
         super.setText(builder.toString());
     }
-    
+
     /**
      * Retorna hora traduzida.
-     **/
+     *
+     */
     @Override
     public String getTranslated() {
-        if(hours == 0 && minutes == 0 && seconds == 0) {
+        if (super.getLanguage().equals("") && super.getCountry().equals("")) {
+            return (this.getText());
+        }
+
+        if (hours == 0 && minutes == 0 && seconds == 0) {
             setText(super.getText());
         }
-        
+
         String hourString = "";
         String joinHourMinute = "";
         String minuteString = "";
-                
-        if(hours == 1) {      
+
+        if (hours == 1) {
             hourString = "1 hora";
-        }
-        else if (hours > 1) {
+        } else if (hours > 1) {
             hourString = hours + " horas";
         }
-        
-        if(minutes > 1) {
+
+        if (minutes > 1) {
             minuteString = minutes + " minutos";
-        }
-        else if(minutes == 1) {
+        } else if (minutes == 1) {
             minuteString = "1 minuto";
         }
-        
-        if(hours > 0 && minutes > 0) {
+
+        if (hours > 0 && minutes > 0) {
             joinHourMinute = " e ";
         }
-        
-        return hourString + joinHourMinute + minuteString;        
+
+        return hourString + joinHourMinute + minuteString;
     }
 
     public String getDuration() {
 
         return this.getText();
     }
-    
+
     @Override
     public void setText(String value) {
         String regEx = "P(\\d+Y)?(\\d+M)?(\\d+D)?(T(((\\d+)H)?((\\d+)M)?((\\d+)S)?))?";
-        
+
         Pattern pattern = Pattern.compile(regEx);
         Matcher matcher;
 
         matcher = pattern.matcher(value);
-        
-        if (matcher.find()) {       
+
+        if (matcher.find()) {
             String hourString = matcher.group(7);
             String minuteString = matcher.group(9);
             String secondString = matcher.group(10);
-            
-            if(hourString != null) {
+
+            if (hourString != null) {
                 this.set(Integer.valueOf(hourString), Calendar.HOUR);
             }
-            if(minuteString != null) {
+            if (minuteString != null) {
                 this.set(Integer.valueOf(minuteString), Calendar.MINUTE);
             }
 //            if(secondString != null) {
 //                this.set(Integer.valueOf(secondString), Calendar.SECOND);
 //            }
-        }
-        else {
-            if(!StringUtils.isBlank(value)) {
+        } else {
+            if (!StringUtils.isBlank(value)) {
                 log.warn("Não conseguiu fazer parsing da data: {}", value);
             }
         }
 
     }
-    
+
     /*
      * Duration aceita no formato:
      * HH: dois digitos para hora;
@@ -170,57 +171,57 @@ public class Duration extends TextElement {
      * HHhMMminSS: dois digitos para hora seguidos do caractere h seguidos de minutos e caracteres 'min' e dois dígitos de segundos;
      * HHhMMminSSs: o mesmo do anterior, seguido de 's';
      */
-    public void setDuration(String durationFormated){
-                
-        if (durationFormated.matches("\\d\\d?")){            
-            this.set(Integer.parseInt(durationFormated), Calendar.HOUR);            
+    public void setDuration(String durationFormated) {
+
+        if (durationFormated.matches("\\d\\d?")) {
+            this.set(Integer.parseInt(durationFormated), Calendar.HOUR);
         }
-        
-        if (durationFormated.matches("\\d\\dh")){  
-            String h = durationFormated.substring(0, durationFormated.length()-1);
-            this.set(Integer.parseInt(h), Calendar.HOUR);            
+
+        if (durationFormated.matches("\\d\\dh")) {
+            String h = durationFormated.substring(0, durationFormated.length() - 1);
+            this.set(Integer.parseInt(h), Calendar.HOUR);
         }
-        
-        if (durationFormated.matches("\\d\\d?h\\d\\d?")){            
+
+        if (durationFormated.matches("\\d\\d?h\\d\\d?")) {
             String h = durationFormated.substring(0, durationFormated.indexOf('h'));
-            String min = durationFormated.substring(durationFormated.indexOf('h')+1);
-            
+            String min = durationFormated.substring(durationFormated.indexOf('h') + 1);
+
             this.set(Integer.parseInt(h), Calendar.HOUR);
             this.set(Integer.parseInt(min), Calendar.MINUTE);
         }
-        
-        if (durationFormated.matches("\\d\\d?h\\d\\d?min")){            
+
+        if (durationFormated.matches("\\d\\d?h\\d\\d?min")) {
             String h = durationFormated.substring(0, durationFormated.indexOf('h'));
-            String min = durationFormated.substring(durationFormated.indexOf('h')+1, durationFormated.length()-3);
-            
+            String min = durationFormated.substring(durationFormated.indexOf('h') + 1, durationFormated.length() - 3);
+
             this.set(Integer.parseInt(h), Calendar.HOUR);
             this.set(Integer.parseInt(min), Calendar.MINUTE);
-        }        
-        
-        if (durationFormated.matches("\\d\\d?h\\d\\d?min\\d\\d?")){            
+        }
+
+        if (durationFormated.matches("\\d\\d?h\\d\\d?min\\d\\d?")) {
             String h = durationFormated.substring(0, durationFormated.indexOf('h'));
-            String min = durationFormated.substring(durationFormated.indexOf('h')+1, durationFormated.indexOf('m'));
-            String s = durationFormated.substring(durationFormated.indexOf('n')+1);
+            String min = durationFormated.substring(durationFormated.indexOf('h') + 1, durationFormated.indexOf('m'));
+            String s = durationFormated.substring(durationFormated.indexOf('n') + 1);
+            this.set(Integer.parseInt(h), Calendar.HOUR);
+            this.set(Integer.parseInt(min), Calendar.MINUTE);
+            this.set(Integer.parseInt(s), Calendar.SECOND);
+        }
+
+        if (durationFormated.matches("\\d\\d?h\\d\\d?min\\d\\d?s")) {
+            String h = durationFormated.substring(0, durationFormated.indexOf('h'));
+            String min = durationFormated.substring(durationFormated.indexOf('h') + 1, durationFormated.indexOf('m'));
+            String s = durationFormated.substring(durationFormated.indexOf('n') + 1, durationFormated.length() - 1);
             this.set(Integer.parseInt(h), Calendar.HOUR);
             this.set(Integer.parseInt(min), Calendar.MINUTE);
             this.set(Integer.parseInt(s), Calendar.SECOND);
         }
-        
-        if (durationFormated.matches("\\d\\d?h\\d\\d?min\\d\\d?s")){            
-            String h = durationFormated.substring(0, durationFormated.indexOf('h'));
-            String min = durationFormated.substring(durationFormated.indexOf('h')+1, durationFormated.indexOf('m'));
-            String s = durationFormated.substring(durationFormated.indexOf('n')+1, durationFormated.length()-1);
-            this.set(Integer.parseInt(h), Calendar.HOUR);
-            this.set(Integer.parseInt(min), Calendar.MINUTE);
-            this.set(Integer.parseInt(s), Calendar.SECOND);
-        }        
     }
 
     @Override
-    public void validate(String value) {        
+    public void validate(String value) {
         String regEx = "P(\\d+Y)?(\\d+M)?(\\d+D)?(T((\\d+H)?(\\d+M)?(\\d+S)?))?";
         //PT2H4M5S -> is valid, for exemple
-        
+
         Pattern pattern = Pattern.compile(regEx);
         Matcher matcher;
 
@@ -243,19 +244,25 @@ public class Duration extends TextElement {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (!super.equals(obj))
+        }
+        if (!super.equals(obj)) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         Duration other = (Duration) obj;
-        if (hours != other.hours)
+        if (hours != other.hours) {
             return false;
-        if (minutes != other.minutes)
+        }
+        if (minutes != other.minutes) {
             return false;
-        if (seconds != other.seconds)
+        }
+        if (seconds != other.seconds) {
             return false;
+        }
         return true;
     }
 }

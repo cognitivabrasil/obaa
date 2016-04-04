@@ -25,26 +25,25 @@
 
 package cognitivabrasil.obaa.Classification;
 
-import org.simpleframework.xml.Element;
-
 import cognitivabrasil.obaa.ObaaRecursibleElement;
+import org.simpleframework.xml.Element;
 
 /**
  * <div class="en">
  *
- * A particular term within a taxonomy. A taxon is a node that has a defined 
- * label or term. A taxon may also have an alphanumeric designation or 
- * identifier for standardized reference. Either or both the label and the entry 
- * may be used to designate a particular taxon. 
- * An ordered list of taxons creates a taxonomic path, i.e., 
- * "taxonomic stairway": this is a path from a more general to more specific 
+ * A particular term within a taxonomy. A taxon is a node that has a defined
+ * label or term. A taxon may also have an alphanumeric designation or
+ * identifier for standardized reference. Either or both the label and the entry
+ * may be used to designate a particular taxon.
+ * An ordered list of taxons creates a taxonomic path, i.e.,
+ * "taxonomic stairway": this is a path from a more general to more specific
  * entry in a classification.
  *
  * according to IEEE LOM http://ltsc.ieee.org/
  *</div>
  *
  * <div class="br">
- * 
+ *
  *
  * Adaptado de http://www.portalobaa.org
  *</div>
@@ -62,6 +61,11 @@ public class Taxon {
     public Taxon() {
     }
 
+    public Taxon(String id, String label) {
+        this.id = id;
+        this.label = label;
+    }
+    
     public void setEntry(String entry) {
         this.label = entry;
     }
