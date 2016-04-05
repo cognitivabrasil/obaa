@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 
 /**
@@ -55,6 +56,7 @@ import org.simpleframework.xml.Root;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 @Root
+@Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
 public class Classification {
     @Element (required = false)

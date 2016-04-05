@@ -1,4 +1,4 @@
-<classification>
+<obaa:classification xmlns:obaa="http://ltsc.ieee.org/xsd/LOM">
    <purpose/>
    <taxonPath>
       <source>source</source>
@@ -11,5 +11,5 @@
          <entry>entry</entry>
       </taxon>
    </taxonPath>
-   <obaa:description xmlns:obaa="http://ltsc.ieee.org/xsd/LOM"/>
-</classification>
+   <obaa:description/>
+</obaa:classification>
