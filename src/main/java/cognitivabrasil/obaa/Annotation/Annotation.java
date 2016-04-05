@@ -25,9 +25,9 @@
 
 package cognitivabrasil.obaa.Annotation;
 
-import cognitivabrasil.obaa.ObaaRecursibleElement;
 import cognitivabrasil.obaa.General.Description;
 import cognitivabrasil.obaa.LifeCycle.Entity;
+import cognitivabrasil.obaa.ObaaRecursibleElement;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -35,11 +35,11 @@ import org.simpleframework.xml.Root;
 /**
  * <div class="en">
  *
- * This category provides comments on the educational use of this learning 
+ * This category provides comments on the educational use of this learning
  * object, and information on when and by whom the comments were created.
- * This category enables educators to share their assessments of learning 
+ * This category enables educators to share their assessments of learning
  * objects, suggestions for use, etc.
- * 
+ *
  * according to IEEE LOM http://ltsc.ieee.org/
  *</div>
  *
@@ -63,7 +63,7 @@ public class Annotation {
     @Element(required = false)
     private Description description;
 
-    public Annotation() {       
+    public Annotation() {
     }
 
     public void setDate(String date) {
@@ -71,10 +71,16 @@ public class Annotation {
     }
 
     public void setDescription(String description) {
+        if(this.description == null){
+            this.description = new Description();
+        }
         this.description.setText(description);
     }
 
     public void setEntity(String entity) {
+        if(this.entity == null){
+            this.entity = new Entity();
+        }
         this.entity.setText(entity);
     }
 

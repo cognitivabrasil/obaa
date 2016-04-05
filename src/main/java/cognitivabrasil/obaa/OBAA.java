@@ -215,12 +215,20 @@ public class OBAA implements Cloneable {
         this.relations = relations;
     }
 
+    public void addRelation(Relation relation){
+        this.relations.add(relation);
+    }
+
     public List<Annotation> getAnnotations() {
         return annotations;
     }
 
     public void setAnnotations(List<Annotation> annotations) {
         this.annotations = annotations;
+    }
+
+    public void addAnnotation(Annotation annotations){
+        this.annotations.add(annotations);
     }
 
     public List<Classification> getClassifications() {
