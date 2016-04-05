@@ -27,6 +27,7 @@ package cognitivabrasil.obaa.Classification;
 
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Namespace;
 
 /**
  * <div class="en">
@@ -52,9 +53,12 @@ import org.simpleframework.xml.Element;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 @ObaaRecursibleElement
+@Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class Taxon {
+    @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM")
     @Element(required=false)
     private String id;
+    @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM")
     @Element(required=false,name="entry")
     private String label;
 
@@ -65,7 +69,7 @@ public class Taxon {
         this.id = id;
         this.label = label;
     }
-    
+
     public void setEntry(String entry) {
         this.label = entry;
     }

@@ -10,13 +10,11 @@ package cognitivabrasil.obaa.Technical;
 import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-
+import metadata.TextElement;
 import org.apache.commons.lang3.StringUtils;
+import org.simpleframework.xml.Namespace;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import metadata.TextElement;
 
 /**
  *
@@ -37,6 +35,7 @@ import metadata.TextElement;
  * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
+@Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class Duration extends TextElement {
 
     private static final Logger log = LoggerFactory.getLogger(Duration.class);

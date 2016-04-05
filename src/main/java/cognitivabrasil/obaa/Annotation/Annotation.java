@@ -58,6 +58,7 @@ import org.simpleframework.xml.Root;
 public class Annotation {
     @Element(required = false)
     private Entity entity;
+    @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM")
     @Element(required = false)
     private String date;
     @Element(required = false)
