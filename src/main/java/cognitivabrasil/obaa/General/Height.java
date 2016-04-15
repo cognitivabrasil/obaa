@@ -26,4 +26,8 @@ public class Height extends TextElement {
         super(height);
     }
 
+    public Height(int height) {
+        super(String.valueOf(height));
+    }
+
 }

@@ -25,4 +25,8 @@ public class Width extends TextElement {
     public Width(String width) {
         super(width);
     }
+
+    public Width(int width) {
+        super(String.valueOf(width));
+    }
 }

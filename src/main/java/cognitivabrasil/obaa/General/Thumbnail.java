@@ -81,7 +81,7 @@ public class Thumbnail {
      *
      * @param height Altura do thumbnail. Se for 800px definir 800.
      */
-    public void setHeight(String height) {
+    public void setHeight(int height) {
         this.height = new Height(height);
     }
 
@@ -109,7 +109,7 @@ public class Thumbnail {
      * @param width Largura do thumbnail, inserir apenas o número referente ao número de pixels. Ex: Se for 600px
      * colocar 600.
      */
-    public void setWidth(String width) {
+    public void setWidth(int width) {
         this.width = new Width(width);
     }
 
