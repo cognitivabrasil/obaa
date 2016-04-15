@@ -1,0 +1,13 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Copyright (c) ${date?date?string("yyyy")} Cognitiva Brasil Tecnologias Educacionais
+${licensePrefix}http://www.cognitivabrasil.com.br - contato@cognitivabrasil.com.br
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}All rights reserved. No warranty, explicit or implicit, provided.
+${licensePrefix}In no event shall the author be liable for any claim or damages.
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}Todos os direitos reservados.
+<#if licenseLast??>
+${licenseLast}
+</#if>
