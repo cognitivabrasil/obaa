@@ -54,6 +54,10 @@ public class Thumbnail {
         this.location = location;
     }
 
+    public void setLocation(String location) {
+        this.location = new Location(location);
+    }
+
     /**
      * Define a altura do thumbnail, esta altura deve ser em pixels.
      *
@@ -73,6 +77,15 @@ public class Thumbnail {
     }
 
     /**
+     * Define a altura do thumbnail, esta altura deve ser em pixels.
+     *
+     * @param height Altura do thumbnail. Se for 800px definir 800.
+     */
+    public void setHeight(String height) {
+        this.height = new Height(height);
+    }
+
+    /**
      * Retorna a largura em pixel do thumbnail.
      * @return número de pixels
      */
@@ -88,6 +101,16 @@ public class Thumbnail {
      */
     public void setWidth(Width width) {
         this.width = width;
+    }
+
+    /**
+     * Define a largura do thumbnail, este valor deve ser um pixels.
+     *
+     * @param width Largura do thumbnail, inserir apenas o número referente ao número de pixels. Ex: Se for 600px
+     * colocar 600.
+     */
+    public void setWidth(String width) {
+        this.width = new Width(width);
     }
 
 }
