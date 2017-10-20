@@ -37,7 +37,7 @@ import org.slf4j.LoggerFactory;
 public class Entity extends TextElement {
 
     private VCarder name;
-    Logger log = LoggerFactory.getLogger(Entity.class);
+    private final Logger log = LoggerFactory.getLogger(Entity.class);
 
     public Entity() {
         name = new VCarder();

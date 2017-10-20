@@ -33,20 +33,21 @@ import java.util.ArrayList;
 import java.util.List;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 
 /**
  * <div class="en">
  *
- * This category describes where this learning object falls within a particular 
- * classification system. To define multiple classifications, there may be 
+ * This category describes where this learning object falls within a particular
+ * classification system. To define multiple classifications, there may be
  * multiple instances of this category.
- * 
+ *
  * according to IEEE LOM http://ltsc.ieee.org/
  *</div>
  *
  * <div class="br">
- * 
+ *
  *
  * Adaptado de http://www.portalobaa.org
  *</div>
@@ -55,6 +56,7 @@ import org.simpleframework.xml.Root;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 @Root
+@Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
 public class Classification {
     @Element (required = false)
@@ -68,19 +70,19 @@ public class Classification {
 
     @ElementList (inline = true, required = false)
     private List<Keyword> keywords;
-    
+
     public Classification() {
         this.description = new Description();
         purpose = new Purpose();
         keywords = new ArrayList<Keyword>();
         taxonPath = new ArrayList<TaxonPath>();
-     
+
     }
 
     public void setPurpose(Purpose purpose) {
       this.purpose = purpose;
     }
-    public void setPurpose(String purpose) {        
+    public void setPurpose(String purpose) {
         this.purpose.setText(purpose);
     }
     public String getPurpose() {
@@ -89,6 +91,10 @@ public class Classification {
 
     public void setDescription(Description description) {
         this.description = description;
+    }
+
+    public void setDescription(String description) {
+        this.description = new Description(description);
     }
 
     public String getDescription() {
@@ -101,9 +107,9 @@ public class Classification {
     }
     public List<TaxonPath> getTaxonPath(){
         return taxonPath;
-    
+
     }
-    public void addTaxonPath (TaxonPath newTaxonPath){        
+    public void addTaxonPath (TaxonPath newTaxonPath){
         this.taxonPath.add(newTaxonPath);
     }
 
@@ -118,5 +124,5 @@ public class Classification {
     public void addKeyword(String keyword) {
         this.keywords.add(new Keyword(keyword));
     }
-    
+
 }

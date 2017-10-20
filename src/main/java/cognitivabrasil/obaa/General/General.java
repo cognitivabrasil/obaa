@@ -53,15 +53,18 @@ public class General {
     private List<Language> languages;
     @Element(required = false)
     private Structure structure;
+    @ElementList(inline = true, required = false)
+    private List<Thumbnail> thumbnails;
 
     public General() {
-        titles = new ArrayList<Title>();
-        keywords = new ArrayList<Keyword>();
-        descriptions = new ArrayList<Description>();
-        coverages = new ArrayList<Coverage>();
-        identifiers = new ArrayList<Identifier>();
-        languages = new ArrayList<Language>();
-        //Strutcure should not be initialized to avoid create a blank element in the XML 
+        titles = new ArrayList<>();
+        keywords = new ArrayList<>();
+        descriptions = new ArrayList<>();
+        coverages = new ArrayList<>();
+        identifiers = new ArrayList<>();
+        languages = new ArrayList<>();
+        thumbnails = new ArrayList<>();
+        //Strutcure should not be initialized to avoid create a blank element in the XML
     }
 
     //Titles
@@ -210,7 +213,7 @@ public class General {
 
     /**
      * @param structure
-     * @deprecated Strcuture deve receber uma strucutre e não um String
+     * @deprecated Structure deve receber uma structure e não um String
      */
     @Deprecated
     public void setStructure(String structure) {
@@ -220,4 +223,17 @@ public class General {
     public void setTitle(List<Title> title) {
         this.titles = title;
     }
+
+    public List<Thumbnail> getThumbnails() {
+        return thumbnails;
+    }
+
+    public void setThumbnails(List<Thumbnail> thumbnails) {
+        this.thumbnails = thumbnails;
+    }
+
+    public void addThumbnail(Thumbnail thumbnail){
+        this.thumbnails.add(thumbnail);
+    }
+
 }

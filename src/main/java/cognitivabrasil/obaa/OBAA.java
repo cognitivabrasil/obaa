@@ -20,10 +20,14 @@ import cognitivabrasil.obaa.Relation.Relation;
 import cognitivabrasil.obaa.Rights.Rights;
 import cognitivabrasil.obaa.SegmentInformationTable.SegmentInformationTable;
 import cognitivabrasil.obaa.Technical.Technical;
-
 import com.rits.cloning.Cloner;
-
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.io.StringReader;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -32,10 +36,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-
 import metadata.TextElement;
-
-import org.simpleframework.xml.*;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Namespace;
+import org.simpleframework.xml.NamespaceList;
+import org.simpleframework.xml.Root;
+import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,12 +64,12 @@ import org.slf4j.LoggerFactory;
 public class OBAA implements Cloneable {
 
     private static final Logger LOG = LoggerFactory.getLogger(OBAA.class);
-    
+
     @Attribute(name = "xsi:schemaLocation", empty = "http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/obaav1.0/lom.xsd", required = false)
 
-    
-    
-    
+
+
+
     // não é muito elegante, mas funciona.
     private String xsiSchema;
     private String locale;
@@ -207,6 +215,10 @@ public class OBAA implements Cloneable {
         this.relations = relations;
     }
 
+    public void addRelation(Relation relation){
+        this.relations.add(relation);
+    }
+
     public List<Annotation> getAnnotations() {
         return annotations;
     }
@@ -215,12 +227,20 @@ public class OBAA implements Cloneable {
         this.annotations = annotations;
     }
 
+    public void addAnnotation(Annotation annotations){
+        this.annotations.add(annotations);
+    }
+
     public List<Classification> getClassifications() {
         return classifications;
     }
 
     public void setClassifications(List<Classification> classifications) {
         this.classifications = classifications;
+    }
+
+    public void addClassification(Classification classification){
+        this.classifications.add(classification);
     }
 
     public Accessibility getAccessibility() {
@@ -519,7 +539,7 @@ public class OBAA implements Cloneable {
         }
         return result;
     }
-    
+
     public List<Identifier> getRelationsWithKind(String Kind){
         List<Identifier> ids = new ArrayList<Identifier>();
         for (Relation rel : getRelations()) {
@@ -529,12 +549,12 @@ public class OBAA implements Cloneable {
         }
         return ids;
     }
-    
+
     /**
-     * Generates a JSON from obaa object. To translate the json content, the obaa locale must be set. 
+     * Generates a JSON from obaa object. To translate the json content, the obaa locale must be set.
      * The JSON is generated in this format:
      * [{"label":"Node name","children":[{"label":"Node name","children":[{"label":"Grê
-     * 
+     *
      * @return String in json format.
      */
     public String getJson(){

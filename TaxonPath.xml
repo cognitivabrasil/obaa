@@ -1,15 +1,15 @@
-<classification>
-   <purpose/>
-   <taxonPath>
-      <source>source</source>
-      <taxon>
-         <id>id</id>
-         <entry>entry</entry>
-      </taxon>
-      <taxon>
-         <id>id</id>
-         <entry>entry</entry>
-      </taxon>
-   </taxonPath>
-   <obaa:description xmlns:obaa="http://ltsc.ieee.org/xsd/LOM"/>
-</classification>
+<obaa:classification xmlns:obaa="http://ltsc.ieee.org/xsd/LOM">
+   <obaa:purpose/>
+   <obaa:taxonPath>
+      <obaa:source>source</obaa:source>
+      <obaa:taxon>
+         <obaa:id>id</obaa:id>
+         <obaa:entry>entry</obaa:entry>
+      </obaa:taxon>
+      <obaa:taxon>
+         <obaa:id>id</obaa:id>
+         <obaa:entry>entry</obaa:entry>
+      </obaa:taxon>
+   </obaa:taxonPath>
+   <obaa:description/>
+</obaa:classification>

@@ -25,12 +25,12 @@
 
 package cognitivabrasil.obaa.Classification;
 
+import cognitivabrasil.obaa.ObaaRecursibleElement;
 import java.util.ArrayList;
 import java.util.List;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
-
-import cognitivabrasil.obaa.ObaaRecursibleElement;
+import org.simpleframework.xml.Namespace;
 
 /**
  * <div class="en">
@@ -39,7 +39,7 @@ import cognitivabrasil.obaa.ObaaRecursibleElement;
  *</div>
  *
  * <div class="br">
- * 
+ *
  *
  * Adaptado de http://www.portalobaa.org
  *</div>
@@ -48,13 +48,15 @@ import cognitivabrasil.obaa.ObaaRecursibleElement;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 @ObaaRecursibleElement
+@Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class TaxonPath {
+    @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM")
     @Element (required=false)
     private String source;
     @ElementList (inline=true, required=false)
     private List<Taxon> taxons;
 
-    public TaxonPath() {        
+    public TaxonPath() {
         taxons = new ArrayList<Taxon>();
     }
 
@@ -74,6 +76,6 @@ public class TaxonPath {
         return taxons;
     }
 
-       
-    
+
+
 }

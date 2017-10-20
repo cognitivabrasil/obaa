@@ -10,6 +10,7 @@
  */
 package cognitivabrasil.obaa.Technical;
 
+import cognitivabrasil.obaa.ObaaRecursibleElement;
 import static cognitivabrasil.util.HelperFunctions.toStringList;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,8 +20,6 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
-
-import cognitivabrasil.obaa.ObaaRecursibleElement;
 
 /**
  * @author Luiz Rossi <lh.rossi@cognitivabrasil.com.br>
@@ -173,7 +172,7 @@ public class Technical {
     public void setSize(int size) {
         this.size = new Size(Integer.toString(size));
     }
-    
+
     public void setSize(long size) {
         this.size = new Size(Long.toString(size));
     }
@@ -186,8 +185,17 @@ public class Technical {
         }
     }
 
+    /**
+     * It must be userd the method that receives the {@link Duration} class.
+     * @deprecated Use the {@link #setDuration(cognitivabrasil.obaa.Technical.Duration)}
+     */
+    @Deprecated
     public void setDuration(String duration) {
         this.duration.setText(duration);
+    }
+
+    public void setDuration(Duration duration){
+        this.duration = duration;
     }
 
     public List<PlatformSpecificFeature> getPlatformSpecificFeatures() {

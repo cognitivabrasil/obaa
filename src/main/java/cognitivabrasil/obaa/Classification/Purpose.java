@@ -26,6 +26,7 @@
 package cognitivabrasil.obaa.Classification;
 
 import metadata.TextElement;
+import org.simpleframework.xml.Namespace;
 
 /**
  * <div class="en">
@@ -49,6 +50,7 @@ import metadata.TextElement;
  * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
+@Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class Purpose extends TextElement {
 
     public static final String ACCESSIBILITY = "accessibility";
@@ -73,6 +75,6 @@ public class Purpose extends TextElement {
         this.addTerms(EDUCATIONAL_LEVEL);
         this.addTerms(SKILL_LEVEL);
         this.addTerms(SECURITY_LEVEL);
-        this.addTerms(COMPETENCY); 
+        this.addTerms(COMPETENCY);
     }
 }
