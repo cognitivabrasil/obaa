@@ -1,0 +1,35 @@
+<obaa:obaa xmlns:obaa="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/lomv1.0/lom.xsd"
+                    xmlns:dcterms="http://purl.org/dc/terms/"
+                    xmlns:oai_pmh="http://www.openarchives.org/OAI/2.0/"
+                    xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/">
+            <obaa:general>
+               <obaa:title>Fundamentos de Matemática</obaa:title>
+               <obaa:title>Fundamentos de Matematica.pdf</obaa:title>
+               <obaa:identifier>
+                  <obaa:catalog>identifier</obaa:catalog>
+                  <obaa:entry>http://www.educapes.capes.gov.br/capes/4465</obaa:entry>
+               </obaa:identifier>
+               <obaa:keyword>Matemática Fundamentos Lógica matemática Teoria dos conjuntos</obaa:keyword>
+               <obaa:keyword>MATEMATICA</obaa:keyword>
+               <obaa:keyword>FUNDAMENTOS DE MATEMÃ&#129;TICA</obaa:keyword>
+            </obaa:general>
+            <obaa:lifeCycle>
+               <obaa:contribute>
+                  <obaa:role>author</obaa:role>
+                  <obaa:entity>SANTOS, JOSE CARLOS LEITE DOS</obaa:entity>
+                  <obaa:date/>
+               </obaa:contribute>
+               <obaa:contribute>
+                  <obaa:role>unknown</obaa:role>
+                  <obaa:entity>UNIVERSIDADE FEDERAL DE SERGIPE</obaa:entity>
+               </obaa:contribute>
+            </obaa:lifeCycle>
+            <obaa:technical>
+               <obaa:location>http://www.educapes.capes.gov.br/capes/4465</obaa:location>
+               <obaa:format>application/pdf</obaa:format>
+               <obaa:size>8847039</obaa:size>
+            </obaa:technical>
+            <obaa:rights>
+               <obaa:description/>
+            </obaa:rights>
+         </obaa:obaa>
