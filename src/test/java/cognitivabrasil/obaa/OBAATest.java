@@ -1357,6 +1357,13 @@ public class OBAATest {
         assertThat(ids.get(0).equals(new Identifier("URI", "xx2")), equalTo(true));
 
     }
+    
+    @Test
+    public void capesErrorTest()throws FileNotFoundException{
+        OBAA capesEl = OBAA.fromFilename("./src/test/metadata/capes.xml");
+        
+        assertThat(capesEl.getGeneral().getTitles().get(0), equalTo("Fundamentos de Matemática"));
+    }
 
     
 }
