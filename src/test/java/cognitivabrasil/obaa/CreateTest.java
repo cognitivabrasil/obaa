@@ -11,12 +11,6 @@ import cognitivabrasil.obaa.Accessibility.Accessibility;
 import cognitivabrasil.obaa.Annotation.Annotation;
 import cognitivabrasil.obaa.Classification.Classification;
 import cognitivabrasil.obaa.Educational.Educational;
-import static org.junit.Assert.*;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
-
-import org.junit.Test;
-
 import cognitivabrasil.obaa.General.General;
 import cognitivabrasil.obaa.General.Identifier;
 import cognitivabrasil.obaa.LifeCycle.Contribute;
@@ -30,6 +24,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
+import org.junit.Test;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
