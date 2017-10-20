@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?><OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+    <lom:lom xmlns:lom="http://ltsc.ieee.org/xsd/LOM" xsi:schemaLocation="http://ltsc.ieee.org/xsd/lomv1.0/lom.xsd">
+        <lom:general>
+            <lom:title>Perdidos no Egito</lom:title>
+            <lom:description>Jogo envolvendo exercícios e história das frações</lom:description>
+            <lom:keyword>Fração</lom:keyword>
+            <lom:aggregationLevel/>
+        </lom:general>
+        <lom:lifeCycle>
+            <lom:version>1.0</lom:version>
+            <lom:status>final</lom:status>
+            <lom:contribute>
+                <lom:role>author</lom:role>
+                <lom:entity>nunhuma</lom:entity>
+            </lom:contribute>
+        </lom:lifeCycle>
+        <lom:technical>
+            <lom:format>application/x-shockwave-flash</lom:format>
+            <lom:size>6291456</lom:size>
+            <lom:location>www.cinted.ufrgs.br</lom:location>
+            <lom:location>http://cesta2.cinted.ufrgs.br/xmlui/handle/123456789/239</lom:location>
+            <lom:installationRemarks/>
+            <lom:otherPlatformRequirements>ms-windows</lom:otherPlatformRequirements>
+        </lom:technical>
+        <lom:educational>
+            <lom:interactivityType>mixed</lom:interactivityType>
+            <lom:learningResourceType>exercise</lom:learningResourceType>
+            <lom:learningResourceType>lecture</lom:learningResourceType>
+            <lom:interactivityLevel>medium</lom:interactivityLevel>
+            <lom:intendedEndUserRole>learner</lom:intendedEndUserRole>
+            <lom:context>school</lom:context>
+            <lom:typicalAgeRange>11 anos</lom:typicalAgeRange>
+            <lom:description>5ª série</lom:description>
+        </lom:educational>
+        <lom:rights>
+            <lom:cost>no</lom:cost>
+            <lom:copyright>no</lom:copyright>
+            <lom:description/>
+        </lom:rights>
+        <lom:relation>
+            <lom:kind>ispartof</lom:kind>
+            <lom:resource/>
+        </lom:relation>
+        <lom:relation>
+            <lom:kind>isversionof</lom:kind>
+            <lom:resource/>
+        </lom:relation>
+        <lom:relation>
+            <lom:kind>isreplacedby</lom:kind>
+            <lom:resource/>
+        </lom:relation>
+    </lom:lom>
+</OAI-PMH>
