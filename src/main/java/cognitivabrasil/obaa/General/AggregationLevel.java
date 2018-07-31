@@ -7,6 +7,7 @@
  ******************************************************************************/
 package cognitivabrasil.obaa.General;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Map;
 import java.util.TreeMap;
 import metadata.TextElement;
@@ -36,13 +37,13 @@ import org.simpleframework.xml.Namespace;
  */
 @Namespace(reference="http://ltsc.ieee.org/xsd/LOM", prefix="obaa")
 public class AggregationLevel extends TextElement {
-    
+
     private static final int MINIMUMVALUE = 1;
     private static final int MAXIMUMVALUE = 4;
 
     public AggregationLevel() {
     }
-  
+
     /**
      *
      * @param aggregationLevel must be beetween 1 and 4
@@ -53,14 +54,14 @@ public class AggregationLevel extends TextElement {
         if (intVal > MAXIMUMVALUE || intVal < MINIMUMVALUE){
             throw new IllegalArgumentException("Aggregation level must be beetween "+MINIMUMVALUE+" and "+MAXIMUMVALUE+" got value "+intVal);
         }  else{
-            this.setText(String.valueOf(intVal));        
+            this.setText(String.valueOf(intVal));
         }
     }
-    
+
     @Override
     public Map<String, String> getMapOfTerms() {
 
-        Map<String, String> relation = new TreeMap<String, String>();
+        Map<String, String> relation = new TreeMap<>();
         for (int i=MINIMUMVALUE;i<=MAXIMUMVALUE;i++) {
             String a = String.valueOf(i);
             relation.put(a, a);
@@ -68,7 +69,8 @@ public class AggregationLevel extends TextElement {
 
         return relation;
     }
-  
+
+    @JsonValue
     //needed to be override to not validate de value in the traditional way
     @Override
     public String toString(){

@@ -7,6 +7,8 @@
  ******************************************************************************/
 package metadata;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -16,7 +18,6 @@ import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
-
 import org.simpleframework.xml.Text;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +34,7 @@ public class TextElement {
     private String text;
     private String language;
     private String country;
+    @JsonIgnore
     private List<String> listOfTerms;
     private static final Logger log = LoggerFactory.getLogger(TextElement.class);
 
@@ -111,7 +113,7 @@ public class TextElement {
                 currentLocale = new Locale(language, country);
 
                 messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
-                
+
                 return (messages.getString(getCanonicalTextForTranslation()));
             } catch (MissingResourceException e) {
                 log.debug("Can not translate " + this.getText() + " " + e);
@@ -120,10 +122,10 @@ public class TextElement {
 
         }
     }
-    
+
     /**
      * Override this to process text before it is translated.
-     * 
+     *
      * @return the text
      */
     protected String getCanonicalTextForTranslation() {
@@ -138,6 +140,8 @@ public class TextElement {
         }
     }
 
+
+    @JsonValue
     @Override
     public String toString() {
         return getTranslated();
@@ -161,7 +165,7 @@ public class TextElement {
             throw new IllegalArgumentException(this.className() + " must be one of: " + message);
         }
     }
-    
+
     /**
      * Use this on the constructor of the subclasses to define the resctrict
      * vocabulary.
@@ -178,7 +182,7 @@ public class TextElement {
 
     /**
      * Get the map of the canonical value and the translation value in alphabetical order
-     * @return 
+     * @return
      */
     public Map<String, String> getMapOfTerms() {
 
@@ -193,19 +197,19 @@ public class TextElement {
             translation.setText(x);
             relation.put(x, translation.getTranslated());
         }
-        
+
         return (TextElement.sortByValues(relation));
     }
-    
+
     /**
      * Get the map of the canonical value and the translation value in a chosen order
      * like Difficult: 1- very low, 2- low, 3- medium, 4- high and 5- very high
-     * @return 
+     * @return
      */
     public Map<String, String> getMapOfTermsLevelOrdered() {
-    
+
         Map<String, String> relation = new LinkedHashMap<String, String>();
-        
+
         TextElement translation = new TextElement();
 
         translation.setLanguage(this.getLanguage());
@@ -215,7 +219,7 @@ public class TextElement {
             translation.setText(x);
             relation.put(x, translation.getTranslated());
         }
-        
+
         return (relation);
     }
 
@@ -257,14 +261,14 @@ public class TextElement {
         return hash;
     }
 
-    public String whoAmI() {  
-        
+    public String whoAmI() {
+
         try {
                 Locale currentLocale = new Locale(language, country);
                 ResourceBundle messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
 
                 return (messages.getString(this.className()+".whoAmI"));
-                
+
             } catch (MissingResourceException e) {
                 log.info("WhoAmI method is not defined for " + this.className() + ": " + e);
                 return "";
@@ -275,7 +279,7 @@ public class TextElement {
 
         Comparator<K> valueComparator;
         valueComparator = new Comparator<K>() {
-            
+
             @Override
             public int compare(K k1, K k2) {
                 int compare = map.get(k2).compareTo(map.get(k1));
@@ -286,19 +290,19 @@ public class TextElement {
                 }
             }
         };
-        
+
         Map<K, V> sortedByValues = new TreeMap<K, V>(valueComparator);
-        sortedByValues.putAll(map);        
+        sortedByValues.putAll(map);
         return sortedByValues;
     }
-    
-    private String className (){                        
+
+    private String className (){
         return this.getClass().toString().substring(this.getClass().toString().lastIndexOf(".")+1);
     }
-    
-    public String classFullName (){                    
+
+    public String classFullName (){
         //remove a parte: class cognitivabrasil. do nome do método
-        String res = this.getClass().toString().substring(22,this.getClass().toString().length());        
+        String res = this.getClass().toString().substring(22,this.getClass().toString().length());
         res = res.toLowerCase();
         return res;
     }

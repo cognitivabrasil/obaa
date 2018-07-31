@@ -20,6 +20,9 @@ import cognitivabrasil.obaa.Relation.Relation;
 import cognitivabrasil.obaa.Rights.Rights;
 import cognitivabrasil.obaa.SegmentInformationTable.SegmentInformationTable;
 import cognitivabrasil.obaa.Technical.Technical;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rits.cloning.Cloner;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
@@ -75,32 +78,41 @@ public class OBAA implements Cloneable {
     private String locale;
     @Element(required = false)
     private General general;
+    @JsonIgnore
     @Element(required = false)
     private LifeCycle lifeCycle;
+    @JsonIgnore
     @Element(required = false)
     private Rights rights;
+    @JsonIgnore
     @Element(required = false)
     private Educational educational;
+    @JsonIgnore
     @Element(required = false)
     private Technical technical;
+    @JsonIgnore
     @Element(required = false)
     private Metametadata metametadata;
+    @JsonIgnore
     @ElementList(required = false, inline = true)
     private List<Relation> relations;
+    @JsonIgnore
     @ElementList(required = false, inline = true)
     private List<Annotation> annotations;
+    @JsonIgnore
     @ElementList(required = false, inline = true)
     private List<Classification> classifications;
+    @JsonIgnore
     @Element(required = false)
     private Accessibility accessibility;
+    @JsonIgnore
     @Element(required = false, name = "segmentInformationTable")
     private SegmentInformationTable segmentsInformationTable;
 
     public OBAA() {
-
-        relations = new ArrayList<Relation>();
-        annotations = new ArrayList<Annotation>();
-        classifications = new ArrayList<Classification>();
+        relations = new ArrayList<>();
+        annotations = new ArrayList<>();
+        classifications = new ArrayList<>();
     }
 
     public boolean isEmpty() {
@@ -541,7 +553,7 @@ public class OBAA implements Cloneable {
     }
 
     public List<Identifier> getRelationsWithKind(String Kind){
-        List<Identifier> ids = new ArrayList<Identifier>();
+        List<Identifier> ids = new ArrayList<>();
         for (Relation rel : getRelations()) {
             if (rel.getKind().getText().equals(Kind)) {
                 ids.addAll(rel.getResource().getIdentifier());
@@ -557,8 +569,10 @@ public class OBAA implements Cloneable {
      *
      * @return String in json format.
      */
-    public String getJson(){
-        JsonGenerator generator = new JsonGenerator(locale);
-        return generator.getJson(this);
+    public String getJson() throws JsonProcessingException{
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.writeValueAsString(this);
+//        JsonGenerator generator = new JsonGenerator(locale);
+//        return generator.getJson(this);
     }
 }

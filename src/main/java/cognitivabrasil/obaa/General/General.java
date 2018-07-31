@@ -10,6 +10,7 @@ package cognitivabrasil.obaa.General;
 
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import cognitivabrasil.util.HelperFunctions;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import org.simpleframework.xml.Element;
@@ -38,21 +39,29 @@ public class General {
 
     @ElementList(inline = true, required = false)
     private List<Title> titles;
+    @JsonIgnore
     @ElementList(inline = true, required = false)
     private List<Keyword> keywords;
+    @JsonIgnore
     @ElementList(inline = true, required = false)
     private List<Description> descriptions;
+    @JsonIgnore
     @ElementList(inline = true, required = false)
     private List<Coverage> coverages;
+    @JsonIgnore
     @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM")
     @Element(required = false)
     private AggregationLevel aggregationLevel;
+    @JsonIgnore
     @ElementList(inline = true, required = false)
     private List<Identifier> identifiers;
+    @JsonIgnore
     @ElementList(inline = true, required = false)
     private List<Language> languages;
+    @JsonIgnore
     @Element(required = false)
     private Structure structure;
+    @JsonIgnore
     @ElementList(inline = true, required = false)
     private List<Thumbnail> thumbnails;
 
