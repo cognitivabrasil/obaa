@@ -1,7 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (c) 2014 Cognitiva Brasil Tecnologias Educacionais
+ * http://www.cognitivabrasil.com.br - contato@cognitivabrasil.com.br
+ *
+ * All rights reserved. No warranty, explicit or implicit, provided.
+ * In no event shall the author be liable for any claim or damages.
+ *
+ * Todos os direitos reservados.
  */
 package cognitivabrasil.obaa;
 
@@ -9,15 +13,20 @@ import cognitivabrasil.obaa.General.General;
 import cognitivabrasil.obaa.General.Identifier;
 import cognitivabrasil.obaa.General.Structure;
 import cognitivabrasil.obaa.General.Thumbnail;
+import cognitivabrasil.obaa.LifeCycle.Contribute;
+import cognitivabrasil.obaa.LifeCycle.LifeCycle;
+import cognitivabrasil.obaa.LifeCycle.Role;
+import cognitivabrasil.obaa.LifeCycle.Status;
 import cognitivabrasil.obaa.Technical.OrComposite;
 import cognitivabrasil.obaa.Technical.Requirement;
 import cognitivabrasil.obaa.Technical.Technical;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 import org.junit.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
+import org.skyscreamer.jsonassert.JSONCompareMode;
 
 /**
  *
@@ -45,44 +54,60 @@ public class JsonTest {
     }
 
     @Test
-    public void testGeneralSerialize() throws JsonProcessingException{
-
+    public void testJsonSerialize() throws Exception {
+        OBAA obaa = new OBAA();
         General g = new General();
-            //g.addIdentifiers("Catalog");
-            g.addTitle("Título aleatório");
-            g.addLanguage("pt");
-            g.addLanguage("pt-br");
-            Structure s = new Structure();
-            s.setText(Structure.ATOMIC);
-            g.setStructure(s);
-            g.setAggregationLevel("1");
-            g.addDescription("descri");
-            g.addDescription("description");
-            g.addKeyword("chaves");
-            g.addCoverage("cover");
-            g.setAggregationLevel("1");
-            g.addThumbnail(new Thumbnail("http://img", "800", "600"));
+        //g.addIdentifiers("Catalog");
+        g.addTitle("Título aleatório");
+        g.addLanguage("pt");
+        g.addLanguage("pt-br");
+        Structure s = new Structure();
+        s.setText(Structure.ATOMIC);
+        g.setStructure(s);
+        g.setAggregationLevel("1");
+        g.addDescription("descri");
+        g.addDescription("description");
+        g.addKeyword("chaves");
+        g.addCoverage("cover");
+        g.setAggregationLevel("1");
+        g.addThumbnail(new Thumbnail("http://img", "800", "600"));
+        Identifier i = new Identifier();
+        i.setCatalog("catalog");
+        i.setEntry("entry");
+        Identifier id = new Identifier("catalogo", "http://id");
+        g.addIdentifier(id);
+        obaa.setGeneral(g);
+        LifeCycle lifeCycle = new LifeCycle();
+        lifeCycle.setStatus(Status.DRAFT);
+        lifeCycle.setVersion("0.0.1");
+        Contribute contribute = new Contribute();
+        contribute.addEntity("UFRGS");
+        contribute.setDate("2018-09-01");
+        contribute.setRole(Role.PUBLISHER);
+        lifeCycle.addContribute(contribute);
+        obaa.setLifeCycle(lifeCycle);
 
-            Identifier i = new Identifier();
-            i.setCatalog("catalog");
-            i.setEntry("entry");
-            Identifier id = new Identifier("catalogo", "http://id");
-            g.addIdentifier(id);
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonResult = mapper.writeValueAsString(obaa);
 
-            ObjectMapper mapper = new ObjectMapper();
-        String obaaJson = mapper.writeValueAsString(g);
+        JSONAssert.assertEquals("{\"general\":{\"titles\":[\"Título aleatório\"]}}", jsonResult, JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals("{\"lifeCycle\":{\"version\":\"0.0.1\"}}", jsonResult, JSONCompareMode.LENIENT);
 
-        System.out.println(obaaJson);
+//        System.out.println(jsonResult);
     }
+
+
+
+
     @Test
-    public void testGeneralDeserialize() throws IOException{
-        String json = "{\"titles\":[\"Título aleatório\"],\"keywords\":[\"chaves\"],\"descriptions\":[\"descri\",\"description\"],\"coverages\":[\"cover\"],\"aggregationLevel\":\"1\",\"identifiers\":[{\"catalog\":\"catalogo\",\"entry\":\"http://id\"}],\"languages\":[\"pt\",\"pt-br\"],\"structure\":\"atomic\",\"thumbnails\":[{\"location\":\"http://img\",\"height\":\"800\",\"width\":\"600\"}],\"identifier\":{\"catalog\":\"catalogo\",\"entry\":\"http://id\"}}";
+    public void testGeneralDeserialize() throws IOException {
+        String json = "{\"structure\":\"atomic\"}";
         ObjectMapper mapper = new ObjectMapper();
         General g = mapper.readValue(json, General.class);
 
-        assertThat(g.getTitles().get(0), equalTo("Título aleatório"));
+        assertThat(g.getStructure().toString(), equalTo(Structure.ATOMIC));
 
-            //g.addIdentifiers("Catalog");
+        //g.addIdentifiers("Catalog");
 //            g.addTitle("Título aleatório");
 //            g.addLanguage("pt");
 //            g.addLanguage("pt-br");
@@ -102,10 +127,9 @@ public class JsonTest {
 //            i.setEntry("entry");
 //            Identifier id = new Identifier("catalogo", "http://id");
 //            g.addIdentifier(id);
-
     }
 
-    private OBAA createOrComposite(){
+    private OBAA createOrComposite() {
         OBAA obaa = new OBAA();
         Technical tec = new Technical();
         obaa.setTechnical(tec);
@@ -119,42 +143,42 @@ public class JsonTest {
     }
 
     @Test
-    public void testOrCompositeEn(){
+    public void testOrCompositeEn() {
         JsonGenerator jsonG = new JsonGenerator();
         String json = jsonG.getJson(createOrComposite());
 
-        String correctJson =
-                "[{\"label\":\"technical\","
-                    + "\"children\":[{\"label\":\"requirement\","
-                        + "\"children\":[{\"label\":\"orComposite\","
-                            + "\"children\":["
-                                + "{\"label\":\"type\",\"value\":\"browser\"},"
-                                + "{\"label\":\"name\",\"value\":\"firefox\"}"
-                            + "]"
-                        + "}]"
-                    + "}]"
+        String correctJson
+                = "[{\"label\":\"technical\","
+                + "\"children\":[{\"label\":\"requirement\","
+                + "\"children\":[{\"label\":\"orComposite\","
+                + "\"children\":["
+                + "{\"label\":\"type\",\"value\":\"browser\"},"
+                + "{\"label\":\"name\",\"value\":\"firefox\"}"
+                + "]"
+                + "}]"
+                + "}]"
                 + "}]";
 
         assertThat(json, equalTo(correctJson));
     }
 
     @Test
-    public void testOrCompositePtBR(){
+    public void testOrCompositePtBR() {
         OBAA obaa = createOrComposite();
 
         JsonGenerator jsonG = new JsonGenerator("pt-BR");
         String json = jsonG.getJson(obaa);
 
-        String correctJson =
-                "[{\"label\":\"Informações técnicas\","
-                    + "\"children\":[{\"label\":\"Requisitos\","
-                        + "\"children\":[{\"label\":\"Opção\","
-                            + "\"children\":["
-                                + "{\"label\":\"Tipo\",\"value\":\"browser\"},"
-                                + "{\"label\":\"Nome\",\"value\":\"firefox\"}"
-                            + "]"
-                        + "}]"
-                    + "}]"
+        String correctJson
+                = "[{\"label\":\"Informações técnicas\","
+                + "\"children\":[{\"label\":\"Requisitos\","
+                + "\"children\":[{\"label\":\"Opção\","
+                + "\"children\":["
+                + "{\"label\":\"Tipo\",\"value\":\"browser\"},"
+                + "{\"label\":\"Nome\",\"value\":\"firefox\"}"
+                + "]"
+                + "}]"
+                + "}]"
                 + "}]";
 
         assertThat(json, equalTo(correctJson));

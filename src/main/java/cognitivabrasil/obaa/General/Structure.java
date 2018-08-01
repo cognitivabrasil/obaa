@@ -8,7 +8,6 @@
 package cognitivabrasil.obaa.General;
 
 import metadata.TextElement;
-
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 
@@ -35,7 +34,7 @@ import org.simpleframework.xml.Root;
  */
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
-public class Structure extends TextElement {  
+public class Structure extends TextElement {
     public static final String ATOMIC = "atomic";
     public static final String COLLECTION = "collection";
     public static final String NETWORKED = "networked";
@@ -44,6 +43,14 @@ public class Structure extends TextElement {
 
     public Structure() {
         super();
+        this.addTerms(ATOMIC);
+        this.addTerms(COLLECTION);
+        this.addTerms(NETWORKED);
+        this.addTerms(HIERARCHICAL);
+        this.addTerms(LINEAR);
+    }
+    public Structure(String structure){
+        super(structure);
         this.addTerms(ATOMIC);
         this.addTerms(COLLECTION);
         this.addTerms(NETWORKED);

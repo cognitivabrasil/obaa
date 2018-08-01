@@ -54,6 +54,7 @@ import java.util.HashMap;
 import java.util.List;
 import metadata.TextElement;
 import org.apache.commons.io.FileUtils;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.is;
@@ -61,7 +62,6 @@ import static org.hamcrest.Matchers.nullValue;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -190,20 +190,6 @@ public class OBAATest {
     public void testOBAA_General_Descriptions() throws FileNotFoundException {
         assert (!(l.getGeneral() == null));
         assertThat(l.getGeneral().getDescriptions(), hasItems("Desc1", "Desc2"));
-    }
-
-    @Test
-    public void testOBAAGeneralIdentifierCatalog() throws FileNotFoundException {
-        assert (!(l.getGeneral() == null));
-        assert (!(l.getGeneral().getIdentifier() == null));
-        assertThat(l.getGeneral().getIdentifier().getCatalog(), equalTo("teste"));
-    }
-
-    @Test
-    public void testOBAA_General_Identifier_Entry() throws FileNotFoundException {
-        assert (!(l.getGeneral() == null));
-        assert (!(l.getGeneral().getIdentifier() == null));
-        assertThat(l.getGeneral().getIdentifier().getEntry(), equalTo("123"));
     }
 
     @Test
@@ -1374,11 +1360,11 @@ public class OBAATest {
         assertThat(ids.get(0).equals(new Identifier("URI", "xx2")), equalTo(true));
 
     }
-    
+
     @Test
     public void capesErrorTest()throws FileNotFoundException{
         OBAA capesEl = OBAA.fromFilename("./src/test/metadata/capes.xml");
-        
+
         assertThat(capesEl.getGeneral().getTitles().get(0), equalTo("Fundamentos de Matemática"));
     }
 

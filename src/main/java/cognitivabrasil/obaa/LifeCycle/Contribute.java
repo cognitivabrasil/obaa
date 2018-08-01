@@ -1,14 +1,15 @@
-/*******************************************************************************
+/** *****************************************************************************
  * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+ ***************************************************************************** */
 package cognitivabrasil.obaa.LifeCycle;
 
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import static cognitivabrasil.util.HelperFunctions.toStringList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import org.simpleframework.xml.Element;
@@ -19,14 +20,13 @@ import org.simpleframework.xml.Namespace;
  *
  * <div class="en">
  *
- * Those entities (i.e., people, organizations)that have contributed to the
- * state of this learning object during its life cycle (e.g.,creation, edits,
- * publication).
+ * Those entities (i.e., people, organizations)that have contributed to the state of this learning object during its
+ * life cycle (e.g.,creation, edits, publication).
  *
  * NOTE 1:--This data element is different from Meta-Metadata.Contribute.
-
- * NOTE 2:--Contributions should be considered in a very broad sense here, as
- * all actions that affect the state of the learning object.
+ *
+ * NOTE 2:--Contributions should be considered in a very broad sense here, as all actions that affect the state of the
+ * learning object.
  *
  * according to IEEE LOM http://ltsc.ieee.org/
  * </div>
@@ -50,11 +50,11 @@ public class Contribute {
     private List<Entity> entity;
 
     @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM")
-    @Element(required=false)
+    @Element(required = false)
     private LifeCycleDate date;
 
     public Contribute() {
-        entity = new ArrayList<Entity>();
+        entity = new ArrayList<>();
         role = new Role();
     }
 
@@ -82,20 +82,19 @@ public class Contribute {
     }
 
     /**
- *
- * <div class="en">
- * The identification of and information about entities (i.e., people, organizations)
- * contributing to this learning object. The entities shall be ordered as most relevant first
- *
- * according to IEEE LOM http://ltsc.ieee.org/
- * </div>
- * <div class="br">
- *
- * Adaptado de http://www.portalobaa.org/
- * </div>
- */
-
-
+     *
+     * <div class="en">
+     * The identification of and information about entities (i.e., people, organizations) contributing to this learning
+     * object. The entities shall be ordered as most relevant first
+     *
+     * according to IEEE LOM http://ltsc.ieee.org/
+     * </div>
+     * <div class="br">
+     *
+     * Adaptado de http://www.portalobaa.org/
+     * </div>
+     * @param entity
+     */
     public void addEntity(Entity entity) {
         this.entity.add(entity);
     }
@@ -110,19 +109,26 @@ public class Contribute {
         return date;
     }
 
+    @JsonIgnore
     public String getFirstEntity() {
         return entity.get(0).toString();
 
+    }
+
+    public void setEntities(List<Entity> entity) {
+        this.entity = entity;
     }
 
     public List<String> getEntities() {
         return toStringList(entity);
     }
 
+    @JsonIgnore
     public List<Entity> getEntitiesReal() {
         return entity;
     }
 
+    @JsonIgnore
     @Deprecated
     /**
      * Should be used getEntities()

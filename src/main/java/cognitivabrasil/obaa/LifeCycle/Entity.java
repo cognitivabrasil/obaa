@@ -43,6 +43,11 @@ public class Entity extends TextElement {
         name = new VCarder();
     }
 
+    public Entity(String t) {
+        super(t);
+        name = new VCarder();
+    }
+
     /**
      *
      * @param givenName

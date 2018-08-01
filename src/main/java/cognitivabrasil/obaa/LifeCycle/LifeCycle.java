@@ -11,14 +11,13 @@
  */
 package cognitivabrasil.obaa.LifeCycle;
 
+import cognitivabrasil.obaa.ObaaRecursibleElement;
 import java.util.ArrayList;
 import java.util.List;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
-
-import cognitivabrasil.obaa.ObaaRecursibleElement;
 
 /**
  *
@@ -45,9 +44,9 @@ public class LifeCycle {
     private List<Contribute> contribute;
 
     public LifeCycle() {
-        
-        contribute = new ArrayList<Contribute>();
-        
+
+        contribute = new ArrayList<>();
+
         //Status should not be initialized to avoid create a blank element in the XML
     }
 
@@ -88,11 +87,11 @@ public class LifeCycle {
     public void setVersion(String version) {
         this.version = version;
     }
-    
+
     public void setContribute(List<Contribute> l) {
     	contribute = l;
     }
-    
+
     public void addContribute(Contribute c) {
     	if(contribute == null) {
     		contribute = new ArrayList<Contribute>();

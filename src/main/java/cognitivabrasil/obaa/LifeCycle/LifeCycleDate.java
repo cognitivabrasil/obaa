@@ -11,9 +11,7 @@ package cognitivabrasil.obaa.LifeCycle;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import metadata.TextElement;
-
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 
@@ -27,26 +25,26 @@ public class LifeCycleDate extends TextElement {
     public LifeCycleDate() {
         super();
     }
-    
+
     @Override
     public String getTranslated() {
         SimpleDateFormat invertido = new SimpleDateFormat("yyyy-MM-dd");
-        
+
         SimpleDateFormat ptBr = new SimpleDateFormat("dd/MM/yyyy");
-        
+
         Date d = null;
-        
+
         try {
             d = invertido.parse(getText());
         }
         catch (ParseException e) {
-            
+
         }
-        
+
         if(d == null) {
             return getText();
         }
-        else {      
+        else {
             return ptBr.format(d);
         }
     }

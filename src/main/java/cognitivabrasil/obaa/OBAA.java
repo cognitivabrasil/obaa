@@ -21,6 +21,7 @@ import cognitivabrasil.obaa.Rights.Rights;
 import cognitivabrasil.obaa.SegmentInformationTable.SegmentInformationTable;
 import cognitivabrasil.obaa.Technical.Technical;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rits.cloning.Cloner;
@@ -64,21 +65,18 @@ import org.slf4j.LoggerFactory;
 @NamespaceList({
     @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa"),
     @Namespace(reference = "http://www.w3.org/2001/XMLSchema-instance", prefix = "xsi")})
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OBAA implements Cloneable {
 
     private static final Logger LOG = LoggerFactory.getLogger(OBAA.class);
 
     @Attribute(name = "xsi:schemaLocation", empty = "http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/obaav1.0/lom.xsd", required = false)
 
-
-
-
     // não é muito elegante, mas funciona.
     private String xsiSchema;
     private String locale;
     @Element(required = false)
     private General general;
-    @JsonIgnore
     @Element(required = false)
     private LifeCycle lifeCycle;
     @JsonIgnore
@@ -115,6 +113,7 @@ public class OBAA implements Cloneable {
         classifications = new ArrayList<>();
     }
 
+    @JsonIgnore
     public boolean isEmpty() {
         return general == null && lifeCycle == null && rights == null
                 && educational == null && technical == null
@@ -272,11 +271,13 @@ public class OBAA implements Cloneable {
         this.segmentsInformationTable = segmentsInformationTable;
     }
 
+    @JsonIgnore
     @Deprecated
     public List<String> getTitles() {
         return getGeneral().getTitles();
     }
 
+    @JsonIgnore
     @Deprecated
     public List<String> getKeywords() {
         return getGeneral().getKeywords();
@@ -288,6 +289,7 @@ public class OBAA implements Cloneable {
      * object.
      * @throws Exception In case a serializing error occurs
      */
+    @JsonIgnore
     public String toXml() {
         OutputStream o = new ByteArrayOutputStream();
         Serializer serializer = new Persister();
@@ -552,6 +554,7 @@ public class OBAA implements Cloneable {
         return result;
     }
 
+    @JsonIgnore
     public List<Identifier> getRelationsWithKind(String Kind){
         List<Identifier> ids = new ArrayList<>();
         for (Relation rel : getRelations()) {
@@ -569,6 +572,7 @@ public class OBAA implements Cloneable {
      *
      * @return String in json format.
      */
+    @JsonIgnore
     public String getJson() throws JsonProcessingException{
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(this);

@@ -10,7 +10,8 @@ package cognitivabrasil.obaa.General;
 
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import cognitivabrasil.util.HelperFunctions;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.util.ArrayList;
 import java.util.List;
 import org.simpleframework.xml.Element;
@@ -35,33 +36,26 @@ import org.simpleframework.xml.Root;
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
+@JsonInclude(Include.NON_NULL)
 public class General {
 
     @ElementList(inline = true, required = false)
     private List<Title> titles;
-    @JsonIgnore
     @ElementList(inline = true, required = false)
     private List<Keyword> keywords;
-    @JsonIgnore
     @ElementList(inline = true, required = false)
     private List<Description> descriptions;
-    @JsonIgnore
     @ElementList(inline = true, required = false)
     private List<Coverage> coverages;
-    @JsonIgnore
     @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM")
     @Element(required = false)
     private AggregationLevel aggregationLevel;
-    @JsonIgnore
     @ElementList(inline = true, required = false)
     private List<Identifier> identifiers;
-    @JsonIgnore
     @ElementList(inline = true, required = false)
     private List<Language> languages;
-    @JsonIgnore
     @Element(required = false)
     private Structure structure;
-    @JsonIgnore
     @ElementList(inline = true, required = false)
     private List<Thumbnail> thumbnails;
 
@@ -163,14 +157,6 @@ public class General {
     }
 
     /**
-     * Returns the FIRST identifier
-     */
-    @Deprecated
-    public Identifier getIdentifier() {
-        return identifiers.get(0);
-    }
-
-    /**
      * @return the language
      */
     public List<String> getLanguages() {
@@ -178,7 +164,7 @@ public class General {
     }
 
     /**
-     * @param language the language to set
+     * @param languages the languages to set
      */
     @SuppressWarnings("unchecked")
     public void setLanguage(List<String> languages) {
@@ -194,14 +180,11 @@ public class General {
      * @return the structure
      */
     public Structure getStructure() {
-        if (structure == null) {
-            return null;
-        }
         return structure;
     }
 
     /**
-     * @param structure the structure to set
+     * @param coverage the coverage to set
      */
     public void setCoverage(List<Coverage> coverage) {
         this.coverages = coverage;
@@ -218,15 +201,6 @@ public class General {
 
     public void setStructure(Structure structure) {
         this.structure = structure;
-    }
-
-    /**
-     * @param structure
-     * @deprecated Structure deve receber uma structure e não um String
-     */
-    @Deprecated
-    public void setStructure(String structure) {
-        this.structure.setText(structure);
     }
 
     public void setTitle(List<Title> title) {
