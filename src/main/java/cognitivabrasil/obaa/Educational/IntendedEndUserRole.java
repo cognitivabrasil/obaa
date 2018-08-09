@@ -1,10 +1,10 @@
-/*******************************************************************************
+/** *****************************************************************************
  * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+ ***************************************************************************** */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -24,6 +24,7 @@
  */
 package cognitivabrasil.obaa.Educational;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -31,17 +32,14 @@ import org.simpleframework.xml.Root;
 /**
  * <div class="en">
  *
- * Principal user(s) for which this learning object was designed, most dominant
- * first.
+ * Principal user(s) for which this learning object was designed, most dominant first.
  *
- * NOTE 1:--A learner works with a learning object in order to learn something.
- * An author creates or publishes a learning object. A manager manages the
- * delivery of this learning object, e.g., a university or college. The document
+ * NOTE 1:--A learner works with a learning object in order to learn something. An author creates or publishes a
+ * learning object. A manager manages the delivery of this learning object, e.g., a university or college. The document
  * for a manager is typically a curriculum.
  *
- * NOTE 2:--In order to describe the intended end user role through the skills
- * the user is intended to master, or the tasks he or she is intended to be able
- * to accomplish, the category 9:Classification can be used.
+ * NOTE 2:--In order to describe the intended end user role through the skills the user is intended to master, or the
+ * tasks he or she is intended to be able to accomplish, the category 9:Classification can be used.
  *
  *
  * Value Space: teacher, author, learner or manager
@@ -60,18 +58,24 @@ import org.simpleframework.xml.Root;
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class IntendedEndUserRole extends TextElement {
-    
+
     public static final String TEACHER = "teacher";
     public static final String AUTHOR = "author";
     public static final String LEARNER = "learner";
     public static final String MANAGER = "manager";
-    
-    
+
     public IntendedEndUserRole() {
         super();
         this.addTerms(TEACHER);
         this.addTerms(AUTHOR);
         this.addTerms(LEARNER);
         this.addTerms(MANAGER);
+    }
+
+    @JsonCreator
+    public static IntendedEndUserRole fromText(String text) {
+        IntendedEndUserRole i = new IntendedEndUserRole();
+        i.setText(text);
+        return i;
     }
 }

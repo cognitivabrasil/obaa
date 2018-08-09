@@ -28,6 +28,7 @@ package cognitivabrasil.obaa.Educational;
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import cognitivabrasil.obaa.Technical.Duration;
 import static cognitivabrasil.util.HelperFunctions.toStringList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -39,13 +40,11 @@ import org.simpleframework.xml.Root;
 /**
  * <div class="en">
  *
- * This category describes the key educational or pedagogic characteristics of
- * this learning object.
+ * This category describes the key educational or pedagogic characteristics of this learning object.
  *
  *
- * NOTE:--This is the pedagogical information essential to those involved in
- * achieving a quality learning experience. The audience for this metadata
- * includes teachers, managers, authors, and learners.
+ * NOTE:--This is the pedagogical information essential to those involved in achieving a quality learning experience.
+ * The audience for this metadata includes teachers, managers, authors, and learners.
  *
  * according to IEEE LOM http://ltsc.ieee.org/ </div>
  *
@@ -71,21 +70,16 @@ public class Educational {
     /**
      * <div class="en">
      *
-     * The degree of interactivity characterizing this learning object.
-     * Interactivity in this context refers to the degree to which the learner
-     * can influence the aspect or behavior of the learning object.
+     * The degree of interactivity characterizing this learning object. Interactivity in this context refers to the
+     * degree to which the learner can influence the aspect or behavior of the learning object.
      *
-     * NOTE 1:--Inherently, this scale is meaningful within the context of a
-     * community of practice.
+     * NOTE 1:--Inherently, this scale is meaningful within the context of a community of practice.
      *
-     * NOTE 2:--Learning objects with 5.1:Educational.InteractivityType="active"
-     * may have a high interactivity level (e.g., a simulation environment
-     * endowed with many controls) or a low interactivity level (e.g., a written
-     * set of instructions that solicit an activity). Learning objects with
-     * 5.1:Educational.InteractivityType="expositive" may have a low
-     * interactivity level (e.g., a piece of linear, narrative text produced
-     * with a standard word processor) or a medium to high interactivity level
-     * (e.g., a sophisticated hyperdocument, with many internal links and
+     * NOTE 2:--Learning objects with 5.1:Educational.InteractivityType="active" may have a high interactivity level
+     * (e.g., a simulation environment endowed with many controls) or a low interactivity level (e.g., a written set of
+     * instructions that solicit an activity). Learning objects with 5.1:Educational.InteractivityType="expositive" may
+     * have a low interactivity level (e.g., a piece of linear, narrative text produced with a standard word processor)
+     * or a medium to high interactivity level (e.g., a sophisticated hyperdocument, with many internal links and
      * views).
      *
      *
@@ -108,15 +102,12 @@ public class Educational {
     /**
      * <div class="en">
      *
-     * The degree of conciseness of a learning object. The semantic density of a
-     * learning object may be estimated in terms of its size, span, or --in the
-     * case of self-timed resources such as audio or video-- duration. The
-     * semantic density of a learning object is independent of its difficulty.
-     * It is best illustrated with examples of expositive material, although it
-     * can be used with active resources as well.
+     * The degree of conciseness of a learning object. The semantic density of a learning object may be estimated in
+     * terms of its size, span, or --in the case of self-timed resources such as audio or video-- duration. The semantic
+     * density of a learning object is independent of its difficulty. It is best illustrated with examples of expositive
+     * material, although it can be used with active resources as well.
      *
-     * NOTE 1:--Inherently, this scale is meaningful within the context of a
-     * community of practice.
+     * NOTE 1:--Inherently, this scale is meaningful within the context of a community of practice.
      *
      * Value Space: very low, low, medium, high, very high
      *
@@ -137,11 +128,10 @@ public class Educational {
     /**
      * <div class="en">
      *
-     * How hard it is to work with or through this learning object for the
-     * typical intended target audience.
+     * How hard it is to work with or through this learning object for the typical intended target audience.
      *
-     * NOTE:--The " typical target audience" can be characterized by data
-     * elements 5.6:Educational.Context and 5.7:Educational.TypicalAgeRange.
+     * NOTE:--The " typical target audience" can be characterized by data elements 5.6:Educational.Context and
+     * 5.7:Educational.TypicalAgeRange.
      *
      * Value Space: very easy, easy, medium, difficult, very difficult
      *
@@ -162,11 +152,11 @@ public class Educational {
     /**
      * <div class="en">
      *
-     * Approximate or typical time it takes to work with or through this
-     * learning object for the typical intended target audience.
+     * Approximate or typical time it takes to work with or through this learning object for the typical intended target
+     * audience.
      *
-     * NOTE:--The " typical target audience" can be characterized by data
-     * elements 5.6:Educational.Context and 5.7:Educational.TypicalAgeRange.
+     * NOTE:--The " typical target audience" can be characterized by data elements 5.6:Educational.Context and
+     * 5.7:Educational.TypicalAgeRange.
      *
      *
      * according to IEEE LOM http://ltsc.ieee.org/ </div>
@@ -180,8 +170,7 @@ public class Educational {
      * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
      * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
      *
-     * não foi feita a verificação de consistência was not made any consistence
-     * verification
+     * não foi feita a verificação de consistência was not made any consistence verification
      */
     @Namespace(reference = NAMESPACE)
     @Element(required = false)
@@ -189,23 +178,18 @@ public class Educational {
     /**
      * <div class="en">
      *
-     * Age of the typical intended user. This data element shall refer to
-     * developmental age, if that would be different from chronological age.
+     * Age of the typical intended user. This data element shall refer to developmental age, if that would be different
+     * from chronological age.
      *
-     * NOTE 1:--The age of the learner is important for finding learning
-     * objects, especially for school age learners and their teachers. When
-     * applicable, the string should be formatted as minimum age-maximum age or
-     * minimum age-. (NOTE:--This is a compromise between adding three component
-     * elements (minimum age, maximum age, and description) and having just a
-     * free text field.)
+     * NOTE 1:--The age of the learner is important for finding learning objects, especially for school age learners and
+     * their teachers. When applicable, the string should be formatted as minimum age-maximum age or minimum age-.
+     * (NOTE:--This is a compromise between adding three component elements (minimum age, maximum age, and descriptions)
+     * and having just a free text field.)
      *
-     * NOTE 2:--Alternative schemes for what this data element tries to cover
-     * (such as various reading age or reading level schemes, IQ's or
-     * developmental age measures) should be represented through the
-     * 9:Classification category.
+     * NOTE 2:--Alternative schemes for what this data element tries to cover (such as various reading age or reading
+     * level schemes, IQ's or developmental age measures) should be represented through the 9:Classification category.
      *
-     * Examples: "7-9", "0-5", "15", "18-", ("suitable for children over 7"),
-     * ("en","adults only")
+     * Examples: "7-9", "0-5", "15", "18-", ("suitable for children over 7"), ("en","adults only")
      *
      * according to IEEE LOM http://ltsc.ieee.org/ </div>
      *
@@ -219,15 +203,15 @@ public class Educational {
      * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
      */
     @ElementList(inline = true, required = false)
-    private List<IntendedEndUserRole> intendedEndUserRole;
+    private List<IntendedEndUserRole> intendedEndUserRoles;
     @ElementList(inline = true, required = false)
-    private List<LearningResourceType> learningResourceType;
+    private List<LearningResourceType> learningResourceTypes;
     @ElementList(inline = true, required = false)
     private List<TypicalAgeRange> typicalAgeRanges;
     @ElementList(inline = true, required = false)
-    private List<Description> description;
+    private List<Description> descriptions;
     @ElementList(inline = true, required = false)
-    private List<Language> language;
+    private List<Language> languages;
     @ElementList(inline = true, required = false)
     private List<Context> contexts;
     @Element(required = false)
@@ -238,13 +222,13 @@ public class Educational {
     private List<DidaticStrategy> didaticStrategy;
 
     public Educational() {
-        this.intendedEndUserRole = new ArrayList<IntendedEndUserRole>();
-        this.learningResourceType = new ArrayList<LearningResourceType>();
-        this.typicalAgeRanges = new ArrayList<TypicalAgeRange>();
-        this.description = new ArrayList<Description>();
-        this.language = new ArrayList<Language>();
-        this.contexts = new ArrayList<Context>();
-        this.didaticStrategy = new ArrayList<DidaticStrategy>();
+        this.intendedEndUserRoles = new ArrayList<>();
+        this.learningResourceTypes = new ArrayList<>();
+        this.typicalAgeRanges = new ArrayList<>();
+        this.descriptions = new ArrayList<>();
+        this.languages = new ArrayList<>();
+        this.contexts = new ArrayList<>();
+        this.didaticStrategy = new ArrayList<>();
         //TipicalLearningTime should not be initialized to avoid create a blank element in the XML
     }
 
@@ -272,49 +256,51 @@ public class Educational {
         this.contexts.add(c);
     }
 
-    public List<Description> getDescription() {
-        return description;
+    public List<Description> getDescriptions() {
+        return descriptions;
     }
 
-    public void setDescription(List<Description> description) {
-        this.description = description;
+    public void setDescriptions(List<Description> description) {
+        this.descriptions = description;
     }
 
     public void addDescription(String description) {
         Description d = new Description(description);
-        this.description.add(d);
+        this.descriptions.add(d);
     }
 
+    @JsonIgnore
     public Map<String, String> getIntendedEndUserRoleValues() {
         IntendedEndUserRole i = new IntendedEndUserRole();
         return (i.getMapOfTerms());
     }
 
+    @JsonIgnore
     public List<String> getIntendedEndUserRoleAsStrings() {
-        return toStringList(intendedEndUserRole);
+        return toStringList(intendedEndUserRoles);
     }
 
-    public void setIntendedEndUserRole(List<IntendedEndUserRole> intendedEndUserRole) {
-        this.intendedEndUserRole = intendedEndUserRole;
+    public void setIntendedEndUserRoles(List<IntendedEndUserRole> intendedEndUserRole) {
+        this.intendedEndUserRoles = intendedEndUserRole;
     }
 
     public void addIntendedEndUserRole(String intendedEndUserRole) {
         IntendedEndUserRole i = new IntendedEndUserRole();
         i.setText(intendedEndUserRole);
-        this.intendedEndUserRole.add(i);
+        this.intendedEndUserRoles.add(i);
     }
 
-    public List<Language> getLanguage() {
-        return language;
+    public List<Language> getLanguages() {
+        return languages;
     }
 
-    public void setLanguage(List<Language> language) {
-        this.language = language;
+    public void setLanguages(List<Language> language) {
+        this.languages = language;
     }
 
     public void addLanguage(String language) {
         Language l = new Language(language);
-        this.language.add(l);
+        this.languages.add(l);
     }
 
     public String getLearningContentType() {
@@ -335,34 +321,31 @@ public class Educational {
     }
 
     public List<LearningResourceType> getLearningResourceTypes() {
-        return learningResourceType;
+        return learningResourceTypes;
     }
 
     public void addLearningResourceType(String learningResourceType) {
         LearningResourceType l = new LearningResourceType();
         l.setText(learningResourceType);
-        this.learningResourceType.add(l);
+        this.learningResourceTypes.add(l);
     }
 
-    public List<String> getIntendedEndUserRoles() {
-        return toStringList(intendedEndUserRole);
+    public List<IntendedEndUserRole> getIntendedEndUserRoles() {
+        return intendedEndUserRoles;
     }
 
-    public List<String> getDescriptions() {
-        return toStringList(description);
-    }
-
-    public List<String> getLanguages() {
-        return toStringList(language);
-    }
-
+    @JsonIgnore
     public Map<String, String> getContextValues() {
         Context c = new Context();
         return (c.getMapOfTerms());
     }
 
-    public List<String> getContexts() {
-        return toStringList(contexts);
+    public void setContexts(List<Context> contexts) {
+        this.contexts = contexts;
+    }
+
+    public List<Context> getContexts() {
+        return contexts;
     }
 
     /**
@@ -452,8 +435,8 @@ public class Educational {
     /**
      * @return the typicalAgeRange
      */
-    public List<String> getTypicalAgeRanges() {
-        return toStringList(typicalAgeRanges);
+    public List<TypicalAgeRange> getTypicalAgeRanges() {
+        return typicalAgeRanges;
     }
 
     /**
@@ -465,23 +448,25 @@ public class Educational {
 
     /**
      * Add a typicalAgeRange in the list.
-     * @param typicalAgeRange 
+     *
+     * @param typicalAgeRange
      */
-    public void addTypicalAgeRange(String typicalAgeRange){
+    public void addTypicalAgeRange(String typicalAgeRange) {
         typicalAgeRanges.add(new TypicalAgeRange(typicalAgeRange));
     }
 
     /**
      * @return the learningResourceType
      */
+    @JsonIgnore
     public List<String> getLearningResourceTypesString() {
-        return toStringList(learningResourceType);
+        return toStringList(learningResourceTypes);
     }
 
     /**
      * @param learningResourceType the learningResourceType to set
      */
     public void setLearningResourceTypes(List<LearningResourceType> learningResourceType) {
-        this.learningResourceType = learningResourceType;
+        this.learningResourceTypes = learningResourceType;
     }
 }

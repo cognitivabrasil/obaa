@@ -1018,10 +1018,10 @@ public class OBAATest {
             General g = new General();
             Educational e = new Educational();
             Technical t = new Technical();
-            List<Annotation> a = new ArrayList<Annotation>();
+            List<Annotation> a = new ArrayList<>();
             Accessibility ac = new Accessibility();
             LifeCycle l = new LifeCycle();
-            List<Classification> c = new ArrayList<Classification>();
+            List<Classification> c = new ArrayList<>();
             Metametadata m = new Metametadata();
             SegmentInformationTable s = new SegmentInformationTable();
 

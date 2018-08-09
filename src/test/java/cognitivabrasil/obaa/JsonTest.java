@@ -17,6 +17,7 @@ import cognitivabrasil.obaa.LifeCycle.Contribute;
 import cognitivabrasil.obaa.LifeCycle.LifeCycle;
 import cognitivabrasil.obaa.LifeCycle.Role;
 import cognitivabrasil.obaa.LifeCycle.Status;
+import cognitivabrasil.obaa.Rights.Rights;
 import cognitivabrasil.obaa.Technical.OrComposite;
 import cognitivabrasil.obaa.Technical.Requirement;
 import cognitivabrasil.obaa.Technical.Technical;
@@ -86,18 +87,23 @@ public class JsonTest {
         contribute.setRole(Role.PUBLISHER);
         lifeCycle.addContribute(contribute);
         obaa.setLifeCycle(lifeCycle);
+        Rights r = new Rights();
+        r.setCopyright(true);
+        r.setCost(false);
+        r.setDescription("Right Description");
+        obaa.setRights(r);
 
         ObjectMapper mapper = new ObjectMapper();
         String jsonResult = mapper.writeValueAsString(obaa);
+        System.out.println(jsonResult);
 
         JSONAssert.assertEquals("{\"general\":{\"titles\":[\"Título aleatório\"]}}", jsonResult, JSONCompareMode.LENIENT);
         JSONAssert.assertEquals("{\"lifeCycle\":{\"version\":\"0.0.1\"}}", jsonResult, JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals("{rights:{cost:\"false\",copyright:\"true\", description:\"Right Description\"}}",
+                jsonResult, JSONCompareMode.LENIENT);
 
 //        System.out.println(jsonResult);
     }
-
-
-
 
     @Test
     public void testGeneralDeserialize() throws IOException {

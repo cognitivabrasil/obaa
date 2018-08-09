@@ -79,7 +79,6 @@ public class OBAA implements Cloneable {
     private General general;
     @Element(required = false)
     private LifeCycle lifeCycle;
-    @JsonIgnore
     @Element(required = false)
     private Rights rights;
     @JsonIgnore

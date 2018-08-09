@@ -7,6 +7,7 @@
  */
 package cognitivabrasil.obaa.Technical;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -40,15 +41,25 @@ public class Duration extends TextElement {
 
     private static final Logger log = LoggerFactory.getLogger(Duration.class);
 
-    private int seconds;
-    private int minutes;
-    private int hours;
+    private int seconds = 0;
+    private int minutes = 0;
+    private int hours = 0;
     private static final String ERRORMESSAGE = "The Data format must be PThHmMsS where 'h' is the hours, 'm' is the minues and 's' is the seconds.";
 
     public Duration() {
-        seconds = 0;
-        minutes = 0;
-        hours = 0;
+    }
+
+    /**
+     * Create a Duration object from text like: "PT3H15M"
+     *
+     * @param text Duraction formated
+     * @return new Duraction
+     */
+    @JsonCreator
+    public static Duration fromText(String text) {
+        Duration d = new Duration();
+        d.setText(text);
+        return d;
     }
 
     /**

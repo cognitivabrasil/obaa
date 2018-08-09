@@ -25,6 +25,7 @@
  */
 package cognitivabrasil.obaa.Educational;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 
@@ -33,8 +34,7 @@ import org.simpleframework.xml.Namespace;
  *
  * according to IEEE LOM http://ltsc.ieee.org/ </div>
  *
- * <div class="br"> Especifica a forma sensorial pela qual o aluno receberá as
- * informações do objeto de aprendizagem.
+ * <div class="br"> Especifica a forma sensorial pela qual o aluno receberá as informações do objeto de aprendizagem.
  *
  * Adaptado de http://www.portalobaa.org </div>
  *
@@ -60,5 +60,12 @@ public class DidaticStrategy extends TextElement {
         this.addTerms(CASE_STUDY);
         this.addTerms(QUESTION_AND_ANSWERING);
         this.addTerms(PROBLEM_SOLVING);
+    }
+
+    @JsonCreator
+    public static DidaticStrategy fromText(String text) {
+        DidaticStrategy d = new DidaticStrategy();
+        d.setText(text);
+        return d;
     }
 }
