@@ -29,6 +29,7 @@ import cognitivabrasil.obaa.ObaaRecursibleElement;
 import cognitivabrasil.obaa.Technical.Duration;
 import static cognitivabrasil.util.HelperFunctions.toStringList;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +62,7 @@ import org.simpleframework.xml.Root;
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Educational {
 
     private static final String NAMESPACE = "http://ltsc.ieee.org/xsd/LOM";
@@ -299,8 +301,7 @@ public class Educational {
     }
 
     public void addLanguage(String language) {
-        Language l = new Language(language);
-        this.languages.add(l);
+        this.languages.add(new Language(language));
     }
 
     public String getLearningContentType() {

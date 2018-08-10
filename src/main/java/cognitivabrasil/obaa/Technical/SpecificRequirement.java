@@ -7,11 +7,10 @@
  ******************************************************************************/
 package cognitivabrasil.obaa.Technical;
 
+import cognitivabrasil.obaa.ObaaRecursibleElement;
 import java.util.ArrayList;
 import java.util.List;
 import org.simpleframework.xml.ElementList;
-
-import cognitivabrasil.obaa.ObaaRecursibleElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 
@@ -25,13 +24,13 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
 public class SpecificRequirement {
-    
+
     @ElementList(required = false, inline = true)
     private List<SpecificOrComposite> specificOrComposites;
 
     public SpecificRequirement() {
-        specificOrComposites = new ArrayList<SpecificOrComposite>();
-    
+        specificOrComposites = new ArrayList<>();
+
     }
 
     public List<SpecificOrComposite> getSpecificOrComposites() {

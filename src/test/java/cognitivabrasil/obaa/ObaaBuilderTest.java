@@ -1,10 +1,11 @@
 package cognitivabrasil.obaa;
 
+import cognitivabrasil.obaa.Educational.Context;
+import cognitivabrasil.obaa.Educational.IntendedEndUserRole;
+import static cognitivabrasil.obaa.builder.ObaaBuilder.*;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
 import static org.junit.Assert.assertThat;
-import static cognitivabrasil.obaa.builder.ObaaBuilder.*;
-
 import org.junit.Test;
 
 
@@ -13,10 +14,10 @@ public class ObaaBuilderTest {
     @Test
     public void testBuildSimpleObaa() {
         OBAA a = buildObaa().general().title("Meu título").build();
-        
-        assertThat(a.getGeneral().getTitles(), hasItem("Meu título"));                
+
+        assertThat(a.getGeneral().getTitles(), hasItem("Meu título"));
     }
-    
+
     @Test
     public void testBuildLanguage() {
         OBAA a = buildObaa()
@@ -24,30 +25,30 @@ public class ObaaBuilderTest {
                         .title("Meu título")
                         .language("pt-BR")
                  .build();
-        
+
         assertThat(a.getGeneral().getLanguages(), hasItem("pt-BR"));
-        
-       
+
+
     }
-    
-    
+
+
     @Test
     public void lifeCycle() {
         OBAA o = buildObaa().lifeCycle().status("draft").build();
-        
+
         assertThat(o.getLifeCycle().getStatus(), equalTo("draft"));
     }
 
-    @Test 
+    @Test
     public void stack() {
         OBAA o = buildObaa().general().title("Bla")
                     .lifeCycle().status("draft")
                     .build();
 
         assertThat(o.getLifeCycle().getStatus(), equalTo("draft"));
-        assertThat(o.getGeneral().getTitles(), hasItem("Bla"));                 
+        assertThat(o.getGeneral().getTitles(), hasItem("Bla"));
     }
-    
+
     @Test
     public void lifeCycleContribue() {
         OBAA o = buildObaa().lifeCycle()
@@ -58,10 +59,10 @@ public class ObaaBuilderTest {
                 .contribute()
                     .entity("Zeca Baleiro")
                 .build();
-        
+
         assertThat(o.getLifeCycle().getContribute().get(0).getFirstEntity(), equalTo("Paulo Schreiner"));
         assertThat(o.getLifeCycle().getContribute().get(1).getFirstEntity(), equalTo("Zeca Baleiro"));
-        
+
         assertThat(o.getLifeCycle().getContribute().get(0).getRole().getText(), equalTo("author"));
     }
     
@@ -73,13 +74,13 @@ public class ObaaBuilderTest {
                     .intendedEndUserRole("learner")
                     .context("other")
                  .build();
-        
-        assertThat(o.getEducational().getContexts(), hasItem("other"));
-        assertThat(o.getEducational().getIntendedEndUserRoles(), hasItem("learner"));
+
+        assertThat(o.getEducational().getContexts(), hasItem(Context.fromString("other")));
+        assertThat(o.getEducational().getIntendedEndUserRoles(), hasItem(IntendedEndUserRole.fromText("learner")));
         assertThat(o.getEducational().getLearningResourceTypesString(), hasItem("slide"));
         assertThat(o.getEducational().getInteractivityType(), equalTo("mixed"));
 
-        
+
     }
 
 }

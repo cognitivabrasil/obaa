@@ -57,12 +57,12 @@ public class Technical {
     private List<Service> service;
 
     public Technical() {
-        location = new ArrayList<Location>();
-        format = new ArrayList<Format>();
-        requirement = new ArrayList<Requirement>();
-        supportedPlatforms = new ArrayList<SupportedPlatform>();
-        platformSpecificFeatures = new ArrayList<PlatformSpecificFeature>();
-        service = new ArrayList<Service>();
+        location = new ArrayList<>();
+        format = new ArrayList<>();
+        requirement = new ArrayList<>();
+        supportedPlatforms = new ArrayList<>();
+        platformSpecificFeatures = new ArrayList<>();
+        service = new ArrayList<>();
         //Duration should not be initialized to avoid create a blank element in the XML
     }
 
@@ -85,7 +85,7 @@ public class Technical {
      */
     public void addLocation(String location) {
         if (this.location == null) {
-            this.location = new ArrayList<Location>();
+            this.location = new ArrayList<>();
         }
         this.location.add(new Location(location));
     }
@@ -109,10 +109,10 @@ public class Technical {
      * otherwise
      */
     public Map<String, Boolean> getLocationHttp() {
-        Map<String, Boolean> locationhttp = new HashMap<String, Boolean>();
-        for (String loc : toStringList(getLocation())) {
+        Map<String, Boolean> locationhttp = new HashMap<>();
+        toStringList(getLocation()).forEach((loc) -> {
             locationhttp.put(loc, loc.matches("^(https?|ftp)://.*$"));
-        }
+        });
         return locationhttp;
     }
 
@@ -187,6 +187,7 @@ public class Technical {
 
     /**
      * It must be userd the method that receives the {@link Duration} class.
+     * @param duration
      * @deprecated Use the {@link #setDuration(cognitivabrasil.obaa.Technical.Duration)}
      */
     @Deprecated
@@ -228,6 +229,10 @@ public class Technical {
 
     public void setService(List<Service> service) {
         this.service = service;
+    }
+
+    public void addService(Service service){
+        this.service.add(service);
     }
 
     public void addSupportedPlatforms(String supportedPlatform) {

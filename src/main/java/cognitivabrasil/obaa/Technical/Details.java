@@ -24,9 +24,8 @@
  */
 package cognitivabrasil.obaa.Technical;
 
-import org.simpleframework.xml.Element;
-
 import cognitivabrasil.obaa.ObaaRecursibleElement;
+import org.simpleframework.xml.Element;
 
 /**
  *
@@ -44,14 +43,19 @@ import cognitivabrasil.obaa.ObaaRecursibleElement;
 public class Details {
 
     //Especificação de detalhes do serviço fora do escopo de metadados (ex.: parâmetros).
-    @Element(required=false)    
-    private String details; 
+    @Element(required=false)
+    private String details;
 
     //A URL, URI ou qualquer outra especificação para acessar o serviço. (relacionado ao item 4.3 do IEEE-LOM).
-    @Element(required=false)    
-    private String serviceLocation; 
+    @Element(required=false)
+    private String serviceLocation;
 
     public Details() {
+    }
+
+    public Details(String details, String serviceLocation) {
+        this.details = details;
+        this.serviceLocation = serviceLocation;
     }
 
     public void setDetails(String description) {
@@ -59,7 +63,7 @@ public class Details {
     }
 
     public String getDetails() {
-        return this.details;        
+        return this.details;
     }
 
     public void setServiceLocation(String serviceLocation) {

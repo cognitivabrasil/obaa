@@ -88,20 +88,12 @@ public class EducationalTest {
 
     @Test
     public void deserializeJson() throws Exception {
-//        json = "{\"interactivityType\":\"expositive\",\"learningResourceTypes\":[\"index\",\"figure\"], "
-//                + "\"interactivityLevel\":\"low\", \"contexts\":[\"school\"], "
-//                + "\"difficulty\":\"easy\",\"semanticDensity\":\"medium\", \"typicalLearningTime\":\"PT23H\", "
-//                + "\"intendedEndUserRoles\":[\"author\"],\"typicalAgeRanges\":[\"14-17\"],"
-//                + "\"didaticStrategy\":[\"challenge\"], \"interaction\": {\"interactionType\":\"object-individual\","
-//                + "\"coPresence\":\"true\",\"perception\":\"visual\",\"reciprocity\":\"1-n\",\"synchronism\":\"false\"},"
-//                + "\"descriptions\":[\"Descr Educ\"] }";
 
         ObjectMapper mapper = new ObjectMapper();
         Educational e = mapper.readValue(json, Educational.class);
 
         assertThat(e.getInteractivityType(), equalTo(InteractivityType.EXPOSITIVE));
-        assertThat(e.getLearningResourceTypes(),
-                equalTo(educational.getLearningResourceTypes()));
+        assertThat(e.getLearningResourceTypes(), equalTo(educational.getLearningResourceTypes()));
         assertThat(e.getInteractivityLevel(), equalTo(educational.getInteractivityLevel()));
         assertThat(e.getContexts(), equalTo(educational.getContexts()));
         assertThat(e.getDifficulty(), equalTo(educational.getDifficulty()));
@@ -116,24 +108,7 @@ public class EducationalTest {
         assertThat(e.getInteraction().getReciprocity(), equalTo(educational.getInteraction().getReciprocity()));
         assertThat(e.getInteraction().getSynchronism(), equalTo(educational.getInteraction().getSynchronism()));
         assertThat(e.getDescriptions(), equalTo(educational.getDescriptions()));
-//        assertThat(e.addLanguage("pt-BR");
-//        assertThat(e.addContext(Context.SCHOOL);
-//        assertThat(e.getDifficulty(Difficulty.EASY);
-//        assertThat(e.getSemanticDensity(SemanticDensity.MEDIUM);
-//        Duration duration = new Duration();
-//        duration.getDuration("23");
-//        assertThat(e.getTypicalLearningTime(duration);
-//        assertThat(e.addIntendedEndUserRole(IntendedEndUserRolassertThat(e.AUTHOR);
-//        assertThat(e.addTypicalAgeRange("14-17");
-//        assertThat(e.addDescription("Descr Educ");
-//        assertThat(e.addDidaticStrategy(DidaticStrategy.CHALLENGE);
-//        Interaction interaction = new Interaction();
-//        interaction.getCoPresence(true);
-//        interaction.getInteractionType(InteractionTypassertThat(e.OBJECT_INDIVIDUAL);
-//        interaction.getPerception(Perception.VISUAL);
-//        interaction.getReciprocity(Reciprocity.ONE_N);
-//        interaction.getSynchronism(false);
-//        assertThat(e.getInteraction(interaction);
-//        assertThat(e.getLearningContentType(LearningContentTypassertThat(e.FACTUAL);
+        assertThat(e.getLanguages(), equalTo(educational.getLanguages()));
+        assertThat(e.getLearningContentType(), equalTo(educational.getLearningContentType()));
     }
 }

@@ -1,10 +1,10 @@
-/*******************************************************************************
+/** *****************************************************************************
  * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+ ***************************************************************************** */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -25,8 +25,8 @@
 package cognitivabrasil.obaa.Technical;
 
 import cognitivabrasil.obaa.BooleanElement;
-import cognitivabrasil.obaa.ObaaRecursibleElement;
 import cognitivabrasil.obaa.General.Language;
+import cognitivabrasil.obaa.ObaaRecursibleElement;
 import java.util.ArrayList;
 import java.util.List;
 import org.simpleframework.xml.Element;
@@ -53,41 +53,40 @@ public class Service {
 
     //O nome do serviço. Pode ser um conceito definido pela ontologia associada (metadado número 4.10.6).
     @Element(required = false)
-    private Name name; 
-    
-     //O tipo do serviço. Também pode ser um conceito definido pela ontologia associada (metadado número 4.10.6).
+    private Name name;
+
+    //O tipo do serviço. Também pode ser um conceito definido pela ontologia associada (metadado número 4.10.6).
     @Element(required = false)
     private Type type;
-    
+
     //Define se o objeto fornece ou solicita o serviço. Este metadado define o uso do metadado location (4.10.8.1). True: o serviço é fornecido pelo objeto False: o serviço é solicitado pelo objeto
     @Element(required = false)
-    private BooleanElement provides; 
-    
+    private BooleanElement provides;
+
     //Define se o serviço é obrigatório (essencial) ou opcional em relação à correta execução do objeto. True: o serviço é obrigatório para que o objeto funcione corretamente False: o serviço é opcional e o objeto funcionará mesmo sem sua disponibilidade
     @Element(required = false)
-    private BooleanElement essential; 
-    
+    private BooleanElement essential;
+
     //O nome do protocolo utilizado para comunicação com o serviço. É uma informação dependente de cada serviço. O valor também pode ser associado a um conceito ou indivíduo presente na ontologia (4.10.6).
     @ElementList(required = false, inline = true)
-    private List<Protocol> protocol; 
-    
+    private List<Protocol> protocol;
+
     //Ontologias associadas a este serviço. Geralmente este tipo de ontologia fornece uma especificação formal do contexto do serviço.
     @ElementList(required = false, inline = true)
-    private List<Ontology> ontology; 
-    
+    private List<Ontology> ontology;
+
     //A linguagem utilizada para a comunicação com o serviço.
     @ElementList(required = false, inline = true)
-    private List<Language> language; 
-    
-    
+    private List<Language> language;
+
     @ElementList(required = false, inline = true)
     private List<Details> details;
 
     public Service() {
-        protocol = new ArrayList<Protocol>();
-        ontology = new ArrayList<Ontology>();
-        language = new ArrayList<Language>();
-        details = new ArrayList<Details>();
+        protocol = new ArrayList<>();
+        ontology = new ArrayList<>();
+        language = new ArrayList<>();
+        details = new ArrayList<>();
     }
 
     public List<Details> getDetails() {
@@ -106,6 +105,13 @@ public class Service {
         }
     }
 
+    /**
+     * Define se o serviço é obrigatório (essencial) ou opcional em relação à correta execução do objeto. True: o
+     * serviço é obrigatório para que o objeto funcione corretamente False: o serviço é opcional e o objeto funcionará
+     * mesmo sem sua disponibilidade
+     *
+     * @param essential
+     */
     public void setEssential(boolean essential) {
         if (this.essential == null) {
             this.essential = new BooleanElement();
@@ -117,8 +123,17 @@ public class Service {
         return language;
     }
 
+    /**
+     * A linguagem utilizada para a comunicação com o serviço.
+     *
+     * @param language
+     */
     public void setLanguage(List<Language> language) {
         this.language = language;
+    }
+
+    public void addLanguage(Language language){
+        this.language.add(language);
     }
 
     public String getName() {
@@ -129,6 +144,11 @@ public class Service {
         }
     }
 
+    /**
+     * O nome do serviço. Pode ser um conceito definido pela ontologia associada (metadado número 4.10.6).
+     *
+     * @param name
+     */
     public void setName(Name name) {
         this.name = name;
     }
@@ -137,16 +157,36 @@ public class Service {
         return ontology;
     }
 
+    /**
+     * O nome do protocolo utilizado para comunicação com o serviço. É uma informação dependente de cada serviço. O
+     * valor também pode ser associado a um conceito ou indivíduo presente na ontologia (4.10.6).
+     *
+     * @param ontology
+     */
     public void setOntology(List<Ontology> ontology) {
         this.ontology = ontology;
+    }
+
+    public void addOntology(Ontology ontology){
+        this.ontology.add(ontology);
     }
 
     public List<Protocol> getProtocol() {
         return protocol;
     }
 
+    /**
+     * O nome do protocolo utilizado para comunicação com o serviço. É uma informação dependente de cada serviço. O
+     * valor também pode ser associado a um conceito ou indivíduo presente na ontologia (4.10.6).
+     *
+     * @param protocol
+     */
     public void setProtocol(List<Protocol> protocol) {
         this.protocol = protocol;
+    }
+
+    public void addProtocol(Protocol protocol){
+        this.protocol.add(protocol);
     }
 
     public String getProvides() {
@@ -157,6 +197,12 @@ public class Service {
         }
     }
 
+    /**
+     * Define se o objeto fornece ou solicita o serviço. Este metadado define o uso do metadado location (4.10.8.1).
+     * True: o serviço é fornecido pelo objeto False: o serviço é solicitado pelo objeto
+     *
+     * @param provides
+     */
     public void setProvides(boolean provides) {
         if (this.provides == null) {
             this.provides = new BooleanElement();
@@ -172,6 +218,11 @@ public class Service {
         }
     }
 
+    /**
+     * O tipo do serviço. Também pode ser um conceito definido pela ontologia associada (metadado número 4.10.6).
+     *
+     * @param type
+     */
     public void setType(Type type) {
         this.type = type;
     }

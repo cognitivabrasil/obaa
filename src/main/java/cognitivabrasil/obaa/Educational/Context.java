@@ -1,10 +1,10 @@
-/*******************************************************************************
+/** *****************************************************************************
  * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+ ***************************************************************************** */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -24,19 +24,18 @@
  */
 package cognitivabrasil.obaa.Educational;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 
 /**
- * <div class="en"> The principal environment within which the learning and use
- * of this learning object is intended to take place.
+ * <div class="en"> The principal environment within which the learning and use of this learning object is intended to
+ * take place.
  *
- * NOTE:--Suggested good practice is to use one of the values of the value space
- * and to use an additional instance of this data element for further
- * refinement, as in ("LOMv1.0","higher education") and
- * ("http://www.ond.vlaanderen.be/onderwijsinvlaanderen/Default.htm",
- * "kandidatuursonderwijs")
+ * NOTE:--Suggested good practice is to use one of the values of the value space and to use an additional instance of
+ * this data element for further refinement, as in ("LOMv1.0","higher education") and
+ * ("http://www.ond.vlaanderen.be/onderwijsinvlaanderen/Default.htm", "kandidatuursonderwijs")
  *
  * Value Space: school, higher education, training, other
  *
@@ -68,14 +67,18 @@ public class Context extends TextElement {
         this.addTerms(TRAINING);
         this.addTerms(OTHER);
     }
-    public Context(String context) {
-        super(context);
-        this.addTerms(SCHOOL);
-        this.addTerms(HIGHER_EDUCATION);
-        this.addTerms(TRAINING);
-        this.addTerms(OTHER);
-    }
 
+    /**
+     * Create a Context obj from a String.
+     * @param context
+     * @return
+     */
+    @JsonCreator
+    public static Context fromString(String context) {
+        Context obj = new Context();
+        obj.setText(context);
+        return obj;
+    }
 
     public void setContext(String context) {
         setText(context);

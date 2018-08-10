@@ -42,8 +42,7 @@ public class Requirement {
     private List<OrComposite> orComposite;
 
     public Requirement() {
-        orComposite = new ArrayList<OrComposite>();
-    
+        orComposite = new ArrayList<>();
     }
 
     public List<OrComposite> getOrComposite() {
@@ -53,7 +52,7 @@ public class Requirement {
     public void setOrComposite(List<OrComposite> orComposite) {
         this.orComposite = orComposite;
     }
-    
+
     public void addOrComposite (OrComposite newOrComposite){
         this.orComposite.add(newOrComposite);
     }

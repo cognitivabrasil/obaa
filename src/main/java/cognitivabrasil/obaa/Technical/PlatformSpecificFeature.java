@@ -24,12 +24,11 @@
  */
 package cognitivabrasil.obaa.Technical;
 
+import cognitivabrasil.obaa.ObaaRecursibleElement;
 import java.util.ArrayList;
 import java.util.List;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
-
-import cognitivabrasil.obaa.ObaaRecursibleElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 
@@ -39,17 +38,17 @@ import org.simpleframework.xml.Root;
  *
  * according to IEEE LOM http://ltsc.ieee.org/
  * </div>
- * 
- * 
+ *
+ *
  * <div class="br">
  *
- * Conjunto de características técnicas das mídias específicas desenvolvidas 
+ * Conjunto de características técnicas das mídias específicas desenvolvidas
  * para cada plataforma para a qual o Objeto de Aprendizagem foi previsto.
- * Deverá ser criado um registro deste conjunto de metadados para cada plataforma 
+ * Deverá ser criado um registro deste conjunto de metadados para cada plataforma
  * suportada pelo OA e cujas informações técnicas diferem das informações
- * técnicas já descritas no item (Technical), ou seja, apenas quando mídias 
+ * técnicas já descritas no item (Technical), ou seja, apenas quando mídias
  * diferentes forem disponibilizadas para cada plataforma.
- * 
+ *
  * Adaptado de http://www.portalobaa.org/
  * </div>
  *
@@ -61,7 +60,7 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
 public class PlatformSpecificFeature {
-    
+
     @Element (required=false, name="platformType")
     private SupportedPlatform platformType;
     @ElementList (required=false, inline = true)
@@ -71,40 +70,40 @@ public class PlatformSpecificFeature {
     @Element (required=false)
     private String specificLocation;
     @ElementList (required=false, inline = true)
-    private List<SpecificRequirement> specificRequirements;    
+    private List<SpecificRequirement> specificRequirements;
     @Element (required=false)
     private String specificInstallationRemarks;
     @Element (required=false)
     private String specificOtherPlatformRequirements;
-    
-    
-    public PlatformSpecificFeature() {                
-        specificFormats = new ArrayList<SpecificFormat>();  
-        specificRequirements = new ArrayList<SpecificRequirement>();
+
+
+    public PlatformSpecificFeature() {
+        specificFormats = new ArrayList<>();
+        specificRequirements = new ArrayList<>();
     }
 
 /**
  *
  * <div class="en">
  *
- * A string that is used to access this learning object. It may be a location 
- * (e.g., Universal Resource Locator), or a method that resolves to a location 
- * (e.g., Universal Resource Identifier). The first element of this list shall 
+ * A string that is used to access this learning object. It may be a location
+ * (e.g., Universal Resource Locator), or a method that resolves to a location
+ * (e.g., Universal Resource Identifier). The first element of this list shall
  * be the preferable location.
- * 
- * NOTE:--This is where the learning object described by this metadata instance 
+ *
+ * NOTE:--This is where the learning object described by this metadata instance
  * is physically located.
- * 
+ *
  * Example: "http://host/id"
- * 
+ *
  * according to IEEE LOM http://ltsc.ieee.org/
  * </div>
  * <div class="br">
  *
- * Uma sequência de caracteres utilizada para acessar a mídia criada 
- * especialmente para utilização na plataforma especificada no item 4.9.1. Segue 
+ * Uma sequência de caracteres utilizada para acessar a mídia criada
+ * especialmente para utilização na plataforma especificada no item 4.9.1. Segue
  * as mesmas definições e regras do item 4.3, porém aplicadas à mídia específica.
- * 
+ *
  * Adaptado de http://www.portalobaa.org/
  * </div>
  */
@@ -131,7 +130,7 @@ public class PlatformSpecificFeature {
     public void addSpecificFormat(SpecificFormat specificFormat) {
         this.specificFormats.add(specificFormat);
     }
-  
+
 
     public void addSpecificRequirement(SpecificRequirement newSpecificRequirement) {
         this.specificRequirements.add(newSpecificRequirement);
@@ -164,6 +163,6 @@ public class PlatformSpecificFeature {
     public String getSpecificSize() {
         return specificSize;
     }
-    
+
 }
 

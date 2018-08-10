@@ -12,6 +12,8 @@
  */
 package cognitivabrasil.obaa.Technical;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 
@@ -21,10 +23,9 @@ import org.simpleframework.xml.Namespace;
  *
  * Name of the required technology to use this learning object.
  *
- * NOTE 1:--The value for this data element may be derived from 4.1:Technical.
- * Format automatically, e.g., "video/mpeg" implies "multi-os". NOTE 2:--This
- * vocabulary includes most values in common use at the time that this Standard
- * was approved.
+ * NOTE 1:--The value for this data element may be derived from 4.1:Technical. Format automatically, e.g., "video/mpeg"
+ * implies "multi-os". NOTE 2:--This vocabulary includes most values in common use at the time that this Standard was
+ * approved.
  *
  * according to IEEE LOM http://ltsc.ieee.org/ </div> <div class="br">
  *
@@ -59,26 +60,14 @@ public class Name extends TextElement {
     public static final String GEM = "gem";
 
     public Name() {
-        super();
-        this.addTerms(PC_DOS);
-        this.addTerms(MS_WINDOWS);
-        this.addTerms(MACOS);
-        this.addTerms(UNIX);
-        this.addTerms(MULTI_OS);
-        this.addTerms(NONE);
-        this.addTerms(ANY);
-        this.addTerms(NETSCAPE_COMUNICATOR);
-        this.addTerms(MS_INTERNET_EXPLORER);
-        this.addTerms(AMAYA);
-        this.addTerms(MOZILLA_FIREFOX);
-        this.addTerms(APPLE_SAFARI);
-        this.addTerms(GOOGLE_CHROME);
-        this.addTerms(OPERA);
-        this.addTerms(GINGA);
-        this.addTerms(MHP);
-        this.addTerms(ARIB);
-        this.addTerms(DAVIC);
-        this.addTerms(DASE);
-        this.addTerms(GEM);
+        super(new ArrayList<>(
+                Arrays.asList(PC_DOS, MS_WINDOWS, MACOS, UNIX, MULTI_OS, NONE, ANY, NETSCAPE_COMUNICATOR,
+                        MS_INTERNET_EXPLORER, AMAYA, MOZILLA_FIREFOX, APPLE_SAFARI, GOOGLE_CHROME, OPERA, GINGA, MHP,
+                        ARIB, DAVIC, DASE, GEM)));
+    }
+    public static Name fromText(String name){
+        Name obj = new Name();
+        obj.setText(name);
+        return obj;
     }
 }

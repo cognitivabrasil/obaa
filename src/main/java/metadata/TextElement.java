@@ -41,14 +41,17 @@ public class TextElement {
     public TextElement() {
         language = "";
         country = "";
-        listOfTerms = new ArrayList<String>();
+        listOfTerms = new ArrayList<>();
     }
 
     public TextElement(String t) {
+        this();
         text = t;
-        language = "";
-        country = "";
-        listOfTerms = new ArrayList<String>();
+    }
+
+    public TextElement(List<String> listOfTerms){
+        this();
+        this.listOfTerms = listOfTerms;
     }
 
     public String getLanguage() {

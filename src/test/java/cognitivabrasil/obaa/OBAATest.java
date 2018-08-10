@@ -20,10 +20,13 @@ import cognitivabrasil.obaa.Annotation.Annotation;
 import cognitivabrasil.obaa.Classification.Classification;
 import cognitivabrasil.obaa.Classification.Taxon;
 import cognitivabrasil.obaa.Classification.TaxonPath;
+import cognitivabrasil.obaa.Educational.Context;
+import cognitivabrasil.obaa.Educational.Description;
 import cognitivabrasil.obaa.Educational.Educational;
 import cognitivabrasil.obaa.Educational.IntendedEndUserRole;
 import cognitivabrasil.obaa.Educational.Interaction;
 import cognitivabrasil.obaa.Educational.InteractionType;
+import cognitivabrasil.obaa.Educational.Language;
 import cognitivabrasil.obaa.General.General;
 import cognitivabrasil.obaa.General.Identifier;
 import cognitivabrasil.obaa.General.Structure;
@@ -123,8 +126,6 @@ public class OBAATest {
 
     @Test
     public void testTitle() {
-        // TODO review the generated test code and remove the default call to fail.
-        assert (!(l.getGeneral() == null));
         assertThat(l.getGeneral().getTitles(), hasItems("Título 1"));
     }
 
@@ -147,7 +148,6 @@ public class OBAATest {
         // TODO review the generated test code and remove the default call to fail.
 
         l = OBAA.fromReader(new FileReader(FILE1));
-        assert (!(l.getGeneral() == null));
         assertThat(l.getGeneral().getTitles(), hasItems("Título 1"));
     }
 
@@ -157,25 +157,11 @@ public class OBAATest {
 
         String xml = FileUtils.readFileToString(new File(FILE1));
         l = OBAA.fromString(xml);
-        assert (!(l.getGeneral() == null));
-        assertThat(l.getTitles(), hasItems("Título 1"));
+        assertThat(l.getGeneral().getTitles(), hasItems("Título 1"));
     }
 
-//    @Test
-//    public void testOBAA_General_AggregationLevel() throws FileNotFoundException {
-//        assert (!(l.getGeneral() == null));
-//
-//        AggregationLevel a = new AggregationLevel();
-//        a.setAggregationLevel(1);
-//
-//        assertThat(l.getGeneral().getAggregationLevel().getAggregationLevel(), equalTo(1));
-//
-//    }
-//
     @Test
     public void testOBAA_General_AggregationLevel2() throws FileNotFoundException {
-        assert (!(full.getGeneral() == null));
-
         assertThat(full.getGeneral().getAggregationLevel().toString(), equalTo("1"));
 
     }
@@ -209,7 +195,7 @@ public class OBAATest {
 
         assert (!(l.getGeneral() == null));
 
-        //se não for setado o idima ele usa o valor canônico
+        //se não for setado o idioma ele usa o valor canônico
         Structure s = l.getGeneral().getStructure();
         assertThat(s.getTranslated(), equalTo(Structure.ATOMIC));
     }
@@ -231,7 +217,6 @@ public class OBAATest {
         } catch (IllegalArgumentException e) {
             // thats what we expected
         }
-
     }
 
     @Test
@@ -330,15 +315,15 @@ public class OBAATest {
     @Test
     public void testOBAA_Educational_TypicalAgeRange() throws FileNotFoundException {
         assert (!(l.getEducational() == null));
-        assertThat(l.getEducational().getTypicalAgeRanges().get(0), equalTo("adult"));
+        assertThat(l.getEducational().getTypicalAgeRanges().get(0).toString(), equalTo("adult"));
     }
 
     @Test
     public void testOBAA_Educational_IntendedEndUserRoles_Role() throws FileNotFoundException {
         assert (!(l.getEducational() == null));
         assert (!(l.getEducational().getIntendedEndUserRoles() == null));
-        assertThat(l.getEducational().getIntendedEndUserRoles().get(0), equalTo("teacher"));
-        assertThat(l.getEducational().getIntendedEndUserRoles().get(1), equalTo("manager"));
+        assertThat(l.getEducational().getIntendedEndUserRoleAsStrings().get(0), equalTo("teacher"));
+        assertThat(l.getEducational().getIntendedEndUserRoleAsStrings().get(1), equalTo("manager"));
     }
 
     @Test
@@ -352,14 +337,14 @@ public class OBAATest {
     public void testOBAA_Educational_Descriptions() throws FileNotFoundException {
         assert (!(l.getEducational() == null));
         assert (!(l.getEducational().getDescriptions() == null));
-        assertThat(l.getEducational().getDescriptions(), hasItems("demonstração", "bla bla bla"));
+        assertThat(l.getEducational().getDescriptions(), hasItems(new Description("demonstração"), new Description("bla bla bla")));
     }
 
     @Test
     public void testOBAA_Educational_Languages() throws FileNotFoundException {
         assert (!(l.getEducational() == null));
         assert (!(l.getEducational().getLanguages() == null));
-        assertThat(l.getEducational().getLanguages(), hasItems("pt_BR", "en"));
+        assertThat(l.getEducational().getLanguages(), hasItems(new Language("pt_BR"), new Language("en")));
     }
 
     @Test
@@ -368,7 +353,7 @@ public class OBAATest {
         assert (!(l.getEducational() == null));
         assert (!(l.getEducational().getContexts() == null));
 
-        assertThat(l.getEducational().getContexts(), hasItems("Educacao superior", "Profissionalizante"));
+        assertThat(l.getEducational().getContexts(), hasItems(Context.fromString("Educacao superior"), Context.fromString("Profissionalizante")));
     }
 
     /**
@@ -704,7 +689,7 @@ public class OBAATest {
     @Test
     public void testTypicalAgeRange() throws FileNotFoundException {
         OBAA obaa = file2;
-        assertEquals("100", obaa.getEducational().getTypicalAgeRanges().get(0));
+        assertThat(obaa.getEducational().getTypicalAgeRanges().get(0).toString(), equalTo("100"));
     }
 
     @Test
@@ -723,8 +708,6 @@ public class OBAATest {
     public void testSegmentInformationTable() throws FileNotFoundException {
 
         OBAA obaa = file3;
-
-        System.out.println(obaa.getGeneral().getTitles().get(0));
 
         SegmentInformationTable st = obaa.getSegmentsInformationTable();
         List<SegmentList> sl = st.getSegmentList();
@@ -904,9 +887,6 @@ public class OBAATest {
         titles.clear();
         titles.add("Titulo2");
         obj2.getGeneral().setTitles(titles);
-
-        System.out.println(obj1.getGeneral().getTitles().get(0));
-        System.out.println(obj2.getGeneral().getTitles().get(0));
 
         assertEquals(obj1.getGeneral().getTitles().get(0), "Titulo1");
         assertEquals(obj2.getGeneral().getTitles().get(0), "Titulo2");
@@ -1101,7 +1081,7 @@ public class OBAATest {
     public void orderMapTest() {
         Structure s = new Structure();
         s.setLocale("pt-BR");
-        System.out.println(s.getMapOfTerms());
+//        System.out.println(s.getMapOfTerms());
 
         //TODO: FAzer teste de comprovação de ordem
     }
@@ -1247,7 +1227,6 @@ public class OBAATest {
 
         String Vcard = e.getText();
 
-        System.out.println(e);
 
         Entity e2 = new Entity();
         e2.setText("José da Silva");
@@ -1414,9 +1393,9 @@ public class OBAATest {
         assertThat(o.getEducational().getInteractivityType(), equalTo("expositive"));
         assertThat(o.getEducational().getSemanticDensity().getText(), equalTo("low"));
         assertThat(o.getEducational().getLearningContentType(), equalTo("factual"));
-        assertThat(o.getEducational().getTypicalAgeRanges().get(0), equalTo("adult"));
+        assertThat(o.getEducational().getTypicalAgeRanges().get(0).toString(), equalTo("adult"));
         assertThat(o.getEducational().getTypicalLearningTime().getText(), equalTo("PT15M"));
-        assertThat(o.getEducational().getIntendedEndUserRoles().get(0), equalTo("teacher"));
+        assertThat(o.getEducational().getIntendedEndUserRoles().get(0).toString(), equalTo("teacher"));
         assertThat(o.getEducational().getInteraction().getInteractionType().getText(), equalTo("object-individual"));
         assertThat(o.getEducational().getInteraction().getCoPresence().getBoolean(), equalTo(false));
         assertThat(o.getEducational().getDidaticStrategy().get(0).getText(), equalTo("Problem Solving"));

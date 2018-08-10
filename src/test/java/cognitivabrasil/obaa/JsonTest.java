@@ -9,6 +9,8 @@
  */
 package cognitivabrasil.obaa;
 
+import cognitivabrasil.obaa.Educational.Difficulty;
+import cognitivabrasil.obaa.Educational.Educational;
 import cognitivabrasil.obaa.General.General;
 import cognitivabrasil.obaa.General.Identifier;
 import cognitivabrasil.obaa.General.Structure;
@@ -92,6 +94,10 @@ public class JsonTest {
         r.setCost(false);
         r.setDescription("Right Description");
         obaa.setRights(r);
+        Educational educational = new Educational();
+        educational.setDifficulty(Difficulty.EASY);
+        educational.addDescription("desc abc");
+        obaa.setEducational(educational);
 
         ObjectMapper mapper = new ObjectMapper();
         String jsonResult = mapper.writeValueAsString(obaa);
@@ -100,6 +106,8 @@ public class JsonTest {
         JSONAssert.assertEquals("{\"general\":{\"titles\":[\"Título aleatório\"]}}", jsonResult, JSONCompareMode.LENIENT);
         JSONAssert.assertEquals("{\"lifeCycle\":{\"version\":\"0.0.1\"}}", jsonResult, JSONCompareMode.LENIENT);
         JSONAssert.assertEquals("{rights:{cost:\"false\",copyright:\"true\", description:\"Right Description\"}}",
+                jsonResult, JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals("{educational:{difficulty:\"easy\",descriptions:[\"desc abc\"]}}",
                 jsonResult, JSONCompareMode.LENIENT);
 
 //        System.out.println(jsonResult);

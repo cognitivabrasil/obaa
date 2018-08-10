@@ -24,6 +24,8 @@
  */
 package cognitivabrasil.obaa.Technical;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 
@@ -52,8 +54,11 @@ public class Type extends TextElement {
     public static final String OPERATING_SYSTEM = "operating system";
 
     public Type() {
-        this.addTerms(MIDDLEWARE);
-        this.addTerms(BROWSER);
-        this.addTerms(OPERATING_SYSTEM);
-    }   
+        super(new ArrayList<>(Arrays.asList(MIDDLEWARE,BROWSER,OPERATING_SYSTEM)));
+    }
+    public static Type fromText(String name){
+        Type obj = new Type();
+        obj.setText(name);
+        return obj;
+    }
 }

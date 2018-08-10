@@ -1,10 +1,10 @@
-/*******************************************************************************
+/** *****************************************************************************
  * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+ ***************************************************************************** */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -24,6 +24,8 @@
  */
 package cognitivabrasil.obaa.Technical;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 
 /**
@@ -34,12 +36,10 @@ import metadata.TextElement;
  * </div>
  * <div class="br">
  *
- * Lista de plataformas digitais para as quais o Objeto de Aprendizagem está 
- * previsto. Atualmente estão previstos três tipos básicos de plataformas 
- * digitais para disponibilização de OAs: Web, DTV e Mobile.
- * Este item não é obrigatório, para manter a compatibilidade com o LOM, mas é 
- * recomendado seu preenchimento.
- * 
+ * Lista de plataformas digitais para as quais o Objeto de Aprendizagem está previsto. Atualmente estão previstos três
+ * tipos básicos de plataformas digitais para disponibilização de OAs: Web, DTV e Mobile. Este item não é obrigatório,
+ * para manter a compatibilidade com o LOM, mas é recomendado seu preenchimento.
+ *
  * Adaptado de http://www.portalobaa.org/
  * </div>
  *
@@ -48,14 +48,24 @@ import metadata.TextElement;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 public class SupportedPlatform extends TextElement {
+
     public static final String MOBILE = "mobile";
     public static final String DTV = "dtv";
     public static final String WEB = "web";
-   
-    public SupportedPlatform(){
-        super();
-        this.addTerms(MOBILE);
-        this.addTerms(DTV);
-        this.addTerms(WEB);
+
+    public SupportedPlatform() {
+        super(new ArrayList<>(Arrays.asList(MOBILE,DTV,WEB)));
+    }
+
+    /**
+     * Build a SupportedPlatform object from a String.
+     *
+     * @param text This string must be one of constant of this class.
+     * @return
+     */
+    public static SupportedPlatform fromText(String text) {
+        SupportedPlatform obj = new SupportedPlatform();
+        obj.setText(text);
+        return obj;
     }
 }
