@@ -1,10 +1,10 @@
-/*******************************************************************************
+/** *****************************************************************************
  * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+ ***************************************************************************** */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -22,29 +22,27 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Obaa. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package cognitivabrasil.obaa.Metametadata;
 
-import cognitivabrasil.obaa.ObaaRecursibleElement;
 import cognitivabrasil.obaa.General.Identifier;
+import cognitivabrasil.obaa.ObaaRecursibleElement;
 import java.util.ArrayList;
 import java.util.List;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
-     
+
 /**
  *
  * <div class="en">
- * This category describes this metadata record itself (rather than the learning 
- * object that this record describes). 
- * 
- * This category describes how the metadata instance can be identified, 
- * who created this metadata instance, how, when, and with what references.
- * 
+ * This category describes this metadata record itself (rather than the learning object that this record describes).
+ *
+ * This category describes how the metadata instance can be identified, who created this metadata instance, how, when,
+ * and with what references.
+ *
  * NOTE:--This is not the information that describes the learning object itself.
- * 
+ *
  * according to IEEE LOM http://ltsc.ieee.org/
  * </div>
  * <div class="br">
@@ -60,26 +58,24 @@ import org.simpleframework.xml.Root;
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
 public class Metametadata {
-    
+
     @ElementList(inline = true, required = false)
-    private List <Identifier> identifier;
+    private final List<Identifier> identifier;
     @ElementList(required = false, inline = true)
-    private List <Contribute> contribute;
+    private final List<Contribute> contribute;
     @ElementList(required = false, inline = true)
-    private List <MetadataSchema> metadataSchema;
-    @Element (required = false)
+    private List<MetadataSchema> metadataSchema;
+    @Element(required = false)
     @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM")
     private Language language;
-    
+
     public Metametadata() {
-        
-        this.identifier = new ArrayList<Identifier>();
-        this.contribute = new ArrayList<Contribute>();
-        this.metadataSchema = new ArrayList<MetadataSchema>();        
+        this.identifier = new ArrayList<>();
+        this.contribute = new ArrayList<>();
+        this.metadataSchema = new ArrayList<>();
     }
 
-    
-    public void addIdentifier (Identifier identifier) {
+    public void addIdentifier(Identifier identifier) {
         this.identifier.add(identifier);
     }
 
@@ -102,16 +98,19 @@ public class Metametadata {
     public List<Identifier> getIdentifier() {
         return identifier;
     }
+
     public void setMetadataSchema(List<MetadataSchema> schema) {
         this.metadataSchema = schema;
     }
+
     public List<MetadataSchema> getSchema() {
         return metadataSchema;
     }
-    public void addMetadataSchema (MetadataSchema newMetadataSchema){        
+
+    public void addMetadataSchema(MetadataSchema newMetadataSchema) {
         this.metadataSchema.add(newMetadataSchema);
     }
-          
+
     public Language getLanguage() {
         return language;
     }

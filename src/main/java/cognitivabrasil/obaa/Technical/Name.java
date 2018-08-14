@@ -12,6 +12,7 @@
  */
 package cognitivabrasil.obaa.Technical;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import metadata.TextElement;
@@ -65,6 +66,7 @@ public class Name extends TextElement {
                         MS_INTERNET_EXPLORER, AMAYA, MOZILLA_FIREFOX, APPLE_SAFARI, GOOGLE_CHROME, OPERA, GINGA, MHP,
                         ARIB, DAVIC, DASE, GEM)));
     }
+    @JsonCreator
     public static Name fromText(String name){
         Name obj = new Name();
         obj.setText(name);

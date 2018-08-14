@@ -8,9 +8,9 @@
  */
 package cognitivabrasil.obaa.Technical;
 
-import org.simpleframework.xml.Element;
-
 import cognitivabrasil.obaa.ObaaRecursibleElement;
+import java.util.Objects;
+import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 
@@ -136,4 +136,39 @@ public class SpecificOrComposite {
                 + this.getSpecificName() + " Minimum Version: "
                 + this.specificMinimumVersion + " Maximum Version: " + this.specificMaximumVersion);
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.specificType);
+        hash = 67 * hash + Objects.hashCode(this.specificName);
+        hash = 67 * hash + Objects.hashCode(this.specificMinimumVersion);
+        hash = 67 * hash + Objects.hashCode(this.specificMaximumVersion);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SpecificOrComposite other = (SpecificOrComposite) obj;
+        if (!Objects.equals(this.specificMinimumVersion, other.specificMinimumVersion)) {
+            return false;
+        }
+        if (!Objects.equals(this.specificMaximumVersion, other.specificMaximumVersion)) {
+            return false;
+        }
+        if (!Objects.equals(this.specificType, other.specificType)) {
+            return false;
+        }
+        return Objects.equals(this.specificName, other.specificName);
+    }
+
 }

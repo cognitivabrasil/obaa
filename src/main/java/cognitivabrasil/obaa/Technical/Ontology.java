@@ -12,6 +12,7 @@
 package cognitivabrasil.obaa.Technical;
 
 import cognitivabrasil.obaa.ObaaRecursibleElement;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -24,7 +25,7 @@ import org.simpleframework.xml.Root;
  * <div class="br">
  *
  * Ontologias associadas a este serviço. Geralmente este tipo de ontologia fornece uma especificação formal do contexto do serviço.
- * 
+ *
  * Adaptado de http://www.portalobaa.org/
  * </div>
  *
@@ -44,7 +45,7 @@ public class Ontology{
     private OntologyLanguage language;
     @Element(required = false, name="location")
     private OntologyLocation location;
-            
+
    public Ontology(){
        super();
    }
@@ -71,5 +72,39 @@ public class Ontology{
 
     public void setLocation(OntologyLocation location) {
         this.location = location;
-    }  
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 83 * hash + Objects.hashCode(this.name);
+        hash = 83 * hash + Objects.hashCode(this.language);
+        hash = 83 * hash + Objects.hashCode(this.location);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Ontology other = (Ontology) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.language, other.language)) {
+            return false;
+        }
+        if (!Objects.equals(this.location, other.location)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

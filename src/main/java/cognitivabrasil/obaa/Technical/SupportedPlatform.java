@@ -24,6 +24,7 @@
  */
 package cognitivabrasil.obaa.Technical;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import metadata.TextElement;
@@ -63,6 +64,7 @@ public class SupportedPlatform extends TextElement {
      * @param text This string must be one of constant of this class.
      * @return
      */
+    @JsonCreator
     public static SupportedPlatform fromText(String text) {
         SupportedPlatform obj = new SupportedPlatform();
         obj.setText(text);

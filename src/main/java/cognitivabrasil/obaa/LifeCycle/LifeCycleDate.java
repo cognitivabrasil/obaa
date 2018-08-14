@@ -16,14 +16,19 @@ import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 
 /**
-
+ *
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class LifeCycleDate extends TextElement {
+
     public LifeCycleDate() {
         super();
+    }
+
+    public LifeCycleDate(String t) {
+        super(t);
     }
 
     @Override
@@ -36,15 +41,13 @@ public class LifeCycleDate extends TextElement {
 
         try {
             d = invertido.parse(getText());
-        }
-        catch (ParseException e) {
+        } catch (ParseException e) {
 
         }
 
-        if(d == null) {
+        if (d == null) {
             return getText();
-        }
-        else {
+        } else {
             return ptBr.format(d);
         }
     }

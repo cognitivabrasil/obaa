@@ -83,7 +83,6 @@ public class OBAA implements Cloneable {
     private Rights rights;
     @Element(required = false)
     private Educational educational;
-    @JsonIgnore
     @Element(required = false)
     private Technical technical;
     @JsonIgnore

@@ -97,6 +97,10 @@ public class Service {
         this.details = details;
     }
 
+    public void addDetail(Details detail){
+        this.details.add(detail);
+    }
+
     public String getEssential() {
         if (essential == null) {
             return null;

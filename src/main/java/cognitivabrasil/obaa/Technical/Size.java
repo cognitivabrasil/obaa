@@ -26,4 +26,12 @@ public class Size extends TextElement {
         super(t);
     }
 
+    public Size(int size){
+        super(Integer.toString(size));
+    }
+
+    public Size(long size){
+        super(Long.toString(size));
+    }
+
 }

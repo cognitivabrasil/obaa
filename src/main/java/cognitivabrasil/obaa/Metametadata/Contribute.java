@@ -7,14 +7,12 @@
  ******************************************************************************/
 package cognitivabrasil.obaa.Metametadata;
 
-import cognitivabrasil.obaa.ObaaRecursibleElement;
 import cognitivabrasil.obaa.LifeCycle.Entity;
 import cognitivabrasil.obaa.LifeCycle.LifeCycleDate;
+import cognitivabrasil.obaa.ObaaRecursibleElement;
 import static cognitivabrasil.util.HelperFunctions.toStringList;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
@@ -47,8 +45,8 @@ public class Contribute {
     @Element
     private Role role;
     @ElementList(inline = true, required = false)
-    private List<Entity> entity;
-    
+    private final List<Entity> entity;
+
     @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM")
     @Element(required=false)
     private LifeCycleDate date;
@@ -56,7 +54,7 @@ public class Contribute {
     public Contribute() {
         super();
         role = new Role();
-        entity = new ArrayList<Entity>();
+        entity = new ArrayList<>();
     }
 
     public void setRole(Role role) {
@@ -76,7 +74,7 @@ public class Contribute {
         this.date = new LifeCycleDate();
         this.date.setText(date);
     }
-    
+
     public void setDate(LifeCycleDate date) {
         this.date = date;
     }

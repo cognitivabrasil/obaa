@@ -25,6 +25,7 @@
 package cognitivabrasil.obaa.Technical;
 
 import cognitivabrasil.obaa.ObaaRecursibleElement;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 
 /**
@@ -73,4 +74,34 @@ public class Details {
     public String getServiceLocation() {
        return serviceLocation;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.details);
+        hash = 59 * hash + Objects.hashCode(this.serviceLocation);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Details other = (Details) obj;
+        if (!Objects.equals(this.details, other.details)) {
+            return false;
+        }
+        if (!Objects.equals(this.serviceLocation, other.serviceLocation)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

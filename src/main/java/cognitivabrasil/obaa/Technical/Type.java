@@ -24,6 +24,7 @@
  */
 package cognitivabrasil.obaa.Technical;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import metadata.TextElement;
@@ -56,6 +57,8 @@ public class Type extends TextElement {
     public Type() {
         super(new ArrayList<>(Arrays.asList(MIDDLEWARE,BROWSER,OPERATING_SYSTEM)));
     }
+
+    @JsonCreator
     public static Type fromText(String name){
         Type obj = new Type();
         obj.setText(name);

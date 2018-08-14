@@ -25,18 +25,17 @@
  */
 package cognitivabrasil.obaa.Technical;
 
+import cognitivabrasil.obaa.ObaaRecursibleElement;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
-
-import cognitivabrasil.obaa.ObaaRecursibleElement;
 
 /**
  *
  * <div class="en">
  *
- * Grouping of multiple requirements. The composite requirement is satisfied
- * when one of the component requirements is satisfied, i.e., the logical
- * connector is OR.
+ * Grouping of multiple requirements. The composite requirement is satisfied when one of the component requirements is
+ * satisfied, i.e., the logical connector is OR.
  *
  * according to IEEE LOM http://ltsc.ieee.org/ </div>
  *
@@ -179,4 +178,39 @@ public class OrComposite {
                 + " Minimum Version: " + this.minimumVersion
                 + " Maximum Version: " + this.maximumVersion);
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.type);
+        hash = 97 * hash + Objects.hashCode(this.name);
+        hash = 97 * hash + Objects.hashCode(this.minimumVersion);
+        hash = 97 * hash + Objects.hashCode(this.maximumVersion);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final OrComposite other = (OrComposite) obj;
+        if (!Objects.equals(this.type, other.type)) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.minimumVersion, other.minimumVersion)) {
+            return false;
+        }
+        return Objects.equals(this.maximumVersion, other.maximumVersion);
+    }
+
 }

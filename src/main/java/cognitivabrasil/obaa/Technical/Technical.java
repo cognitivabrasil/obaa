@@ -12,6 +12,8 @@ package cognitivabrasil.obaa.Technical;
 
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import static cognitivabrasil.util.HelperFunctions.toStringList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,6 +35,7 @@ import org.simpleframework.xml.Root;
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Technical {
 
     @ElementList(required = false, inline = true)
@@ -69,6 +72,7 @@ public class Technical {
     /**
      * @return the first location that starts with http://, null otherwise
      */
+    @JsonIgnore
     public String getFirstHttpLocation() {
         for (Location l : location) {
             if (l.getText().startsWith("http://")) {
@@ -108,6 +112,7 @@ public class Technical {
      * @return locations in the key and in value true if a link and false
      * otherwise
      */
+    @JsonIgnore
     public Map<String, Boolean> getLocationHttp() {
         Map<String, Boolean> locationhttp = new HashMap<>();
         toStringList(getLocation()).forEach((loc) -> {
@@ -169,30 +174,12 @@ public class Technical {
         this.size = size;
     }
 
-    public void setSize(int size) {
-        this.size = new Size(Integer.toString(size));
-    }
-
-    public void setSize(long size) {
-        this.size = new Size(Long.toString(size));
-    }
-
     public String getDuration() {
         if (duration == null) {
             return null;
         } else {
             return duration.getTranslated();
         }
-    }
-
-    /**
-     * It must be userd the method that receives the {@link Duration} class.
-     * @param duration
-     * @deprecated Use the {@link #setDuration(cognitivabrasil.obaa.Technical.Duration)}
-     */
-    @Deprecated
-    public void setDuration(String duration) {
-        this.duration.setText(duration);
     }
 
     public void setDuration(Duration duration){
@@ -242,6 +229,7 @@ public class Technical {
 
     }
 
+    @JsonIgnore
     Map<String, String> getSupportedPlatformValues() {
         SupportedPlatform s = new SupportedPlatform();
         return (s.getMapOfTerms());

@@ -22,6 +22,7 @@ import cognitivabrasil.obaa.LifeCycle.Status;
 import cognitivabrasil.obaa.Rights.Rights;
 import cognitivabrasil.obaa.Technical.OrComposite;
 import cognitivabrasil.obaa.Technical.Requirement;
+import cognitivabrasil.obaa.Technical.Size;
 import cognitivabrasil.obaa.Technical.Technical;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
@@ -98,6 +99,10 @@ public class JsonTest {
         educational.setDifficulty(Difficulty.EASY);
         educational.addDescription("desc abc");
         obaa.setEducational(educational);
+        Technical technical = new Technical();
+        technical.setSize(new Size("9876"));
+        technical.addFormat("pdf");
+        obaa.setTechnical(technical);
 
         ObjectMapper mapper = new ObjectMapper();
         String jsonResult = mapper.writeValueAsString(obaa);
@@ -109,6 +114,7 @@ public class JsonTest {
                 jsonResult, JSONCompareMode.LENIENT);
         JSONAssert.assertEquals("{educational:{difficulty:\"easy\",descriptions:[\"desc abc\"]}}",
                 jsonResult, JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals("{technical:{size:\"9876\",formats:[\"pdf\"]}}", jsonResult, JSONCompareMode.LENIENT);
 
 //        System.out.println(jsonResult);
     }
