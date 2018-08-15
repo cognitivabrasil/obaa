@@ -26,6 +26,7 @@ package cognitivabrasil.obaa.Metametadata;
 
 import cognitivabrasil.obaa.General.Identifier;
 import cognitivabrasil.obaa.ObaaRecursibleElement;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import org.simpleframework.xml.Element;
@@ -60,9 +61,9 @@ import org.simpleframework.xml.Root;
 public class Metametadata {
 
     @ElementList(inline = true, required = false)
-    private final List<Identifier> identifier;
+    private List<Identifier> identifier;
     @ElementList(required = false, inline = true)
-    private final List<Contribute> contribute;
+    private List<Contribute> contribute;
     @ElementList(required = false, inline = true)
     private List<MetadataSchema> metadataSchema;
     @Element(required = false)
@@ -73,6 +74,7 @@ public class Metametadata {
         this.identifier = new ArrayList<>();
         this.contribute = new ArrayList<>();
         this.metadataSchema = new ArrayList<>();
+        this.metadataSchema.add(new MetadataSchema());
     }
 
     public void addIdentifier(Identifier identifier) {
@@ -103,7 +105,12 @@ public class Metametadata {
         this.metadataSchema = schema;
     }
 
+    @JsonIgnore
     public List<MetadataSchema> getSchema() {
+        return metadataSchema;
+    }
+
+    public List<MetadataSchema> getMetadataSchema() {
         return metadataSchema;
     }
 
@@ -114,4 +121,13 @@ public class Metametadata {
     public Language getLanguage() {
         return language;
     }
+
+    public void setIdentifier(List<Identifier> identifier) {
+        this.identifier = identifier;
+    }
+
+    public void setContribute(List<Contribute> contribute) {
+        this.contribute = contribute;
+    }
+
 }

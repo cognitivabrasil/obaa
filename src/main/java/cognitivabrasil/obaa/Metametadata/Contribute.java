@@ -11,6 +11,7 @@ import cognitivabrasil.obaa.LifeCycle.Entity;
 import cognitivabrasil.obaa.LifeCycle.LifeCycleDate;
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import static cognitivabrasil.util.HelperFunctions.toStringList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import org.simpleframework.xml.Element;
@@ -103,10 +104,12 @@ public class Contribute {
         return date;
     }
 
+    @JsonIgnore
     public String getFirstEntity() {
         return entity.get(0).toString();
     }
 
+    @JsonIgnore
     public List<String> getEntities() {
         return toStringList(entity);
     }

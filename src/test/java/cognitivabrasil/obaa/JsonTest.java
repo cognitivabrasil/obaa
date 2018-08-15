@@ -19,6 +19,8 @@ import cognitivabrasil.obaa.LifeCycle.Contribute;
 import cognitivabrasil.obaa.LifeCycle.LifeCycle;
 import cognitivabrasil.obaa.LifeCycle.Role;
 import cognitivabrasil.obaa.LifeCycle.Status;
+import cognitivabrasil.obaa.Metametadata.Language;
+import cognitivabrasil.obaa.Metametadata.Metametadata;
 import cognitivabrasil.obaa.Rights.Rights;
 import cognitivabrasil.obaa.Technical.OrComposite;
 import cognitivabrasil.obaa.Technical.Requirement;
@@ -103,6 +105,9 @@ public class JsonTest {
         technical.setSize(new Size("9876"));
         technical.addFormat("pdf");
         obaa.setTechnical(technical);
+        Metametadata metameta = new Metametadata();
+        metameta.setLanguage(new Language("pt-BR"));
+        obaa.setMetametadata(metameta);
 
         ObjectMapper mapper = new ObjectMapper();
         String jsonResult = mapper.writeValueAsString(obaa);
@@ -115,6 +120,7 @@ public class JsonTest {
         JSONAssert.assertEquals("{educational:{difficulty:\"easy\",descriptions:[\"desc abc\"]}}",
                 jsonResult, JSONCompareMode.LENIENT);
         JSONAssert.assertEquals("{technical:{size:\"9876\",formats:[\"pdf\"]}}", jsonResult, JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals("{metametadata:{language:\"pt-BR\",metadataSchema:[\"OBAAv1.0\"]}}", jsonResult, JSONCompareMode.LENIENT);
 
 //        System.out.println(jsonResult);
     }
