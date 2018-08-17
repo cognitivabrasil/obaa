@@ -29,6 +29,7 @@ import cognitivabrasil.obaa.Educational.Description;
 import cognitivabrasil.obaa.General.Keyword;
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import cognitivabrasil.util.HelperFunctions;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.ArrayList;
 import java.util.List;
 import org.simpleframework.xml.Element;
@@ -58,6 +59,7 @@ import org.simpleframework.xml.Root;
 @Root
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Classification {
     @Element (required = false)
     private Purpose purpose;

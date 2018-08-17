@@ -28,6 +28,7 @@ package cognitivabrasil.obaa.Annotation;
 import cognitivabrasil.obaa.General.Description;
 import cognitivabrasil.obaa.LifeCycle.Entity;
 import cognitivabrasil.obaa.ObaaRecursibleElement;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -55,6 +56,7 @@ import org.simpleframework.xml.Root;
 @Root
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Annotation {
     @Element(required = false)
     private Entity entity;

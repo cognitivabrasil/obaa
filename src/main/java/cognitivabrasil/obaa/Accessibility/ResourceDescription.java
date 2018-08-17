@@ -26,6 +26,7 @@
 package cognitivabrasil.obaa.Accessibility;
 
 import cognitivabrasil.obaa.ObaaRecursibleElement;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -50,6 +51,7 @@ import org.simpleframework.xml.Namespace;
  */
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResourceDescription {
 
     @Element (required=false)

@@ -26,7 +26,7 @@
 package cognitivabrasil.obaa.Rights;
 
 import cognitivabrasil.obaa.ObaaRecursibleElement;
-
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -48,17 +48,18 @@ import org.simpleframework.xml.Root;
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Rights {
 
-    
+
     private static final String NAMESPACE = "http://ltsc.ieee.org/xsd/LOM";
     @Namespace(reference = NAMESPACE)
-    @Element(required = false)    
-    private BooleanYesNo cost;    
+    @Element(required = false)
+    private BooleanYesNo cost;
     @Namespace(reference = NAMESPACE)
-    @Element(required = false, name="copyrightAndOtherRestrictions")    
+    @Element(required = false, name="copyrightAndOtherRestrictions")
     private BooleanYesNo copyright;
-    
+
     @Namespace(reference = NAMESPACE)
     @Element(required = false)
     private String description;
@@ -69,7 +70,7 @@ public class Rights {
     /**
      * @return the cost
      */
-    public BooleanYesNo getCost() {        
+    public BooleanYesNo getCost() {
         return this.cost;
     }
 

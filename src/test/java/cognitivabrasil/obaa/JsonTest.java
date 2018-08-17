@@ -29,6 +29,10 @@ import cognitivabrasil.obaa.Metametadata.Metametadata;
 import cognitivabrasil.obaa.Relation.Kind;
 import cognitivabrasil.obaa.Relation.Relation;
 import cognitivabrasil.obaa.Rights.Rights;
+import cognitivabrasil.obaa.SegmentInformationTable.SegmentInformation;
+import cognitivabrasil.obaa.SegmentInformationTable.SegmentInformationTable;
+import cognitivabrasil.obaa.SegmentInformationTable.SegmentList;
+import cognitivabrasil.obaa.SegmentInformationTable.SegmentMediaType;
 import cognitivabrasil.obaa.Technical.OrComposite;
 import cognitivabrasil.obaa.Technical.Requirement;
 import cognitivabrasil.obaa.Technical.Size;
@@ -66,8 +70,7 @@ public class JsonTest {
         assertThat(json, equalTo(correctJson));
     }
 
-    @Test
-    public void testJsonSerialize() throws Exception {
+    private OBAA createTinyObaaTest() {
         OBAA obaa = new OBAA();
         General g = new General();
         //g.addIdentifiers("Catalog");
@@ -139,6 +142,24 @@ public class JsonTest {
         acc.setResourceDescription(rd);
         obaa.setAccessibility(acc);
 
+        SegmentInformationTable sit = new SegmentInformationTable();
+        SegmentList segmentList = new SegmentList();
+        SegmentInformation si = new SegmentInformation();
+
+        si.setIdentifier("1");
+        si.setTitle("tubarão");
+        si.setEnd("00:15");
+        si.setStart("00:10");
+        si.setSegmentMediaType(SegmentMediaType.fromText(SegmentMediaType.DOCUMENT));
+        segmentList.addSegmentList(si);
+        sit.addSegmentList(segmentList);
+        obaa.setSegmentInformationTable(sit);
+        return obaa;
+    }
+
+    @Test
+    public void testJsonSerialize() throws Exception {
+        OBAA obaa = createTinyObaaTest();
 
         ObjectMapper mapper = new ObjectMapper();
         String jsonResult = mapper.writeValueAsString(obaa);
@@ -160,36 +181,33 @@ public class JsonTest {
         JSONAssert.assertEquals("{classifications: [{\"description\":\"Class description\",\"purpose\":\"class purpose\"}]}", jsonResult, JSONCompareMode.LENIENT);
         JSONAssert.assertEquals("{accessibility: {\"resourceDescription\":{\"primary\":{\"hasVisual\":true,\"hasText\":true,\"hasTactile\":false}}}}", jsonResult, JSONCompareMode.LENIENT);
 
+        String segInfTabJson = "{\"segmentInformationTable\":{\"segmentList\":[{\"segmentInformation\":[{"
+                + "\"identifier\":\"1\",\"title\":\"tubarão\", \"end\":\"00:15\", \"start\":\"00:10\", "
+                + "\"segmentMediaType\":\"document\"}] }]} }";
+        JSONAssert.assertEquals(segInfTabJson, jsonResult, JSONCompareMode.LENIENT);
+
     }
 
-    @Test
+//    @Test
     public void testGeneralDeserialize() throws IOException {
-        String json = "{\"structure\":\"atomic\"}";
+        String json = "{\"general\":{\"titles\":[\"Título aleatório\"]}, "
+                + "\"lifeCycle\":{\"version\":\"0.0.1\"},"
+                + "\"rights\":{\"cost\":\"false\",\"copyright\":\"true\", \"description\":\"Right Description\"},"
+                + "\"educational\":{\"difficulty\":\"easy\",\"descriptions\":[\"desc abc\"]},"
+                + "\"technical\":{\"size\":\"9876\",\"formats\":[\"pdf\"]},"
+                + "\"metametadata\":{\"language\":\"pt-BR\",\"metadataSchema\":[\"OBAAv1.0\"]},"
+                + "\"relations\":[{\"kind\":\"haspart\"}],"
+                + "\"annotations\":[{\"date\":\"2018/08/15\",\"description\":\"Annontation desc\",\"entity\":\"annotation ent\"}],"
+                + "\"classifications\": [{\"description\":\"Class description\",\"purpose\":\"class purpose\"}],"
+                + "\"accessibility\": {\"resourceDescription\":{\"primary\":{\"hasVisual\":true,\"hasText\":true,\"hasTactile\":false}}},"
+                + "\"segmentInformationTable\":{\"segmentList\":[{\"segmentInformation\":[{"
+                + "     \"identifier\":\"1\",\"title\":\"tubarão\", \"end\":\"00:15\", \"start\":\"00:10\", "
+                + "     \"segmentMediaType\":\"document\"}] }]}"
+                + "}";
         ObjectMapper mapper = new ObjectMapper();
-        General g = mapper.readValue(json, General.class);
+        OBAA obaaResult = mapper.readValue(json, OBAA.class);
 
-        assertThat(g.getStructure().toString(), equalTo(Structure.ATOMIC));
-
-        //g.addIdentifiers("Catalog");
-//            g.addTitle("Título aleatório");
-//            g.addLanguage("pt");
-//            g.addLanguage("pt-br");
-//            Structure s = new Structure();
-//            s.setText(Structure.ATOMIC);
-//            g.setStructure(s);
-//            g.setAggregationLevel("1");
-//            g.addDescription("descri");
-//            g.addDescription("description");
-//            g.addKeyword("chaves");
-//            g.addCoverage("cover");
-//            g.setAggregationLevel("1");
-//            g.addThumbnail(new Thumbnail("http://img", "800", "600"));
-//
-//            Identifier i = new Identifier();
-//            i.setCatalog("catalog");
-//            i.setEntry("entry");
-//            Identifier id = new Identifier("catalogo", "http://id");
-//            g.addIdentifier(id);
+        assertThat(obaaResult, equalTo(createTinyObaaTest()));
     }
 
     private OBAA createOrComposite() {

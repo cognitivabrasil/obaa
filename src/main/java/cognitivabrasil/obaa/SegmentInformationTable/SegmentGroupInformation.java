@@ -25,12 +25,14 @@
  */
 package cognitivabrasil.obaa.SegmentInformationTable;
 
-import cognitivabrasil.obaa.ObaaRecursibleElement;
 import cognitivabrasil.obaa.General.Description;
 import cognitivabrasil.obaa.General.Keyword;
 import cognitivabrasil.obaa.General.Title;
+import cognitivabrasil.obaa.ObaaRecursibleElement;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 
@@ -42,8 +44,7 @@ import org.simpleframework.xml.ElementList;
  *
  * <div class="br">
  *
- * Conjunto de informações do grupo de segmentos (SegmentGroupInformationType do
- * TV-Anytime).
+ * Conjunto de informações do grupo de segmentos (SegmentGroupInformationType do TV-Anytime).
  *
  * Adaptado de http://www.portalobaa.org
  * </div>
@@ -53,6 +54,7 @@ import org.simpleframework.xml.ElementList;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 @ObaaRecursibleElement
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SegmentGroupInformation {
 
     @Element(required = false)
@@ -68,17 +70,14 @@ public class SegmentGroupInformation {
     @Element(required = false)
     private Segments segments;
 
-    public SegmentGroupInformation() { 
+    public SegmentGroupInformation() {
     }
 
     public void addKeyword(String newKeyword) {
-        if(this.keywords == null){
-            this.keywords = new ArrayList<Keyword>();
+        if (this.keywords == null) {
+            this.keywords = new ArrayList<>();
         }
-        Keyword k;
-        k = new Keyword();
-        k.setText(newKeyword);
-        this.keywords.add(k);
+        this.keywords.add(new Keyword(newKeyword));
     }
 
     public void setDescription(String description) {
@@ -110,7 +109,7 @@ public class SegmentGroupInformation {
     }
 
     public String getDescription() {
-        if(description == null){
+        if (description == null) {
             return null;
         }
         return description.getTranslated();
@@ -141,4 +140,47 @@ public class SegmentGroupInformation {
         }
         return title.getTranslated();
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.identifier);
+        hash = 89 * hash + Objects.hashCode(this.groupType);
+        hash = 89 * hash + Objects.hashCode(this.title);
+        hash = 89 * hash + Objects.hashCode(this.description);
+        hash = 89 * hash + Objects.hashCode(this.keywords);
+        hash = 89 * hash + Objects.hashCode(this.segments);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SegmentGroupInformation other = (SegmentGroupInformation) obj;
+        if (!Objects.equals(this.identifier, other.identifier)) {
+            return false;
+        }
+        if (!Objects.equals(this.groupType, other.groupType)) {
+            return false;
+        }
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.keywords, other.keywords)) {
+            return false;
+        }
+        return Objects.equals(this.segments, other.segments);
+    }
+
 }

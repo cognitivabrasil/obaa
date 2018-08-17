@@ -1,10 +1,10 @@
-/*******************************************************************************
+/** *****************************************************************************
  * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+ ***************************************************************************** */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -24,13 +24,15 @@
  */
 package cognitivabrasil.obaa.SegmentInformationTable;
 
-import cognitivabrasil.obaa.ObaaRecursibleElement;
 import cognitivabrasil.obaa.Educational.Description;
 import cognitivabrasil.obaa.General.Keyword;
 import cognitivabrasil.obaa.General.Title;
+import cognitivabrasil.obaa.ObaaRecursibleElement;
 import cognitivabrasil.util.HelperFunctions;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 
@@ -41,8 +43,7 @@ import org.simpleframework.xml.ElementList;
  *
  * <div class="br">
  *
- * Agrupamento das informações de um segmento (SegmentInformationType do
- * TV-Anytime)
+ * Agrupamento das informações de um segmento (SegmentInformationType do TV-Anytime)
  *
  * Adaptado de http://www.portalobaa.org </div>
  *
@@ -51,31 +52,33 @@ import org.simpleframework.xml.ElementList;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 @ObaaRecursibleElement
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SegmentInformation {
 
-    @Element (required=false)
+    @Element(required = false)
     private SegmentIdentifier identifier;
-    
-    @Element (required=false)
+
+    @Element(required = false)
     private Title title;
-    
-    @Element (required=false)
+
+    @Element(required = false)
     private Description description;
-    
-    @ElementList(inline = true, required=false)
-    private List<Keyword> keywords = new ArrayList<Keyword>();
-    
-    @Element (required=false)
+
+    @ElementList(inline = true, required = false)
+    private List<Keyword> keywords;
+
+    @Element(required = false)
     private SegmentMediaType segmentMediaType;
-    
+
     //TODO: implement the mediaTimeType MPEG-7
-    @Element (required=false)
-    private Start start; 
-    
-    @Element (required=false)
+    @Element(required = false)
+    private Start start;
+
+    @Element(required = false)
     private End end;
 
     public SegmentInformation() {
+        this.keywords = new ArrayList<>();
         this.identifier = new SegmentIdentifier();
         this.title = new Title();
         this.description = new Description();
@@ -95,7 +98,7 @@ public class SegmentInformation {
     public void setEnd(String end) {
         this.end.setText(end);
     }
-    
+
     public String getEnd() {
         return end.getText();
     }
@@ -111,7 +114,7 @@ public class SegmentInformation {
     public void addKeyword(String newKeyword) {
         this.keywords.add(new Keyword(newKeyword));
     }
-    
+
     public List<String> getKeywords() {
         return HelperFunctions.toStringList(keywords);
     }
@@ -120,10 +123,10 @@ public class SegmentInformation {
         this.segmentMediaType = segmentMediaType;
     }
 
-    public void setStart(String start) {        
-        this.start.setText(start);        
+    public void setStart(String start) {
+        this.start.setText(start);
     }
-    
+
     public String getStart() {
         return (start.getText());
     }
@@ -140,5 +143,50 @@ public class SegmentInformation {
         return segmentMediaType.getText();
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.identifier);
+        hash = 67 * hash + Objects.hashCode(this.title);
+        hash = 67 * hash + Objects.hashCode(this.description);
+        hash = 67 * hash + Objects.hashCode(this.keywords);
+        hash = 67 * hash + Objects.hashCode(this.segmentMediaType);
+        hash = 67 * hash + Objects.hashCode(this.start);
+        hash = 67 * hash + Objects.hashCode(this.end);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SegmentInformation other = (SegmentInformation) obj;
+        if (!Objects.equals(this.identifier, other.identifier)) {
+            return false;
+        }
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.keywords, other.keywords)) {
+            return false;
+        }
+        if (!Objects.equals(this.segmentMediaType, other.segmentMediaType)) {
+            return false;
+        }
+        if (!Objects.equals(this.start, other.start)) {
+            return false;
+        }
+        return Objects.equals(this.end, other.end);
+    }
 
 }

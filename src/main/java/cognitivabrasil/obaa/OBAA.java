@@ -95,9 +95,8 @@ public class OBAA implements Cloneable {
     private List<Classification> classifications;
     @Element(required = false)
     private Accessibility accessibility;
-    @JsonIgnore
     @Element(required = false, name = "segmentInformationTable")
-    private SegmentInformationTable segmentsInformationTable;
+    private SegmentInformationTable segmentInformationTable;
 
     public OBAA() {
         relations = new ArrayList<>();
@@ -111,7 +110,7 @@ public class OBAA implements Cloneable {
                 && educational == null && technical == null
                 && metametadata == null && relations.isEmpty()
                 && annotations.isEmpty() && classifications.isEmpty()
-                && accessibility == null && segmentsInformationTable == null;
+                && accessibility == null && segmentInformationTable == null;
     }
 
     /**
@@ -254,13 +253,13 @@ public class OBAA implements Cloneable {
         this.accessibility = accessibility;
     }
 
-    public SegmentInformationTable getSegmentsInformationTable() {
-        return segmentsInformationTable;
+    public SegmentInformationTable getSegmentInformationTable() {
+        return segmentInformationTable;
     }
 
-    public void setSegmentsInformationTable(
+    public void setSegmentInformationTable(
             SegmentInformationTable segmentsInformationTable) {
-        this.segmentsInformationTable = segmentsInformationTable;
+        this.segmentInformationTable = segmentsInformationTable;
     }
 
     @JsonIgnore

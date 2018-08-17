@@ -12,6 +12,7 @@
 package cognitivabrasil.obaa.LifeCycle;
 
 import cognitivabrasil.obaa.ObaaRecursibleElement;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.ArrayList;
 import java.util.List;
 import org.simpleframework.xml.Element;
@@ -32,6 +33,7 @@ import org.simpleframework.xml.Root;
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class LifeCycle {
 
     @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM")

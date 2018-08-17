@@ -1,10 +1,10 @@
-/*******************************************************************************
+/** *****************************************************************************
  * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+ ***************************************************************************** */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -24,12 +24,13 @@
  */
 package cognitivabrasil.obaa.SegmentInformationTable;
 
+import cognitivabrasil.obaa.ObaaRecursibleElement;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
-
-import cognitivabrasil.obaa.ObaaRecursibleElement;
 
 /**
  * <div class="en">
@@ -38,8 +39,8 @@ import cognitivabrasil.obaa.ObaaRecursibleElement;
  *
  * <div class="br">
  *
- * Grupo que conterá o conjunto de informações de segmentação dos objetos de
- * aprendizagem e de grupos de segmentos dos objetos de aprendizagem.
+ * Grupo que conterá o conjunto de informações de segmentação dos objetos de aprendizagem e de grupos de segmentos dos
+ * objetos de aprendizagem.
  *
  *
  * Adaptado de http://www.portalobaa.org </div>
@@ -49,6 +50,7 @@ import cognitivabrasil.obaa.ObaaRecursibleElement;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 @ObaaRecursibleElement
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SegmentInformationTable {
 
     @ElementList(inline = true, required = false)
@@ -57,7 +59,7 @@ public class SegmentInformationTable {
     private SegmentGroupList segmentGroupList;
 
     public SegmentInformationTable() {
-        this.segmentList = new ArrayList<SegmentList>();
+        this.segmentList = new ArrayList<>();
         this.segmentGroupList = new SegmentGroupList();
     }
 
@@ -80,4 +82,31 @@ public class SegmentInformationTable {
     public SegmentGroupList getSegmentGroupList() {
         return segmentGroupList;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.segmentList);
+        hash = 41 * hash + Objects.hashCode(this.segmentGroupList);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SegmentInformationTable other = (SegmentInformationTable) obj;
+        if (!Objects.equals(this.segmentList, other.segmentList)) {
+            return false;
+        }
+        return Objects.equals(this.segmentGroupList, other.segmentGroupList);
+    }
+
 }

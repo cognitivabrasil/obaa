@@ -24,11 +24,11 @@
  */
 package cognitivabrasil.obaa.Relation;
 
-import org.simpleframework.xml.Element;
-import org.simpleframework.xml.Root;
-
 import cognitivabrasil.obaa.ObaaRecursibleElement;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
+import org.simpleframework.xml.Root;
 
 /**
  * <div class="en">
@@ -47,6 +47,7 @@ import org.simpleframework.xml.Namespace;
 @Root
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 @ObaaRecursibleElement
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Relation {
 
     @Element(name = "kind", required=false)

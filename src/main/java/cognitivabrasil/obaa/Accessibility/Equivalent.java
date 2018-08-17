@@ -10,6 +10,7 @@ package cognitivabrasil.obaa.Accessibility;
 import cognitivabrasil.obaa.BooleanElement;
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -32,6 +33,7 @@ import org.simpleframework.xml.ElementList;
  * @author Paulo Schreiner <paulo@cognitivabrasil.com.br>
  */
 @ObaaRecursibleElement
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Equivalent {
 
     @Element(required = false)

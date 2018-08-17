@@ -709,7 +709,7 @@ public class OBAATest {
 
         OBAA obaa = file3;
 
-        SegmentInformationTable st = obaa.getSegmentsInformationTable();
+        SegmentInformationTable st = obaa.getSegmentInformationTable();
         List<SegmentList> sl = st.getSegmentList();
         SegmentInformation s1 = sl.get(0).getSegmentInformation().get(0);
         SegmentInformation s2 = sl.get(0).getSegmentInformation().get(1);
@@ -1013,7 +1013,7 @@ public class OBAATest {
             o.setLifeCycle(l);
             o.setClassifications(c);
             o.setMetametadata(m);
-            o.setSegmentsInformationTable(s);
+            o.setSegmentInformationTable(s);
 
             File result = new File("empty.xml");
             serializer.write(o, result);
@@ -1053,7 +1053,7 @@ public class OBAATest {
             st.addSegmentList(sl);
 
             o.setGeneral(g);
-            o.setSegmentsInformationTable(st);
+            o.setSegmentInformationTable(st);
 
             File result = new File("./src/test/metadata/segment.xml");
             serializer.write(o, result);
@@ -1317,7 +1317,7 @@ public class OBAATest {
         assertThat(obaa.isEmpty(), equalTo(false));
 
         obaa = new OBAA();
-        obaa.setSegmentsInformationTable(new SegmentInformationTable());
+        obaa.setSegmentInformationTable(new SegmentInformationTable());
         assertThat(obaa.isEmpty(), equalTo(false));
 
         obaa = new OBAA();
@@ -1435,9 +1435,9 @@ public class OBAATest {
         assertThat(equivalent.getContent().getLearnerScaffold().get(0).getText(), equalTo("calculator"));
 
 
-        assertThat(o.getSegmentsInformationTable().getSegmentList().get(0).getSegmentInformation().get(0)
+        assertThat(o.getSegmentInformationTable().getSegmentList().get(0).getSegmentInformation().get(0)
                 .getSegmentMediaType(), equalTo("video"));
-        assertThat(o.getSegmentsInformationTable().getSegmentGroupList().getSegmentGroupInformation().get(0)
+        assertThat(o.getSegmentInformationTable().getSegmentGroupList().getSegmentGroupInformation().get(0)
                 .getGroupType().getText(), equalTo("Higlights"));
     }
 

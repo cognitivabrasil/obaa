@@ -5,10 +5,6 @@
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl.html
  ******************************************************************************/
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package cognitivabrasil.obaa.General;
 
 import metadata.TextElement;
@@ -24,5 +20,5 @@ import org.simpleframework.xml.Namespace;
 public class Keyword extends TextElement {
 	public Keyword() {}
 	public Keyword(String t) {super(t);}
-	
+
 }

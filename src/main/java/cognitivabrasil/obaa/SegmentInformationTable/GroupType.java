@@ -5,6 +5,8 @@
  */
 package cognitivabrasil.obaa.SegmentInformationTable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -25,13 +27,7 @@ public class GroupType extends TextElement {
     public static final String OTHER = "other";
 
     public GroupType() {
-        super();
-        this.addTerms(HIGHLIGHTS);
-        this.addTerms(BOOKMARKS);
-        this.addTerms(THEME_GROUP);
-        this.addTerms(PREVIEW);
-        this.addTerms(ACTIVITIES);
-        this.addTerms(OTHER);
+        super(new ArrayList<>(Arrays.asList(HIGHLIGHTS, BOOKMARKS, THEME_GROUP, PREVIEW, ACTIVITIES, OTHER)));
     }
 
 }
