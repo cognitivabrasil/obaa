@@ -24,9 +24,9 @@
  */
 package cognitivabrasil.obaa.Relation;
 
-import cognitivabrasil.obaa.ObaaRecursibleElement;
 import cognitivabrasil.obaa.General.Description;
 import cognitivabrasil.obaa.General.Identifier;
+import cognitivabrasil.obaa.ObaaRecursibleElement;
 import java.util.ArrayList;
 import java.util.List;
 import org.simpleframework.xml.ElementList;
@@ -56,8 +56,8 @@ public class Resource {
     private List<Description> description;
 
     public Resource() {
-        identifier = new ArrayList<Identifier>();
-        description = new ArrayList<Description>();
+        identifier = new ArrayList<>();
+        description = new ArrayList<>();
     }
 
     public List<Description> getDescription() {
@@ -68,6 +68,10 @@ public class Resource {
         this.description = description;
     }
 
+    public void addDescription(Description description){
+        this.description.add(description);
+    }
+
     public List<Identifier> getIdentifier() {
         return identifier;
     }
@@ -75,9 +79,9 @@ public class Resource {
     public void setIdentifier(List<Identifier> identifier) {
         this.identifier = identifier;
     }   
-    
+
     public void addIdentifier (Identifier identifier) {
         this.identifier.add(identifier);
     }
-    
+
 }

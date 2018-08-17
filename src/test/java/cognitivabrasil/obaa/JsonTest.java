@@ -9,6 +9,11 @@
  */
 package cognitivabrasil.obaa;
 
+import cognitivabrasil.obaa.Accessibility.Accessibility;
+import cognitivabrasil.obaa.Accessibility.Primary;
+import cognitivabrasil.obaa.Accessibility.ResourceDescription;
+import cognitivabrasil.obaa.Annotation.Annotation;
+import cognitivabrasil.obaa.Classification.Classification;
 import cognitivabrasil.obaa.Educational.Difficulty;
 import cognitivabrasil.obaa.Educational.Educational;
 import cognitivabrasil.obaa.General.General;
@@ -21,6 +26,8 @@ import cognitivabrasil.obaa.LifeCycle.Role;
 import cognitivabrasil.obaa.LifeCycle.Status;
 import cognitivabrasil.obaa.Metametadata.Language;
 import cognitivabrasil.obaa.Metametadata.Metametadata;
+import cognitivabrasil.obaa.Relation.Kind;
+import cognitivabrasil.obaa.Relation.Relation;
 import cognitivabrasil.obaa.Rights.Rights;
 import cognitivabrasil.obaa.Technical.OrComposite;
 import cognitivabrasil.obaa.Technical.Requirement;
@@ -108,6 +115,30 @@ public class JsonTest {
         Metametadata metameta = new Metametadata();
         metameta.setLanguage(new Language("pt-BR"));
         obaa.setMetametadata(metameta);
+        Relation rel = new Relation();
+        rel.setKind(Kind.HAS_PART);
+        obaa.addRelation(rel);
+        Annotation annotation = new Annotation();
+        annotation.setDate("2018/08/15");
+        annotation.setDescription("Annontation desc");
+        annotation.setEntity("annotation ent");
+        obaa.addAnnotation(annotation);
+
+        Classification classification = new Classification();
+        classification.setDescription("Class description");
+        classification.setPurpose("class purpose");
+        obaa.addClassification(classification);
+
+        Accessibility acc = new Accessibility();
+        ResourceDescription rd = new ResourceDescription();
+        Primary primary = new Primary();
+        primary.setVisual(true);
+        primary.setText(true);
+        primary.setTactile(false);
+        rd.setPrimary(primary);
+        acc.setResourceDescription(rd);
+        obaa.setAccessibility(acc);
+
 
         ObjectMapper mapper = new ObjectMapper();
         String jsonResult = mapper.writeValueAsString(obaa);
@@ -120,9 +151,15 @@ public class JsonTest {
         JSONAssert.assertEquals("{educational:{difficulty:\"easy\",descriptions:[\"desc abc\"]}}",
                 jsonResult, JSONCompareMode.LENIENT);
         JSONAssert.assertEquals("{technical:{size:\"9876\",formats:[\"pdf\"]}}", jsonResult, JSONCompareMode.LENIENT);
-        JSONAssert.assertEquals("{metametadata:{language:\"pt-BR\",metadataSchema:[\"OBAAv1.0\"]}}", jsonResult, JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals("{metametadata:{language:\"pt-BR\",metadataSchema:[\"OBAAv1.0\"]}}", jsonResult,
+                JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals("{relations:[{kind:\"haspart\"}]}", jsonResult, JSONCompareMode.LENIENT);
+        String annotationJson = "{annotations:[{date:\"2018/08/15\",\"description\":\"Annontation desc\", "
+                + "\"entity\":\"annotation ent\"}]}";
+        JSONAssert.assertEquals(annotationJson, jsonResult, JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals("{classifications: [{\"description\":\"Class description\",\"purpose\":\"class purpose\"}]}", jsonResult, JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals("{accessibility: {\"resourceDescription\":{\"primary\":{\"hasVisual\":true,\"hasText\":true,\"hasTactile\":false}}}}", jsonResult, JSONCompareMode.LENIENT);
 
-//        System.out.println(jsonResult);
     }
 
     @Test

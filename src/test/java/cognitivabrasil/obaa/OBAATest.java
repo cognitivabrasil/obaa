@@ -1422,7 +1422,7 @@ public class OBAATest {
         assertThat(equivalent.getContent().getAlternativesToVisual().getAltTextLang(), equalTo("pt-BR"));
         assertThat(equivalent.getContent().getAlternativesToVisual().getColorAvoidance().get(0).getText(),
                 equalTo("avoidRed"));
-        assertThat(equivalent.getContent().getAlternativesToText().getGraphicAlternative().getBoolean(), equalTo(true));
+        assertThat(equivalent.getContent().getAlternativesToText().isGraphicAlternative(), equalTo(true));
         assertThat(equivalent.getContent().getAlternativesToText().getSignLanguage().get(0).getText(),
                 equalTo("Brazilian-BRA"));
         CaptionType captionType = equivalent.getContent().getAlternativesToAuditory().getCaptionType().get(0);

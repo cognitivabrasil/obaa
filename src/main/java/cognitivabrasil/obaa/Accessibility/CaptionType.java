@@ -1,10 +1,10 @@
-/*******************************************************************************
+/** *****************************************************************************
  * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+ ***************************************************************************** */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -26,17 +26,16 @@ package cognitivabrasil.obaa.Accessibility;
 
 import cognitivabrasil.obaa.BooleanElement;
 import cognitivabrasil.obaa.ObaaRecursibleElement;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 
 /**
  * <div class="en">
  *
- * Indicates that the described resource contains a text caption for the
- * referenced primary resource.
+ * Indicates that the described resource contains a text caption for the referenced primary resource.
  *
- * Verbatim: Indicates that the caption is a verbatim caption. Mutually
- * exclusive with reducedReadingLevel
+ * Verbatim: Indicates that the caption is a verbatim caption. Mutually exclusive with reducedReadingLevel
  *
  * Enhanced Caption: Indicates that the caption is an enhanced caption.
  *
@@ -72,8 +71,8 @@ public class CaptionType {
     }
 
     /**
-     * If is set verbatim true, the reducedReadingLevel is set false and
-     * viceverse, due to the muttualy exclusion of these two params;
+     * If is set verbatim true, the reducedReadingLevel is set false and viceverse, due to the muttualy exclusion of
+     * these two params;
      *
      * @param verbatim
      */
@@ -87,8 +86,8 @@ public class CaptionType {
     }
 
     /**
-     * If is set Reduced Reading Level true, the verbatim is set false and
-     * viceverse, due to the muttualy exclusion of these two params;
+     * If is set Reduced Reading Level true, the verbatim is set false and viceverse, due to the muttualy exclusion of
+     * these two params;
      *
      * @param reducedReadingLevel
      */
@@ -124,6 +123,7 @@ public class CaptionType {
         return reducedSpeed;
     }
 
+    @JsonIgnore
     public String getVerbatimTxt() {
         if (verbatim == null) {
             return null;
@@ -136,6 +136,7 @@ public class CaptionType {
         return this.verbatim.getBoolean();
     }
 
+    @JsonIgnore
     public String getReducedReadingLevelTxt() {
         if (reducedReadingLevel == null) {
             return null;
@@ -148,6 +149,7 @@ public class CaptionType {
         return this.reducedReadingLevel.getBoolean();
     }
 
+    @JsonIgnore
     public String getEnhancedCaptionTxt() {
         if (enhancedCaption == null) {
             return null;
@@ -159,4 +161,43 @@ public class CaptionType {
     public boolean isEnhancedCaption() {
         return this.enhancedCaption.getBoolean();
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.language);
+        hash = 59 * hash + Objects.hashCode(this.verbatim);
+        hash = 59 * hash + Objects.hashCode(this.reducedReadingLevel);
+        hash = 59 * hash + Objects.hashCode(this.reducedSpeed);
+        hash = 59 * hash + Objects.hashCode(this.enhancedCaption);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CaptionType other = (CaptionType) obj;
+        if (!Objects.equals(this.language, other.language)) {
+            return false;
+        }
+        if (!Objects.equals(this.verbatim, other.verbatim)) {
+            return false;
+        }
+        if (!Objects.equals(this.reducedReadingLevel, other.reducedReadingLevel)) {
+            return false;
+        }
+        if (!Objects.equals(this.reducedSpeed, other.reducedSpeed)) {
+            return false;
+        }
+        return Objects.equals(this.enhancedCaption, other.enhancedCaption);
+    }
+
 }

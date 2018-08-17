@@ -1,10 +1,10 @@
-/*******************************************************************************
+/** *****************************************************************************
  * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+ ***************************************************************************** */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -24,18 +24,17 @@
  */
 package cognitivabrasil.obaa.Accessibility;
 
+import cognitivabrasil.obaa.ObaaRecursibleElement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
-
-import cognitivabrasil.obaa.ObaaRecursibleElement;
 
 /**
  * <div class="en">
  *
- * The features of the content of the equivalent resource that parallel the
- * ACCLIP specification.
+ * The features of the content of the equivalent resource that parallel the ACCLIP specification.
  *
  * according to IMS GLOBAL v1.0 http://www.imsglobal.org/ </div>
  *
@@ -57,14 +56,14 @@ public class Content {
     private AlternativesToText alternativesToText;
     @Element(required = false)
     private AlternativesToAuditory alternativesToAuditory;
-    @ElementList(inline=true, required = false)
+    @ElementList(inline = true, required = false)
     private List<LearnerScaffold> learnerScaffold;
 
     public Content() {
         this.alternativesToVisual = new AlternativesToVisual();
         this.alternativesToText = new AlternativesToText();
         this.alternativesToAuditory = new AlternativesToAuditory();
-        this.learnerScaffold = new ArrayList<LearnerScaffold>();
+        this.learnerScaffold = new ArrayList<>();
     }
 
     public AlternativesToAuditory getAlternativesToAuditory() {
@@ -104,4 +103,39 @@ public class Content {
         l.setText(learnerScaffold);
         this.learnerScaffold.add(l);
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 89 * hash + Objects.hashCode(this.alternativesToVisual);
+        hash = 89 * hash + Objects.hashCode(this.alternativesToText);
+        hash = 89 * hash + Objects.hashCode(this.alternativesToAuditory);
+        hash = 89 * hash + Objects.hashCode(this.learnerScaffold);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Content other = (Content) obj;
+        if (!Objects.equals(this.alternativesToVisual, other.alternativesToVisual)) {
+            return false;
+        }
+        if (!Objects.equals(this.alternativesToText, other.alternativesToText)) {
+            return false;
+        }
+        if (!Objects.equals(this.alternativesToAuditory, other.alternativesToAuditory)) {
+            return false;
+        }
+        return Objects.equals(this.learnerScaffold, other.learnerScaffold);
+    }
+
 }

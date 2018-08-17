@@ -14,12 +14,16 @@ import java.util.Map;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author luiz
  */
 public class ParsingTest {
+
+    private final Logger log = LoggerFactory.getLogger(ParsingTest.class);
 
     @Test
     public void tipicalAgeRangeParseTest() {
@@ -78,7 +82,6 @@ public class ParsingTest {
                 line = br.readLine();
 
             }
-            System.out.println("Total parsing errors: " + count);
 
             assertThat(results.get("18-U").toString(), equalTo("18-100"));
             assertThat(results.get("UNIVERSITÁRIO").toString(), equalTo("18-100"));
@@ -132,26 +135,26 @@ public class ParsingTest {
                 format.setText(line);
 
                 //ver se é um mime type
-                if (mimes.getMimeType(format.getText()) == null) {                    
+                if (mimes.getMimeType(format.getText()) == null) {
                     if (!format.getText().equals("")) {
-                        count++;                        
-                        System.out.println("Without Mime Type: "+format.getText());
+                        count++;
+                        log.debug("Without Mime Type: {}", format.getText());
                     }
-                    
+
                 } else {
                     results.put(line, format.getText());
                 }
-                
-                if (format.getCategory()==null){
-                        count2++;
-                        System.out.println("Without category: "+format.getText());
-                    }
-                
+
+                if (format.getCategory() == null) {
+                    count2++;
+                    log.debug("Without category: {}", format.getText());
+                }
+
                 line = br.readLine();
             }
 
-            System.out.println("Total Mime Type errors: " + count);
-            System.out.println("Total Category errors: " + count2);
+            log.debug("Total Mime Type errors: {}", count);
+            log.debug("Total Category errors: {}", count2);
 
             //erros conhecidos: 28 mime types e 2 categories
             assertThat(count, equalTo(28));

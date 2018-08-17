@@ -21,9 +21,12 @@ import java.io.FileNotFoundException;
 import static org.hamcrest.Matchers.*;
 import org.junit.*;
 import static org.junit.Assert.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ObaaI18NTest {
     static final String FULL = "./src/test/metadata/xml_obaa_full.xml";
+    private final Logger log = LoggerFactory.getLogger(ObaaI18NTest.class);
 
   	@Test
 	public void testStandard() throws FileNotFoundException {
@@ -72,7 +75,7 @@ public class ObaaI18NTest {
             educational.getDifficulty().validate("very difficult");
                     }
         catch (IllegalArgumentException e){
-            System.out.println("VALOR INVÀLIDO");
+            log.debug("VALOR INVÀLIDO");
             assert(false);
         }
 
@@ -98,9 +101,5 @@ public class ObaaI18NTest {
             o.setLocale("pt_BR");
 
             assertThat(diff.getListOfTerms(), equalTo(o.getEducational().getDifficulty().getListOfTerms()));
-
-            System.out.println(diff.getMapOfTerms());
-            System.out.println(diff.getMapOfTermsLevelOrdered());
-
         }
 }

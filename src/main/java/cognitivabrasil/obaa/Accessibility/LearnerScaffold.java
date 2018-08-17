@@ -25,16 +25,18 @@
  */
 package cognitivabrasil.obaa.Accessibility;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 
 /**
  * <div class="en">
  *
- * Indicates that the described resource is or contains one or more of the
- * learnerScaffold tools.
+ * Indicates that the described resource is or contains one or more of the learnerScaffold tools.
  *
- * Value Space: dictionary, calculator, noteTaking, peerInteraction, abacus
- * thesaurus, spellChecker, homophoneChecker, mindMappingSoftware or outlineTool
+ * Value Space: dictionary, calculator, noteTaking, peerInteraction, abacus thesaurus, spellChecker, homophoneChecker,
+ * mindMappingSoftware or outlineTool
  *
  * according to IMS GLOBAL v1.0 http://www.imsglobal.org/
  * </div>
@@ -63,16 +65,14 @@ public class LearnerScaffold extends TextElement {
     public static final String OUTLINE_TOOL = "outline tool";
 
     public LearnerScaffold() {
-        super();
-        this.addTerms(DICTIONARY);
-        this.addTerms(CALCULATOR);
-        this.addTerms(NOTE_TAKING);
-        this.addTerms(PEER_INTERACTION);
-        this.addTerms(ABACUS);
-        this.addTerms(THESAURUS);
-        this.addTerms(SPELL_CHECKER);
-        this.addTerms(HOMOPHONE_CHECKER);
-        this.addTerms(MIND_MAPPING_SOFTWARE);
-        this.addTerms(OUTLINE_TOOL);
+        super(new ArrayList<>(Arrays.asList(DICTIONARY, CALCULATOR, NOTE_TAKING, PEER_INTERACTION, ABACUS, THESAURUS,
+                SPELL_CHECKER, HOMOPHONE_CHECKER, MIND_MAPPING_SOFTWARE, OUTLINE_TOOL)));
+    }
+
+    @JsonCreator
+    public static LearnerScaffold fromText(String text) {
+        LearnerScaffold obj = new LearnerScaffold();
+        obj.setText(text);
+        return obj;
     }
 }

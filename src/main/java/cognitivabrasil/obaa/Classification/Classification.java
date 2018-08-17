@@ -74,9 +74,8 @@ public class Classification {
     public Classification() {
         this.description = new Description();
         purpose = new Purpose();
-        keywords = new ArrayList<Keyword>();
-        taxonPath = new ArrayList<TaxonPath>();
-
+        keywords = new ArrayList<>();
+        taxonPath = new ArrayList<>();
     }
 
     public void setPurpose(Purpose purpose) {

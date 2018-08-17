@@ -1,10 +1,10 @@
-/*******************************************************************************
+/** *****************************************************************************
  * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+ ***************************************************************************** */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -24,26 +24,22 @@
  */
 package cognitivabrasil.obaa.Accessibility;
 
-import org.simpleframework.xml.Element;
-
 import cognitivabrasil.obaa.ObaaRecursibleElement;
+import java.util.Objects;
+import org.simpleframework.xml.Element;
 
 /**
  * <div class="en">
  *
- * Some resources can only be controlled using a mouse or mouse equivalent. This
- * means users who do not have a mouse or cannot control a mouse cannot control
- * such resources. If all of the functions controlled by the mouse can also be
- * controlled using keyboard commands, users will have access to the same
- * functionality using a keyboard or any number of other keyboard-emulating
- * devices (e.g., scanning systems, coding systems, enlarged keyboards, etc.).
- * Some interfaces require many sequential actions to navigate to a desired
- * control, such as a button. This can be difficult for some users. Interfaces
- * that allow reconfiguration of the actions required to access specific
- * controls, buttons, links or input fields enable the optimization of the
- * control method. Control flexibility describes how the resource supports a
- * choice of methods of controlling the resource functions. It is anticipated
- * that this will be determined using accessibility-checking tools.
+ * Some resources can only be controlled using a mouse or mouse equivalent. This means users who do not have a mouse or
+ * cannot control a mouse cannot control such resources. If all of the functions controlled by the mouse can also be
+ * controlled using keyboard commands, users will have access to the same functionality using a keyboard or any number
+ * of other keyboard-emulating devices (e.g., scanning systems, coding systems, enlarged keyboards, etc.). Some
+ * interfaces require many sequential actions to navigate to a desired control, such as a button. This can be difficult
+ * for some users. Interfaces that allow reconfiguration of the actions required to access specific controls, buttons,
+ * links or input fields enable the optimization of the control method. Control flexibility describes how the resource
+ * supports a choice of methods of controlling the resource functions. It is anticipated that this will be determined
+ * using accessibility-checking tools.
  *
  * according to IEEE LOM http://ltsc.ieee.org/ </div>
  *
@@ -59,9 +55,9 @@ import cognitivabrasil.obaa.ObaaRecursibleElement;
 @ObaaRecursibleElement
 public class EarlStatement {
 
-    @Element (required=false)
+    @Element(required = false)
     private DisplayTransformability displayTransformability;
-    @Element (required=false)
+    @Element(required = false)
     private ControlFlexibility controlFlexibility;
 
     public EarlStatement() {
@@ -83,5 +79,32 @@ public class EarlStatement {
 
     public void setDisplayTransformability(String displayTransformability) {
         this.displayTransformability.setText(displayTransformability);
-    }   
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 41 * hash + Objects.hashCode(this.displayTransformability);
+        hash = 41 * hash + Objects.hashCode(this.controlFlexibility);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final EarlStatement other = (EarlStatement) obj;
+        if (!Objects.equals(this.displayTransformability, other.displayTransformability)) {
+            return false;
+        }
+        return Objects.equals(this.controlFlexibility, other.controlFlexibility);
+    }
+
 }

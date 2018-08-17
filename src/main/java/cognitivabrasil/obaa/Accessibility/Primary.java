@@ -1,10 +1,10 @@
-/*******************************************************************************
+/** *****************************************************************************
  * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+ ***************************************************************************** */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -26,9 +26,11 @@ package cognitivabrasil.obaa.Accessibility;
 
 import cognitivabrasil.obaa.BooleanElement;
 import cognitivabrasil.obaa.ObaaRecursibleElement;
-
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
@@ -65,8 +67,8 @@ public class Primary {
     private List<EquivalentResource> equivalentResource;
 
     public Primary() {
-        earlStatement = new ArrayList<EarlStatement>();
-        equivalentResource = new ArrayList<EquivalentResource>();
+        earlStatement = new ArrayList<>();
+        equivalentResource = new ArrayList<>();
     }
 
     public void addEarlStatement(EarlStatement earlStatement) {
@@ -121,22 +123,27 @@ public class Primary {
         this.hasVisual.setBoolean(hasVisual);
     }
 
-    public boolean isAuditory() {
-        return hasAuditory.getBoolean();
+    @JsonGetter
+    public Boolean isHasAuditory() {
+        return BooleanElement.toBoolean(hasAuditory);
     }
 
-    public boolean isTactile() {
-        return hasTactile.getBoolean();
+    @JsonGetter
+    public Boolean isHasTactile() {
+        return BooleanElement.toBoolean(hasTactile);
     }
 
-    public boolean isText() {
-        return hasText.getBoolean();
+    @JsonGetter
+    public Boolean isHasText() {
+        return BooleanElement.toBoolean(hasText);
     }
 
-    public boolean isVisual() {
-        return hasVisual.getBoolean();
+    @JsonGetter
+    public Boolean isHasVisual() {
+        return BooleanElement.toBoolean(hasVisual);
     }
 
+    @JsonIgnore
     public String getHasAuditory() {
         if (hasAuditory == null) {
             return null;
@@ -145,6 +152,7 @@ public class Primary {
         }
     }
 
+    @JsonIgnore
     public String getHasTactile() {
         if (hasTactile == null) {
             return null;
@@ -153,6 +161,7 @@ public class Primary {
         }
     }
 
+    @JsonIgnore
     public String getHasText() {
         if (hasText == null) {
             return null;
@@ -161,6 +170,7 @@ public class Primary {
         }
     }
 
+    @JsonIgnore
     public String getHasVisual() {
         if (hasVisual == null) {
             return null;
@@ -168,4 +178,47 @@ public class Primary {
             return hasVisual.getTranslated();
         }
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.hasVisual);
+        hash = 97 * hash + Objects.hashCode(this.hasAuditory);
+        hash = 97 * hash + Objects.hashCode(this.hasText);
+        hash = 97 * hash + Objects.hashCode(this.hasTactile);
+        hash = 97 * hash + Objects.hashCode(this.earlStatement);
+        hash = 97 * hash + Objects.hashCode(this.equivalentResource);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Primary other = (Primary) obj;
+        if (!Objects.equals(this.hasVisual, other.hasVisual)) {
+            return false;
+        }
+        if (!Objects.equals(this.hasAuditory, other.hasAuditory)) {
+            return false;
+        }
+        if (!Objects.equals(this.hasText, other.hasText)) {
+            return false;
+        }
+        if (!Objects.equals(this.hasTactile, other.hasTactile)) {
+            return false;
+        }
+        if (!Objects.equals(this.earlStatement, other.earlStatement)) {
+            return false;
+        }
+        return Objects.equals(this.equivalentResource, other.equivalentResource);
+    }
+
 }

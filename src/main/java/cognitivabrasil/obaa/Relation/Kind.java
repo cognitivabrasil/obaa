@@ -1,10 +1,10 @@
-/*******************************************************************************
+/** *****************************************************************************
  * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+ ***************************************************************************** */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -24,6 +24,9 @@
  */
 package cognitivabrasil.obaa.Relation;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -31,14 +34,12 @@ import org.simpleframework.xml.Root;
 /**
  * <div class="en">
  *
- * Nature of the relationship between this learning object and the target
- * learning object, identified by 7.2:Relation.Resource.
+ * Nature of the relationship between this learning object and the target learning object, identified by
+ * 7.2:Relation.Resource.
  *
- * Based on Dublin Core: ispartof: is part of haspart: has part isversionof: is
- * version of hasversion: has version isformatof: is format of hasformat: has
- * format references: references isreferencedby: is referenced by isbasedon: is
- * based on isbasisfor: is basis for requires: requires isrequiredby: is
- * required by
+ * Based on Dublin Core: ispartof: is part of haspart: has part isversionof: is version of hasversion: has version
+ * isformatof: is format of hasformat: has format references: references isreferencedby: is referenced by isbasedon: is
+ * based on isbasisfor: is basis for requires: requires isrequiredby: is required by
  *
  * according to IEEE LOM http://ltsc.ieee.org/ </div>
  *
@@ -54,6 +55,7 @@ import org.simpleframework.xml.Root;
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class Kind extends TextElement {
+
     public static final String IS_PART_OF = "ispartof";
     public static final String HAS_PART = "haspart";
     public static final String IS_VERSION_OF = "isversionof";
@@ -67,19 +69,15 @@ public class Kind extends TextElement {
     public static final String REQUIRES = "requires";
     public static final String IS_REQUIRED_BY = "isrequiredby";
 
-    public Kind(){
-        super();
-        this.addTerms(IS_PART_OF);
-        this.addTerms(HAS_PART);
-        this.addTerms(IS_VERSION_OF);
-        this.addTerms(HAS_VERSION);
-        this.addTerms(IS_FORMAT_OF);
-        this.addTerms(HAS_FORMAT);
-        this.addTerms(REFERENCES);
-        this.addTerms(IS_REFERENCED_BY);
-        this.addTerms(IS_BASED_ON);
-        this.addTerms(IS_BASIS_FOR);
-        this.addTerms(REQUIRES);
-        this.addTerms(IS_REQUIRED_BY);        
+    public Kind() {
+        super(new ArrayList<>(Arrays.asList(IS_PART_OF, HAS_PART, IS_VERSION_OF, HAS_VERSION, IS_FORMAT_OF, HAS_FORMAT,
+                REFERENCES, IS_REFERENCED_BY, IS_BASED_ON, IS_BASIS_FOR, REQUIRES, IS_REQUIRED_BY)));
+    }
+
+    @JsonCreator
+    public static Kind fromText(String text) {
+        Kind obj = new Kind();
+        obj.setText(text);
+        return obj;
     }
 }

@@ -25,13 +25,13 @@
 
 package cognitivabrasil.obaa.Accessibility;
 
+import cognitivabrasil.obaa.ObaaRecursibleElement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
-
-import cognitivabrasil.obaa.ObaaRecursibleElement;
 
 /**
  * <div class="en">
@@ -40,7 +40,7 @@ import cognitivabrasil.obaa.ObaaRecursibleElement;
  *</div>
  *
  * <div class="br">
- * 
+ *
  *
  * Adaptado de http://www.portalobaa.org
  *</div>
@@ -59,7 +59,7 @@ public class ResourceDescription {
 
     public ResourceDescription() {
      primary = new Primary();
-     equivalent = new ArrayList<Equivalent>();
+     equivalent = new ArrayList<>();
     }
 
     public List<Equivalent> getEquivalent() {
@@ -80,6 +80,32 @@ public class ResourceDescription {
 
     public void addEquivalent(Equivalent equivalent){
         this.equivalent.add(equivalent);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.primary);
+        hash = 23 * hash + Objects.hashCode(this.equivalent);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ResourceDescription other = (ResourceDescription) obj;
+        if (!Objects.equals(this.primary, other.primary)) {
+            return false;
+        }
+        return Objects.equals(this.equivalent, other.equivalent);
     }
 
 }

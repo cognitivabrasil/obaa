@@ -61,7 +61,6 @@ public class LifeCycleTest {
         assertThat(obj.getContribute(), hasSize(1));
         assertThat(obj.getContribute().get(0).getDate().getText(), equalTo("01/09/2018"));
         assertThat(obj.getContribute().get(0).getRole().getText(), equalTo(Role.PUBLISHER));
-        System.out.println(obj.getContribute().get(0).getEntities());
         assertThat(obj.getContribute().get(0).getEntities(), hasSize(1));
         assertThat(obj.getContribute().get(0).getEntities().get(0), equalTo("UFRGS"));
 

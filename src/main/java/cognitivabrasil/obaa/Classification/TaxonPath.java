@@ -57,7 +57,7 @@ public class TaxonPath {
     private List<Taxon> taxons;
 
     public TaxonPath() {
-        taxons = new ArrayList<Taxon>();
+        taxons = new ArrayList<>();
     }
 
     public void setSource(String source) {
@@ -75,7 +75,5 @@ public class TaxonPath {
     public List<Taxon> getTaxons() {
         return taxons;
     }
-
-
 
 }

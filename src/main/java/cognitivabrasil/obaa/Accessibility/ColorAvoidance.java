@@ -25,6 +25,9 @@
  */
 package cognitivabrasil.obaa.Accessibility;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 
 /**
@@ -46,14 +49,14 @@ public class ColorAvoidance extends TextElement {
     public static final String MONOCHROME = "monochrome";
 
     public ColorAvoidance() {
-        super();
-        this.addTerms(AVOID_RED_GREEN);
-        this.addTerms(AVOID_BLUE_YELLOW);
-        this.addTerms(AVOID_ORANGE);
-        this.addTerms(AVOID_RED_BLACK);
-        this.addTerms(AVOID_PURPLE_GRAY);
-        this.addTerms(AVOID_RED);
-        this.addTerms(USE_MAXIMUM_CONTRAST);
-        this.addTerms(MONOCHROME);  
+        super(new ArrayList<>(Arrays.asList(AVOID_RED_GREEN, AVOID_BLUE_YELLOW, AVOID_ORANGE, AVOID_RED_BLACK,
+                AVOID_PURPLE_GRAY, AVOID_RED, USE_MAXIMUM_CONTRAST, MONOCHROME)));
+    }
+
+    @JsonCreator
+    public static ColorAvoidance fromText(String text) {
+        ColorAvoidance obj = new ColorAvoidance();
+        obj.setText(text);
+        return obj;
     }
 }
