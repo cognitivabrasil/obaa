@@ -29,6 +29,7 @@ import cognitivabrasil.obaa.General.Language;
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 
@@ -230,4 +231,59 @@ public class Service {
     public void setType(Type type) {
         this.type = type;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 61 * hash + Objects.hashCode(this.name);
+        hash = 61 * hash + Objects.hashCode(this.type);
+        hash = 61 * hash + Objects.hashCode(this.provides);
+        hash = 61 * hash + Objects.hashCode(this.essential);
+        hash = 61 * hash + Objects.hashCode(this.protocol);
+        hash = 61 * hash + Objects.hashCode(this.ontology);
+        hash = 61 * hash + Objects.hashCode(this.language);
+        hash = 61 * hash + Objects.hashCode(this.details);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Service other = (Service) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.type, other.type)) {
+            return false;
+        }
+        if (!Objects.equals(this.provides, other.provides)) {
+            return false;
+        }
+        if (!Objects.equals(this.essential, other.essential)) {
+            return false;
+        }
+        if (!Objects.equals(this.protocol, other.protocol)) {
+            return false;
+        }
+        if (!Objects.equals(this.ontology, other.ontology)) {
+            return false;
+        }
+        if (!Objects.equals(this.language, other.language)) {
+            return false;
+        }
+        if (!Objects.equals(this.details, other.details)) {
+            return false;
+        }
+        return true;
+    }
+
+    
 }

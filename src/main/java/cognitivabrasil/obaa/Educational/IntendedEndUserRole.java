@@ -25,6 +25,8 @@
 package cognitivabrasil.obaa.Educational;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -65,11 +67,7 @@ public class IntendedEndUserRole extends TextElement {
     public static final String MANAGER = "manager";
 
     public IntendedEndUserRole() {
-        super();
-        this.addTerms(TEACHER);
-        this.addTerms(AUTHOR);
-        this.addTerms(LEARNER);
-        this.addTerms(MANAGER);
+        super(new ArrayList<>(Arrays.asList(TEACHER,AUTHOR,LEARNER,MANAGER)));
     }
 
     @JsonCreator

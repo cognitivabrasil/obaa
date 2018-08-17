@@ -8,6 +8,8 @@
  */
 package cognitivabrasil.obaa.LifeCycle;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -16,18 +18,15 @@ import org.simpleframework.xml.Root;
  *
  * <div class="en">
  *
- * Kind of contribution. NOTE 1:--Minimally, the Author(s) of the learning
- * object should be described.
+ * Kind of contribution. NOTE 1:--Minimally, the Author(s) of the learning object should be described.
  *
  * Value Space:
  *
- * author, publisher, unknown, initiator, terminator, validator, editor,
- * graphical_designer, technical, implementer, content_provider,
- * technical_validator, educational_validator, script_writer,
- * instructional_designer, subject_matter_expert
+ * author, publisher, unknown, initiator, terminator, validator, editor, graphical_designer, technical, implementer,
+ * content_provider, technical_validator, educational_validator, script_writer, instructional_designer,
+ * subject_matter_expert
  *
- * NOTE 2:--"terminator" is the entity that made the learning object
- * unavailable.
+ * NOTE 2:--"terminator" is the entity that made the learning object unavailable.
  *
  * according to IEEE LOM http://ltsc.ieee.org/ </div>
  *
@@ -60,21 +59,8 @@ public class Role extends TextElement {
     public static final String SUBJECT_MATTER_EXPERT = "subject matter expert";
 
     public Role() {
-        super();
-        this.addTerms(UNKNOWN);
-        this.addTerms(AUTHOR);
-        this.addTerms(PUBLISHER);
-        this.addTerms(INITIATOR);
-        this.addTerms(TERMINATOR);
-        this.addTerms(VALIDATOR);
-        this.addTerms(EDITOR);
-        this.addTerms(GRAPHICAL_DESIGNER);
-        this.addTerms(TECHNICAL_IMPLEMENTER);
-        this.addTerms(CONTENT_PROVIDER);
-        this.addTerms(TECHNICAL_VALIDATOR);
-        this.addTerms(EDUCATIONAL_VALIDATOR);
-        this.addTerms(SCRIPT_WRITER);
-        this.addTerms(INSTRUCTIONAL_DESIGNER);
-        this.addTerms(SUBJECT_MATTER_EXPERT);
+        super(new ArrayList<>(Arrays.asList(UNKNOWN, AUTHOR, PUBLISHER, INITIATOR, TERMINATOR, VALIDATOR, EDITOR,
+                GRAPHICAL_DESIGNER, TECHNICAL_IMPLEMENTER, CONTENT_PROVIDER, TECHNICAL_VALIDATOR, EDUCATIONAL_VALIDATOR,
+                SCRIPT_WRITER, INSTRUCTIONAL_DESIGNER, SUBJECT_MATTER_EXPERT)));
     }
 }

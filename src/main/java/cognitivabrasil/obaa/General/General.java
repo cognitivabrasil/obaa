@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
@@ -217,6 +218,60 @@ public class General {
 
     public void addThumbnail(Thumbnail thumbnail){
         this.thumbnails.add(thumbnail);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.titles);
+        hash = 29 * hash + Objects.hashCode(this.keywords);
+        hash = 29 * hash + Objects.hashCode(this.descriptions);
+        hash = 29 * hash + Objects.hashCode(this.coverages);
+        hash = 29 * hash + Objects.hashCode(this.aggregationLevel);
+        hash = 29 * hash + Objects.hashCode(this.identifiers);
+        hash = 29 * hash + Objects.hashCode(this.languages);
+        hash = 29 * hash + Objects.hashCode(this.structure);
+        hash = 29 * hash + Objects.hashCode(this.thumbnails);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final General other = (General) obj;
+        if (!Objects.equals(this.titles, other.titles)) {
+            return false;
+        }
+        if (!Objects.equals(this.keywords, other.keywords)) {
+            return false;
+        }
+        if (!Objects.equals(this.descriptions, other.descriptions)) {
+            return false;
+        }
+        if (!Objects.equals(this.coverages, other.coverages)) {
+            return false;
+        }
+        if (!Objects.equals(this.aggregationLevel, other.aggregationLevel)) {
+            return false;
+        }
+        if (!Objects.equals(this.identifiers, other.identifiers)) {
+            return false;
+        }
+        if (!Objects.equals(this.languages, other.languages)) {
+            return false;
+        }
+        if (!Objects.equals(this.structure, other.structure)) {
+            return false;
+        }
+        return Objects.equals(this.thumbnails, other.thumbnails);
     }
 
 }

@@ -1,10 +1,10 @@
-/*******************************************************************************
+/** *****************************************************************************
  * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+ ***************************************************************************** */
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -15,6 +15,7 @@ import cognitivabrasil.obaa.ObaaRecursibleElement;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
@@ -22,9 +23,8 @@ import org.simpleframework.xml.Root;
 
 /**
  *
- * This category describes the history and current state of this learning object
- * and those entities that have affected this learning object during its
- * evolution.
+ * This category describes the history and current state of this learning object and those entities that have affected
+ * this learning object during its evolution.
  *
  * @author Luiz Rossi <lh.rossi@cognitivabrasil.com.br>
  * @author Marcos Nunes <marcos@cognitivabrasil.com.br>
@@ -46,9 +46,7 @@ public class LifeCycle {
     private List<Contribute> contribute;
 
     public LifeCycle() {
-
         contribute = new ArrayList<>();
-
         //Status should not be initialized to avoid create a blank element in the XML
     }
 
@@ -91,18 +89,48 @@ public class LifeCycle {
     }
 
     public void setContribute(List<Contribute> l) {
-    	contribute = l;
+        contribute = l;
     }
 
     public void addContribute(Contribute c) {
-    	if(contribute == null) {
-    		contribute = new ArrayList<Contribute>();
-    	}
-    	contribute.add(c);
+        if (contribute == null) {
+            contribute = new ArrayList<>();
+        }
+        contribute.add(c);
     }
 
     public List<Contribute> getContribute() {
         return contribute;
     }
-}
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.status);
+        hash = 37 * hash + Objects.hashCode(this.version);
+        hash = 37 * hash + Objects.hashCode(this.contribute);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LifeCycle other = (LifeCycle) obj;
+        if (!Objects.equals(this.version, other.version)) {
+            return false;
+        }
+        if (!Objects.equals(this.status, other.status)) {
+            return false;
+        }
+        return Objects.equals(this.contribute, other.contribute);
+    }
+
+}

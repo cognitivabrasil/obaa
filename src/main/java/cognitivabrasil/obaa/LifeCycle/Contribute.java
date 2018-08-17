@@ -12,6 +12,7 @@ import static cognitivabrasil.util.HelperFunctions.toStringList;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
@@ -46,7 +47,7 @@ public class Contribute {
     @Element
     private Role role;
 
-    @ElementList(inline=true, required=false)
+    @ElementList(inline = true, required = false)
     private List<Entity> entity;
 
     @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM")
@@ -93,6 +94,7 @@ public class Contribute {
      *
      * Adaptado de http://www.portalobaa.org/
      * </div>
+     *
      * @param entity
      */
     public void addEntity(Entity entity) {
@@ -136,4 +138,35 @@ public class Contribute {
     public List<Entity> getEntity() {
         return entity;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.role);
+        hash = 23 * hash + Objects.hashCode(this.entity);
+        hash = 23 * hash + Objects.hashCode(this.date);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Contribute other = (Contribute) obj;
+        if (!Objects.equals(this.role, other.role)) {
+            return false;
+        }
+        if (!Objects.equals(this.entity, other.entity)) {
+            return false;
+        }
+        return Objects.equals(this.date, other.date);
+    }
+
 }

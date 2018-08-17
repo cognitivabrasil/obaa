@@ -9,12 +9,17 @@
  */
 package cognitivabrasil.obaa.general;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import cognitivabrasil.obaa.General.General;
+import cognitivabrasil.obaa.General.Identifier;
+import cognitivabrasil.obaa.General.Structure;
+import cognitivabrasil.obaa.General.Thumbnail;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.IOException;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
+import org.junit.Before;
 import org.junit.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
+import org.skyscreamer.jsonassert.JSONCompareMode;
 
 /**
  *
@@ -22,47 +27,52 @@ import org.junit.Test;
  */
 public class GeneralTest {
 
+    String json;
+    General general;
+
+    @Before
+    public void init() {
+        json = "{\"titles\":[\"Título aleatório\"],\"keywords\":[\"chaves\"],\"descriptions\":[\"descri\",\"description\"],\"coverages\":[\"cover\"],\"aggregationLevel\":\"1\",\"identifiers\":[{\"catalog\":\"URI\",\"entry\":\"www.cognitivabrasil.com.br\"},{\"catalog\":\"catalogo\",\"entry\":\"http://id\"}],\"languages\":[\"pt\",\"pt-br\"],\"structure\":\"atomic\",\"thumbnails\":[{\"location\":\"http://img\",\"height\":\"800\",\"width\":\"600\"}]}";
+
+        general = new General();
+        general.addIdentifier(new Identifier("URI", "www.cognitivabrasil.com.br"));
+        general.addIdentifier(new Identifier("catalogo", "http://id"));
+        general.addTitle("Título aleatório");
+        general.addLanguage("pt");
+        general.addLanguage("pt-br");
+        general.setStructure(Structure.fromText(Structure.ATOMIC));
+        general.setAggregationLevel("1");
+        general.addDescription("descri");
+        general.addDescription("description");
+        general.addKeyword("chaves");
+        general.addCoverage("cover");
+        general.addThumbnail(new Thumbnail("http://img", "800", "600"));
+
+    }
+
     @Test
-    public void testGeneralSerializeAndThenDeserialize() throws IOException, JsonProcessingException {
-
-        cognitivabrasil.obaa.General.General g = new cognitivabrasil.obaa.General.General();
-        //g.addIdentifiers("Catalog");
-        g.addTitle("Título aleatório");
-        g.addLanguage("pt");
-        g.addLanguage("pt-br");
-        cognitivabrasil.obaa.General.Structure s = new cognitivabrasil.obaa.General.Structure();
-        s.setText(cognitivabrasil.obaa.General.Structure.ATOMIC);
-        g.setStructure(s);
-        g.setAggregationLevel("1");
-        g.addDescription("descri");
-        g.addDescription("description");
-        g.addKeyword("chaves");
-        g.addCoverage("cover");
-        g.setAggregationLevel("1");
-        g.addThumbnail(new cognitivabrasil.obaa.General.Thumbnail("http://img", "800", "600"));
-
-        cognitivabrasil.obaa.General.Identifier i = new cognitivabrasil.obaa.General.Identifier();
-        i.setCatalog("catalog");
-        i.setEntry("entry");
-        cognitivabrasil.obaa.General.Identifier id = new cognitivabrasil.obaa.General.Identifier("catalogo", "http://id");
-        g.addIdentifier(id);
-
+    public void serializeJson() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        String obaaJson = mapper.writeValueAsString(g);
+        String jsonResult = mapper.writeValueAsString(general);
 
-        cognitivabrasil.obaa.General.General g2 = mapper.readValue(obaaJson, cognitivabrasil.obaa.General.General.class);
-        assertThat(g2.getTitles(), equalTo(g.getTitles()));
-        assertThat(g2.getLanguages(), equalTo(g.getLanguages()));
-        assertThat(g2.getKeywords(), equalTo(g.getKeywords()));
-        assertThat(g2.getDescriptions(), equalTo(g.getDescriptions()));
-        assertThat(g2.getCoverages(), equalTo(g.getCoverages()));
-        assertThat(g2.getAggregationLevel(), equalTo(g.getAggregationLevel()));
-        assertThat(g2.getIdentifiers(), equalTo(g.getIdentifiers()));
-        assertThat(g2.getStructure(), equalTo(g.getStructure()));
-        assertThat(g2.getThumbnails().size(), equalTo(g.getThumbnails().size()));
-        assertThat(g2.getThumbnails().get(0).getHeight(), equalTo(g.getThumbnails().get(0).getHeight()));
-        assertThat(g2.getThumbnails().get(0).getWidth(), equalTo(g.getThumbnails().get(0).getWidth()));
-        assertThat(g2.getThumbnails().get(0).getLocation(), equalTo(g.getThumbnails().get(0).getLocation()));
+        JSONAssert.assertEquals(json, jsonResult, JSONCompareMode.STRICT);
+    }
 
+    @Test
+    public void deserializeJson() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        General g2 = mapper.readValue(json, General.class);
+        assertThat(g2.getTitles(), equalTo(general.getTitles()));
+        assertThat(g2.getLanguages(), equalTo(general.getLanguages()));
+        assertThat(g2.getKeywords(), equalTo(general.getKeywords()));
+        assertThat(g2.getDescriptions(), equalTo(general.getDescriptions()));
+        assertThat(g2.getCoverages(), equalTo(general.getCoverages()));
+        assertThat(g2.getAggregationLevel(), equalTo(general.getAggregationLevel()));
+        assertThat(g2.getIdentifiers(), equalTo(general.getIdentifiers()));
+        assertThat(g2.getStructure(), equalTo(general.getStructure()));
+        assertThat(g2.getThumbnails().size(), equalTo(general.getThumbnails().size()));
+        assertThat(g2.getThumbnails().get(0).getHeight(), equalTo(general.getThumbnails().get(0).getHeight()));
+        assertThat(g2.getThumbnails().get(0).getWidth(), equalTo(general.getThumbnails().get(0).getWidth()));
+        assertThat(g2.getThumbnails().get(0).getLocation(), equalTo(general.getThumbnails().get(0).getLocation()));
     }
 }

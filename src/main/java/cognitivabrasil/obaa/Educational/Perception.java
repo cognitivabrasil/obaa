@@ -1,10 +1,10 @@
-/*******************************************************************************
+/** *****************************************************************************
  * Copyright (c) 2013 Cognitiva Brasil - Tecnologias educacionais.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl.html
- ******************************************************************************/
+ ***************************************************************************** */
 /*
  * OBAA - Agent Based Leanring Objetcs
  *
@@ -24,6 +24,8 @@
  */
 package cognitivabrasil.obaa.Educational;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 
@@ -32,8 +34,7 @@ import org.simpleframework.xml.Namespace;
  *
  * according to IEEE LOM http://ltsc.ieee.org/ </div>
  *
- * <div class="br"> Especifica a forma sensorial pela qual o aluno receberá as
- * informações do objeto de aprendizagem.
+ * <div class="br"> Especifica a forma sensorial pela qual o aluno receberá as informações do objeto de aprendizagem.
  *
  * Adaptado de http://www.portalobaa.org </div>
  *
@@ -48,12 +49,8 @@ public class Perception extends TextElement {
     public static final String AUDITIVE = "auditive";
     public static final String MIXED = "mixed";
     public static final String OTHER = "other";
-    
+
     public Perception() {
-        this.addTerms(VISUAL);
-        this.addTerms(AUDITIVE);
-        this.addTerms(MIXED);
-        this.addTerms(OTHER);
+        super(new ArrayList<>(Arrays.asList(VISUAL, AUDITIVE, MIXED, OTHER)));
     }
 }
-

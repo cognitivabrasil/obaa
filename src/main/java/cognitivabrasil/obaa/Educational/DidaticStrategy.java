@@ -26,6 +26,8 @@
 package cognitivabrasil.obaa.Educational;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 
@@ -53,13 +55,8 @@ public class DidaticStrategy extends TextElement {
     public static final String PROBLEM_SOLVING = "problem solving";
 
     public DidaticStrategy() {
-        super();
-        this.addTerms(MODEL_CONSTRUCTION);
-        this.addTerms(CHALLENGE);
-        this.addTerms(HYPOTHESIS_AND_TEST_DEVELOPMENT);
-        this.addTerms(CASE_STUDY);
-        this.addTerms(QUESTION_AND_ANSWERING);
-        this.addTerms(PROBLEM_SOLVING);
+        super(new ArrayList<>(Arrays.asList(MODEL_CONSTRUCTION, CHALLENGE, HYPOTHESIS_AND_TEST_DEVELOPMENT, CASE_STUDY,
+                QUESTION_AND_ANSWERING, PROBLEM_SOLVING)));
     }
 
     @JsonCreator

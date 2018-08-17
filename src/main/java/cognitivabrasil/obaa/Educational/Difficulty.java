@@ -8,6 +8,8 @@
  */
 package cognitivabrasil.obaa.Educational;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -23,11 +25,6 @@ public class Difficulty extends TextElement {
     public static final String VERY_DIFFICULT = "very difficult";
 
     public Difficulty() {
-        super();
-        this.addTerms(VERY_EASY);
-        this.addTerms(EASY);
-        this.addTerms(MEDIUM);
-        this.addTerms(DIFFICULT);
-        this.addTerms(VERY_DIFFICULT);
+        super(new ArrayList<>(Arrays.asList(VERY_EASY,EASY,MEDIUM,DIFFICULT,VERY_DIFFICULT)));
     }
 }

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
@@ -243,4 +244,63 @@ public class Technical {
     public void setSupportedPlatforms(List<SupportedPlatform> supportedPlatforms) {
         this.supportedPlatforms = supportedPlatforms;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 47 * hash + Objects.hashCode(this.location);
+        hash = 47 * hash + Objects.hashCode(this.format);
+        hash = 47 * hash + Objects.hashCode(this.size);
+        hash = 47 * hash + Objects.hashCode(this.requirement);
+        hash = 47 * hash + Objects.hashCode(this.installationRemarks);
+        hash = 47 * hash + Objects.hashCode(this.otherPlatformRequirements);
+        hash = 47 * hash + Objects.hashCode(this.duration);
+        hash = 47 * hash + Objects.hashCode(this.supportedPlatforms);
+        hash = 47 * hash + Objects.hashCode(this.platformSpecificFeatures);
+        hash = 47 * hash + Objects.hashCode(this.service);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Technical other = (Technical) obj;
+        if (!Objects.equals(this.location, other.location)) {
+            return false;
+        }
+        if (!Objects.equals(this.format, other.format)) {
+            return false;
+        }
+        if (!Objects.equals(this.size, other.size)) {
+            return false;
+        }
+        if (!Objects.equals(this.requirement, other.requirement)) {
+            return false;
+        }
+        if (!Objects.equals(this.installationRemarks, other.installationRemarks)) {
+            return false;
+        }
+        if (!Objects.equals(this.otherPlatformRequirements, other.otherPlatformRequirements)) {
+            return false;
+        }
+        if (!Objects.equals(this.duration, other.duration)) {
+            return false;
+        }
+        if (!Objects.equals(this.supportedPlatforms, other.supportedPlatforms)) {
+            return false;
+        }
+        if (!Objects.equals(this.platformSpecificFeatures, other.platformSpecificFeatures)) {
+            return false;
+        }
+        return Objects.equals(this.service, other.service);
+    }
+
 }

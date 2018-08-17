@@ -33,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
@@ -470,4 +471,79 @@ public class Educational {
     public void setLearningResourceTypes(List<LearningResourceType> learningResourceType) {
         this.learningResourceTypes = learningResourceType;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.interactivityType);
+        hash = 89 * hash + Objects.hashCode(this.interactivityLevel);
+        hash = 89 * hash + Objects.hashCode(this.semanticDensity);
+        hash = 89 * hash + Objects.hashCode(this.difficulty);
+        hash = 89 * hash + Objects.hashCode(this.typicalLearningTime);
+        hash = 89 * hash + Objects.hashCode(this.intendedEndUserRoles);
+        hash = 89 * hash + Objects.hashCode(this.learningResourceTypes);
+        hash = 89 * hash + Objects.hashCode(this.typicalAgeRanges);
+        hash = 89 * hash + Objects.hashCode(this.descriptions);
+        hash = 89 * hash + Objects.hashCode(this.languages);
+        hash = 89 * hash + Objects.hashCode(this.contexts);
+        hash = 89 * hash + Objects.hashCode(this.learningContentType);
+        hash = 89 * hash + Objects.hashCode(this.interaction);
+        hash = 89 * hash + Objects.hashCode(this.didaticStrategy);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Educational other = (Educational) obj;
+        if (!Objects.equals(this.interactivityType, other.interactivityType)) {
+            return false;
+        }
+        if (!Objects.equals(this.interactivityLevel, other.interactivityLevel)) {
+            return false;
+        }
+        if (!Objects.equals(this.semanticDensity, other.semanticDensity)) {
+            return false;
+        }
+        if (!Objects.equals(this.difficulty, other.difficulty)) {
+            return false;
+        }
+        if (!Objects.equals(this.typicalLearningTime, other.typicalLearningTime)) {
+            return false;
+        }
+        if (!Objects.equals(this.intendedEndUserRoles, other.intendedEndUserRoles)) {
+            return false;
+        }
+        if (!Objects.equals(this.learningResourceTypes, other.learningResourceTypes)) {
+            return false;
+        }
+        if (!Objects.equals(this.typicalAgeRanges, other.typicalAgeRanges)) {
+            return false;
+        }
+        if (!Objects.equals(this.descriptions, other.descriptions)) {
+            return false;
+        }
+        if (!Objects.equals(this.languages, other.languages)) {
+            return false;
+        }
+        if (!Objects.equals(this.contexts, other.contexts)) {
+            return false;
+        }
+        if (!Objects.equals(this.learningContentType, other.learningContentType)) {
+            return false;
+        }
+        if (!Objects.equals(this.interaction, other.interaction)) {
+            return false;
+        }
+        return Objects.equals(this.didaticStrategy, other.didaticStrategy);
+    }
+
 }

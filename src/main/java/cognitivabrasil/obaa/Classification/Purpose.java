@@ -25,6 +25,8 @@
  */
 package cognitivabrasil.obaa.Classification;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 
@@ -33,9 +35,8 @@ import org.simpleframework.xml.Namespace;
  *
  * The purpose of classifying this learning object.
  *
- * Value Space: discipline, idea, prerequisite, educational objective,
- * accessibility, restrictions, educational level, skill level, security level
- * or competency.
+ * Value Space: discipline, idea, prerequisite, educational objective, accessibility, restrictions, educational level,
+ * skill level, security level or competency.
  *
  * according to IEEE LOM http://ltsc.ieee.org/
  * </div>
@@ -65,16 +66,7 @@ public class Purpose extends TextElement {
     public static final String COMPETENCY = "competency";
 
     public Purpose() {
-        super();
-        this.addTerms(DISCIPLINE);
-        this.addTerms(IDEA);
-        this.addTerms(PREREQUISITE);
-        this.addTerms(EDUCATIONAL_OBJECTIVE);
-        this.addTerms(ACCESSIBILITY);
-        this.addTerms(RESTRICTIONS);
-        this.addTerms(EDUCATIONAL_LEVEL);
-        this.addTerms(SKILL_LEVEL);
-        this.addTerms(SECURITY_LEVEL);
-        this.addTerms(COMPETENCY);
+        super(new ArrayList<>(Arrays.asList(DISCIPLINE, IDEA, PREREQUISITE, EDUCATIONAL_OBJECTIVE, ACCESSIBILITY,
+                RESTRICTIONS, EDUCATIONAL_LEVEL, SKILL_LEVEL, SECURITY_LEVEL, COMPETENCY)));
     }
 }

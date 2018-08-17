@@ -27,11 +27,8 @@ package cognitivabrasil.obaa.Educational;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-
 import metadata.TextElement;
-
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 import org.slf4j.Logger;
@@ -69,10 +66,11 @@ public class TypicalAgeRange extends TextElement {
     private static Logger log = LoggerFactory.getLogger(TypicalAgeRange.class);
 
     public TypicalAgeRange() {
+        super();
     }
 
     public TypicalAgeRange(String typicalAgeRange) {
-        setText(typicalAgeRange);
+        super(typicalAgeRange);
     }
 
     public void setTypicalAgeRange(String typicalAgeRange) {
@@ -207,14 +205,14 @@ public class TypicalAgeRange extends TextElement {
         }
 
 
-        //Numeric Parsing  
+        //Numeric Parsing
 
 //        System.out.println(parsed);
 //        if (parsed.equals("16+")){
 //                System.out.println(unparsed);
 //            }
         List<String> numbers = getNumbers(parsed);
-        
+
         if (parsed.matches(".*meno.*\\d.*")) {
             parsed = "0-"+numbers.get(0);
         } else if (parsed.matches("\\+\\s*\\d+.*") || parsed.matches("\\d+\\+.*")) {
@@ -223,7 +221,7 @@ public class TypicalAgeRange extends TextElement {
             parsed = numbers.get(0) + "-" + numbers.get(1);
         } else if (parsed.matches("\\d+(anos)?")) {
             parsed = numbers.get(0) + "-" + numbers.get(0);
-        } else 
+        } else
             //teste caso tenha identificado um número mas não entendido a frase e não tenha a palavra série
         if (!numbers.isEmpty() && !parsed.contains("serie")) {
             parsed = numbers.get(0) + "-100";

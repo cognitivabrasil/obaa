@@ -12,6 +12,9 @@
  */
 package cognitivabrasil.obaa.Educational;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 
@@ -23,19 +26,19 @@ import org.simpleframework.xml.Namespace;
  */
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class InteractionType extends TextElement {
+
     public static final String OBJECT_INDIVIDUAL = "object-individual";
     public static final String INDIVIDUAL1_INDIVIDUAL2_OBJECT = "individual1-individual2-object";
 
     public InteractionType() {
-        super();
-        this.addTerms(OBJECT_INDIVIDUAL);
-        this.addTerms(INDIVIDUAL1_INDIVIDUAL2_OBJECT);
+        super(new ArrayList<>(Arrays.asList(OBJECT_INDIVIDUAL, INDIVIDUAL1_INDIVIDUAL2_OBJECT)));
     }
 
-    public InteractionType(String t) {
-        super(t);
-        this.addTerms(OBJECT_INDIVIDUAL);
-        this.addTerms(INDIVIDUAL1_INDIVIDUAL2_OBJECT);
+    @JsonCreator
+    public static InteractionType fromText(String text) {
+        InteractionType obj = new InteractionType();
+        obj.setText(text);
+        return obj;
     }
 
 }

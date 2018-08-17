@@ -26,6 +26,7 @@ package cognitivabrasil.obaa.Relation;
 
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -80,4 +81,31 @@ public class Relation {
     public Resource getResource() {
         return resource;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 13 * hash + Objects.hashCode(this.kind);
+        hash = 13 * hash + Objects.hashCode(this.resource);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Relation other = (Relation) obj;
+        if (!Objects.equals(this.kind, other.kind)) {
+            return false;
+        }
+        return Objects.equals(this.resource, other.resource);
+    }
+
 }

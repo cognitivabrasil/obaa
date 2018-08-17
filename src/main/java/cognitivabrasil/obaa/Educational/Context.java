@@ -25,6 +25,8 @@
 package cognitivabrasil.obaa.Educational;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -61,11 +63,7 @@ public class Context extends TextElement {
     public static final String OTHER = "other";
 
     public Context() {
-        super();
-        this.addTerms(SCHOOL);
-        this.addTerms(HIGHER_EDUCATION);
-        this.addTerms(TRAINING);
-        this.addTerms(OTHER);
+        super(new ArrayList<>(Arrays.asList(SCHOOL,HIGHER_EDUCATION,TRAINING,OTHER)));
     }
 
     /**

@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
@@ -130,6 +131,40 @@ public class Metametadata {
 
     public void setContribute(List<Contribute> contribute) {
         this.contribute = contribute;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.identifier);
+        hash = 41 * hash + Objects.hashCode(this.contribute);
+        hash = 41 * hash + Objects.hashCode(this.metadataSchema);
+        hash = 41 * hash + Objects.hashCode(this.language);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Metametadata other = (Metametadata) obj;
+        if (!Objects.equals(this.identifier, other.identifier)) {
+            return false;
+        }
+        if (!Objects.equals(this.contribute, other.contribute)) {
+            return false;
+        }
+        if (!Objects.equals(this.metadataSchema, other.metadataSchema)) {
+            return false;
+        }
+        return Objects.equals(this.language, other.language);
     }
 
 }

@@ -32,6 +32,7 @@ import cognitivabrasil.util.HelperFunctions;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
@@ -124,6 +125,43 @@ public class Classification {
 
     public void addKeyword(String keyword) {
         this.keywords.add(new Keyword(keyword));
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.purpose);
+        hash = 97 * hash + Objects.hashCode(this.taxonPath);
+        hash = 97 * hash + Objects.hashCode(this.description);
+        hash = 97 * hash + Objects.hashCode(this.keywords);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Classification other = (Classification) obj;
+        if (!Objects.equals(this.purpose, other.purpose)) {
+            return false;
+        }
+        if (!Objects.equals(this.taxonPath, other.taxonPath)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.keywords, other.keywords)) {
+            return false;
+        }
+        return true;
     }
 
 }

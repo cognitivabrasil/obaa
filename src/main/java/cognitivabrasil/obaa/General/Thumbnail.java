@@ -11,6 +11,7 @@ package cognitivabrasil.obaa.General;
 
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import cognitivabrasil.obaa.Technical.Location;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -87,6 +88,7 @@ public class Thumbnail {
 
     /**
      * Retorna a largura em pixel do thumbnail.
+     *
      * @return número de pixels
      */
     public Width getWidth() {
@@ -111,6 +113,36 @@ public class Thumbnail {
      */
     public void setWidth(int width) {
         this.width = new Width(width);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 67 * hash + Objects.hashCode(this.location);
+        hash = 67 * hash + Objects.hashCode(this.height);
+        hash = 67 * hash + Objects.hashCode(this.width);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Thumbnail other = (Thumbnail) obj;
+        if (!Objects.equals(this.location, other.location)) {
+            return false;
+        }
+        if (!Objects.equals(this.height, other.height)) {
+            return false;
+        }
+        return Objects.equals(this.width, other.width);
     }
 
 }

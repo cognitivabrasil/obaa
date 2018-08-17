@@ -24,6 +24,8 @@
  */
 package cognitivabrasil.obaa.Educational;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 
@@ -48,16 +50,13 @@ import org.simpleframework.xml.Namespace;
  */
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class LearningContentType extends TextElement {
-    
+
     public static final String FACTUAL = "factual";
     public static final String CONCEITUAL = "conceitual";
     public static final String PROCEDIMENTAL = "procedimental";
     public static final String ATITUDINAL = "atitudinal";
 
     public LearningContentType() {
-        this.addTerms(FACTUAL);
-        this.addTerms(CONCEITUAL);
-        this.addTerms(PROCEDIMENTAL);
-        this.addTerms(ATITUDINAL);
+       super(new ArrayList<>(Arrays.asList(FACTUAL,CONCEITUAL,PROCEDIMENTAL,ATITUDINAL)));
     }
 }

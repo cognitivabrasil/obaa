@@ -7,6 +7,8 @@
  ******************************************************************************/
 package cognitivabrasil.obaa.Educational;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -67,9 +69,6 @@ public class InteractivityType extends TextElement {
     public static final String MIXED = "mixed";
 
     public InteractivityType() {
-        super();
-        this.addTerms(ACTIVE);
-        this.addTerms(EXPOSITIVE);
-        this.addTerms(MIXED);
+        super(new ArrayList<>(Arrays.asList(ACTIVE,EXPOSITIVE,MIXED)));
     }
 }

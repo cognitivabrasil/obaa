@@ -19,10 +19,7 @@ import cognitivabrasil.obaa.Educational.Educational;
 import cognitivabrasil.obaa.General.General;
 import cognitivabrasil.obaa.General.Identifier;
 import cognitivabrasil.obaa.General.Structure;
-import cognitivabrasil.obaa.General.Thumbnail;
-import cognitivabrasil.obaa.LifeCycle.Contribute;
 import cognitivabrasil.obaa.LifeCycle.LifeCycle;
-import cognitivabrasil.obaa.LifeCycle.Role;
 import cognitivabrasil.obaa.LifeCycle.Status;
 import cognitivabrasil.obaa.Metametadata.Language;
 import cognitivabrasil.obaa.Metametadata.Metametadata;
@@ -77,40 +74,25 @@ public class JsonTest {
         g.addTitle("Título aleatório");
         g.addLanguage("pt");
         g.addLanguage("pt-br");
-        Structure s = new Structure();
-        s.setText(Structure.ATOMIC);
-        g.setStructure(s);
-        g.setAggregationLevel("1");
-        g.addDescription("descri");
-        g.addDescription("description");
         g.addKeyword("chaves");
-        g.addCoverage("cover");
-        g.setAggregationLevel("1");
-        g.addThumbnail(new Thumbnail("http://img", "800", "600"));
-        Identifier i = new Identifier();
-        i.setCatalog("catalog");
-        i.setEntry("entry");
-        Identifier id = new Identifier("catalogo", "http://id");
-        g.addIdentifier(id);
         obaa.setGeneral(g);
+
         LifeCycle lifeCycle = new LifeCycle();
         lifeCycle.setStatus(Status.DRAFT);
         lifeCycle.setVersion("0.0.1");
-        Contribute contribute = new Contribute();
-        contribute.addEntity("UFRGS");
-        contribute.setDate("2018-09-01");
-        contribute.setRole(Role.PUBLISHER);
-        lifeCycle.addContribute(contribute);
         obaa.setLifeCycle(lifeCycle);
+
         Rights r = new Rights();
         r.setCopyright(true);
         r.setCost(false);
         r.setDescription("Right Description");
         obaa.setRights(r);
+
         Educational educational = new Educational();
         educational.setDifficulty(Difficulty.EASY);
         educational.addDescription("desc abc");
         obaa.setEducational(educational);
+
         Technical technical = new Technical();
         technical.setSize(new Size("9876"));
         technical.addFormat("pdf");
@@ -188,10 +170,10 @@ public class JsonTest {
 
     }
 
-//    @Test
+    @Test
     public void testGeneralDeserialize() throws IOException {
-        String json = "{\"general\":{\"titles\":[\"Título aleatório\"]}, "
-                + "\"lifeCycle\":{\"version\":\"0.0.1\"},"
+        String json = "{\"general\":{\"titles\":[\"Título aleatório\"],\"languages\":[\"pt\",\"pt-br\"],\"keywords\":[\"chaves\"]}, "
+                + "\"lifeCycle\":{\"version\":\"0.0.1\",\"status\":\"draft\"},"
                 + "\"rights\":{\"cost\":\"false\",\"copyright\":\"true\", \"description\":\"Right Description\"},"
                 + "\"educational\":{\"difficulty\":\"easy\",\"descriptions\":[\"desc abc\"]},"
                 + "\"technical\":{\"size\":\"9876\",\"formats\":[\"pdf\"]},"
@@ -206,8 +188,19 @@ public class JsonTest {
                 + "}";
         ObjectMapper mapper = new ObjectMapper();
         OBAA obaaResult = mapper.readValue(json, OBAA.class);
+        OBAA model = createTinyObaaTest();
+        assertThat(obaaResult.getAccessibility(), equalTo(model.getAccessibility()));
+        assertThat(obaaResult.getAnnotations(), equalTo(model.getAnnotations()));
+        assertThat(obaaResult.getClassifications(), equalTo(model.getClassifications()));
+        assertThat(obaaResult.getEducational(), equalTo(model.getEducational()));
+        assertThat(obaaResult.getGeneral(), equalTo(model.getGeneral()));
+        assertThat(obaaResult.getLifeCycle(), equalTo(model.getLifeCycle()));
+        assertThat(obaaResult.getMetametadata(), equalTo(model.getMetametadata()));
+        assertThat(obaaResult.getRelations(), equalTo(model.getRelations()));
+        assertThat(obaaResult.getRights(), equalTo(model.getRights()));
+        assertThat(obaaResult.getSegmentInformationTable(), equalTo(model.getSegmentInformationTable()));
+        assertThat(obaaResult.getTechnical(), equalTo(model.getTechnical()));
 
-        assertThat(obaaResult, equalTo(createTinyObaaTest()));
     }
 
     private OBAA createOrComposite() {

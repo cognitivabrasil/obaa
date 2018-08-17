@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.MissingResourceException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 import org.simpleframework.xml.Text;
@@ -226,32 +227,23 @@ public class TextElement {
         return (relation);
     }
 
+
     @Override
-    public boolean equals(Object o) {
-
-        if (!(o instanceof TextElement)) {
+    public boolean equals(Object obj) {
+        if (!(obj instanceof TextElement)) {
             return false;
         }
-
-        TextElement other = (TextElement) o;
-
-        if (!this.country.equals(other.getCountry())) {
+        final TextElement other = (TextElement) obj;
+        if (!Objects.equals(this.text, other.text)) {
             return false;
         }
-
-        if (!this.language.equals(other.getLanguage())) {
+        if (!Objects.equals(this.language, other.language)) {
             return false;
         }
-
-        if (!this.listOfTerms.equals(other.getListOfTerms())) {
+        if (!Objects.equals(this.country, other.country)) {
             return false;
         }
-
-        if (!this.text.equals(other.getText())) {
-            return false;
-        }
-
-        return true;
+        return Objects.equals(this.listOfTerms, other.listOfTerms);
     }
 
     @Override

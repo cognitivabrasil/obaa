@@ -7,11 +7,10 @@
  ******************************************************************************/
 package cognitivabrasil.obaa.General;
 
+import cognitivabrasil.obaa.ObaaRecursibleElement;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
-
-import cognitivabrasil.obaa.ObaaRecursibleElement;
 
 /**
  * <div class="en">
@@ -37,7 +36,7 @@ import cognitivabrasil.obaa.ObaaRecursibleElement;
 @ObaaRecursibleElement
 public class Identifier {
     @Namespace (reference = "http://ltsc.ieee.org/xsd/LOM")
-    @Element(required=false)	
+    @Element(required=false)
     private String catalog;
 
     @Namespace (reference = "http://ltsc.ieee.org/xsd/LOM")
@@ -88,10 +87,7 @@ public class Identifier {
         if ((this.catalog == null) ? (other.catalog != null) : !this.catalog.equals(other.catalog)) {
             return false;
         }
-        if ((this.entry == null) ? (other.entry != null) : !this.entry.equals(other.entry)) {
-            return false;
-        }
-        return true;
+        return !((this.entry == null) ? (other.entry != null) : !this.entry.equals(other.entry));
     }
-    
+
 }

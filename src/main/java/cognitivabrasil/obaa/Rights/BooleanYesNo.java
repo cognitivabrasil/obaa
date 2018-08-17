@@ -8,8 +8,10 @@
  */
 package cognitivabrasil.obaa.Rights;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
-
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 import org.slf4j.Logger;
@@ -31,16 +33,15 @@ public class BooleanYesNo extends TextElement {
     public static final String TRUE = "true";
     public static final String FALSE = "false";
 
-    public BooleanYesNo(String text) {
-        super(text);
-        this.addTerms(YES);
-        this.addTerms(NO);
+    public BooleanYesNo() {
+        super(new ArrayList<>(Arrays.asList(YES, NO)));
     }
 
-    public BooleanYesNo() {
-        super();
-        this.addTerms(YES);
-        this.addTerms(NO);
+    @JsonCreator
+    public static BooleanYesNo fromText(String text) {
+        BooleanYesNo obj = new BooleanYesNo();
+        obj.setText(text);
+        return obj;
     }
 
     public void setBoolean(String val) {
@@ -79,11 +80,11 @@ public class BooleanYesNo extends TextElement {
 
     @Override
     public String toString() {
-        if (!(this.getText().equals(NO) 
-                || this.getText().equals(YES) 
-                || this.getText().equals(TRUE) 
+        if (!(this.getText().equals(NO)
+                || this.getText().equals(YES)
+                || this.getText().equals(TRUE)
                 || this.getText().equals(FALSE))) {
-            LOG.warn("The value must be one of: yes, no, true or false; And got: "+this.getText());
+            LOG.warn("The value must be one of: yes, no, true or false; And got: " + this.getText());
             return this.getText();
         } else {
             return this.getTranslated();

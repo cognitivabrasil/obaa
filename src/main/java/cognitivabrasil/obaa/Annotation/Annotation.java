@@ -29,6 +29,7 @@ import cognitivabrasil.obaa.General.Description;
 import cognitivabrasil.obaa.LifeCycle.Entity;
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -104,4 +105,38 @@ public class Annotation {
         }
         return entity.getTranslated();
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.entity);
+        hash = 23 * hash + Objects.hashCode(this.date);
+        hash = 23 * hash + Objects.hashCode(this.description);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Annotation other = (Annotation) obj;
+        if (!Objects.equals(this.date, other.date)) {
+            return false;
+        }
+        if (!Objects.equals(this.entity, other.entity)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        return true;
+    }
+
 }

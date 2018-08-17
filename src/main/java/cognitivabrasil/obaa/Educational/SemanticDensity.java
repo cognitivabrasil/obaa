@@ -7,6 +7,8 @@
  ******************************************************************************/
 package cognitivabrasil.obaa.Educational;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -21,11 +23,6 @@ public class SemanticDensity extends TextElement {
     public static final String VERY_HIGH = "very high";
 
     public SemanticDensity() {
-        super();
-        this.addTerms(VERY_LOW);
-        this.addTerms(LOW);
-        this.addTerms(MEDIUM);
-        this.addTerms(HIGH);
-        this.addTerms(VERY_HIGH);
+        super(new ArrayList<>(Arrays.asList(VERY_LOW,LOW,MEDIUM,HIGH,VERY_HIGH)));
     }
 }

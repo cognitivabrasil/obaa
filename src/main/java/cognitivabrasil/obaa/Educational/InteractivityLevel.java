@@ -7,6 +7,8 @@
  ******************************************************************************/
 package cognitivabrasil.obaa.Educational;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -14,7 +16,7 @@ import org.simpleframework.xml.Root;
 @Root(strict = false)
 @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM", prefix = "obaa")
 public class InteractivityLevel extends TextElement {
-    
+
     public static final String VERY_LOW = "very low";
     public static final String LOW = "low";
     public static final String MEDIUM = "medium";
@@ -22,11 +24,6 @@ public class InteractivityLevel extends TextElement {
     public static final String VERY_HIGH = "very high";
 
     public InteractivityLevel() {
-        super();
-        this.addTerms(VERY_LOW);
-        this.addTerms(LOW);
-        this.addTerms(MEDIUM);
-        this.addTerms(HIGH);
-        this.addTerms(VERY_HIGH);
+        super(new ArrayList<>(Arrays.asList(VERY_LOW,LOW,MEDIUM,HIGH,VERY_HIGH)));
     }
 }

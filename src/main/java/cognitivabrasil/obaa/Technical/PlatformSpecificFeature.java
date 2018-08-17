@@ -27,6 +27,7 @@ package cognitivabrasil.obaa.Technical;
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
@@ -162,6 +163,52 @@ public class PlatformSpecificFeature {
 
     public String getSpecificSize() {
         return specificSize;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.platformType);
+        hash = 37 * hash + Objects.hashCode(this.specificFormats);
+        hash = 37 * hash + Objects.hashCode(this.specificSize);
+        hash = 37 * hash + Objects.hashCode(this.specificLocation);
+        hash = 37 * hash + Objects.hashCode(this.specificRequirements);
+        hash = 37 * hash + Objects.hashCode(this.specificInstallationRemarks);
+        hash = 37 * hash + Objects.hashCode(this.specificOtherPlatformRequirements);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PlatformSpecificFeature other = (PlatformSpecificFeature) obj;
+        if (!Objects.equals(this.specificSize, other.specificSize)) {
+            return false;
+        }
+        if (!Objects.equals(this.specificLocation, other.specificLocation)) {
+            return false;
+        }
+        if (!Objects.equals(this.specificInstallationRemarks, other.specificInstallationRemarks)) {
+            return false;
+        }
+        if (!Objects.equals(this.specificOtherPlatformRequirements, other.specificOtherPlatformRequirements)) {
+            return false;
+        }
+        if (!Objects.equals(this.platformType, other.platformType)) {
+            return false;
+        }
+        if (!Objects.equals(this.specificFormats, other.specificFormats)) {
+            return false;
+        }
+        return Objects.equals(this.specificRequirements, other.specificRequirements);
     }
 
 }

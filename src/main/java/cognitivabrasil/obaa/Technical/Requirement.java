@@ -10,6 +10,7 @@ package cognitivabrasil.obaa.Technical;
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
 
@@ -56,4 +57,27 @@ public class Requirement {
     public void addOrComposite (OrComposite newOrComposite){
         this.orComposite.add(newOrComposite);
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 47 * hash + Objects.hashCode(this.orComposite);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Requirement other = (Requirement) obj;
+        return Objects.equals(this.orComposite, other.orComposite);
+    }
+
 }

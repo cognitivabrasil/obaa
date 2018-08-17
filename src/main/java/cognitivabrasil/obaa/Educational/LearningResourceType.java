@@ -25,6 +25,8 @@
 package cognitivabrasil.obaa.Educational;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -72,22 +74,7 @@ public class LearningResourceType extends TextElement {
     public static final String LECTURE = "lecture";
 
     public LearningResourceType() {
-        super();
-        this.addTerms(EXERCISE);
-        this.addTerms(SIMULATION);
-        this.addTerms(QUESTIONNAIRE);
-        this.addTerms(DIAGRAM);
-        this.addTerms(FIGURE);
-        this.addTerms(GRAPH);
-        this.addTerms(INDEX);
-        this.addTerms(SLIDE);
-        this.addTerms(TABLE);
-        this.addTerms(NARRATIVE_TEXT);
-        this.addTerms(EXAM);
-        this.addTerms(EXPERIMENT);
-        this.addTerms(PROBLEM_STATEMENT);
-        this.addTerms(SELF_ASSESSMENT);
-        this.addTerms(LECTURE);
+        super(new ArrayList<>(Arrays.asList(EXERCISE,SIMULATION,QUESTIONNAIRE,DIAGRAM,FIGURE,GRAPH,INDEX,SLIDE,TABLE,NARRATIVE_TEXT,EXAM,EXPERIMENT,PROBLEM_STATEMENT,SELF_ASSESSMENT,LECTURE)));
     }
 
     @JsonCreator

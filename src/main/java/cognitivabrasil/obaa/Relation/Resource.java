@@ -29,6 +29,7 @@ import cognitivabrasil.obaa.General.Identifier;
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Namespace;
 
@@ -78,10 +79,36 @@ public class Resource {
 
     public void setIdentifier(List<Identifier> identifier) {
         this.identifier = identifier;
-    }   
+    }
 
     public void addIdentifier (Identifier identifier) {
         this.identifier.add(identifier);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 67 * hash + Objects.hashCode(this.identifier);
+        hash = 67 * hash + Objects.hashCode(this.description);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Resource other = (Resource) obj;
+        if (!Objects.equals(this.identifier, other.identifier)) {
+            return false;
+        }
+        return Objects.equals(this.description, other.description);
     }
 
 }

@@ -27,6 +27,7 @@ package cognitivabrasil.obaa.Rights;
 
 import cognitivabrasil.obaa.ObaaRecursibleElement;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.Objects;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
@@ -51,13 +52,12 @@ import org.simpleframework.xml.Root;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Rights {
 
-
     private static final String NAMESPACE = "http://ltsc.ieee.org/xsd/LOM";
     @Namespace(reference = NAMESPACE)
     @Element(required = false)
     private BooleanYesNo cost;
     @Namespace(reference = NAMESPACE)
-    @Element(required = false, name="copyrightAndOtherRestrictions")
+    @Element(required = false, name = "copyrightAndOtherRestrictions")
     private BooleanYesNo copyright;
 
     @Namespace(reference = NAMESPACE)
@@ -115,4 +115,35 @@ public class Rights {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.cost);
+        hash = 17 * hash + Objects.hashCode(this.copyright);
+        hash = 17 * hash + Objects.hashCode(this.description);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Rights other = (Rights) obj;
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.cost, other.cost)) {
+            return false;
+        }
+        return Objects.equals(this.copyright, other.copyright);
+    }
+
 }

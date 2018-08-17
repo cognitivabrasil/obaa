@@ -7,6 +7,8 @@
  ******************************************************************************/
 package cognitivabrasil.obaa.LifeCycle;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import metadata.TextElement;
 
 
@@ -34,10 +36,6 @@ public class Status extends TextElement {
     public static final String UNAVAILABLE = "unavailable";
 
     public Status() {
-        super();
-        this.addTerms(DRAFT);
-        this.addTerms(FINALIZED);
-        this.addTerms(REVISED);
-        this.addTerms(UNAVAILABLE);
+        super(new ArrayList<>(Arrays.asList(DRAFT,FINALIZED,REVISED,UNAVAILABLE)));
     }
 }
