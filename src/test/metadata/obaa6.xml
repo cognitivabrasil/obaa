@@ -1,0 +1,73 @@
+<obaa:obaa xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://ltsc.ieee.org/xsd/obaav1.0/lom.xsd" xmlns:obaa="http://ltsc.ieee.org/xsd/LOM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <obaa:general>
+        <obaa:title>Exemplo de triedro em canto do quarto na trama principal</obaa:title>
+        <obaa:keyword>História em quadrinhos</obaa:keyword>
+        <obaa:keyword>Projeção cilíndrica ortogonal</obaa:keyword>
+        <obaa:description>Esta história é composta por 09 quadros, onde o personagem Zeca exemplifica projeção cilíndrica ortogonal utilizando uma cadeira como sólido e o canto do seu quarto como triedro.</obaa:description>
+        <obaa:aggregationLevel>2</obaa:aggregationLevel>
+        <obaa:identifier>
+            <obaa:catalog>URI</obaa:catalog>
+            <obaa:entry>http://cognitivabrasil.com.br/repositorio/documents/1</obaa:entry>
+        </obaa:identifier>
+        <obaa:language>pt-BR</obaa:language>
+        <obaa:structure>networked</obaa:structure>
+    </obaa:general>
+    <obaa:lifeCycle>
+        <obaa:status>finalized</obaa:status>
+        <obaa:version>1.1</obaa:version>
+        <obaa:contribute>
+            <obaa:role>author</obaa:role>
+            <obaa:entity>Raul Inácio Busarello</obaa:entity>
+        </obaa:contribute>
+        <obaa:contribute>
+            <obaa:role>validator</obaa:role>
+            <obaa:entity>Vania R. Ulbricht</obaa:entity>
+        </obaa:contribute>
+    </obaa:lifeCycle>
+    <obaa:rights>
+        <obaa:cost>false</obaa:cost>
+        <obaa:copyrightAndOtherRestrictions>true</obaa:copyrightAndOtherRestrictions>
+        <obaa:description>Este trabalho está licenciado..</obaa:description>
+    </obaa:rights>
+    <obaa:educational>
+        <obaa:interactivityType>active</obaa:interactivityType>
+        <obaa:intendedEndUserRole>learner</obaa:intendedEndUserRole>
+        <obaa:learningResourceType>figure</obaa:learningResourceType>
+        <obaa:learningResourceType>narrative text</obaa:learningResourceType>
+        <obaa:typicalAgeRange>10 - 15 anos</obaa:typicalAgeRange>
+        <obaa:language>pt-BR</obaa:language>
+        <obaa:context>school</obaa:context>
+        <obaa:learningContentType>conceitual</obaa:learningContentType>
+    </obaa:educational>
+    <obaa:technical>
+        <obaa:location>http://cognix-repo.inf.ufrgs.br/resources/1/</obaa:location>
+        <obaa:size>10</obaa:size>
+        <obaa:otherPlatformRequirements>Navegador compatível com HTML5</obaa:otherPlatformRequirements>
+        <supportedPlatform>mobile</supportedPlatform>
+        <supportedPlatform>dtv</supportedPlatform>
+        <supportedPlatform>web</supportedPlatform>
+    </obaa:technical>
+    <obaa:metametadata>
+        <obaa:identifier>
+            <obaa:catalog>URI</obaa:catalog>
+            <obaa:entry>http://www.w3.org/2001/XMLSchema-instance</obaa:entry>
+        </obaa:identifier>
+        <obaa:contribute>
+            <obaa:role>author</obaa:role>
+            <obaa:entity>alan</obaa:entity>
+            <obaa:date>2016-07-05</obaa:date>
+        </obaa:contribute>
+        <obaa:metadataSchema>OBAAv1.0</obaa:metadataSchema>
+        <obaa:language>pt-BR</obaa:language>
+    </obaa:metametadata>
+    <obaa:accessibility>
+        <obaa:resourceDescription>
+            <obaa:primary>
+                <obaa:hasVisual>true</obaa:hasVisual>
+                <obaa:hasAuditory>false</obaa:hasAuditory>
+                <obaa:hasText>true</obaa:hasText>
+                <obaa:hasTactile>false</obaa:hasTactile>
+            </obaa:primary>
+        </obaa:resourceDescription>
+    </obaa:accessibility>
+</obaa:obaa>

@@ -46,7 +46,7 @@ public class Contribute {
     @Element
     private Role role;
     @ElementList(inline = true, required = false)
-    private final List<Entity> entity;
+    private List<Entity> entity;
 
     @Namespace(reference = "http://ltsc.ieee.org/xsd/LOM")
     @Element(required = false)
@@ -115,6 +115,10 @@ public class Contribute {
 
     public List<Entity> getEntity() {
         return entity;
+    }
+
+    public void setEntity(List<Entity> entity) {
+        this.entity = entity;
     }
 
     @Override

@@ -27,6 +27,8 @@ import cognitivabrasil.obaa.Educational.IntendedEndUserRole;
 import cognitivabrasil.obaa.Educational.Interaction;
 import cognitivabrasil.obaa.Educational.InteractionType;
 import cognitivabrasil.obaa.Educational.Language;
+import cognitivabrasil.obaa.Educational.LearningContentType;
+import cognitivabrasil.obaa.Educational.LearningResourceType;
 import cognitivabrasil.obaa.General.General;
 import cognitivabrasil.obaa.General.Identifier;
 import cognitivabrasil.obaa.General.Structure;
@@ -47,6 +49,7 @@ import cognitivabrasil.obaa.Technical.Duration;
 import cognitivabrasil.obaa.Technical.PlatformSpecificFeature;
 import cognitivabrasil.obaa.Technical.SpecificOrComposite;
 import cognitivabrasil.obaa.Technical.SpecificRequirement;
+import cognitivabrasil.obaa.Technical.SupportedPlatform;
 import cognitivabrasil.obaa.Technical.Technical;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -60,6 +63,7 @@ import org.apache.commons.io.FileUtils;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
 import org.junit.After;
@@ -94,6 +98,7 @@ public class OBAATest {
     static final String FILE3 = "./src/test/metadata/obaa3.xml";
     static final String FILE4 = "./src/test/metadata/obaa4.xml";
     static final String FILE5 = "./src/test/metadata/obaa5.xml";
+    static final String FILE6 = "./src/test/metadata/obaa6.xml";
     static final String FROAC = "./src/test/metadata/froac3.xml";
     static final String FILE_EMPTY = "./src/test/metadata/obaa_empty.xml";
     static final String FULL = "./src/test/metadata/xml_obaa_full.xml";
@@ -1227,7 +1232,6 @@ public class OBAATest {
 
         String Vcard = e.getText();
 
-
         Entity e2 = new Entity();
         e2.setText("José da Silva");
 
@@ -1341,7 +1345,7 @@ public class OBAATest {
     }
 
     @Test
-    public void capesErrorTest()throws FileNotFoundException{
+    public void capesErrorTest() throws FileNotFoundException {
         OBAA capesEl = OBAA.fromFilename("./src/test/metadata/capes.xml");
 
         assertThat(capesEl.getGeneral().getTitles().get(0), equalTo("Fundamentos de Matemática"));
@@ -1434,11 +1438,69 @@ public class OBAATest {
                 equalTo("BrasilianLIBRAS"));
         assertThat(equivalent.getContent().getLearnerScaffold().get(0).getText(), equalTo("calculator"));
 
-
         assertThat(o.getSegmentInformationTable().getSegmentList().get(0).getSegmentInformation().get(0)
                 .getSegmentMediaType(), equalTo("video"));
         assertThat(o.getSegmentInformationTable().getSegmentGroupList().getSegmentGroupInformation().get(0)
                 .getGroupType().getText(), equalTo("Higlights"));
+    }
+
+    @Test
+    public void testDeserializeXml() throws Exception {
+        OBAA obaa = OBAA.fromFilename(FILE6);
+        assertThat(obaa.getGeneral().getTitles().get(0), equalTo("Exemplo de triedro em canto do quarto na trama principal"));
+        assertThat(obaa.getGeneral().getKeywords(), hasSize(2));
+        assertThat(obaa.getGeneral().getKeywords().get(0), equalTo("História em quadrinhos"));
+        assertThat(obaa.getGeneral().getKeywords().get(1), equalTo("Projeção cilíndrica ortogonal"));
+        assertThat(obaa.getGeneral().getDescriptions().get(0), equalTo("Esta história é composta por 09 quadros, onde o "
+                + "personagem Zeca exemplifica projeção cilíndrica ortogonal utilizando uma cadeira como sólido e o "
+                + "canto do seu quarto como triedro."));
+        assertThat(obaa.getGeneral().getAggregationLevel().toString(), equalTo("2"));
+        assertThat(obaa.getGeneral().getIdentifiers().get(0).getCatalog(), equalTo("URI"));
+        assertThat(obaa.getGeneral().getIdentifiers().get(0).getEntry(),
+                equalTo("http://cognitivabrasil.com.br/repositorio/documents/1"));
+        assertThat(obaa.getGeneral().getLanguages().get(0), equalTo("pt-BR"));
+        assertThat(obaa.getGeneral().getStructure().getText(), equalTo("networked"));
+
+        assertThat(obaa.getLifeCycle().getStatus(), equalTo("finalized"));
+        assertThat(obaa.getLifeCycle().getVersion(), equalTo("1.1"));
+        assertThat(obaa.getLifeCycle().getContribute(), hasSize(2));
+        assertThat(obaa.getLifeCycle().getContribute().get(0).getRole().getText(), equalTo("author"));
+        assertThat(obaa.getLifeCycle().getContribute().get(0).getEntities().get(0), equalTo("Raul Inácio Busarello"));
+        assertThat(obaa.getLifeCycle().getContribute().get(1).getRole().getText(), equalTo("validator"));
+        assertThat(obaa.getLifeCycle().getContribute().get(1).getEntities().get(0), equalTo("Vania R. Ulbricht"));
+
+        assertThat(obaa.getRights().getCost().getBoolean(), equalTo(false));
+        assertThat(obaa.getRights().getCopyright().getBoolean(), equalTo(true));
+        assertThat(obaa.getRights().getDescription(), equalTo("Este trabalho está licenciado.."));
+
+        assertThat(obaa.getEducational().getInteractivityType(), equalTo("active"));
+        assertThat(obaa.getEducational().getIntendedEndUserRoleAsStrings().get(0), equalTo("learner"));
+        assertThat(obaa.getEducational().getLearningResourceTypesString().get(0), equalTo(LearningResourceType.FIGURE));
+        assertThat(obaa.getEducational().getLearningResourceTypesString().get(1), equalTo(LearningResourceType.NARRATIVE_TEXT));
+        assertThat(obaa.getEducational().getTypicalAgeRanges().get(0).getText(), equalTo("10 - 15 anos"));
+        assertThat(obaa.getEducational().getLanguages().get(0).getText(), equalTo("pt-BR"));
+        assertThat(obaa.getEducational().getContexts().get(0).getText(), equalTo(Context.SCHOOL));
+        assertThat(obaa.getEducational().getLearningContentType(), equalTo(LearningContentType.CONCEITUAL));
+
+        assertThat(obaa.getTechnical().getLocation().get(0).getText(), equalTo("http://cognix-repo.inf.ufrgs.br/resources/1/"));
+        assertThat(obaa.getTechnical().getSize(), equalTo("10"));
+        assertThat(obaa.getTechnical().getOtherPlatformRequirements(), equalTo("Navegador compatível com HTML5"));
+        assertThat(obaa.getTechnical().getSupportedPlatforms().get(0), equalTo(SupportedPlatform.MOBILE));
+        assertThat(obaa.getTechnical().getSupportedPlatforms().get(1), equalTo(SupportedPlatform.DTV));
+        assertThat(obaa.getTechnical().getSupportedPlatforms().get(2), equalTo(SupportedPlatform.WEB));
+
+        assertThat(obaa.getMetametadata().getIdentifier().get(0).getCatalog(), equalTo("URI"));
+        assertThat(obaa.getMetametadata().getIdentifier().get(0).getEntry(), equalTo("http://www.w3.org/2001/XMLSchema-instance"));
+        assertThat(obaa.getMetametadata().getContribute().get(0).getRole(), equalTo(Role.AUTHOR));
+        assertThat(obaa.getMetametadata().getContribute().get(0).getEntity().get(0).getText(), equalTo("alan"));
+        assertThat(obaa.getMetametadata().getContribute().get(0).getDate().getText(), equalTo("2016-07-05"));
+        assertThat(obaa.getMetametadata().getMetadataSchema().get(0).getText(), equalTo("OBAAv1.0"));
+        assertThat(obaa.getMetametadata().getLanguage().getText(), equalTo("pt-BR"));
+
+        assertThat(obaa.getAccessibility().getResourceDescription().getPrimary().isHasVisual(), equalTo(true));
+        assertThat(obaa.getAccessibility().getResourceDescription().getPrimary().isHasAuditory(), equalTo(false));
+        assertThat(obaa.getAccessibility().getResourceDescription().getPrimary().isHasText(), equalTo(true));
+        assertThat(obaa.getAccessibility().getResourceDescription().getPrimary().isHasTactile(), equalTo(false));
     }
 
 }

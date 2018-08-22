@@ -33,52 +33,52 @@ public class VCarder {
 
     public void setCompatibilityMode(CompatibilityMode compatMode) {
         vcardEngine.setCompatibilityMode(compatMode);
-        
+
     }
 
     public void setName(String givenName, String familyName) {
-      
+
         empty = false;
         String fullName = givenName+" "+familyName;
-        setCompatibilityMode(CompatibilityMode.RFC2426);   
-        
+        setCompatibilityMode(CompatibilityMode.RFC2426);
+
         writer.setOutputVersion(VCardVersion.V3_0);
         writer.setCompatibilityMode(CompatibilityMode.RFC2426);
         writer.setFoldingScheme(FoldingScheme.MIME_DIR);
         writer.setBinaryfoldingScheme(BinaryFoldingScheme.MIME_DIR);
-        writer.setEOL(VCardUtils.LF);        
-         
+        writer.setEOL(VCardUtils.LF);
+
         NameType name = new NameType(fullName);
         name.setGivenName(givenName);
         name.setFamilyName(familyName);
         vcard.setName(name);
-        
+
         FormattedNameFeature nomeFormatado = new FormattedNameType(fullName);
-        vcard.setFormattedName(nomeFormatado);     
-        writer.setVCard(vcard);        
-        
+        vcard.setFormattedName(nomeFormatado);
+        writer.setVCard(vcard);
+
     }
-     
-    public String getVCard(){        
+
+    public String getVCard(){
         return (writer.buildVCardString());
     }
-    
+
     public void setVcard(String VCard) throws IOException{
         vcard = vcardEngine.parse(VCard);
-        
+
         //para o nome ser aceito tem que ter pelo menos um primeiro nome ou um sobrenome
         if (vcard.hasBegin() && vcard.hasEnd() && vcard.getName()!=null) {
             empty = false;
         }
-        
+
     }
-    
-    public String getFullName(){         
-        return (vcard.getName().getGivenName()+" "+vcard.getName().getFamilyName());
+
+    public String getFullName(){
+        return vcard.getName().getGivenName()+" "+vcard.getName().getFamilyName();
     }
-    
+
     public boolean isEmpty(){
         return this.empty;
     }
-    
+
 }
